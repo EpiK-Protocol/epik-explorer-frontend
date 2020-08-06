@@ -153,6 +153,16 @@ export default {
       height: 30px !important;
       border-radius: 15px !important;
     }
+    input {
+      height: 30px!important;
+      border-radius: 4px!important;
+      background: var(--board-bg-color)!important;
+      border: none!important;
+      margin-bottom: 10px;
+      padding-left: 10px!important;
+      font-size: 10px!important;
+
+    }
     & ::v-deep .el-select {
       width: 100px;
     }
@@ -173,6 +183,7 @@ export default {
       border-radius: 15px;
       width: 100% !important;
       margin-top: 20px;
+      font-size: 14px !important;
     }
   }
 }

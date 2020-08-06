@@ -40,7 +40,7 @@ const en = {
     }
   },
   header: {
-    title: "Filecoin Explorer",
+    title: "EpiK Explorer",
     tab: ["Home", "Tipset", "Stats"],
     placeholder: "Search by Address/Message ID/Height/Block Hash/Peer ID ",
     filter: [
@@ -112,7 +112,7 @@ const en = {
       }
     },
     mb: {
-      title: "Filecoin Search",
+      title: "EpiK Search",
       search: "Search"
     }
   },
@@ -244,7 +244,7 @@ const en = {
         title: "Cumulative Block Rewards"
       },
       filecoin: {
-        title: "Filecoin Network Block Reward Curve"
+        title: "EpiK Network Block Reward Curve"
       },
       filVested: {
         title: "FIL Vested"

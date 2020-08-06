@@ -1,17 +1,17 @@
 <template>
   <div class="mb-header-con">
     <div class="header-main">
-      <div
-        class="el-icon-arrow-left arrow-back"
-        v-if="!atIndex"
-        @click="$router.go(-1)"
-      ></div>
+      <div class="el-icon-arrow-left arrow-back" v-if="!atIndex" @click="$router.go(-1)"></div>
       <div class="logo" v-else>
-        <img src="@/assets/logo.png" />
+        <img src="@/assets/image/epik_m_logo.png" />
         <span>{{ $t("header.title") }}</span>
       </div>
       <div class="route-name">{{ routeName }}</div>
       <div class="tools" v-if="!showSearch && !showNav">
+        <div class="lang-switch" @click="changeLang">
+          <span :class="$i18n.locale === 'en'?'active':''" >EN</span>/
+          <span :class="$i18n.locale === 'zh'?'active':''">中文</span>
+        </div>
         <img :src="searchSrc" alt @click="showSearch = true" />
         <img :src="moreSrc" alt @click="showNav = true" />
         <theme-switch />
@@ -22,18 +22,14 @@
     </div>
     <div v-if="showNav" class="nav-bar">
       <div v-for="(value, key) in $t('header.nav')" :key="key" class="nav-item">
-        <div class="title" @click="key === 'home' ? go('/') : null">
-          {{ value.label }}
-        </div>
+        <div class="title" @click="key === 'home' ? go('/') : null">{{ value.label }}</div>
         <div v-if="value.items">
           <div
             v-for="item in value.items"
             :key="item.index"
             class="sub-item"
             @click="go(item.index)"
-          >
-            {{ item.label }}
-          </div>
+          >{{ item.label }}</div>
         </div>
       </div>
     </div>
@@ -68,6 +64,7 @@ export default {
   },
 
   methods: {
+    
     go(path) {
       this.showNav = false;
       this.$router.push(path);
@@ -114,12 +111,20 @@ export default {
       img {
         width: 6.3vw;
         &:first-child {
-          margin-right: 5vw;
+          margin-right: 3vw;
         }
       }
       .tools {
         display: flex;
         align-items: center;
+        .lang-switch {
+          margin-right: 2vw;
+          color: #ccc;
+          font-size: 14px;
+          span.active{
+            color: var(--main-text-color);
+          }
+        }
       }
     }
     .nav-bar,

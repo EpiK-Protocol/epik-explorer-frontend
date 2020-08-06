@@ -2,10 +2,10 @@
   <div class="header-con">
     <el-row align="middle" type="flex">
       <el-col :span="6" class="logo-con" @click.native="goTo('home')">
-        <img src="@/assets/logo.png" class="logo" />
+        <img src="@/assets/image/epik_m_logo.png" class="logo" />
         <span>{{ $t("header.title") }}</span>
       </el-col>
-      <el-col :span="10" class="search-wrap">
+      <el-col :span="8" class="search-wrap">
         <Search />
       </el-col>
       <el-col :span="6" class="link-con">
@@ -35,9 +35,14 @@
           </el-submenu>
         </el-menu>
       </el-col>
-      <el-col :span="2">
+      <el-col :span="4" style="display:flex">
         <!-- <span class="testnet">Testnet</span> -->
         <!-- <span :class="[iconClass,'theme-switch']" @click="handleThemeChange"></span> -->
+        <div class="lang-switch" @click="changeLang">
+          <span :class="$i18n.locale === 'en'?'active':''" >EN</span>
+          <span>/</span>
+          <span :class="$i18n.locale === 'zh'?'active':''">中文</span>
+        </div>
         <theme-switch />
       </el-col>
     </el-row>
@@ -145,6 +150,27 @@ export default {
   flex-direction: column;
   justify-content: center;
   box-shadow: 0px 1px 4px 5px rgba(0, 0, 0, 0.03);
+  .lang-switch{
+    margin: 0 2vw;
+    color: #ccc;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    span:not(.active) {
+    opacity: .5;
+  }
+  span{
+        display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+  }
+
+  }
   .link-con {
     display: flex;
     justify-content: flex-end;

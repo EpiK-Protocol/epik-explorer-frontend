@@ -44,11 +44,11 @@ const zh = {
             more: "更多"
         },
         header: {
-            title: "Filscan",
+            title: "EpiK Explorer",
             tab: ["首页", "Tipset", "统计数据"],
             placeholder: "请输入地址/消息ID/高度/区块哈希/节点ID",
             filter: [{
-                label: "全部筛选类型",
+                label: "筛选类型",
                 value: 0
             },
             {
@@ -110,7 +110,7 @@ const zh = {
                 }
             },
             mb: {
-                title: "Filecoin 搜索",
+                title: "EpiK 搜索",
                 search: "Search"
             }
         },

@@ -66,6 +66,7 @@ body,
   height: 100%;
   background: var(--main-bg-color);
   font-size: 14px;
+  font-family: 'PingFang SC', 'Avenir', Helvetica, Arial, sans-serif;
 }
 .content-container {
   padding: 90px 20px 10px;
