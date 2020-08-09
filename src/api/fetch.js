@@ -14,7 +14,8 @@ export function fetch(options) {
         } else {
           data = response.data;
         }
-        return data.data || data;
+        // return data.data || data;
+        return data
       },
       err => {
         return Promise.reject(err);

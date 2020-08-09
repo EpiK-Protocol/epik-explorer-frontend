@@ -127,17 +127,22 @@ export default {
     chart = this.$chart.init(this.$refs.chart);
     const height = this.height;
     let currentHeight;
+    debugger
     if (height) {
       currentHeight = height;
     } else if (this.hash) {
       let data = await getBlockByCid({
         cid: this.$route.query.hash
       });
+      console.log(data)
       const height = data.blocks[0].block_header.height;
       currentHeight = height;
     } else {
       let data = await getLatestBlock(1);
-      const height = data.block_header[0].block_header.height;
+      //8.9
+      // console.log(data)
+      const height = data.block_header[0].Height;
+      // const height = data.block_header[0].block_header.height;
       currentHeight = height;
       this.jumpSafeHeight = height;
     }
@@ -167,37 +172,67 @@ export default {
         });
         this.loading = false;
         let blocks = [];
+        // debugger
+
+        //8.9
         const reverse = res.tipsets.reverse();
         reverse.forEach(item => {
-          if (item.tipset.length > 0) {
-            blocks = blocks.concat(item.tipset);
-          }
+          // if (item.tipset.length > 0) {
+          //   blocks = blocks.concat(item.tipset);
+          // }
+            blocks = blocks.concat(item);
         });
         blocks = blocks.map(item => {
-          const { size, cid, reward, block_header, msg_cids } = item;
-          const {
-            timestamp,
-            height,
-            miner,
-            parent_weight,
-            tickets,
-            parents,
-            parent_state_root
-          } = block_header;
+          // const { size, cid, reward, block_header, msg_cids } = item;
+          
+          // const {
+          //   timestamp,
+          //   height,
+          //   miner,
+          //   parent_weight,
+          //   tickets,
+          //   parents,
+          //   parent_state_root
+          // } = block_header;
+          // return {
+          //   height: this.formatNumber(height),
+          //   hash: cid,
+          //   timestamp: this.formatTime(timestamp),
+          //   utcTime: this.getFormatTime(timestamp),
+          //   size: this.formatNumber(size),
+          //   mesLength: msg_cids.length,
+          //   miner,
+          //   reward,
+          //   parents,
+          //   parent_weight: this.formatNumber(parent_weight),
+          //   tickets,
+          //   state_root: parent_state_root
+          // };
+          const { Blocks, Cids } = item;
+           const {
+            Timestamp,
+            Height,
+            Miner,
+            ParentWeight,
+            Ticket,
+            Parents,
+            ParentStateRoot,
+            Messages
+          } = Blocks[0];
 
           return {
-            height: this.formatNumber(height),
-            hash: cid,
-            timestamp: this.formatTime(timestamp),
-            utcTime: this.getFormatTime(timestamp),
-            size: this.formatNumber(size),
-            mesLength: msg_cids.length,
-            miner,
-            reward,
-            parents,
-            parent_weight: this.formatNumber(parent_weight),
-            tickets,
-            state_root: parent_state_root
+            height: this.formatNumber(Height),
+            hash: Messages['/'],//item.cid
+            timestamp: this.formatTime(Timestamp),
+            utcTime: this.getFormatTime(Timestamp),
+            size:'',//size: this.formatNumber(size),
+            mesLength: Cids.length,
+            miner:Miner,
+            reward:0,//?
+            parents:Parents,
+            parent_weight: this.formatNumber(ParentWeight),
+            tickets:[Ticket],
+            state_root: ParentStateRoot['/']
           };
         });
         const hashList = blocks.map(item => {

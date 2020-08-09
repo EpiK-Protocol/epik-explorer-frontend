@@ -123,7 +123,9 @@ export default {
         this.loading = true;
         const res = await getBlockTimeData(this.time);
         this.loading = false;
-        const { data, min, max, avg_blocktime } = res;
+        // 8.9
+        // const { data, min, max, avg_blocktime } = res;
+        const { data, min, max, avg } = res;
         const dataList = data.map(item => {
           const end = dayjs(item.time * 1000)
             .add(1, "hour")
@@ -133,13 +135,13 @@ export default {
               item.time * 1000,
               "MMM Do YYYY HH:mm"
             )}-${end}`,
-            value: item.block_time
+            value: parseInt(item.block_time)
           };
         });
         this.dataList = Object.freeze(dataList);
-        this.avgTime = Math.floor(avg_blocktime);
-        this.min = min;
-        this.max = max;
+        this.avgTime = Math.floor(avg);
+        this.min = parseInt(min);
+        this.max = parseInt(max);
         this.drawTimeChart();
       } catch (e) {
         this.loading = false;

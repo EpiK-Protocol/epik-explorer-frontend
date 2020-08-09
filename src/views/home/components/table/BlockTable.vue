@@ -98,8 +98,12 @@ export default {
       try {
         const data = await getLatestBlock(num);
         const heightMap = {};
+        // debugger
+        // 8.9
         const dataSource = data.block_header.map((item, index) => {
-          const { height, miner, timestamp } = item.block_header;
+          // const { height, miner, timestamp } = item.block_header;
+          const { Height, Miner, Timestamp } = item;
+          const height = Height,miner= Miner,timestamp=Timestamp;
           if (heightMap[height]) {
             heightMap[height].span++;
           } else {
@@ -113,7 +117,9 @@ export default {
             timestamp > current / 1000 ? current / 1000 : timestamp;
           return {
             height: this.formatNumber(height),
-            hash: item.cid,
+            // hash: item.cid,
+            hash: '',
+            // hash: item.Messages['/'],//?
             time: this.formatTime(realTime),
             originTime: realTime,
             miner: miner,

@@ -109,6 +109,7 @@ export default {
         this.loading = true;
         const res = await getBlocSizeData(this.time);
         this.loading = false;
+        // debugger
         const { data, avg_blocksize } = res;
         const dataList = data.map(item => {
           const end = dayjs(item.time * 1000)

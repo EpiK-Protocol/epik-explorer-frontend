@@ -113,10 +113,14 @@ export default {
           time: this.time.end_time
         });
         this.loading = false;
+        // debugger
+        // 8.9
         const dataList = res.data.map(item => {
           return {
-            name: this.formatTimeByStr(item.time * 1000, "MMM Do YYYY HH:mm"),
-            value: item.power
+            // name: this.formatTimeByStr(item.time * 1000, "MMM Do YYYY HH:mm"),
+            name: this.formatTimeByStr(item.Time * 1000, "MMM Do YYYY HH:mm"),
+            // value: item.power
+            value: item.Power
           };
         });
         this.storageCapacity = this.unitConversion(res.storage_capacity, 3);

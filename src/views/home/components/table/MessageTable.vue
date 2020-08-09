@@ -80,8 +80,9 @@ export default {
       this.messageTable.loading = true;
       try {
         const data = await getLatestMessage(num);
-
-        const dataSource = data.msg.map(item => {
+//8.9
+        const dataSource = data.map(item => {
+          // const dataSource = data.msg.map(item => {
           const { from, to, value } = item.msg;
           const current = new Date().getTime();
           const realTime =

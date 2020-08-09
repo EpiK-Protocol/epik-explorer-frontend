@@ -78,15 +78,17 @@ export default {
     this.loading = true;
     await this.getBoardInfo();
     this.loading = false;
-    this.timer = setInterval(() => {
-      this.getBoardInfo();
-    }, 30000);
+    // this.timer = setInterval(() => {
+    //   this.getBoardInfo();
+    // }, 30000);
   },
   methods: {
     ...mapMutations(["setHeight", "increaseLoadCount"]),
     async getBoardInfo() {
       try {
-        const info = await getBoardInfo();
+        // 8.9
+        let info = await getBoardInfo();
+        info = info.data;
         this.loading = false;
         info.avg_message_size = parseInt(info.avg_message_size);
         this.info = this.info.map(item => {
