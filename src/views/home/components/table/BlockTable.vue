@@ -118,12 +118,13 @@ export default {
           return {
             height: this.formatNumber(height),
             // hash: item.cid,
-            hash: '',
-            // hash: item.Messages['/'],//?
+            // hash: '',
+            hash: item.Messages['/'],//?
             time: this.formatTime(realTime),
             originTime: realTime,
             miner: miner,
-            reward: Number(item.reward).toFixed(5),
+            // reward: Number(item.reward).toFixed(5),
+            reward: 0,
             current: current
           };
         });

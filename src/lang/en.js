@@ -347,6 +347,7 @@ const en = {
       "<div style='margin-bottom:5px'>Avg BlockHeader Size: {value}bytes</div><div>Time: {name}</div>",
     totalPower:
       "<div style='margin-bottom:5px'>Total Power: {value}</div><div>Time: {name}</div>",
+      blocksWon: "<div>MinerID: {miner_id}</div><div>Height: {height}</div><div>BlockTime: {block_time}</div><div>BlockHash: {cid}</div>",
     filOutstanding: ["Floating", "Pledge"],
     blockReward: ["# Of Miners", "Cumulative Block Reward"],
     filecoin: "Block Reward(FIL)",

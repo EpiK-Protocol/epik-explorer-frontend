@@ -412,7 +412,7 @@ const zh = {
             blocksWonTitle: "近半小时内未发现区块",
             blockRatio: "出块率",
             ticketRatio: "赢票率",
-            blocksWon: "<div>矿工ID: {miner_id}</div><div>高度: {height}</div><div>出块时间: {block_time}</div><div>区块哈希: {cid}</div><div>选票数量: {tick_count}</div>",
+            blocksWon: "<div>矿工ID: {miner_id}</div><div>高度: {height}</div><div>出块时间: {block_time}</div><div>区块哈希: {cid}</div>",
             blockTime: "<div style='margin-bottom:5px'>平均出块时间: {value}s</div><div>时间: {name}</div>",
             blockSize: "<div style='margin-bottom:5px'>平均区块元数据大小: {value}字节</div><div>时间: {name}</div>",
             totalPower: "<div style='margin-bottom:5px'>有效算力: {qualityPower}</div><div style='margin-bottom:5px'>原值算力: {rawPower}</div><div>时间: {name}</div>",

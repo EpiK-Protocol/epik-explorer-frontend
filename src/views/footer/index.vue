@@ -3,11 +3,11 @@
     <div class="peer" @click="goTo('map')">
       {{ $t("footer.peer", { count: formatNumber(count) }) }}
     </div>
-    <div class="nav-con">
+    <!-- <div class="nav-con">
       <a :href="item.href" v-for="item in $t('footer.nav')" :key="item.label">{{
         item.label
       }}</a>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>

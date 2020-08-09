@@ -127,7 +127,7 @@ export default {
     chart = this.$chart.init(this.$refs.chart);
     const height = this.height;
     let currentHeight;
-    debugger
+    // debugger
     if (height) {
       currentHeight = height;
     } else if (this.hash) {
@@ -135,7 +135,8 @@ export default {
         cid: this.$route.query.hash
       });
       console.log(data)
-      const height = data.blocks[0].block_header.height;
+      // const height = data.blocks[0].block_header.height;
+      const height = data.blocks[0].Height;
       currentHeight = height;
     } else {
       let data = await getLatestBlock(1);
@@ -225,13 +226,13 @@ export default {
             hash: Messages['/'],//item.cid
             timestamp: this.formatTime(Timestamp),
             utcTime: this.getFormatTime(Timestamp),
-            size:'',//size: this.formatNumber(size),
+            size:0,//size: this.formatNumber(size),
             mesLength: Cids.length,
             miner:Miner,
             reward:0,//?
             parents:Parents,
             parent_weight: this.formatNumber(ParentWeight),
-            tickets:[Ticket],
+            tickets:Ticket.VRFProof,
             state_root: ParentStateRoot['/']
           };
         });
@@ -260,13 +261,16 @@ export default {
         markAreaBorder,
         markAreaActiveBorder
       } = this.chartTheme.tipset;
+      
       this.tipsets.forEach((item, index) => {
-        item.tipset = getBlockCoord(item.tipset, index, item.min_ticket_block);
+        item.tipset = getBlockCoord(item.Blocks, index, item.Blocks[0].Messages['/']);
       }); //get coords
+      // debugger
       const nodeList = this.tipsets.reduce((pre, cur) => {
         const coords = cur.tipset.map((item, index) => {
-          if (!item.cid) {
+          if (!item.Messages['/']) {
             return {
+              // name: item.Messages['/'],
               value: item.coord,
               symbol: `image://${this.nullSrc}`,
               symbolSize: [56 * rate, 17 * rate],
@@ -276,9 +280,11 @@ export default {
               }
             };
           }
-          const formatName = item.block_header.miner;
+          // const formatName = item.block_header.miner;
+          const formatName = item.Miner;
           let symbol;
-          if (item.cid === this.hash) {
+          // if (item.cid === this.hash) {
+          if (item.Messages['/'] === this.hash) {
             symbol = `image://${this.activeSrc}`;
           } else if (index === 0) {
             symbol = `image://${this.ticketSrc}`;
@@ -286,7 +292,8 @@ export default {
             symbol = `image://${this.normalSrc}`;
           }
           return {
-            name: item.cid,
+            // name: item.cid,
+            // name: item.Messages['/'],
             originData: item,
             value: item.coord,
             symbol: symbol,
@@ -295,7 +302,7 @@ export default {
             isTicket: index === 0,
             label: {
               color:
-                index === 0 || item.cid === this.hash ? ticketNode : otherNode,
+                index === 0 || item.Messages['/'] === this.hash ? ticketNode : otherNode,
               formatter() {
                 return formatName;
               },
@@ -305,6 +312,7 @@ export default {
         });
         return pre.concat(coords);
       }, []); //generate echarts nodes
+      // debugger
       const linkList = nodeList
         .map((item, index) => {
           if (!item.isTicket) {
@@ -320,8 +328,9 @@ export default {
             source: item,
             target: arr[index + 1],
             index: index,
-            height: nodeList[item].originData.block_header.height,
-            isNull: nodeList[item].isNull,
+            // height: nodeList[item].originData.block_header.height,
+            height: nodeList[item].originData.Height,
+            isNull: nodeList[item].isNull||false,//?
             blockCount: nodeList[item].originData.blockCount,
             x: nodeList[item].originData.coord[0],
             label: {
@@ -380,7 +389,22 @@ export default {
           { coord: [item.x + 0.376, 1] }
         ]);
       });
+      const vm = this;
+
       var option = {
+        tooltip: {
+          formatter: function(p) {
+            let data = p.data.originData
+            const html = vm.$t("chart.blocksWon", {
+              miner_id: data.Miner,
+              height: data.Height,
+              block_time: vm.getFormatTime(data.Timestamp),
+              cid: data.Messages['/'],
+
+            });
+            return html;
+          }
+        },
         xAxis: {
           show: false,
           boundaryGap: false,
@@ -408,7 +432,7 @@ export default {
           top: 40 * rate,
           left: -40,
           right: 0,
-          bottom: 0
+          bottom: 150
         },
         series: [
           {
