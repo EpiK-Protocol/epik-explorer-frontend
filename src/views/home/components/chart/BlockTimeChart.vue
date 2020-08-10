@@ -135,13 +135,13 @@ export default {
               item.time * 1000,
               "MMM Do YYYY HH:mm"
             )}-${end}`,
-            value: parseInt(item.block_time)
+            value: parseFloat(item.block_time.toFixed(2))
           };
         });
         this.dataList = Object.freeze(dataList);
-        this.avgTime = Math.floor(avg);
-        this.min = parseInt(min);
-        this.max = parseInt(max);
+        this.avgTime = parseFloat(avg.toFixed(2));
+        this.min = parseFloat(min.toFixed(2));
+        this.max = parseFloat(max.toFixed(2));
         this.drawTimeChart();
       } catch (e) {
         this.loading = false;
