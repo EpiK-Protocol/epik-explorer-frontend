@@ -395,6 +395,7 @@ export default {
         tooltip: {
           formatter: function(p) {
             let data = p.data.originData
+            if(!data) return ''
             const html = vm.$t("chart.blocksWon", {
               miner_id: data.Miner,
               height: data.Height,
