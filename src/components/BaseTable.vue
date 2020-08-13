@@ -54,6 +54,7 @@
               )} ${item.unit || ''}`
             "
           ></base-link>
+        
           <span v-if="!item.isLink && !item.isComponent">{{
             `${scope.row[item.key]} ${item.unit || ""}`
           }}</span>

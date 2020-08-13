@@ -1,11 +1,17 @@
 <template>
-  <el-link
+  <!-- <el-link
     :href="`./#/${target}${!param ? '' : '?' + param.key + '=' + param.value}`"
     :underline="false"
     type="primary"
     :class="{ underline: underline }"
     >{{ label }}</el-link
-  >
+  > -->
+  <div
+    :href="`./#/${target}${!param ? '' : '?' + param.key + '=' + param.value}`"
+    :underline="false"
+    type="primary"
+    :class="{ underline: underline }"
+    >{{ label }}</div>
 </template>
 <script>
 export default {
@@ -36,6 +42,7 @@ export default {
 .el-link.underline {
   text-decoration: underline;
 }
+
 @media (max-width: 768px) {
   .el-link {
     font-size: 12px;
