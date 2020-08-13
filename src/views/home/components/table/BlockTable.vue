@@ -50,7 +50,7 @@ export default {
           },
           {
             key: "reward",
-            unit: "FIL"
+            unit: "EPK"
           }
         ],
         loadCount: 0,
