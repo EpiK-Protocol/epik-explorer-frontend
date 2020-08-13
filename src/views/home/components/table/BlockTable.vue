@@ -119,7 +119,7 @@ export default {
             height: this.formatNumber(height),
             // hash: item.cid,
             // hash: '',
-            hash: item.Messages['/'],//?
+            hash: item.ParentMessageReceipts['/'],//?
             time: this.formatTime(realTime),
             originTime: realTime,
             miner: miner,
