@@ -100,11 +100,11 @@ const mixin = {
     formatFilNumber(value) {
       value = Number(value);
       if (value === 0) {
-        return "0 FIL";
+        return "0 EPK";
       } else {
         return value >= 0.00001
-          ? `${value.toFixed(3)} FIL`
-          : `${(value * Math.pow(10, 18)).toLocaleString()} AttoFIL`;
+          ? `${value.toFixed(3)} EPK`
+          : `${(value * Math.pow(10, 18)).toLocaleString()} AttoEPK`;
       }
     },
     unitConversion(item, len) {
