@@ -6,7 +6,7 @@ module.exports = {
     proxy: {
   
       '/apis': {
-        target: 'http://120.55.82.202/api/',
+        target: 'https://explorer.epik-protocol.io/api/',
         changeOrigin: true,
         ws: true,
         pathRewrite: {
