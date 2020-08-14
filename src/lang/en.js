@@ -155,7 +155,8 @@ const en = {
     },
     messageTable: {
       title: "Message",
-      label: ["Message ID", "Time", "From", "To", "Value"]
+      // label: ["Message ID", "Time", "From", "To", "Value"]
+      label: ["Message ID", "From", "To", "Value"]
     },
     board: {
       height: {

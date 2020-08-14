@@ -31,9 +31,9 @@ export default {
             isLink: true,
             ellipsis: true
           },
-          {
-            key: "time"
-          },
+          // {
+          //   key: "time"
+          // },
           {
             key: "from",
             isLink: true,
@@ -81,22 +81,25 @@ export default {
       try {
         const data = await getLatestMessage(num);
 //8.9
-        const dataSource = data.map(item => {
+// debugger
+        const dataSource = data.msg.map(item => {
           // const dataSource = data.msg.map(item => {
-          const { from, to, value } = item.msg;
-          const current = new Date().getTime();
-          const realTime =
-            item.msgcreate > current / 1000 ? current / 1000 : item.msgcreate;
+          const { From, To, Value,Params } = item;
+          // const current = new Date().getTime();
+          // const realTime =
+          //   item.msgcreate > current / 1000 ? current / 1000 : item.msgcreate;
           return {
-            from,
-            to,
-            value: this.formatFilNumber(value),
-            time: this.formatTime(realTime),
-            originTime: realTime,
-            current: current,
-            id: item.cid
+            from:From,
+            to:To,
+            value: this.formatFilNumber(Value),
+            // time: this.formatTime(realTime),
+            // originTime: realTime,
+            // current: current,
+            // id: item.cid
+            id: Params
           };
         });
+        // debugger
         this.messageTable.dataSource = dataSource;
         this.messageTable.loading = false;
         return Promise.resolve();

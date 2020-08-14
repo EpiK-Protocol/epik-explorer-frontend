@@ -13,7 +13,7 @@
           <span :class="$i18n.locale === 'zh'?'active':''">中文</span>
         </div>
         <!-- <img :src="searchSrc" alt @click="showSearch = true" /> -->
-        <img :src="moreSrc" alt @click="showNav = true" />
+        <!-- <img :src="moreSrc" alt @click="showNav = true" /> -->
         <theme-switch />
       </div>
       <div class="close" v-else @click="hide">

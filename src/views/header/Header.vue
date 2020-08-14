@@ -13,7 +13,7 @@
           <el-menu-item index="/">{{
             $t("header.nav.home.label")
           }}</el-menu-item>
-          <el-submenu index="tipset">
+          <!-- <el-submenu index="tipset">
             <template slot="title">{{
               $t("header.nav.tipset.label")
             }}</template>
@@ -32,7 +32,7 @@
               :index="item.index"
               >{{ item.label }}</el-menu-item
             >
-          </el-submenu>
+          </el-submenu> -->
         </el-menu>
       </el-col>
       <el-col :span="4" style="display:flex">
