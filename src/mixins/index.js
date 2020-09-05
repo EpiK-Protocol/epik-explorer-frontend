@@ -99,6 +99,8 @@ const mixin = {
     },
     formatFilNumber(value) {
       value = Number(value);
+      // if(value.toString().length>=18)
+      value = value/1000000000000000000
       if (value === 0) {
         return "0 EPK";
       } else {
