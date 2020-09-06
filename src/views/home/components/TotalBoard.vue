@@ -43,7 +43,7 @@ export default {
           labelKey: "reward",
           key: "block_reward",
           class: "blue",
-          unit: "EPK"
+          unit: "tEPK"
         },
         {
           labelKey: "avgMsgTipset",
@@ -67,7 +67,7 @@ export default {
           labelKey: "pledge",
           key: "pledge_collateral",
           class: "yellow",
-          unit: "EPK"
+          unit: "tEPK"
         }
       ],
       timer: null,

@@ -102,10 +102,10 @@ const mixin = {
       // if(value.toString().length>=18)
       value = value/1000000000000000000
       if (value === 0) {
-        return "0 EPK";
+        return "0 tEPK";
       } else {
         return value >= 0.00001
-          ? `${value.toFixed(3)} EPK`
+          ? `${value} tEPK`
           : `${(value * Math.pow(10, 18)).toLocaleString()} AttoEPK`;
       }
     },

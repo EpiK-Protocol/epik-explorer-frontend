@@ -50,7 +50,7 @@ export default {
           },
           {
             key: "reward",
-            unit: "EPK"
+            unit: "tEPK"
           }
         ],
         loadCount: 0,
