@@ -8,7 +8,7 @@
     <div class="data-con">
       <div v-for="(item, key) in info" :key="key" class="info-item">
         <div>{{ $t(`home.filType.${key}`) }}</div>
-        <div>{{ item }}FIL</div>
+        <div>{{ item }}tEPK</div>
       </div>
     </div>
   </div>

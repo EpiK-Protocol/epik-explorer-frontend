@@ -101,13 +101,17 @@ const mixin = {
       value = Number(value);
       // if(value.toString().length>=18)
       value = value/1000000000000000000
-      if (value === 0) {
-        return "0 tEPK";
-      } else {
-        return value >= 0.00001
-          ? `${value} tEPK`
-          : `${(value * Math.pow(10, 18)).toLocaleString()} AttoEPK`;
-      }
+      // if (value === 0) {
+      //   return "0 tEPK";
+      // } else {
+        // if(value>=0.00001){
+        let str = value +'';
+        return (str.substring(str.indexOf('.')+1,str.length).length > 3 ? Math.round(str * 1000) / 1000 : parseFloat(value)) + ' tEPK'
+        // }
+        // return value >= 0.00001
+        //   ? `${value.toFixed(3)} tEPK`
+        //   : `${(value * Math.pow(10, 18)).toLocaleString()} AttoEPK`;
+      // }
     },
     unitConversion(item, len) {
       let positive = true;

@@ -6,7 +6,7 @@
         <span>{{ $t("header.title") }}</span>
       </el-col>
       <el-col :span="8" class="search-wrap">
-        <!-- <Search /> -->
+        <Search />
       </el-col>
       <el-col :span="6" class="link-con">
         <el-menu mode="horizontal" :default-active="$route.path" :router="true">

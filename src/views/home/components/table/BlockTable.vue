@@ -48,10 +48,10 @@ export default {
             target: "address/detail",
             paramKey: "address"
           },
-          {
-            key: "reward",
-            unit: "tEPK"
-          }
+          // {
+          //   key: "reward",
+          //   unit: "tEPK"
+          // }
         ],
         loadCount: 0,
         loading: false,

@@ -53,7 +53,7 @@ export default {
         },
         {
           key: "reward",
-          unit: "FIL"
+          unit: "tEPK"
         },
         {
           key: "parents",

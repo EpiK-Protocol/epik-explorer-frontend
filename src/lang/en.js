@@ -35,7 +35,7 @@ const en = {
         "Miner",
         "Reward"
       ],
-      total: "Total of <i>{total}</i> Blocks(<i>{fil}</i>FIL)",
+      total: "Total of <i>{total}</i> Blocks(<i>{fil}</i>tEPK)",
       height: "Tipset Height # {height}"
     }
   },
@@ -248,7 +248,7 @@ const en = {
         title: "EpiK Network Block Reward Curve"
       },
       filVested: {
-        title: "FIL Vested"
+        title: "tEPK Vested"
       }
     },
     peer: {
@@ -259,7 +259,7 @@ const en = {
   address: {
     list: {
       label: ["Address", "Type", "Balance", "Messages"],
-      total: "Total of <i>{num}</i> Accounts Found ({filNum}FIL)"
+      total: "Total of <i>{num}</i> Accounts Found ({filNum}tEPK)"
     },
     detail: {
       overview: ["Address", "Type", "Balance", "Code Cid", "Nonce"],
@@ -351,8 +351,8 @@ const en = {
       blocksWon: "<div>MinerID: {miner_id}</div><div>Height: {height}</div><div>BlockTime: {block_time}</div><div>BlockHash: {cid}</div>",
     filOutstanding: ["Floating", "Pledge"],
     blockReward: ["# Of Miners", "Cumulative Block Reward"],
-    filecoin: "Block Reward(FIL)",
-    filVested: ["Cumulative FIL Vested", "FIL Vested Daily"],
+    filecoin: "Block Reward(tEPK)",
+    filVested: ["Cumulative tEPK Vested", "tEPK Vested Daily"],
     map:
       "<div style='margin-bottom:5px'><a href='/#/stats/peer?peer_id={pid}'><span>Peer ID : </span><span>{pid}</span></a></div><div style='margin-bottom:5px'><span>Location : </span><span>{name}</span></div><div><span>IP : </span><span>{ip}</span></div>"
   }

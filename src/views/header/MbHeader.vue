@@ -12,7 +12,7 @@
           <span :class="$i18n.locale === 'en'?'active':''" >EN</span>/
           <span :class="$i18n.locale === 'zh'?'active':''">中文</span>
         </div>
-        <!-- <img :src="searchSrc" alt @click="showSearch = true" /> -->
+        <img :src="searchSrc" style="width:4.2vw" alt @click="showSearch = true" />
         <!-- <img :src="moreSrc" alt @click="showNav = true" /> -->
         <theme-switch />
       </div>

@@ -60,7 +60,7 @@ export default {
         },
         {
           key: "balance",
-          unit: "FIL"
+          unit: "tEPK"
         },
         {
           key: "mes"

@@ -18,7 +18,7 @@ const zh = {
             },
             blockList: {
                 label: ["高度", "区块哈希", "块龄", "消息", "区块大小", "矿工", "奖励"],
-                total: "总计<i>{total}</i> 区块(<i>{fil}</i>FIL)",
+                total: "总计<i>{total}</i> 区块(<i>{fil}</i>tEPK)",
                 height: "区块高度 # {height}"
             },
             timeSelector: [{
@@ -348,7 +348,7 @@ const zh = {
                     title: "Filecoin区块奖励曲线"
                 },
                 filVested: {
-                    title: "FIL释放"
+                    title: "tEPK释放"
                 }
             },
             peer: {
@@ -359,7 +359,7 @@ const zh = {
         address: {
             list: {
                 label: ["地址", "类型", "余额", "消息数量"],
-                total: "共计发现 <i>{num}</i> 账户，总计 ({filNum}FIL)"
+                total: "共计发现 <i>{num}</i> 账户，总计 ({filNum}tEPK)"
             },
             detail: {
                 overview: ["地址", "类型", "余额", "代码 Cid", "随机数"],
@@ -420,12 +420,12 @@ const zh = {
             mesHistory: "<div>消息: {count}</div><div>{time}</div>",
             mesHistoryTitle: "近14天消息历史",
             topPowerTitleText: "矿工{power}排行",
-            pledge: "<div>抵押: {pledge} FIL</div><div>{time}</div>",
+            pledge: "<div>抵押: {pledge} tEPK</div><div>{time}</div>",
             tipset: "<div>矿工ID: {miner}</div><div>高度: {height}</div><div>出块时间: {block_time}</div><div>区块哈希: {cid}</div>",
             filOutstanding: ["流通中", "抵押"],
-            blockReward: ["爆块矿工数量", "累计区块奖励(FIL)"],
-            filecoin: "区块奖励(FIL)",
-            filVested: ["累计FIL释放", "每日释放FIL"],
+            blockReward: ["爆块矿工数量", "累计区块奖励(tEPK)"],
+            filecoin: "区块奖励(tEPK)",
+            filVested: ["累计tEPK释放", "每日释放tEPK"],
             coming: "敬请期待",
             map: "<div style='margin-bottom:5px'><a href='/#/stats/peer?peer_id={pid}'><span>节点ID : </span><span>{pid}</span></a></div><div style='margin-bottom:5px'><span>位置 : </span><span>{name}</span></div><div><span>IP : </span><span>{ip}</span></div>"
         }

@@ -108,7 +108,7 @@ export default {
         // {
         //   key: "fee",
         //   hideInMobile: true,
-        //   unit: "FIL"
+        //   unit: "tEPK"
         // },
         {
           key: "code",

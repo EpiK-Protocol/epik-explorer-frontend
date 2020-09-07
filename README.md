@@ -125,7 +125,7 @@ the table shows some miner key info, some of columns can be sorted. User can cho
   <img width="100%" style="max-width:1200px" hspace="10" border="2" src="img/token-metrics.png">
 </p>
 
-The page displays the block reward and pledged amount of FIL tokens.
+The page displays the block reward and pledged amount of tEPK tokens.
 
 ### Peer Map
 

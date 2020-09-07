@@ -51,11 +51,11 @@ export default {
         },
         {
           key: "value",
-          unit: "FIL"
+          unit: "tEPK"
         },
         // {
         //   key: "fee",
-        //   unit: "FIL"
+        //   unit: "tEPK"
         // },
         {
           key: "code"

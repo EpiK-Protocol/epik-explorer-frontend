@@ -6,12 +6,12 @@
     :class="{ underline: underline }"
     >{{ label }}</el-link
   > -->
-  <div
+  <el-link
     :href="`./#/${target}${!param ? '' : '?' + param.key + '=' + param.value}`"
     :underline="false"
     type="primary"
     :class="{ underline: underline }"
-    >{{ label }}</div>
+    >{{ label }}</el-link>
 </template>
 <script>
 export default {
