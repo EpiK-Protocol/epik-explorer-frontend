@@ -1,20 +1,20 @@
 <template>
   <div class="tipset">
-    <!-- <ticket-chain
+    <ticket-chain
       @hash-change="handleHashChange"
       :height.sync="height"
       :hash="hash"
       @height-change="handleHeightChange"
       @get-blocks="getBlocks"
       v-show="!isMobile"
-    /> -->
-    <block-detail v-if="hash" :loading="loading" :hash="hash" :block="block" />
-    <!-- <block-list
+    />
+    <block-detail v-if="hash" :hash="hash" :block="currentBlock" />
+    <block-list
       v-if="!hash && !isMobile"
       :height="currentHeight"
       :list="currentBlockList"
-    /> -->
-    <!-- <div class="mb-block-list" v-if="isMobile && !hash">
+    />
+    <div class="mb-block-list" v-if="isMobile && !hash">
       <div
         v-for="(value, key) in mbBlockList"
         :key="key"
@@ -31,7 +31,7 @@
           :columns="mbColumns"
         ></mb-board>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 <script>
@@ -46,16 +46,55 @@ export default {
   data() {
     return {
       hash: "",
-      loading: false,
       height: 0,
       value: 0,
       blocks: [],
-      block:{},
-
+      dataList: [
+        {
+          key: "height",
+          isLink: true,
+          target: "tipset"
+        },
+        {
+          key: "hash"
+        },
+        {
+          key: "timestamp"
+        },
+        {
+          key: "size"
+        },
+        {
+          key: "mesLength"
+        },
+        {
+          key: "miner",
+          target: "address/account",
+          isLink: true
+        },
+        {
+          key: "reward"
+        },
+        {
+          key: "parents",
+          isLink: true,
+          target: "tipset",
+          paramKey: "hash"
+        },
+        {
+          key: "parent_weight"
+        },
+        {
+          key: "tickets"
+        },
+        {
+          key: "state_root"
+        }
+      ],
       columns: [
         {
           key: "hash",
-        //   isLink: true,
+          isLink: true,
           target: "tipset",
           ellipsis: true
         },
@@ -65,20 +104,20 @@ export default {
         {
           key: "mesLength"
         },
-        // {
-        //   key: "size",
-        //   unit: "bytes"
-        // },
+        {
+          key: "size",
+          unit: "bytes"
+        },
         {
           key: "miner",
           isLink: true,
           target: "address/detail",
           paramKey: "address"
         },
-        // {
-        //   key: "reward",
-        //   unit: "tEPK"
-        // }
+        {
+          key: "reward",
+          unit: "tEPK"
+        }
       ]
     };
   },
@@ -102,51 +141,14 @@ export default {
     BlockDetail
   },
   async mounted(){
-    if(this.$route.query.hash){
-        try{
-            this.hash = this.$route.query.hash;
-        this.loading = true
-        let res = await search({
-          word: this.$route.query.hash,
-          type: 'block'
-        });
-  
-           const {
-            Timestamp,
-            Height,
-            Miner,
-            ParentWeight,
-            Ticket,
-            Parents,
-            Messages,
-            ParentStateRoot,
-          } = res.block;
+    // if(this.$route.query.hash){
+    //   let res = await search({
+    //       word: this.$route.query.hash,
+    //       type: 'block'
+    //     });
+    //     console.log(res)
 
-        this.block = {
-            height: Height,
-            hash: this.$route.query.hash,//item.cid
-            // timestamp: this.formatTime(Timestamp),
-            utcTime: this.getFormatTime(Timestamp),
-            // size:0,//size: this.formatNumber(size),
-            mesLength: JSON.stringify(Messages),
-            miner:Miner,
-            // reward:0,//?
-            parents:JSON.stringify(Parents),
-            parent_weight: this.formatNumber(ParentWeight),
-            tickets:Ticket.VRFProof,
-            state_root: JSON.stringify(ParentStateRoot)
-          };
-        //   this.loading = false;
-        }
-        catch (e) {
-        if (e) {
-          this.loading = false;
-        }
-      }
-       
-
-
-    }
+    // }
        
 
   },

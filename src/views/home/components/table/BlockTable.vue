@@ -119,7 +119,7 @@ export default {
             height: this.formatNumber(height),
             // hash: item.cid,
             // hash: '',
-            hash: item.ParentMessageReceipts['/'],//?
+            hash: item.Cid,//?
             time: this.formatTime(realTime),
             originTime: realTime,
             miner: miner,
@@ -151,6 +151,7 @@ export default {
         try {
           this.blockTable.loading = true;
           await this.getBlockData(10 * (this.blockTable.loadCount + 1));
+          console.log(this.blockTable);
           this.blockTable.loadCount++;
           this.blockTable.loading = false;
           this.initBlockTimer();

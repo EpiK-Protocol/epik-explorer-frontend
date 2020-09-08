@@ -42,7 +42,7 @@ export default {
   name: "Search",
   data() {
     return {
-      filter: 0,
+      filter: "address",
       key: "",
       loading: false
     };
@@ -65,15 +65,18 @@ export default {
       try {
         this.loading = true;
         let res = await search({
-          key: this.key,
-          filter: this.filter
+          word: this.key,
+          type: this.filter
         });
         this.loading = false;
-        const { model_flag } = res;
+        // const { model_flag } = res;
         let target = "";
         let key = "";
-        switch (model_flag) {
-          case "block_hash":
+        let filter = this.filter
+        if(res.code.code !== 0) filter = 'noResult'
+  
+        switch (filter) {
+          case "block":
             target = "tipset";
             key = "hash";
             break;
@@ -81,9 +84,17 @@ export default {
             target = "tipset";
             key = "height";
             break;
-          case "message_ID":
+          // case "message_ID":
+          //   target = "message";
+          //   key = "cid";
+          //   break;
+          case "message":
             target = "messageDetail";
             key = "cid";
+            break;
+          case "address":
+            target = "messageList";
+            key = "address";
             break;
           case "actor":
             target = "addressDetail";
@@ -98,6 +109,7 @@ export default {
             key = "key";
         }
         this.$emit("hide");
+        
         this.goTarget(target, key);
       } catch (e) {
         this.loading = false;

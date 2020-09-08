@@ -67,11 +67,23 @@ param:{
   filter number
 }
 */
+// export function search(data) {
+//   return fetch({
+//     method: "post",
+//     url: "SearchIndex",
+//     data
+//   });
+// }
+
+// {
+//   "type":"address/message/block",
+//   "word":""
+// }
 export function search(data) {
   return fetch({
-    method: "post",
-    url: "SearchIndex",
-    data
+    method: "get",
+    url: "Search",
+    params:data
   });
 }
 

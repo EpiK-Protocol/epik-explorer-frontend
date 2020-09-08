@@ -8,6 +8,8 @@
   </div>
 </template>
 <script>
+import { search } from "@/api/home";
+
 import { getBlockConfirmCount, getMessageDetail } from "@/api/message";
 export default {
   name: "MessageDetail",
@@ -22,44 +24,44 @@ export default {
             fontWeight: "bold"
           }
         },
-        {
-          key: "height",
-          isLink: true,
-          target: "tipset",
-          isComponent: true
-        },
-        {
-          key: "blockHash",
-          isLink: true,
-          target: "tipset",
-          paramKey: "hash"
-        },
-        {
-          key: "time"
-        },
+        // {
+        //   key: "height",
+        //   isLink: true,
+        //   target: "tipset",
+        //   isComponent: true
+        // },
+        // {
+        //   key: "blockHash",
+        //   isLink: true,
+        //   target: "tipset",
+        //   paramKey: "hash"
+        // },
+        // {
+        //   key: "time"
+        // },
         {
           key: "from",
-          isLink: true,
+          // isLink: true,
           target: "address/detail",
           paramKey: "address"
         },
         {
           key: "to",
-          isLink: true,
+          // isLink: true,
           target: "address/detail",
           paramKey: "address"
         },
         {
           key: "value",
-          unit: "tEPK"
+          // unit: "tEPK"
         },
         // {
         //   key: "fee",
         //   unit: "tEPK"
         // },
-        {
-          key: "code"
-        },
+        // {
+        //   key: "code"
+        // },
         {
           key: "method"
         },
@@ -81,39 +83,42 @@ export default {
     async getMessageDetail() {
       try {
         this.loading = true;
-        let data = await getMessageDetail({
-          msg_cid: this.cid
+        let data = await search({
+          word: this.cid,
+          type: 'message'
         });
+
         const {
-          height,
-          cid,
-          msgcreate,
-          msg,
-          block_cid,
-          method_name,
-          exit_code
-        } = data.msg;
-        const { from, to, nonce, params, value, gaslimit } = msg;
-        let blockRes = await getBlockConfirmCount({
-          cid: block_cid
-        });
+          // height,
+          From,
+          To,
+          Method,
+          Nonce,
+          Params,
+          GasLimit,
+          Value,
+        } = data.message;
+        // const { from, to, nonce, params, value, gaslimit } = msg;
+        // let blockRes = await getBlockConfirmCount({
+        //   cid: block_cid
+        // });
 
         const paramTip = this.$t("message.detail.paramTip");
         const confirm = this.$t("message.detail.confirm");
         const sourceMap = {
-          height: this.formatNumber(height),
-          cid,
-          confirm: this.formatNumber(blockRes.count),
-          time: this.getFormatTime(msgcreate),
-          from,
-          to,
-          method: method_name,
-          nonce,
-          params: params.length > 256 ? `${params.slice(0, 256)} ...` : params,
-          value,
-          fee: this.formatNumber(gaslimit),
-          blockHash: block_cid,
-          code: exit_code
+          // height: this.formatNumber(height),
+          cid: this.cid,
+          // confirm: this.formatNumber(blockRes.count),
+          // time: this.getFormatTime(msgcreate),
+          from:From,
+          to:To,
+          method: Method,
+          nonce:Nonce,
+          params: Params.length > 256 ? `${Params.slice(0, 256)} ...` : Params,
+          value:this.formatFilNumber(Value),
+          fee: this.formatNumber(GasLimit),
+          // blockHash: block_cid,
+          // code: exit_code
         };
 
         this.dataList = this.dataList.map(item => {
@@ -128,6 +133,7 @@ export default {
             value: sourceMap[item.key],
             linkList
           };
+          
           if (item.key === "height") {
             res.component = {
               render() {
@@ -166,6 +172,7 @@ export default {
           }
           return res;
         });
+        console.log(this.dataList)
         this.loading = false;
       } catch (e) {
         if (e) {

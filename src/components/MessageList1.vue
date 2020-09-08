@@ -50,10 +50,8 @@ import {
   getMessageByAddress,
   getMessageMethods
 } from "@/api/message";
-import { search } from "@/api/home";
-
 export default {
-  name: "MessageList",
+  name: "MessageList1",
   data() {
     const type = this.type;
     return {
@@ -68,27 +66,26 @@ export default {
       total: 0,
       messageData: [],
       columns: [
-        // {
-        //   key: "type",
-        //   hideInMobile: true
-        // },
+        {
+          key: "type",
+          hideInMobile: true
+        },
         {
           key: "cid",
           isLink: true,
-        //   target: "message/detail",
           target: "message/detail",
           ellipsis: true
         },
-        // {
-        //   key: "height",
-        //   isLink: true,
-        //   target: "tipset",
-        //   paramKey: "height"
-        // },
-        // {
-        //   key: "time",
-        //   hideInMobile: true
-        // },
+        {
+          key: "height",
+          isLink: true,
+          target: "tipset",
+          paramKey: "height"
+        },
+        {
+          key: "time",
+          hideInMobile: true
+        },
         {
           key: "from",
           isLink: true,
@@ -113,10 +110,10 @@ export default {
         //   hideInMobile: true,
         //   unit: "tEPK"
         // },
-        // {
-        //   key: "code",
-        //   hideInMobile: true
-        // },
+        {
+          key: "code",
+          hideInMobile: true
+        },
         {
           key: "method"
         }
@@ -161,92 +158,73 @@ export default {
     async getMessage() {
       try {
         this.loading = true;
-            const addressHash = this.$route.query.address;
+        const addressHash = this.address;
         const type = this.type;
         const ellipsisByLength = this.ellipsisByLength;
         if (this.cid) {
           this.option.block_cid = this.cid;
         }
         let data = {};
-        // if (this.type === "block") {
-        //   data = await getMessage(this.option);
-        // } else {
+        if (this.type === "block") {
+          data = await getMessage(this.option);
+        } else {
           this.columns;
-        //   const res = await getMessageByAddress({
-        //     ...this.option,
-        //     address: this.address,
-        //     from_to: ""
-        //   });
-            if(addressHash){
-                data = await search({
-                    word: addressHash,
-                    type: 'address'
-                });
-            }
-        console.log(data);
-          data.msgs = data.list;
-          data.total = data.list.length;
-        // }
+          const res = await getMessageByAddress({
+            ...this.option,
+            address: this.address,
+            from_to: ""
+          });
+          data.msgs = res.data;
+          data.total = res.total;
+        }
         this.total = Number(data.total);
         const messageData = data.msgs.map(item => {
-          const {  
-              Cid,
-              From,
-            To,
-            Method,
-            Nonce,
-            Params,
-            GasPrice,
-            GasLimit,
-            Value, } = item;
-        //   const { from, to, value, gasprice } = msg;
+          const { cid, msgcreate, msg, height, method_name, exit_code } = item;
+          const { from, to, value, gasprice } = msg;
           let res = {
-            cid: Cid,
-            // time: this.formatTime(msgcreate),
-            // from: {
-            //   render() {
-            //     return from !== addressHash ? (
-            //       <a
-            //         href={`./#/address/detail?address=${from}`}
-            //         style={{ color: "var(--link-color)" }}
-            //       >
-            //         {ellipsisByLength(from, 6, true)}
-            //       </a>
-            //     ) : (
-            //       <span>{ellipsisByLength(from, 6, true)}</span>
-            //     );
-            //   }
-            // },
-            from:From,
-            // to: {
-            //   render() {
-            //     return to !== addressHash ? (
-            //       <a
-            //         href={`./#/address/detail?address=${to}`}
-            //         style={{ color: "var(--link-color)" }}
-            //       >
-            //         {ellipsisByLength(to, 6, true)}
-            //       </a>
-            //     ) : (
-            //       <span>{ellipsisByLength(to, 6, true)}</span>
-            //     );
-            //   }
-            // },
-            to: To,
-            value: this.formatFilNumber(Value),
-            fee: GasPrice,
-            // type: this.address !== from ? "in" : "out",
-            method: Method,
-            // height: this.formatNumber(height),
-            // code: exit_code
+            cid: cid,
+            time: this.formatTime(msgcreate),
+            from: {
+              render() {
+                return from !== addressHash ? (
+                  <a
+                    href={`./#/address/detail?address=${from}`}
+                    style={{ color: "var(--link-color)" }}
+                  >
+                    {ellipsisByLength(from, 6, true)}
+                  </a>
+                ) : (
+                  <span>{ellipsisByLength(from, 6, true)}</span>
+                );
+              }
+            },
+            to: {
+              render() {
+                return to !== addressHash ? (
+                  <a
+                    href={`./#/address/detail?address=${to}`}
+                    style={{ color: "var(--link-color)" }}
+                  >
+                    {ellipsisByLength(to, 6, true)}
+                  </a>
+                ) : (
+                  <span>{ellipsisByLength(to, 6, true)}</span>
+                );
+              }
+            },
+            value: this.formatFilNumber(value),
+            fee: gasprice,
+            type: this.address !== from ? "in" : "out",
+            method: method_name,
+            height: this.formatNumber(height),
+            code: exit_code
           };
           if (type === "block") {
-            res.from = From;
-            res.to = To;
+            res.from = from;
+            res.to = to;
           }
           return res;
         });
-        // debugger
         this.messageData = Object.freeze(messageData);
         this.loading = false;
       } catch (e) {
@@ -286,13 +264,12 @@ export default {
   },
   mounted() {
     this.labels = [...this.$t("component.mesList.label")];
-    // if (!this.withType) {
-    //   this.columns.shift();
-    //   this.labels.shift();
-    // }
-    
+    if (!this.withType) {
+      this.columns.shift();
+      this.labels.shift();
+    }
     this.getMessage();
-    // this.getMessageMethods();
+    this.getMessageMethods();
   },
   computed: {
     mbColumns() {

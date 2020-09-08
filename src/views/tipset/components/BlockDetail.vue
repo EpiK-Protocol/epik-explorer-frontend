@@ -1,15 +1,19 @@
 <template>
   <div class="block-detail bottom-10 top-20">
     <div class="block-overview">
-      <overview :dataList="realList" :dataLabel="$t('tipset.block.overview')" />
+      <overview :dataList="realList" :showLoading="loading" :dataLabel="$t('tipset.block.overview')" />
     </div>
-    <message-list :withType="false" :cid="hash" />
+    <!-- <message-list :withType="false" :cid="hash" /> -->
   </div>
 </template>
 <script>
 export default {
   name: "BlockDetail",
   props: {
+    loading:{
+      type: Boolean,
+      default: false
+    },
     hash: {
       type: String,
       default: ""
@@ -32,16 +36,16 @@ export default {
         },
         {
           key: "height",
-          isLink: true,
+          // isLink: true,
           target: "tipset"
         },
         {
           key: "utcTime"
         },
-        {
-          key: "size",
-          unit: "bytes"
-        },
+        // {
+        //   key: "size",
+        //   unit: "bytes"
+        // },
         {
           key: "mesLength"
         },
@@ -49,15 +53,15 @@ export default {
           key: "miner",
           target: "address/detail",
           paramKey: "address",
-          isLink: true
+          // isLink: true
         },
-        {
-          key: "reward",
-          unit: "tEPK"
-        },
+        // {
+        //   key: "reward",
+        //   unit: "tEPK"
+        // },
         {
           key: "parents",
-          isLink: true,
+          // isLink: true,
           target: "tipset",
           paramKey: "hash"
         },

@@ -1,7 +1,8 @@
 const zh = {
         component: {
             mesList: {
-                label: ["类型", "消息ID", "区块高度", "块龄", "发送地址", "接收地址", "数额", "收据", "方法"],
+                // label: ["类型", "消息ID", "区块高度", "块龄", "发送地址", "接收地址", "数额", "收据", "方法"],
+                label: [ "消息ID", "发送地址", "接收地址", "数额", "方法"],
                 total: "总计<i> {total} </i>消息 {extra}",
                 method: {
                     ChangePeerID: "变更节点编号",
@@ -46,31 +47,59 @@ const zh = {
         header: {
             title: "EpiK Explorer",
             tab: ["首页", "Tipset", "统计数据"],
-            placeholder: "请输入地址/消息ID/高度/区块哈希/节点ID",
-            filter: [{
-                label: "筛选类型",
-                value: 0
-            },
-            {
-                label: "地址",
-                value: 1
-            },
-            {
-                label: "消息ID",
-                value: 2
-            },
-            {
-                label: "高度",
-                value: 3
-            },
-            {
-                label: "区块哈希",
-                value: 4
-            },
-            {
-                label: "节点ID",
-                value: 5
-            }],
+            placeholder: "请输入地址/消息ID/区块哈希",
+        //     filter: [
+        //         {
+        //         label: "筛选类型",
+        //         value: 0
+        //     },
+        //     {
+        //         label: "地址",
+        //         value: 1
+        //     },
+        //     {
+        //         label: "消息ID",
+        //         value: 2
+        //     },
+        //     {
+        //         label: "高度",
+        //         value: 3
+        //     },
+        //     {
+        //         label: "区块哈希",
+        //         value: 4
+        //     },
+        //     {
+        //         label: "节点ID",
+        //         value: 5
+        //     }
+        // ],
+        filter: [
+        //     {
+        //     label: "筛选类型",
+        //     value: 0
+        // },
+        {
+            label: "地址",
+            value: "address"
+        },
+        {
+            label: "消息ID",
+            value: "message"
+        },
+        // {
+        //     label: "高度",
+        //     value: 3
+        // },
+        {
+            label: "区块哈希",
+            value: "block"
+        },
+        // {
+        //     label: "节点ID",
+        //     value: 5
+        // }
+    ],
             nav: {
                 home: {
                     label: "首页",
@@ -219,12 +248,12 @@ const zh = {
             },
             blockTable: {
                 title: "区块",
-                label: ["区块高度", "哈希", "块龄", "矿工", "奖励"]
+                label: ["区块高度", "Cid", "块龄", "矿工", "奖励"]
             },
             messageTable: {
                 title: "消息",
                 // label: ["最新消息", "块龄", "发送地址", "接收地址", "数额"]
-                label: ["最新消息",  "发送地址", "接收地址", "数额"]
+                label: ["Cid",  "发送地址", "接收地址", "数额"]
             },
             board: {
                 height: {
@@ -377,7 +406,8 @@ const zh = {
         },
         message: {
             detail: {
-                overview: ["消息 ID", "高度", "区块", "时间", "发送地址", "接收地址", "数值", "收据", "方法", "随机值", "参数"],
+                // overview: ["消息 ID", "高度", "区块", "时间", "发送地址", "接收地址", "数值", "收据", "方法", "随机值", "参数"],
+                overview: ["消息 ID", "发送地址", "接收地址", "数值", "方法", "随机值", "参数"],
                 paramTip: "Base64格式元数据",
                 confirm: "确认"
             }
@@ -385,7 +415,8 @@ const zh = {
         tipset: {
             height: "高度",
             block: {
-                overview: ["哈希", "高度", "时间戳", "区块大小", "消息", "矿工", "奖励", "父块哈希", "父块重量", "ticket", "State Root"]
+                // overview: ["哈希", "高度", "时间戳", "区块大小", "消息", "矿工", "奖励", "父块哈希", "父块重量", "ticket", "State Root"]
+                overview: ["哈希", "高度", "时间戳", "消息", "矿工","父块哈希", "父块重量", "ticket", "State Root"]
             },
             blockType: ["无区块", "最小票值区块", "其它区块"],
             tips: "票值为一个随机数"

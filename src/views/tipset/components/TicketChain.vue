@@ -101,9 +101,11 @@ export default {
       } else {
         //for parent hash click
         let data = await getBlockByCid({
-          cid: this.$route.query.hash
+          word: this.$route.query.hash,
+          type:'block'
         });
-        const height = data.blocks[0].block_header.height;
+        // const height = data.blocks[0].block_header.height;
+        const height = data.block.Height;
         this.getTipset(height);
       }
     },
@@ -132,11 +134,13 @@ export default {
       currentHeight = height;
     } else if (this.hash) {
       let data = await getBlockByCid({
-        cid: this.$route.query.hash
+        // cid: this.$route.query.hash
+        word: this.$route.query.hash,
+        type:'block'
       });
       console.log(data)
       // const height = data.blocks[0].block_header.height;
-      const height = data.blocks[0].Height;
+      const height = data.block.Height;
       currentHeight = height;
     } else {
       let data = await getLatestBlock(1);
@@ -183,6 +187,7 @@ export default {
           // }
             blocks = blocks.concat(item);
         });
+        // debugger
         blocks = blocks.map(item => {
           // const { size, cid, reward, block_header, msg_cids } = item;
           
@@ -223,7 +228,7 @@ export default {
 
           return {
             height: this.formatNumber(Height),
-            hash: Messages['/'],//item.cid
+            hash: Cids[0]['/'],//item.cid
             timestamp: this.formatTime(Timestamp),
             utcTime: this.getFormatTime(Timestamp),
             size:0,//size: this.formatNumber(size),

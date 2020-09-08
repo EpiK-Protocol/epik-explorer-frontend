@@ -37,14 +37,16 @@ export default {
           {
             key: "from",
             isLink: true,
-            target: "address/detail",
+            // target: "address/detail",
+            target: "message/list",
             paramKey: "address",
             ellipsis: true
           },
           {
             key: "to",
             isLink: true,
-            target: "address/detail",
+            // target: "address/detail",
+            target: "message/list",
             paramKey: "address",
             ellipsis: true
           },
@@ -84,7 +86,7 @@ export default {
 // debugger
         const dataSource = data.msg.map(item => {
           // const dataSource = data.msg.map(item => {
-          const { From, To, Value,Params } = item;
+          const { From, To, Value,Params ,Cid} = item;
           // const current = new Date().getTime();
           // const realTime =
           //   item.msgcreate > current / 1000 ? current / 1000 : item.msgcreate;
@@ -96,7 +98,7 @@ export default {
             // originTime: realTime,
             // current: current,
             // id: item.cid
-            id: Params
+            id: Cid
           };
         });
         // debugger

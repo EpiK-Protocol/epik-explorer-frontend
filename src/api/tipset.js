@@ -29,10 +29,19 @@ param:{
   cid number
 }
 */
+// 9.8
+// export function getBlockByCid(data) {
+//   return fetch({
+//     url: "tipset/BlockByCid",
+//     method: "post",
+//     data
+//   });
+// }
+
 export function getBlockByCid(data) {
   return fetch({
-    url: "tipset/BlockByCid",
-    method: "post",
-    data
+    url: "Search",
+    method: "get",
+    params:data
   });
 }

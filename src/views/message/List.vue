@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-  name: "MessageListCon"
+  name: "MessageListCon",
 };
 </script>
 <style lang="scss" scoped>

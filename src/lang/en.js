@@ -2,14 +2,14 @@ const en = {
   component: {
     mesList: {
       label: [
-        "Type",
+        // "Type",
         "Message ID",
-        "Height",
-        "Time",
+        // "Height",
+        // "Time",
         "From",
         "To",
         "Value",
-        "Receipt",
+        // "Receipt",
         // "Fee",
         "Method"
       ],
@@ -42,33 +42,59 @@ const en = {
   header: {
     title: "EpiK Explorer",
     tab: ["Home", "Tipset", "Stats"],
-    placeholder: "Search by Address/Message ID/Height/Block Hash/Peer ID ",
+    placeholder: "Search by Address/Message ID/Block Hash",
     filter: [
+      //     {
+      //     label: "筛选类型",
+      //     value: 0
+      // },
       {
-        label: "All filters",
-        value: 0
+          label: "Address",
+          value: "address"
       },
       {
-        label: "Address",
-        value: 1
+          label: "Message ID",
+          value: "message"
       },
+      // {
+      //     label: "高度",
+      //     value: 3
+      // },
       {
-        label: "Message ID",
-        value: 2
+          label: "Block Hash",
+          value: "block"
       },
-      {
-        label: "Height",
-        value: 3
-      },
-      {
-        label: "Block Hash",
-        value: 4
-      },
-      {
-        label: "Peer ID",
-        value: 5
-      }
-    ],
+      // {
+      //     label: "节点ID",
+      //     value: 5
+      // }
+  ],
+    // filter: [
+    //   {
+    //     label: "All filters",
+    //     value: 0
+    //   },
+    //   {
+    //     label: "Address",
+    //     value: 1
+    //   },
+    //   {
+    //     label: "Message ID",
+    //     value: 2
+    //   },
+    //   {
+    //     label: "Height",
+    //     value: 3
+    //   },
+    //   {
+    //     label: "Block Hash",
+    //     value: 4
+    //   },
+    //   {
+    //     label: "Peer ID",
+    //     value: 5
+    //   }
+    // ],
     nav: {
       home: {
         label: "Home",
@@ -151,12 +177,12 @@ const en = {
     },
     blockTable: {
       title: "Block",
-      label: ["Height", "Hash", "Blocktime", "Miner", "Reward"]
+      label: ["Height", "Cid", "Blocktime", "Miner", "Reward"]
     },
     messageTable: {
       title: "Message",
       // label: ["Message ID", "Time", "From", "To", "Value"]
-      label: ["Message ID", "From", "To", "Value"]
+      label: ["Cid", "From", "To", "Value"]
     },
     board: {
       height: {
@@ -287,13 +313,13 @@ const en = {
     detail: {
       overview: [
         "Message ID",
-        "Height",
-        "Block",
-        "Time",
+        // "Height",
+        // "Block",
+        // "Time",
         "From",
         "To",
         "Value",
-        "Receipt",
+        // "Receipt",
         //"Fee",
         "Method",
         "Nonce",
@@ -310,10 +336,10 @@ const en = {
         "Hash",
         "Height",
         "TimeStamp",
-        "Block Size",
+        // "Block Size",
         "Messages",
         "Miner",
-        "Reward",
+        // "Reward",
         "Parent Hash",
         "Parent Weight",
         "Ticket",
