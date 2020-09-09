@@ -45,7 +45,7 @@ export default {
 
 @media (max-width: 768px) {
   .el-link {
-    font-size: 12px;
+    font-size: 10px !important;
   }
 }
 </style>

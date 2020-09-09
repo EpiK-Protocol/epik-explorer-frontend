@@ -95,6 +95,7 @@ export default {
       padding: 0 10px;
       display: flex !important;
       height: 13.4vw;
+      box-shadow: 0px 1px 0.365vw 0.469vw rgba(0, 0, 0, 0.03);
       box-sizing: border-box;
       justify-content: space-between;
       & > div:first-child,

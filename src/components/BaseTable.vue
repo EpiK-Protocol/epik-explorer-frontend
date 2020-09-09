@@ -30,13 +30,13 @@
       </el-table-column>
       <el-table-column
         :label="item.label"
-        v-for="(item, index) in columnsWithLabel"
+        v-for="(item) in columnsWithLabel"
         :key="item.key"
         :sortable="item.sortable ? 'custom' : false"
         :prop="item.key"
         align="center"
-        :fixed="isMobile && index === 0"
       >
+      <!-- :fixed="isMobile && index === 0" -->
         <template slot-scope="scope">
           <base-link
             :target="scope.row.target || item.target"

@@ -30,7 +30,7 @@ export default {
         columns: [
           {
             key: "height",
-            isLink: true,
+            // isLink: true,
             target: "tipset"
           },
           {

@@ -43,7 +43,7 @@ export default {
   name: "Search",
   data() {
     return {
-      filter: "address",
+      filter: "block",
       key: "",
       loading: false
     };
@@ -163,8 +163,8 @@ export default {
   }
   @media (max-width: 768px) {
     & ::v-deep input {
-      height: 30px !important;
-      border-radius: 15px !important;
+      // height: 30px !important;
+      // border-radius: 15px !important;
     }
     input {
       height: 30px!important;
@@ -176,10 +176,16 @@ export default {
       font-size: 10px!important;
 
     }
+    & ::v-deep .el-input-group{
+      font-size: 10px !important;
+    }
     & ::v-deep .el-select input{
       width: 80px !important;
     }
     & ::v-deep .el-input__suffix {
+      .el-select__caret{
+        font-size: 10px !important;
+      }
       i {
         line-height: 20px;
         padding-left: 5px;
@@ -192,8 +198,8 @@ export default {
       width: 50px !important;
     }
     .mb-button .el-button {
-      height: 30px;
-      border-radius: 15px;
+      // height: 30px;
+      // border-radius: 15px;
       width: 100% !important;
       margin-top: 20px;
       font-size: 14px !important;

@@ -177,7 +177,7 @@ export default {
       padding-bottom: 3vw;
       .info-item {
         display: block;
-        padding: 0 6vw;
+        padding: 10px 6vw;
         &:nth-child(2n) {
           background: var(--board-bg-color);
         }
