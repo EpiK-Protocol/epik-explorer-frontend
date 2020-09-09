@@ -7,7 +7,7 @@ import "reset-css";
 import mixin from "./mixins/index";
 import echarts from "./chart";
 import i18n from "./i18n";
-// import "@/assets/style/main.scss";s
+import "@/assets/style/main.scss";
 Vue.config.productionTip = false;
 Vue.prototype.$chart = echarts;
 
