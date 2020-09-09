@@ -1,5 +1,6 @@
 <template>
   <div class="header-search">
+
     <el-input
       :placeholder="$t('header.placeholder')"
       v-model="key"
@@ -8,11 +9,11 @@
       :clearable="!isMobile"
       :suffix-icon="loading && !isMobile ? 'el-icon-loading' : ''"
     >
+    
       <el-select
         v-model="filter"
         slot="prepend"
         popper-class="filter-select"
-        v-if="!isMobile"
         class="search-filter"
       >
         <el-option
@@ -175,8 +176,8 @@ export default {
       font-size: 10px!important;
 
     }
-    & ::v-deep .el-select {
-      width: 100px;
+    & ::v-deep .el-select input{
+      width: 80px !important;
     }
     & ::v-deep .el-input__suffix {
       i {

@@ -248,7 +248,7 @@ const zh = {
             },
             blockTable: {
                 title: "区块",
-                label: ["区块高度", "Cid", "块龄", "矿工", "奖励"]
+                label: ["区块高度", "哈希", "块龄", "矿工", "奖励"]
             },
             messageTable: {
                 title: "消息",

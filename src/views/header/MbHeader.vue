@@ -167,6 +167,9 @@ export default {
         margin-bottom: 20px;
         color: var(--main-text-color);
       }
+      .el-select{
+        width:300px;
+      }
       .el-button {
         display: block;
         width: 100%;

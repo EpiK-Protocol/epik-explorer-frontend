@@ -8,7 +8,7 @@
       <span
         v-html="$t('component.mesList.total', { total: formatNumber(total) })"
       ></span>
-      <el-select
+      <!-- <el-select
         v-model="option.method"
         @change="handleMethodChange"
         :placeholder="$t('component.mesList.placeholder')"
@@ -20,7 +20,7 @@
           :label="item.label"
           :value="item.value"
         ></el-option>
-      </el-select>
+      </el-select> -->
     </div>
     <div class="table-con" v-if="!isMobile">
       <base-table

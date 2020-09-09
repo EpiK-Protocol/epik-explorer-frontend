@@ -136,7 +136,7 @@ export default {
             tickets:Ticket.VRFProof,
             state_root: JSON.stringify(ParentStateRoot)
           };
-        //   this.loading = false;
+          this.loading = false;
         }
         catch (e) {
         if (e) {
