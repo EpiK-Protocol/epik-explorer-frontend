@@ -39,6 +39,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.el-link {
+    font-size: 12px !important;
+  }
 .el-link.underline {
   text-decoration: underline;
 }

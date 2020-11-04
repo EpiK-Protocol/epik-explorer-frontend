@@ -48,10 +48,14 @@ export default {
             target: "address/detail",
             paramKey: "address"
           },
-          // {
-          //   key: "reward",
-          //   unit: "tEPK"
-          // }
+          {
+            key: "GasReward",
+            // unit: "tEPK"
+          },
+          {
+            key: "MinerReward",
+            // unit: "tEPK"
+          }
         ],
         loadCount: 0,
         loading: false,
@@ -102,7 +106,7 @@ export default {
         // 8.9
         const dataSource = data.block_header.map((item, index) => {
           // const { height, miner, timestamp } = item.block_header;
-          const { Height, Miner, Timestamp } = item;
+          const { Height, Miner, Timestamp,GasReward ,MinerReward} = item;
           const height = Height,miner= Miner,timestamp=Timestamp;
           if (heightMap[height]) {
             heightMap[height].span++;
@@ -124,6 +128,9 @@ export default {
             originTime: realTime,
             miner: miner,
             // reward: Number(item.reward).toFixed(5),
+            GasReward: this.formatFilNumber(GasReward),
+            MinerReward:this.formatFilNumber(MinerReward),
+
             reward: 0,
             current: current
           };

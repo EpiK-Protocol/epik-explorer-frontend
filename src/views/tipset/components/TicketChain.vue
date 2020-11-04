@@ -128,6 +128,7 @@ export default {
   async mounted() {
     chart = this.$chart.init(this.$refs.chart);
     const height = this.height;
+    console.log(height)
     let currentHeight;
     // debugger
     if (height) {
@@ -395,7 +396,6 @@ export default {
         ]);
       });
       const vm = this;
-
       var option = {
         tooltip: {
           formatter: function(p) {
@@ -438,7 +438,7 @@ export default {
           top: 40 * rate,
           left: -40,
           right: 0,
-          bottom: 150
+          bottom: 0
         },
         series: [
           {
@@ -532,7 +532,7 @@ export default {
     width: 100%;
     .chart {
       width: 100%;
-      height: 350px;
+      height: 400px;
     }
   }
   .block-type {

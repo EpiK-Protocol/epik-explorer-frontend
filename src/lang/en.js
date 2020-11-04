@@ -177,7 +177,8 @@ const en = {
     },
     blockTable: {
       title: "Block",
-      label: ["Height", "Hash", "Blocktime", "Miner", "Reward"]
+      // label: ["Height", "Hash", "Blocktime", "Miner", "Reward"]
+      label: ["Height", "Hash", "Blocktime", "Miner", "GasReward","MinerReward"]
     },
     messageTable: {
       title: "Message",
