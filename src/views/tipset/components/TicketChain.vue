@@ -128,7 +128,6 @@ export default {
   async mounted() {
     chart = this.$chart.init(this.$refs.chart);
     const height = this.height;
-    console.log(height)
     let currentHeight;
     // debugger
     if (height) {
@@ -139,7 +138,6 @@ export default {
         word: this.$route.query.hash,
         type:'block'
       });
-      console.log(data)
       // const height = data.blocks[0].block_header.height;
       const height = data.block.Height;
       currentHeight = height;
@@ -278,7 +276,6 @@ export default {
       }); //get coords
       // debugger
       const nodeList = this.tipsets.reduce((pre, cur) => {
-        console.log(cur)
 
         const coords = cur.tipset.map((item, index) => {
           if (!item.Messages['/']) {
@@ -414,7 +411,7 @@ export default {
               miner_id: data.Miner,
               height: data.Height,
               block_time: vm.getFormatTime(data.Timestamp),
-              cid: data.Messages['/'],
+              cid: p.data.cid,
 
             });
             return html;

@@ -9,13 +9,13 @@
         <div>
           {{ $t("home.totalPower.power") }}
         </div>
-        <div class="top-10 bottom-10" v-show="!loading">{{ totalPower }}</div>
+        <div class="top-10 bottom-10" v-show="!loading">{{ RawPower }}</div>
       </div>
       <div class="storage-info">
         <div>
           {{ $t("home.totalPower.capacity") }}
         </div>
-        <div class="top-10" v-show="!loading">{{ totalPower }}</div>
+        <div class="top-10" v-show="!loading">{{ QualityPower }}</div>
       </div>
     </div>
     <div class="chart-con" ref="power"></div>
@@ -30,6 +30,8 @@ export default {
     return {
       dataList: [],
       totalPower: 0,
+      RawPower:0,
+      QualityPower:0,
       loading: false,
       storageCapacity: 0
     };
@@ -45,10 +47,21 @@ export default {
   methods: {
     drawPowerChart() {
       const series = this.dataList;
+      console.log(series)
       const { axisLine, seriesItem, area } = this.chartTheme.totalPower;
       const xData = series.map(item => {
         return {
           value: item.name
+        };
+      });
+      const series1 = series.map(item => {
+        return {
+          value: item.RawPower
+        };
+      });
+      const series2 = series.map(item => {
+        return {
+          value: item.QualityPower
         };
       });
       const vm = this;
@@ -70,6 +83,7 @@ export default {
         },
         yAxis: {
           type: "value",
+          boundaryGap:false,
           show: false
         },
         grid: {
@@ -82,16 +96,31 @@ export default {
           trigger: "axis",
 
           formatter: function(p) {
+            console.log(p)
             const html = vm.$t("chart.totalPower", {
-              value: vm.unitConversion(p[0].data.value, 3),
-              name: p[0].data.name
+              rawPower:vm.unitConversion(p[0].data.value, 3),
+              qualityPower:vm.unitConversion(p[1].data.value, 3),
+              // value: vm.unitConversion(p[0].data.value, 3),
+              name: p[0].name
             });
             return html;
           }
         },
         series: [
           {
-            data: series,
+            data: series2,
+            type: "line",
+            symbol: "none",
+            smooth: true,
+            lineStyle: {
+              color: seriesItem
+            },
+            areaStyle: {
+              color: area
+            }
+          },
+          {
+            data: series1,
             type: "line",
             symbol: "none",
             smooth: true,
@@ -112,6 +141,7 @@ export default {
         const res = await getTotalPowerData({
           time: this.time.end_time
         });
+        // console.log(res)
         this.loading = false;
         // debugger
         // 8.9
@@ -119,12 +149,15 @@ export default {
           return {
             // name: this.formatTimeByStr(item.time * 1000, "MMM Do YYYY HH:mm"),
             name: this.formatTimeByStr(item.Time * 1000, "MMM Do YYYY HH:mm"),
+            RawPower: item.RawPower,
+            QualityPower: item.QualityPower,
             // value: item.power
-            value: item.Power
+            // value: item.Power
           };
         });
         this.storageCapacity = this.unitConversion(res.storage_capacity, 3);
-        this.totalPower = this.unitConversion(dataList.slice(-1)[0].value, 3);
+        this.RawPower = this.unitConversion(dataList.slice(-1)[0].RawPower, 3);
+        this.QualityPower = this.unitConversion(dataList.slice(-1)[0].QualityPower, 3);
         this.dataList = Object.freeze(dataList);
         this.drawPowerChart();
       } catch (e) {

@@ -158,7 +158,6 @@ export default {
         try {
           this.blockTable.loading = true;
           await this.getBlockData(10 * (this.blockTable.loadCount + 1));
-          console.log(this.blockTable);
           this.blockTable.loadCount++;
           this.blockTable.loading = false;
           this.initBlockTimer();
