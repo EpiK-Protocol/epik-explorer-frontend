@@ -183,7 +183,6 @@ export default {
                     type: 'address'
                 });
             }
-        console.log(data);
           data.msgs = data.list;
           data.total = data.list.length;
         // }

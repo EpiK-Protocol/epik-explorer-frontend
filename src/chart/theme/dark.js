@@ -12,10 +12,30 @@ const darkTheme = {
         color: "#008EE7"
       }
     ]),
+    area:new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+      {
+        offset: 0,
+        color: "#00E5FF"
+      },
+      {
+        offset: 1,
+        color: "rgba(0,229,255,.1)"
+      }
+    ]),
     seriesMarkLine: "#0091FF"
   },
   blockSize: {
     axisLine: "#F7B500",
+    area:new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+      {
+        offset: 0,
+        color: "#FFD300"
+      },
+      {
+        offset: 1,
+        color: "rgba(255,168,0,.1)"
+      }
+    ]),
     seriesItem: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
       {
         offset: 0,
@@ -23,8 +43,8 @@ const darkTheme = {
       },
       {
         offset: 1,
-        color: "#FFA800"
-      }
+        color: "rgba(255,168,0,.1)"
+      } 
     ]),
     seriesMarkLine: "#F7B500"
   },

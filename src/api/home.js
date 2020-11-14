@@ -49,6 +49,14 @@ export function getBlocSizeData(data) {
     data
   });
 }
+
+export function getMinerStatus(data) {
+  return fetch({
+    method: "get",
+    url: "MinerStatus",
+    data
+  });
+}
 /*
 param:{
   time timestamp

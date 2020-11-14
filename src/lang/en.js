@@ -169,7 +169,10 @@ const en = {
     blockSize: {
       label: "Avg Blockheader Size",
       size: "{avg} bytes",
-      tips: "Avg blockheader size in latest 24H"
+      tips: "Avg blockheader size in latest 24H",
+      t1:'Total Miner',
+      t2:'Pledged',
+      t3:'Won Miner',
     },
     totalPower: {
       power: "Total Power",
@@ -372,8 +375,10 @@ const en = {
   chart: {
     blockTime:
       "<div style='margin-bottom:5px'>Avg Block Time: {value}s</div><div>Time: {name}</div>",
-    blockSize:
-      "<div style='margin-bottom:5px'>Avg BlockHeader Size: {value}bytes</div><div>Time: {name}</div>",
+    // blockSize:
+    //   "<div style='margin-bottom:5px'>Avg BlockHeader Size: {value}bytes</div><div>Time: {name}</div>",
+    blockSize: "<div >Total Miner: {t1}</div><div>Pledged: {t2}</div><div>Won Miner: {t3}</div>",
+
     totalPower:
       "<div style='margin-bottom:5px'>Total Power: {value}</div><div>Time: {name}</div>",
       blocksWon: "<div>MinerID: {miner_id}</div><div>Height: {height}</div><div>BlockTime: {block_time}</div><div>BlockHash: {cid}</div>",

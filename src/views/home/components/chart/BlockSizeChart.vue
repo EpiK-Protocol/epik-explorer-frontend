@@ -4,7 +4,27 @@
     v-loading="loading"
     element-loading-background="var(--board-bg-color)"
   >
-    <div class="size-info-con">
+   <div class="info-con">
+      <div class="power-info bottom-10">
+        <span>
+          {{ $t("home.blockSize.t1") }}:
+        </span>
+        <span class="top-10" v-show="!loading">{{ data1 }}</span>
+      </div>
+      <div class="power-info bottom-10">
+        <span>
+          {{ $t("home.blockSize.t2") }}:
+        </span>
+        <span class="top-10 " style="color:var(--block-size-color)" v-show="!loading">{{ data2 }}</span>
+      </div>
+      <div class="power-info bottom-10">
+        <span>
+          {{ $t("home.blockSize.t3") }}:
+        </span>
+        <span class="top-10" style="color: #0091ff;" v-show="!loading">{{ data3 }}</span>
+      </div>
+    </div>
+    <!-- <div class="size-info-con">
       <div class="top-30">
         {{ $t("home.blockSize.label") }}
         <el-popover
@@ -19,12 +39,12 @@
       <div v-show="!loading">
         {{ $t("home.blockSize.size", { avg: avgSize }) }}
       </div>
-    </div>
+    </div> -->
     <div class="chart-con" ref="size"></div>
   </div>
 </template>
 <script>
-import { getBlocSizeData } from "@/api/home";
+import { getBlocSizeData ,getMinerStatus} from "@/api/home";
 import dayjs from "dayjs";
 let chart;
 export default {
@@ -33,12 +53,20 @@ export default {
     return {
       dataList: [],
       avgSize: 0,
-      loading: false
+      loading: false,
+      Total:[],
+      Pledged:[],
+      Won:[],
+      data1:0,
+      data2:0,
+      data3:0,
+
+
     };
   },
   methods: {
     drawSizeChart() {
-      const data = this.dataList;
+      // const data = this.dataList;
       const {
         axisLine,
         seriesItem,
@@ -47,10 +75,12 @@ export default {
       const vm = this;
       const option = {
         xAxis: {
-          data: [],
+           type: 'category',
+           boundaryGap: false,
+          data: [1,2,3,4,5,6],
           axisLine: {
             lineStyle: {
-              color: axisLine
+              color: '#666666'
             }
           },
           axisTick: {
@@ -58,7 +88,8 @@ export default {
           }
         },
         yAxis: {
-          show: false
+          show: false,
+          // scale:true
         },
         grid: {
           left: 0,
@@ -67,65 +98,92 @@ export default {
           right: 0
         },
         tooltip: {
+          trigger: "axis",
           formatter: function(p) {
-            const html = vm.$t("chart.blockSize", {
-              value: p.data.formatValue,
-              name: p.name
+
+             const html = vm.$t("chart.blockSize", {
+              t1:p[0].data,
+              t2:p[1].data,
+              t3:p[2].data
             });
             return html;
           }
         },
+      
         series: [
           {
-            type: "bar",
-            itemStyle: {
-              normal: {
-                color: seriesItem
-              }
+            data: vm.Total,
+            type: "line",
+            symbol: "none",
+            smooth: true,
+            lineStyle: {
+              color: this.chartTheme.blockSize.axisLine
             },
-            data: data,
-            markLine: {
-              silent: true,
-              label: {
-                show: false
-              },
-              lineStyle: {
-                color: seriesMarkLine
-              },
-              symbol: "none",
-              data: [
-                {
-                  type: "average"
-                }
-              ]
-            }
+            // areaStyle: {
+            //   color: seriesItem
+            // }
+          },
+          {
+            data: vm.Pledged,
+            type: "line",
+            symbol: "none",
+            smooth: true,
+            lineStyle: {
+              color: this.chartTheme.totalPower.seriesItem
+            },
+            // areaStyle: {
+            //   color: this.chartTheme.totalPower.area
+            // }
+          },
+          {
+            data: vm.Won,
+            type: "line",
+            symbol: "none",
+            smooth: true,
+            lineStyle: {
+              color: this.chartTheme.blockTime.axisLine
+            },
+            // areaStyle: {
+            //   color: this.chartTheme.blockTime.area
+            // }
           }
         ]
       };
       chart.setOption(option);
     },
-    async getBlockSizeData() {
+    async getMinerStatus() {
       try {
         this.loading = true;
-        const res = await getBlocSizeData(this.time);
+        const res = await getMinerStatus(this.time);
         this.loading = false;
-        // debugger
-        const { data, avg_blocksize } = res;
-        const dataList = data.map(item => {
-          const end = dayjs(item.time * 1000)
-            .add(1, "hour")
-            .format("HH:mm");
-          return {
-            name: `${this.formatTimeByStr(
-              item.time * 1000,
-              "MMM Do YYYY HH:mm"
-            )}-${end}`,
-            formatValue: this.formatNumber(item.block_size),
-            value: item.block_size
-          };
-        });
-        this.dataList = Object.freeze(dataList);
-        this.avgSize = this.formatNumber(avg_blocksize);
+      
+        const { list } = res;
+        for (var i=0;i<list.length;i++){
+          this.Total.push(list[i].Total)
+          this.Pledged.push(list[i].Pledged)
+          this.Won.push(list[i].Won)
+          if(i==list.length-1){
+            this.data1 = list[i].Total
+            this.data2 = list[i].Pledged
+            this.data3 = list[i].Won
+          }
+        }
+        
+        // const dataList = data.map(item => {
+        //   const end = dayjs(item.time * 1000)
+        //     .add(1, "hour")
+        //     .format("HH:mm");
+        //   return {
+        //     name: `${this.formatTimeByStr(
+        //       item.time * 1000,
+        //       "MMM Do YYYY HH:mm"
+        //     )}-${end}`,
+        //     formatValue: this.formatNumber(item.block_size),
+        //     value: item.block_size
+        //   };
+        // });
+        // this.dataList = Object.freeze(dataList);
+        // this.avgSize = this.formatNumber(avg_blocksize);
         this.drawSizeChart();
       } catch (e) {
         this.loading = false;
@@ -142,14 +200,14 @@ export default {
   },
   mounted() {
     chart = this.$chart.init(this.$refs.size);
-    this.getBlockSizeData();
+    this.getMinerStatus();
   },
   watch: {
     latestBlockHeight() {
       if (this.loadCount === 1) {
         return;
       }
-      this.getBlockSizeData();
+      this.getMinerStatus();
     },
     theme() {
       this.drawSizeChart();
@@ -160,24 +218,20 @@ export default {
 <style lang="scss" scoped>
 .block-size-chart {
   display: flex;
-  .size-info-con {
-    min-width: 200px;
-    div:last-child {
-      font-size: 26px;
-      color: var(--block-size-color);
-      margin-top: 5px;
-    }
-    div:first-child {
-      font-weight: bold;
-      height: 30px;
-      color: var(--total-board-top-color);
-      &::before {
-        content: "";
-        display: inline-block;
-        width: 12px;
-        height: 12px;
-        background: var(--block-size-color);
-        border-radius: 50%;
+
+  .info-con {
+    //flex: 2;
+    min-width: 180px;
+    display: flex;
+    flex-direction: column;
+    & > div {
+      span:last-child {
+        font-size: 26px;
+        color: var(--total-power-color);
+      }
+      span:first-child {
+        color: var(--total-board-top-color);
+        font-weight: bold;
         margin-right: 5px;
       }
     }
@@ -187,19 +241,18 @@ export default {
     height: 100%;
   }
   @media (max-width: 768px) {
-    .size-info-con {
-      flex: 2;
-    }
-    .size-info-con > div:last-child {
-      margin-top: 25px !important;
-      font-size: 12px !important;
-    }
-    .size-info-con > div:first-child::before {
-      width: 6px;
-      height: 6px;
+    .info-con .power-info,
+    .info-con .storage-info {
+      & > div:last-child {
+        margin-top: 5px !important;
+        font-size: 12px !important;
+      }
     }
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.03);
     border-radius: 4px;
+    .info-con {
+      flex: 2;
+    }
     .chart-con {
       flex: 3;
     }

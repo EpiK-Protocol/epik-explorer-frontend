@@ -240,7 +240,10 @@ const zh = {
             blockSize: {
                 label: "平均区块元数据",
                 size: "{avg} 字节",
-                tips: "近24小时平均区块元数据大小"
+                tips: "近24小时平均区块元数据大小",
+                t1:'注册矿工',
+                t2:'完成抵押',
+                t3:'出块矿工',
             },
             totalPower: {
                 power: "原值算力",
@@ -448,7 +451,8 @@ const zh = {
             ticketRatio: "赢票率",
             blocksWon: "<div>矿工ID: {miner_id}</div><div>高度: {height}</div><div>出块时间: {block_time}</div><div>区块哈希: {cid}</div>",
             blockTime: "<div style='margin-bottom:5px'>平均出块时间: {value}s</div><div>时间: {name}</div>",
-            blockSize: "<div style='margin-bottom:5px'>平均区块元数据大小: {value}字节</div><div>时间: {name}</div>",
+            // blockSize: "<div style='margin-bottom:5px'>平均区块元数据大小: {value}字节</div><div>时间: {name}</div>",
+            blockSize: "<div>注册矿工: {t1}</div><div>完成抵押: {t2}</div><div>出块矿工: {t3}</div>",
             totalPower: "<div style='margin-bottom:5px'>有效算力: {qualityPower}</div><div style='margin-bottom:5px'>原值算力: {rawPower}</div><div>时间: {name}</div>",
             mesHistory: "<div>消息: {count}</div><div>{time}</div>",
             mesHistoryTitle: "近14天消息历史",

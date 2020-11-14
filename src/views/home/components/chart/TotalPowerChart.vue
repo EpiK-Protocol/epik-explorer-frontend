@@ -15,7 +15,7 @@
         <div>
           {{ $t("home.totalPower.capacity") }}
         </div>
-        <div class="top-10" v-show="!loading">{{ QualityPower }}</div>
+        <div class="top-10" style="color:var(--block-size-color)" v-show="!loading">{{ QualityPower }}</div>
       </div>
     </div>
     <div class="chart-con" ref="power"></div>
@@ -49,6 +49,11 @@ export default {
       const series = this.dataList;
       console.log(series)
       const { axisLine, seriesItem, area } = this.chartTheme.totalPower;
+      // const {
+      //   axisLine1
+      //   seriesItem,
+      //   seriesMarkLine
+      // } = this.chartTheme.blockSize.seriesItem;
       const xData = series.map(item => {
         return {
           value: item.name
@@ -70,7 +75,7 @@ export default {
           boundaryGap: false,
           axisLine: {
             lineStyle: {
-              color: axisLine
+              color: '#666666'
             }
           },
           axisLabel: {
@@ -83,7 +88,7 @@ export default {
         },
         yAxis: {
           type: "value",
-          boundaryGap:false,
+          scale:true,
           show: false
         },
         grid: {
@@ -96,10 +101,9 @@ export default {
           trigger: "axis",
 
           formatter: function(p) {
-            console.log(p)
             const html = vm.$t("chart.totalPower", {
-              rawPower:vm.unitConversion(p[0].data.value, 3),
-              qualityPower:vm.unitConversion(p[1].data.value, 3),
+              rawPower:vm.unitConversion(p[1].data.value, 3),
+              qualityPower:vm.unitConversion(p[0].data.value, 3),
               // value: vm.unitConversion(p[0].data.value, 3),
               name: p[0].name
             });
@@ -125,10 +129,10 @@ export default {
             symbol: "none",
             smooth: true,
             lineStyle: {
-              color: seriesItem
+              color: this.chartTheme.blockSize.axisLine
             },
             areaStyle: {
-              color: area
+              color: this.chartTheme.blockSize.area
             }
           }
         ]
