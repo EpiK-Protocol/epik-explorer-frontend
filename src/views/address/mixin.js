@@ -1,35 +1,51 @@
 const mixin = {
   methods: {
     parseAddress(account) {
-      const types = this.$t("address.type");
       const {
-        address,
-        is_miner,
-        is_owner,
-        is_wallet,
-        is_storage_miner,
-        actor
+        miner_id,
+        balance,
+        miner_power,
+        peer_id,
+        sector_size,
       } = account;
-      const { Balance, code, nonce } = actor;
-      let typeKey = "";
-      if (is_miner) {
-        typeKey = "miner";
-      } else if (is_owner) {
-        typeKey = "owner";
-      } else if (is_wallet) {
-        typeKey = "wallet";
-      } else if (is_storage_miner) {
-        typeKey = "miner";
-      } else {
-        typeKey = "account";
-      }
       return {
-        address,
-        type: types[typeKey],
-        balance: this.formatNumber(Balance, this.isMobile ? 5 : 18),
-        code,
-        nonce
-      };
+          address:miner_id,
+          raw: miner_power.RawBytePower,
+          quality: miner_power.QualityAdjPower,
+          balance: this.formatNumber(balance, this.isMobile ? 5 : 18),
+          peer_id,
+          sector_size
+        };
+
+      // const types = this.$t("address.type");
+      // const {
+      //   address,
+      //   is_miner,
+      //   is_owner,
+      //   is_wallet,
+      //   is_storage_miner,
+      //   actor
+      // } = account;
+      // const { Balance, code, nonce } = actor;
+      // let typeKey = "";
+      // if (is_miner) {
+      //   typeKey = "miner";
+      // } else if (is_owner) {
+      //   typeKey = "owner";
+      // } else if (is_wallet) {
+      //   typeKey = "wallet";
+      // } else if (is_storage_miner) {
+      //   typeKey = "miner";
+      // } else {
+      //   typeKey = "account";
+      // }
+      // return {
+      //   address,
+      //   type: types[typeKey],
+      //   balance: this.formatNumber(Balance, this.isMobile ? 5 : 18),
+      //   code,
+      //   nonce
+      // };
     }
   }
 };

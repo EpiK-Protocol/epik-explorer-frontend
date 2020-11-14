@@ -1,6 +1,7 @@
 <template>
   <div class="address-detail bottom-10">
     <overview
+      v-if="isminer"
       :dataList="dataList"
       :dataLabel="$t('address.detail.overview')"
       class="bottom-20"
@@ -38,10 +39,11 @@
         {{ $t("address.radio")[1] }}
       </el-radio-button>
     </el-radio-group>
+    <!-- type="address" -->
     <message-list
       v-if="showMessage"
       :address="$route.query.address"
-      type="address"
+      
     />
     <block-list v-else :miners="address" />
   </div>
@@ -55,28 +57,35 @@ export default {
   data() {
     return {
       showMessage: true,
-      isMiner: false,
+      isminer: false,
       isOwner: false,
       messageData: [],
       address: "",
+      isMiner:false,
       workers: [],
       dataList: [
         {
           key: "address"
         },
         {
-          key: "type"
-        },
-        {
           key: "balance",
           unit: "tEPK"
         },
         {
-          key: "code"
+          key: "raw"
         },
         {
-          key: "nonce"
-        }
+          key: "quality"
+        },
+        {
+          key: "peer_id"
+        },
+        {
+          key: "sector_size",
+          unit: "bytes"
+        },
+        
+       
       ],
       accountList: [
         {
@@ -125,24 +134,31 @@ export default {
     async getAddressInfo(a) {
       try {
         let res = await getActorById({
-          actor_id: a
+          miner: a
         });
-        const detail = this.parseAddress(res.data);
+        if(res.code.code!=0){
+          this.isminer = false
+          return
+        }else{
+          this.isminer = true
+        }
+        const detail = this.parseAddress(res);
+        
         this.dataList = this.dataList.map(item => {
           return {
             ...item,
             value: detail[item.key]
           };
         });
-        this.workers = res.work_list;
-        if (res.data.is_miner && res.miner.owner_address != "") {
-          this.isMiner = true;
-        } else {
-          this.isMiner = false;
-        }
-        if (res.work_list.length) {
-          this.address = res.work_list;
-        }
+        // this.workers = res.work_list;
+        // if (res.data.is_miner && res.miner.owner_address != "") {
+        //   this.isMiner = true;
+        // } else {
+        //   this.isMiner = false;
+        // }
+        // if (res.work_list.length) {
+        //   this.address = res.work_list;
+        // }
         this.accountList = this.accountList.map(item => {
           let linkList;
           const originValue = res.miner[item.key];

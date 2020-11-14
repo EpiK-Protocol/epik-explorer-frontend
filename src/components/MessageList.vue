@@ -265,9 +265,12 @@ export default {
       } catch (e) {
         this.loading = false;
       }
-    }
+    },
   },
+ 
   watch: {
+
+    '$route':'getMessage',
     option: {
       deep: true,
       handler() {

@@ -172,7 +172,6 @@ export default {
           }
           return res;
         });
-        console.log(this.dataList)
         this.loading = false;
       } catch (e) {
         if (e) {

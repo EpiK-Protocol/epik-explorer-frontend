@@ -289,7 +289,8 @@ const en = {
       total: "Total of <i>{num}</i> Accounts Found ({filNum}tEPK)"
     },
     detail: {
-      overview: ["Address", "Type", "Balance", "Code Cid", "Nonce"],
+      // overview: ["Address", "Type", "Balance", "Code Cid", "Nonce"],
+      overview: ["Address", "Balance", "RawBytePower", "QualityAdjPower" ,"Peer Id","Sector Size"],
       worker: "Worker List",
       ownerOverview: [
         "Owner Account",

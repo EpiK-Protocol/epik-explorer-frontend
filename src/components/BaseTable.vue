@@ -58,7 +58,7 @@
           <span v-if="!item.isLink && !item.isComponent">{{
             `${scope.row[item.key]} ${item.unit || ""}`
           }}</span>
-          <component :is="scope.row[item.key]" v-if="item.isComponent" />
+          <!-- <component :is="scope.row[item.key]" v-if="item.isComponent" /> -->
         </template>
       </el-table-column>
       <div

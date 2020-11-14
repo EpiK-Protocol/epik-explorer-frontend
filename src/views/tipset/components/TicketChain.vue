@@ -154,8 +154,9 @@ export default {
     }
     this.getTipset(currentHeight);
     chart.on("click", e => {
-      if (e.data.originData) {
-        this.$emit("hash-change", e.data.originData.cid);
+      if (e.data.originData) {        
+        this.$emit("hash-change", e.data.cid);
+        // this.$emit("hash-change", e.data.originData.cid);
       }
       if (e.componentType === "markLine") {
         this.$emit("height-change", String(this.startHeight - e.value));
@@ -181,7 +182,9 @@ export default {
         // debugger
 
         //8.9
-        const reverse = res.tipsets.reverse();
+        // const reverse = res.tipsets.reverse();
+        const reverse = res.tipsets;
+
         reverse.forEach(item => {
           // if (item.tipset.length > 0) {
           //   blocks = blocks.concat(item.tipset);
@@ -248,6 +251,7 @@ export default {
         this.hashList = hashList;
         this.startHeight = height;
         this.tipsets = Object.freeze(reverse);
+        // this.tipsets = reverse;
         this.$emit("get-blocks", blocks);
         this.drawChart();
       } catch (e) {
@@ -273,6 +277,8 @@ export default {
       }); //get coords
       // debugger
       const nodeList = this.tipsets.reduce((pre, cur) => {
+        console.log(cur)
+
         const coords = cur.tipset.map((item, index) => {
           if (!item.Messages['/']) {
             return {
@@ -286,6 +292,7 @@ export default {
               }
             };
           }
+
           // const formatName = item.block_header.miner;
           const formatName = item.Miner;
           let symbol;
@@ -301,6 +308,7 @@ export default {
             // name: item.cid,
             // name: item.Messages['/'],
             originData: item,
+            cid: cur.Cids[index]['/'],
             value: item.coord,
             symbol: symbol,
             symbolSize: [56 * rate, 17 * rate],

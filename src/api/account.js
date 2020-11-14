@@ -33,10 +33,11 @@ param:{
   actor_id string
 }
 */
-export function getActorById(data) {
+// ?miner=t012999
+export function getActorById(params) {
   return fetch({
-    url: "/account/ActorById",
-    method: "post",
-    data
+    url: "/MinerInfo",
+    method: "get",
+    params
   });
 }
