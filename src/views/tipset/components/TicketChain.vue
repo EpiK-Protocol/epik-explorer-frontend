@@ -182,8 +182,8 @@ export default {
         // debugger
 
         //8.9
-        // const reverse = res.tipsets.reverse();
-        const reverse = res.tipsets;
+        const reverse = res.tipsets.reverse();
+        // const reverse = res.tipsets;
 
         reverse.forEach(item => {
           // if (item.tipset.length > 0) {
@@ -249,6 +249,7 @@ export default {
           return item.hash;
         });
         this.hashList = hashList;
+      
         this.startHeight = height;
         this.tipsets = Object.freeze(reverse);
         // this.tipsets = reverse;
@@ -379,7 +380,7 @@ export default {
           label: {
             show: true,
             formatter() {
-              return format(startHeight - i);
+              return format(startHeight - 14 + i);
             }
           }
         });
