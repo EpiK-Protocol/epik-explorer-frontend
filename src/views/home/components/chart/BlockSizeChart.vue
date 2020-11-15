@@ -67,6 +67,10 @@ export default {
   methods: {
     drawSizeChart() {
       // const data = this.dataList;
+      var xdata=[]
+      for(let i=0;i<this.Total.length;i++){
+        xdata.push(i+1);
+      }
       const {
         axisLine,
         seriesItem,
@@ -77,7 +81,7 @@ export default {
         xAxis: {
            type: 'category',
            boundaryGap: false,
-          data: [1,2,3,4,5,6],
+          data: xdata,
           axisLine: {
             lineStyle: {
               color: '#666666'
