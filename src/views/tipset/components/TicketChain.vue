@@ -56,7 +56,11 @@ export default {
       typeStyle: {
         marginTop: "-160px"
       },
-      jumpSafeHeight: 0
+      jumpSafeHeight: 0,
+      hashHeight:0,
+      linkList:[],
+      lowHiehgt:0,
+      highHiehgt:0
     };
   },
   props: {
@@ -85,6 +89,7 @@ export default {
     }
   },
   watch: {
+    // 11/16
     height(v) {
       if ((v <= this.startHeight && v > this.startHeight - 15) || v == 0) {
         this.drawChart();
@@ -93,6 +98,7 @@ export default {
       }
     },
     async hash(v) {
+      
       if (!v) {
         return;
       }
@@ -152,12 +158,13 @@ export default {
     }
     this.getTipset(currentHeight);
     chart.on("click", e => {
-      if (e.data.originData) {        
+      if (e.data.originData) {  
         this.$emit("hash-change", e.data.cid);
         // this.$emit("hash-change", e.data.originData.cid);
       }
       if (e.componentType === "markLine") {
-        this.$emit("height-change", String(this.startHeight - e.value));
+        // this.$emit("height-change", String(this.startHeight - e.value));
+        this.$emit("height-change", String(this.linkList[e.value].height));
       }
     });
   },
@@ -190,7 +197,7 @@ export default {
             blocks = blocks.concat(item);
         });
         // debugger
-        blocks = blocks.map(item => {
+        // blocks = blocks.map(item => {
           // const { size, cid, reward, block_header, msg_cids } = item;
           
           // const {
@@ -216,8 +223,14 @@ export default {
           //   tickets,
           //   state_root: parent_state_root
           // };
-          const { Blocks, Cids } = item;
-           const {
+          
+
+          // }
+          let blocks1 = []
+ for(let i = 0;i<blocks.length;i++){
+   const { Blocks, Cids } = blocks[i];
+          for(let j = 0;j<Blocks.length;j++){
+            const {
             Timestamp,
             Height,
             Miner,
@@ -226,11 +239,11 @@ export default {
             Parents,
             ParentStateRoot,
             Messages
-          } = Blocks[0];
+          } = Blocks[j];
 
-          return {
+          blocks1.push({
             height: this.formatNumber(Height),
-            hash: Cids[0]['/'],//item.cid
+            hash: Cids[j]['/'],//item.cid
             timestamp: this.formatTime(Timestamp),
             utcTime: this.getFormatTime(Timestamp),
             size:0,//size: this.formatNumber(size),
@@ -241,9 +254,13 @@ export default {
             parent_weight: this.formatNumber(ParentWeight),
             tickets:Ticket.VRFProof,
             state_root: ParentStateRoot['/']
-          };
-        });
-        const hashList = blocks.map(item => {
+          });
+           
+        }
+
+ }
+          
+        const hashList = blocks1.map(item => {
           return item.hash;
         });
         this.hashList = hashList;
@@ -251,7 +268,7 @@ export default {
         this.startHeight = height;
         this.tipsets = Object.freeze(reverse);
         // this.tipsets = reverse;
-        this.$emit("get-blocks", blocks);
+        this.$emit("get-blocks", blocks1.reverse());
         this.drawChart();
       } catch (e) {
         this.loading = false;
@@ -260,6 +277,7 @@ export default {
     drawChart() {
       const height = this.height;
       const rate = this.rate;
+      let that = this
       const {
         ticketNode,
         otherNode,
@@ -270,7 +288,7 @@ export default {
         markAreaBorder,
         markAreaActiveBorder
       } = this.chartTheme.tipset;
-      
+      // debugger
       this.tipsets.forEach((item, index) => {
         item.tipset = getBlockCoord(item.Blocks, index, item.Blocks[0].Messages['/']);
       }); //get coords
@@ -324,9 +342,9 @@ export default {
         });
         return pre.concat(coords);
       }, []); //generate echarts nodes
-      // debugger
       const linkList = nodeList
         .map((item, index) => {
+          if(item.cid==that.$route.query.hash) this.hashHeight = item.originData.Height
           if (!item.isTicket) {
             return null;
           }
@@ -357,6 +375,7 @@ export default {
             }
           };
         }); //lines
+        // debugger
       const startHeight = this.startHeight;
 
       //Change the height of a graph according to the number of blocks
@@ -371,22 +390,39 @@ export default {
       };
       let lineList = [];
       const format = this.formatNumber;
-      for (let i = 0; i < 15; i++) {
+      // 11.16
+      // for (let i = 0; i < 15; i++) {
+      //   lineList.push({
+      //     xAxis: i,
+      //     label: {
+      //       show: true,
+      //       formatter() {
+      //         return format(startHeight - 14 + i);
+      //       }
+      //     }
+      //   });
+      // }
+      let areaData = [];
+  
+      linkList.forEach((item,index) => {
+        
         lineList.push({
-          xAxis: i,
+          xAxis: index,
           label: {
             show: true,
             formatter() {
-              return format(startHeight - 14 + i);
+              return format(item.height);
             }
           }
         });
-      }
-      let areaData = [];
-      linkList.forEach(item => {
+        if(index==linkList.length-1) this.highHiehgt = item.height
+        if(index==0 )this.lowHiehgt = item.height
+
         let borderColor = markAreaBorder,
           borderWidth = 1;
-        if (height && startHeight - height == item.x) {
+      // 11.16
+        // if (height && that.hashHeight == item.height) {
+          if (that.hashHeight == item.height||height == item.height) {
           borderColor = markAreaActiveBorder;
           borderWidth = 2;
         }
@@ -401,6 +437,7 @@ export default {
           { coord: [item.x + 0.376, 1] }
         ]);
       });
+      this.linkList = linkList
       const vm = this;
       var option = {
         tooltip: {
@@ -497,7 +534,7 @@ export default {
       chart.setOption(option);
     },
     async goRight() {
-      let jumpHeight = Math.max(this.startHeight - 15, 15);
+      let jumpHeight = Math.max(this.lowHiehgt, 15);
       await this.getTipset(jumpHeight);
       this.goTo("tipset", {
         query: {

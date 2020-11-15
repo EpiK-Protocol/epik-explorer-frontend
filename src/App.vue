@@ -98,4 +98,8 @@ a {
     font-size: 12px;
   }
 }
+
+.el-table, .el-table__append-wrapper{
+  padding-bottom: 10px;
+}
 </style>

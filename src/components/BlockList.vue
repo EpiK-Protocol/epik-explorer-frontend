@@ -77,9 +77,17 @@ export default {
           paramKey: "address"
         },
         {
-          key: "reward",
-          unit: "tEPK"
-        }
+        key: "GasReward",
+        // unit: "tEPK"
+      },
+      {
+        key: "MinerReward",
+        // unit: "tEPK"
+      },
+        // {
+        //   key: "reward",
+        //   unit: "tEPK"
+        // }
       ]
     };
   },
