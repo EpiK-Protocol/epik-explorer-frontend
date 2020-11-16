@@ -150,7 +150,7 @@ export default {
   & ::v-deep .el-input-group__prepend {
     background: var(--board-bg-color) !important;
     .el-select.search-filter input {
-      width: 130px;
+      width: 150px;
       background: transparent !important;
     }
   }

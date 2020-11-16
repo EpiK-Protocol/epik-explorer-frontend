@@ -8,14 +8,14 @@
         element-loading-background="var(--board-bg-color)"
       ></div>
       <div class="block-type" :style="typeStyle">
-        <div class="arrow left" @click="goLeft" v-if="!atIndex">
+        <div class="arrow left" @click="goLeft" style="display:none" v-if="!atIndex">
           <span class="el-icon-arrow-left"></span>
         </div>
         <div class="type-list">
-          <span>
+          <!-- <span>
             <i class="null"></i>
             {{ $t("tipset.blockType")[0] }}
-          </span>
+          </span> -->
           <span>
             <i class="ticket"></i>
             {{ $t("tipset.blockType")[1] }}
@@ -25,7 +25,7 @@
             {{ $t("tipset.blockType")[2] }}
           </span>
         </div>
-        <div @click="goRight" class="arrow right" v-if="!atIndex">
+        <div @click="goRight" class="arrow right" style="display:none" v-if="!atIndex">
           <!-- <img src="@/assets/image/icons/right.png" alt /> -->
           <span class="el-icon-arrow-right"></span>
         </div>
@@ -596,6 +596,7 @@ export default {
     }
   }
   .block-type div.type-list {
+    text-align: center;
     width: 500px;
     margin: 0 auto;
     padding-bottom: 20px;
