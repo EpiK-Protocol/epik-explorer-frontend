@@ -245,11 +245,10 @@ export default {
     height: 100%;
   }
   @media (max-width: 768px) {
-    .info-con .power-info,
-    .info-con .storage-info {
-      & > div:last-child {
+    .info-con {
+      & > div span:last-child {
         margin-top: 5px !important;
-        font-size: 12px !important;
+        font-size: 13px;
       }
     }
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.03);
