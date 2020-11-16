@@ -1,13 +1,13 @@
 <template>
   <div class="tipset">
-    <!-- <ticket-chain
+    <ticket-chain
       @hash-change="handleHashChange"
       :height.sync="height"
       :hash="hash"
       @height-change="handleHeightChange"
       @get-blocks="getBlocks"
       v-show="!isMobile"
-    /> -->
+    />
     <block-detail v-if="hash" :loading="loading" :hash="hash" :block="block" />
     <block-list
       v-if="!hash && !isMobile"
