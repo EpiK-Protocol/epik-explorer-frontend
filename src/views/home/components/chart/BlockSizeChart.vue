@@ -87,6 +87,10 @@ export default {
               color: '#666666'
             }
           },
+          axisLabel:{
+            show:false
+          },
+          
           axisTick: {
             show: false
           }

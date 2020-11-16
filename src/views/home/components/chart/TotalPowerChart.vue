@@ -47,7 +47,6 @@ export default {
   methods: {
     drawPowerChart() {
       const series = this.dataList;
-      console.log(series)
       const { axisLine, seriesItem, area } = this.chartTheme.totalPower;
       // const {
       //   axisLine1

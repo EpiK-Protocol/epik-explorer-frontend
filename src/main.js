@@ -19,6 +19,7 @@ Vue.prototype.changeLang= ()=>{
     i18n.locale = "en"; //关键语句
   }
 },
+
 Vue.mixin(mixin);
 new Vue({
   router,

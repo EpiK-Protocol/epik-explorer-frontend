@@ -71,7 +71,7 @@ const darkTheme = {
     seriesMarkLineLabel: "white",
     markArea: "transparent",
     markAreaBorder: "#F7B500",
-    markAreaActiveBorder: "#F7B500"
+    markAreaActiveBorder: "#0091FF"
   },
   filOutstanding: {
     splitLine: "#0A0D13",

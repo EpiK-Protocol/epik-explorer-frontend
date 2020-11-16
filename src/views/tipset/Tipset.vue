@@ -1,20 +1,20 @@
 <template>
   <div class="tipset">
-    <!-- <ticket-chain
+    <ticket-chain
       @hash-change="handleHashChange"
       :height.sync="height"
       :hash="hash"
       @height-change="handleHeightChange"
       @get-blocks="getBlocks"
       v-show="!isMobile"
-    /> -->
+    />
     <block-detail v-if="hash" :loading="loading" :hash="hash" :block="block" />
-    <!-- <block-list
+    <block-list
       v-if="!hash && !isMobile"
       :height="currentHeight"
       :list="currentBlockList"
-    /> -->
-    <!-- <div class="mb-block-list" v-if="isMobile && !hash">
+    />
+    <div class="mb-block-list" v-if="isMobile && !hash">
       <div
         v-for="(value, key) in mbBlockList"
         :key="key"
@@ -31,7 +31,7 @@
           :columns="mbColumns"
         ></mb-board>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 <script>
@@ -87,12 +87,19 @@ export default {
       deep: true,
       immediate: true,
       handler(v) {
+        // 11/16
+        if(this.hash != v.hash){
+          this.loadData(v.hash)
+        }
+
         this.hash = v.hash;
         let height = 0;
         if (v.height) {
           height = this.parseFormatNumber(v.height);
         }
         this.height = Number(height);
+        
+        
       }
     }
   },
@@ -103,49 +110,8 @@ export default {
   },
   async mounted(){
     if(this.$route.query.hash){
-        try{
-            this.hash = this.$route.query.hash;
-        this.loading = true
-        let res = await search({
-          word: this.$route.query.hash,
-          type: 'block'
-        });
-  
-           const {
-            Timestamp,
-            Height,
-            Miner,
-            ParentWeight,
-            Ticket,
-            Parents,
-            Messages,
-            ParentStateRoot,
-          } = res.block;
-
-        this.block = {
-            height: Height,
-            hash: this.$route.query.hash,//item.cid
-            // timestamp: this.formatTime(Timestamp),
-            utcTime: this.getFormatTime(Timestamp),
-            // size:0,//size: this.formatNumber(size),
-            mesLength: JSON.stringify(Messages),
-            miner:Miner,
-            // reward:0,//?
-            parents:JSON.stringify(Parents),
-            parent_weight: this.formatNumber(ParentWeight),
-            tickets:Ticket.VRFProof,
-            state_root: JSON.stringify(ParentStateRoot)
-          };
-          this.loading = false;
-        }
-        catch (e) {
-        if (e) {
-          this.loading = false;
-        }
-      }
-       
-
-
+       this.hash = this.$route.query.hash;
+        this.loadData(this.hash)
     }
        
 
@@ -193,6 +159,49 @@ export default {
     }
   },
   methods: {
+    async loadData(hash){
+      try{
+           
+        this.loading = true
+        let res = await search({
+          word: hash,
+          type: 'block'
+        });
+  
+           const {
+            Timestamp,
+            Height,
+            Miner,
+            ParentWeight,
+            Ticket,
+            Parents,
+            Messages,
+            ParentStateRoot,
+          } = res.block;
+
+        this.block = {
+            height: Height,
+            hash: this.$route.query.hash,//item.cid
+            // timestamp: this.formatTime(Timestamp),
+            utcTime: this.getFormatTime(Timestamp),
+            // size:0,//size: this.formatNumber(size),
+            mesLength: JSON.stringify(Messages),
+            miner:Miner,
+            // reward:0,//?
+            parents:JSON.stringify(Parents),
+            parent_weight: this.formatNumber(ParentWeight),
+            tickets:Ticket.VRFProof,
+            state_root: JSON.stringify(ParentStateRoot)
+          };
+          this.loading = false;
+        }
+        catch (e) {
+        if (e) {
+          this.loading = false;
+        }
+      }
+
+    },
     getBlocks(v) {
       this.blocks = v;
     },
