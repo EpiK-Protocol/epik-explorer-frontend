@@ -86,7 +86,7 @@ export default {
 // debugger
         const dataSource = data.msg.map(item => {
           // const dataSource = data.msg.map(item => {
-          const { From, To, Value,Params ,Cid} = item;
+          const { From, To, Value,Params ,CID} = item;
           // const current = new Date().getTime();
           // const realTime =
           //   item.msgcreate > current / 1000 ? current / 1000 : item.msgcreate;
@@ -98,7 +98,7 @@ export default {
             // originTime: realTime,
             // current: current,
             // id: item.cid
-            id: Cid
+            id: CID['/']
           };
         });
         // debugger
