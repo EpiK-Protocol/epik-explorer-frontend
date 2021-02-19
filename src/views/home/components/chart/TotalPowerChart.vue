@@ -191,6 +191,7 @@ export default {
 
   .info-con {
     //flex: 2;
+    flex-shrink: 0;
     min-width: 180px;
     display: flex;
     flex-direction: column;

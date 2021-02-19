@@ -229,6 +229,8 @@ export default {
 
   .info-con {
     //flex: 2;
+    margin-right: 10px;
+    flex-shrink: 0;
     min-width: 180px;
     display: flex;
     flex-direction: column;

@@ -3,7 +3,7 @@ const en = {
     mesList: {
       label: [
         // "Type",
-        "Message ID",
+        "Msg ID",
         // "Height",
         // "Time",
         "From",
@@ -42,7 +42,7 @@ const en = {
   header: {
     title: "EpiK Explorer",
     tab: ["Home", "Tipset", "Stats"],
-    placeholder: "Search by Address/Message ID/Block Hash",
+    placeholder: "Search by Address/Msg ID/BlockHash",
     filter: [
       //     {
       //     label: "筛选类型",
@@ -170,18 +170,18 @@ const en = {
       label: "Avg Blockheader Size",
       size: "{avg} bytes",
       tips: "Avg blockheader size in latest 24H",
-      t1:'Total Miner',
-      t2:'Pledged',
-      t3:'Won Miner',
+      t1:'Registered Miners',
+      t2:'Staked Miners',
+      t3:'Active Miners',
     },
     totalPower: {
-      power: "Total Power",
-      capacity: "Storage Capacity"
+      power: "RawBytePower",
+      capacity: "QualityAdjPower"
     },
     blockTable: {
       title: "Block",
       // label: ["Height", "Hash", "Blocktime", "Miner", "Reward"]
-      label: ["Height", "Hash", "Blocktime", "Miner", "GasReward","MinerReward"]
+      label: ["Height", "Hash", "BlockTime", "Miner", "GasReward","BlockReward"]
     },
     messageTable: {
       title: "Message",
@@ -190,32 +190,32 @@ const en = {
     },
     board: {
       height: {
-        label: "Tipset Height",
-        tips: "The Latest Tipset Height"
+        label: "Block Height",
+        tips: "The Latest Block Height"
       },
       reward: {
-        label: "Block Reward",
-        tips: "The Latest Block Reward"
+        label: "Reward Per Vote",
+        tips: "The Latest Reward Per Vote"
       },
       blockTime: {
         label: "Last BlockTime",
         tips: "Time since a miner last created a block"
       },
       avgMsgTipset: {
-        label: "Avg Messages",
-        tips: "Avg Number of Messages per Tipset Height"
+        label: "Avg. Number of Msg",
+        tips: "Avg Number of Messages per Block Height"
       },
       avgGas: {
-        label: "Avg Gas Price",
-        tips: "Avg Gas Price over the Last 24h"
+        label: "Avg. Gas Fee",
+        tips: "Avg Gas Fee over the Last 24h"
       },
       avgMsg: {
-        label: "Avg Message Size",
+        label: "Avg. Msg Size",
         tips: "Avg Message Size of Total Network"
       },
       pledge: {
-        label: "Pledge Collateral",
-        tips: "Total Fil in Pledge Collateral"
+        label: "Token Staked",
+        tips: "Total Fil in Token Staked"
       },
       number: {
         label: "Blocks In Tipset",
@@ -233,7 +233,7 @@ const en = {
       },
 
       avgBlockTime: {
-        label: "Avg BlockTime",
+        label: "Avg. Block Time",
         tips: ""
       },
       avgBlockSize: {
@@ -317,7 +317,7 @@ const en = {
   message: {
     detail: {
       overview: [
-        "Message ID",
+        "Msg ID",
         // "Height",
         // "Block",
         // "Time",
