@@ -53,7 +53,7 @@ const en = {
           value: "address"
       },
       {
-          label: "Message ID",
+          label: "Msg ID",
           value: "message"
       },
       // {
