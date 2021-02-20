@@ -61,7 +61,7 @@ const en = {
       //     value: 3
       // },
       {
-          label: "Block Hash",
+          label: "BlockHash",
           value: "block"
       },
       // {
@@ -161,7 +161,7 @@ const en = {
   },
   home: {
     blockTime: {
-      label: "Avg Blocktime",
+      label: "Avg. Blocktime",
       min: "Min",
       max: "Max",
       tips: "Avg blocktime in latest 24H"
@@ -233,7 +233,7 @@ const en = {
       },
 
       avgBlockTime: {
-        label: "Avg. Block Time",
+        label: "Avg. BlockTime",
         tips: ""
       },
       avgBlockSize: {
