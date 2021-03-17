@@ -1,19 +1,18 @@
 <template>
   <div class="header-con">
     <el-row align="middle" type="flex">
-      <el-col :span="6" class="logo-con" @click.native="goTo('home')">
+      <el-col :span="5" class="logo-con" @click.native="goTo('home')">
         <img src="@/assets/image/epik_m_logo.png" class="logo" />
         <span>{{ $t("header.title") }}</span>
       </el-col>
-      <el-col :span="8" class="search-wrap">
-        <Search />
-      </el-col>
       <el-col :span="6" class="link-con">
         <el-menu mode="horizontal" :default-active="$route.path" :router="true">
-          <el-menu-item index="/">{{
-            $t("header.nav.home.label")
-          }}</el-menu-item>
-          <!-- <el-submenu index="tipset">
+          <el-menu-item index="/">
+          <div class="">
+            {{$t("header.nav.home.label")}}
+          </div>
+          </el-menu-item>
+          <el-submenu index="tipset">
             <template slot="title">{{
               $t("header.nav.tipset.label")
             }}</template>
@@ -32,10 +31,14 @@
               :index="item.index"
               >{{ item.label }}</el-menu-item
             >
-          </el-submenu> -->
+          </el-submenu>
         </el-menu>
       </el-col>
-      <el-col :span="4" style="display:flex">
+
+      <el-col :span="8" class="search-wrap">
+        <Search />
+      </el-col>
+            <el-col :span="4" style="display:flex">
         <!-- <span class="testnet">Testnet</span> -->
         <!-- <span :class="[iconClass,'theme-switch']" @click="handleThemeChange"></span> -->
         <div class="lang-switch" @click="changeLang">
@@ -149,10 +152,10 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: 0px 1px 4px 5px rgba(0, 0, 0, 0.03);
+  box-shadow: 0px 1px 0.208vw 0.26vw rgb(0 ,0 ,0 / 30%);
   .lang-switch{
     margin: 0 2vw;
-    color: #ccc;
+    color: var(--force-mark-color);
     cursor: pointer;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -162,6 +165,7 @@ export default {
     align-items: center;
     span:not(.active) {
     opacity: .5;
+    color: #7c7c7c;
   }
   span{
         display: flex;
@@ -173,23 +177,30 @@ export default {
   }
   .link-con {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     ul{
       background: var(--board-bg-color);
       li::v-deep{
-        color: var(--main-text-color)!important;
+        color: var(--main-text-color);
+        font-size: .729vw;
         &.is-active{
           font-weight: bold;
-          color: var(--main-text-color)
+          color: var(--force-mark-color);
+          font-size: .938vw;
+          border-bottom: none;
+          div{
+            border-bottom: 2px solid var(--force-mark-color); 
+          }
         }
         &:hover,&:focus{
           background: var(--board-bg-color)!important;
         }
         div,div>i{
-          background: var(--board-bg-color)!important;
-          color: var(--main-text-color)!important;
+          // background: var(--board-bg-color)!important;
+          // color: var(--main-text-color)!important;
           &:hover{
-            color: var(--main-text-color)!important;
+            color: var(--force-mark-color)!important;
+            background: var(--board-bg-color)!important;
           }
         }
 
@@ -261,4 +272,24 @@ export default {
     display: none;
   }
 }
+
+.el-menu--horizontal>.el-menu-item{
+  line-height: 3.646vw;
+  height: 3.646vw;
+}
+/deep/ .el-menu--horizontal>.el-submenu{
+  .el-submenu__title{
+    line-height: 3.646vw;
+    height: 3.646vw;
+    font-size: .729vw;
+    color: var(--main-text-color) !important;
+  }
+  .el-submenu__title i{
+    color: var(--main-text-color);
+  }
+
+
+} 
+
+
 </style>

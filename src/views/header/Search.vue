@@ -127,28 +127,64 @@ export default {
 <style lang="scss" scoped>
 .header-search {
   flex: 1;
+  box-shadow: 0 0 0.313vw 0 rgba(0,0,0,.25);
+  box-sizing: border-box;
+  // border-radius: 1.042vw;
+  /deep/ .el-input-group{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .input-with-select {
     & ::v-deep  input:nth-child(2) {
       background: var(--board-bg-color) !important;
       color: var(--main-text-color);
+      height: 40px!important;
+      
+      padding: 0 0 0 40px!important;
+      // border: none!important;
+      border-radius: 0!important;
+      
+      font-size: .625vw;
+      box-sizing: border-box;
+      
+      
+     
     }
     &.dark ::v-deep input:nth-child(2) {
-      background: var(--main-bg-color) !important;
-      border-color: transparent;
+      border-color:  var(--search-bg-color);
+      background: var(--search-bg-color)!important;
+      color: var(--main-text-color)!important;
+      box-sizing: content-box;
+      
     }
     &.dark ::v-deep .el-input-group__prepend{
-      background: var(--main-bg-color)!important;
+      background: var(--search-bg-color)!important;
       border-color: transparent;
-      border-right: 1px solid var(--board-bg-color)
+      border-right: 1px solid var(--board-bg-color);
+      
+    
+      .el-select .el-input input{
+        color: var(--search-text-color) !important;
+        font-size: .625vw;
+      }
     }
     &.dark ::v-deep .el-input-group__append {
-      background: var(--main-bg-color)!important;
+      background: var(--search-bg-color)!important;
       border-color: transparent;
-      border-left: 1px solid var(--board-bg-color)
+      border-left: 1px solid var(--board-bg-color);
+      height: 40px !important;
+      line-height:40px!important; 
+      font-size: .625vw;
     }
   }
   & ::v-deep .el-input-group__prepend {
     background: var(--board-bg-color) !important;
+    height: 40px;
+    font-weight: 500;
+    line-height: 40px;
+    width: 8.854vw;
+ 
     .el-select.search-filter input {
       width: 150px;
       background: transparent !important;
@@ -157,10 +193,24 @@ export default {
   & ::v-deep .el-input-group__append {
     background: var(--board-bg-color) !important;
     color: var(--main-text-color) !important;
+    width: 20px;
   }
   & ::v-deep .el-button {
     width: 70px;
   }
+  & ::v-deep .el-input__suffix {
+      .el-select__caret{
+        font-size: 10px !important;
+        color: var(--search-text-color);
+      }
+      i {
+        line-height: 40px;
+        padding-left: 5px;
+        &.is-reverse {
+          padding-right: 10px;
+        }
+      }
+    }
   @media (max-width: 768px) {
     & ::v-deep input {
       // height: 30px !important;

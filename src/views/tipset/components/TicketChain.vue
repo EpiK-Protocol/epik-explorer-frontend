@@ -1,5 +1,5 @@
 <template>
-  <div class="ticket-chain">
+  <div class="ticket-chain bottom-20">
     <div class="chart-con">
       <div
         class="chart"

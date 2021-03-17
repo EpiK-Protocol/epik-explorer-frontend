@@ -125,6 +125,13 @@ export default {
     flex: 1;
     margin-right: 10px;
     background: var(--board-bg-color);
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background: var(--board-bg-color);
+    border-radius: 6px;
+    box-shadow: 0 0 7.5px 0 var(--block-meta-item-shadow) inset;
     &:nth-child(6) {
       margin-right: 0;
     }
@@ -136,12 +143,13 @@ export default {
       color: var(--total-board-top-color);
     }
     div:last-child {
-      font-size: 24px;
-      color: var(--total-board-bottom-color);
+      font-size: 26px;
+      color: var(--force-mark-color);
+      font-weight: 600;
     }
     div:first-child {
       margin-bottom: 5px;
-      font-weight: bold;
+      font-size: 11px;
       span {
         position: relative;
         i {

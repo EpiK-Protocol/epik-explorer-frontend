@@ -18,6 +18,8 @@
     --footer-text-color:#333;
     --board-bg-color:white;
 
+    --force-mark-color: #f3921b;
+
     --overview-bg-color:white;
     --overview-bg-dark-color:#F5F7FA;
 
@@ -45,7 +47,7 @@
     --scroll-bg-color:white;
     --logo-text-color:#40CAD4;
 
-    --total-board-top-color:#999;
+    --total-board-top-color:#ccc;
     --total-board-bottom-color:#FFF;
 
     --block-size-color:#F7B500;
@@ -56,7 +58,7 @@
     --other-block-border-color:#F7B500;
 
     --footer-text-color:#333;
-    --board-bg-color:#182232;
+    --board-bg-color:#0b1926;
     --overview-bg-color:#121A23;
     --overview-bg-dark-color:#0B0E13;
     --general-title-bg-color:white;
@@ -73,5 +75,11 @@
     --table-row-hover-bg-color:#96ABFF;
     --table-row-hover-text-color:white;
     --table-row-striped-bg-color:#10151F;
-    --border-bottom-color:#0A0D13
+    --border-bottom-color:#0A0D13;
+
+    /* new */
+    --search-bg-color: #132e3d;
+    --search-text-color: #667278;
+    --text-gray-color: #ccc;
+    --block-meta-item-shadow: #112a40;
 }
