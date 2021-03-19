@@ -1,45 +1,65 @@
 <template>
-  <div class="total-chart">
-    <block-time-chart :time="time" />
-    <block-size-chart :time="time" />
-    <total-power-chart :time="time" />
+  <div class="charts">
+    <!-- <div class="total-chart">
+      <block-time-chart :time="time" />
+      <block-size-chart :time="time" />
+      <total-power-chart :time="time" />
+    </div> -->
+    <div class="total-chart">
+      <block-size-chart :time="time" />
+      <new-power-chart :time="time"/>
+      <k-line-chart :time="time" />
+    </div>
   </div>
 </template>
 <script>
 import BlockTimeChart from "./chart/BlockTimeChart";
 import BlockSizeChart from "./chart/BlockSizeChart";
 import TotalPowerChart from "./chart/TotalPowerChart";
+import KLineChart from './chart/KLineChart';
+import NewPowerChart from './chart/NewPowerChart.vue';
 export default {
   name: "TotalChart",
   data() {
     return {
-      time: {}
+      time: {},
     };
   },
   components: {
     BlockSizeChart,
     BlockTimeChart,
-    TotalPowerChart
+    TotalPowerChart,
+    KLineChart,
+    NewPowerChart
   },
   created() {
     const end_time = Math.floor(new Date().getTime() / 1000);
     this.time = {
       start_time: end_time - 86400,
-      end_time: end_time
+      end_time: end_time,
     };
-  }
+  },
 };
 </script>
 <style lang="scss" scoped>
+.charts{
+  padding: 1.042vw;
+  background: var(--board-bg-color);
+}
 .total-chart {
   display: flex;
+  
+  
   & > div {
     flex: 1;
-    background: var(--board-bg-color);
+    background: var(--board-item-bg-color);
     border-radius: 8px;
-    box-shadow: 0px 1px 7px 9px rgba(0, 0, 0, 0.03);
+    // box-shadow: 0px 1px 7px 9px rgba(0, 0, 0, 0.03);
     padding: 20px;
+    // height: 200px;
     margin-right: 10px;
+    margin-bottom:10px;
+    box-sizing: border-box;
     &:last-child {
       margin-right: 0;
     }

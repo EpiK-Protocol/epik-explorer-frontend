@@ -36,7 +36,8 @@
     --table-header-border-color:#EBEEF5;
     --table-header-text-color:black;
     --table-row-bg-color:white;
-    --table-row-hover-bg-color:#85CBFF;
+    /* --table-row-hover-bg-color:#85CBFF; */
+    --table-row-hover-bg-color: #254b6e;
     --table-row-hover-text-color:white;
     --table-row-striped-bg-color:#F5F7FA;
     
@@ -72,8 +73,8 @@
     --table-header-border-color:#151E42;
     --table-header-text-color:white;
     --table-row-bg-color:#121A26;
-    --table-row-hover-bg-color:#96ABFF;
     --table-row-hover-text-color:white;
+    --table-row-hover-bg-color:#254b6e;
     --table-row-striped-bg-color:#10151F;
     --border-bottom-color:#0A0D13;
 
@@ -82,4 +83,6 @@
     --search-text-color: #667278;
     --text-gray-color: #ccc;
     --block-meta-item-shadow: #112a40;
+
+    --board-item-bg-color: #0f1f2f;
 }

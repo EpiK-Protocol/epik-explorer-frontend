@@ -4,24 +4,35 @@
     v-loading="loading"
     element-loading-background="var(--board-bg-color)"
   >
-    <div v-for="item in info" :key="item.key" class="info-item">
-      <div>
-        {{ $t(`home.board.${item.labelKey}.label`) }}
-        <el-popover
-          placement="bottom-start"
-          width="200"
-          trigger="hover"
-          :content="$t(`home.board.${item.labelKey}.tips`)"
-          v-if="!isMobile"
-        >
-          <i
-            class="el-icon-warning-outline"
-            slot="reference"
-            style="margin-left:3px"
-          ></i>
-        </el-popover>
+    <div class="titl-board">基本数据</div>
+    <div class="flex flex-wrap">
+      <div v-for="item in base" :key="item.key" class="info-item bottom-10">
+        <div>
+          {{ $t(`home.board.base.${item.labelKey}.label`) }}
+        </div>
+        <div v-show="!loading">{{ `${item.value || ""} ${item.unit}` }}</div>
       </div>
-      <div v-show="!loading">{{ `${item.value || ""} ${item.unit}` }}</div>
+    </div>
+
+    <div class="titl-board">矿工生态数据</div>
+    <div class="flex flex-wrap">
+      <div v-for="item in miner" :key="item.key" class="info-item bottom-10">
+        <div>
+          {{ $t(`home.board.miner.${item.labelKey}.label`) }}
+  
+        </div>
+        <div v-show="!loading">{{ `${item.value || ""} ${item.unit}` }}</div>
+      </div>
+    </div>
+    <div class="titl-board">知识生态数据</div>
+    <div class="flex flex-wrap">
+      <div v-for="item in expert" :key="item.key" class="info-item bottom-10">
+        <div>
+          {{ $t(`home.board.expert.${item.labelKey}.label`) }}
+  
+        </div>
+        <div v-show="!loading">{{ `${item.value || ""} ${item.unit}` }}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -32,46 +43,74 @@ export default {
   name: "TotalBoard",
   data() {
     return {
-      info: [
+      base: [
+        { key: "Height", labelKey: "Height", unit: "" },
+        { key: "AvgTipSetTime", labelKey: "AvgTipSetTime", unit: "" },
+        { key: "TotalBlocks", labelKey: "TotalBlocks", unit: "" },
+        { key: "TotalEPK", labelKey: "TotalEPK", unit: "" },
+        { key: "CirculationEPK", labelKey: "CirculationEPK", unit: "" },
+        { key: "EPK_USDTPrice", labelKey: "EPK_USDTPrice", unit: "" },
+      ],
+      miner: [
+        {labelKey: "TotalMiners", key: "TotalMiners",unit:"",},
+        {labelKey: "PledgedMiners", key: "PledgedMiners",unit:"",},
+        {labelKey: "ActiveMiners", key: "ActiveMiners",unit:"",},
+        {labelKey: "TotalPower", key: "TotalPower",unit:"",},
+        {labelKey: "TopMinerPower", key: "TopMinerPower",unit:"",},
+        {labelKey: "MinerMinWinPower", key: "MinerMinWinPower",unit:"",},
+        {labelKey: "TotalMinerPledged", key: "TotalMinerPledged",unit:"",},
+        {labelKey: "TotalRetrievalPledged", key: "TotalRetrievalPledged",unit:"",},
+        {labelKey: "TotalPledged", key: "TotalPledged",unit:"",},
+        {labelKey: "TotalMiningReward", key: "TotalMiningReward",unit:"",},
+        {labelKey: "TotalRetrievalReward", key: "TotalRetrievalReward",unit:"",},
+        {labelKey: "DataFlowPerEPK", key: "DataFlowPerEPK",unit:"",},
+      ],
+      expert: [
+        { labelKey: "TotalExperts", key: "TotalExperts",unit:"",},
+        { labelKey: "ActiveExperts", key: "ActiveExperts",unit:"",},
+        { labelKey: "TotalVote", key: "TotalVote",unit:"",},
+        { labelKey: "AvgVote", key: "AvgVote",unit:"",},
+        { labelKey: "TopExpertVote", key: "TopExpertVote",unit:"",},
+        { labelKey: "TotalDataSize", key: "TotalDataSize",unit:"",},
+        { labelKey: "TotalExpertReward", key: "TotalExpertReward",unit:"",},
+        { labelKey: "TotalCrowdsourcingReward", key: "TotalCrowdsourcingReward",unit:"",},
+        { labelKey: "TotalVoteReward", key: "TotalVoteReward",unit:"",},
+        { labelKey: "AnnualizedRate", key: "AnnualizedRate",unit:"",},
+      ],
+      base1: [
         {
-          labelKey: "height",
-          key: "tipset_height",
-          class: "blue",
-          unit: ""
+          labelKey: "Height",
+          key: "Height",
+          unit: "",
         },
         {
-          labelKey: "reward",
-          key: "block_reward",
-          class: "blue",
-          unit: "tEPK"
+          labelKey: "AvgTipSetTime",
+          key: "AvgTipSetTime",
+          unit: "",
         },
         {
-          labelKey: "avgMsgTipset",
-          key: "avg_messages_tipset",
-          class: "purple",
-          unit: ""
+          labelKey: "TotalBlocks",
+          key: "TotalBlocks",
+          unit: "",
         },
         {
           labelKey: "avgGas",
           key: "avg_gas_price",
-          class: "purple",
-          unit: ""
+          unit: "",
         },
         {
           labelKey: "avgMsg",
           key: "avg_message_size",
-          class: "yellow",
-          unit: "bytes"
+          unit: "bytes",
         },
         {
           labelKey: "pledge",
           key: "pledge_collateral",
-          class: "yellow",
-          unit: "tEPK"
-        }
+          unit: "tEPK",
+        },
       ],
       timer: null,
-      loading: false
+      loading: false,
     };
   },
   async mounted() {
@@ -83,58 +122,89 @@ export default {
     // }, 30000);
   },
   methods: {
-    ...mapMutations(["setHeight", "increaseLoadCount"]),
+    // ...mapMutations(["setHeight", "increaseLoadCount"]),
+
     async getBoardInfo() {
       try {
         // 8.9
-        let info = await getBoardInfo();
-        info = info.data;
+        let res = await getBoardInfo();
         this.loading = false;
-        info.avg_message_size = parseInt(info.avg_message_size);
-        this.info = this.info.map(item => {
+        // info.avg_message_size = parseInt(info.avg_message_size);
+        this.base = this.base.map((item) => {
           return {
             ...item,
-            value: this.formatNumber(
-              item.key === "avg_gas_price"
-                ? info[item.key].toFixed(2)
-                : info[item.key]
-            )
+            value: 
+            this.formatNumber(
+              item.key === "CirculationEPK"|| item.key === "EPK_USDTPrice"
+                ? parseFloat(res.baseInfomation[item.key]).toFixed(4)
+                : res.baseInfomation[item.key]
+            ),
           };
         });
-        this.setHeight(info.tipset_height);
-        this.increaseLoadCount();
+        this.miner = this.miner.map((item) => {
+          return {
+            ...item,
+            value: 
+            this.formatNumber(
+              item.key === "TotalMiningReward"|| item.key === "TotalRetrievalReward"
+                ? parseFloat(res.minerInfomation[item.key]).toFixed(4)
+                : res.minerInfomation[item.key]
+            ),
+          };
+        });
+        this.expert = this.expert.map((item) => {
+          return {
+            ...item,
+            value: 
+            this.formatNumber(
+              item.key === "CirculationEPK"|| item.key === "EPK_USDTPrice"
+                ? parseFloat(res.expertInfomation[item.key]).toFixed(4)
+                : res.expertInfomation[item.key]
+            ),
+          };
+        });
+        // this.setHeight(info.tipset_height);
+        // this.increaseLoadCount();
       } catch (e) {
         console.log(e);
       }
-    }
+    },
   },
   beforeDestroy() {
     clearInterval(this.timer);
-  }
+  },
 };
 </script>
 <style lang="scss" scoped>
 .total-board {
-  display: flex;
-  flex-wrap: wrap;
+  padding: 10px 1.042vw 1.042vw;
+  background: var(--board-bg-color);
+  .titl-board {
+    font-size: 18px;
+    color: white;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    margin-left: 10px;
+  }
   .info-item {
     //width: 16.66%;
-    border-radius: 8px;
-    box-shadow: 0px 1px 7px 9px rgba(0, 0, 0, 0.03);
+    min-width: 150PX;
+    flex:1;
+    // box-shadow: 0px 1px 7px 9px rgba(0, 0, 0, 0.03);
     padding: 15px;
-    flex: 1;
     margin-right: 10px;
     background: var(--board-bg-color);
-    height: 110px;
+    height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    background: var(--board-bg-color);
+    // background: var(--board-bg-color);
+    background: var(--board-item-bg-color);
     border-radius: 6px;
     box-shadow: 0 0 7.5px 0 var(--block-meta-item-shadow) inset;
-    &:nth-child(6) {
-      margin-right: 0;
-    }
+    // &:nth-child(6) {
+    //   margin-right: 0;
+    // }
     div {
       height: 30px;
       line-height: 30px;

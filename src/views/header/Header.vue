@@ -265,6 +265,7 @@ export default {
   & + span {
     font-size: 30px;
     color: var(--logo-text-color);
+    text-shadow: 0 0 4px var(--logo-text-color);
   }
 }
 @media (max-width: 768px) {

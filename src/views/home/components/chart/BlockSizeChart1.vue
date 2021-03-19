@@ -7,24 +7,39 @@
    <div class="info-con">
       <div class="power-info bottom-10">
         <span>
-          {{ $t("home.blockSize.t1") }}：
+          {{ $t("home.blockSize.t1") }}:
         </span>
-        <span  v-show="!loading">{{ data1 }}</span>
+        <span class="top-10" v-show="!loading">{{ data1 }}</span>
       </div>
       <div class="power-info bottom-10">
         <span>
-          {{ $t("home.blockSize.t2") }}：
+          {{ $t("home.blockSize.t2") }}:
         </span>
-        <span style="color:var(--block-size-color)" v-show="!loading">{{ data2 }}</span>
+        <span class="top-10 " style="color:var(--block-size-color)" v-show="!loading">{{ data2 }}</span>
       </div>
       <div class="power-info bottom-10">
         <span>
-          {{ $t("home.blockSize.t3") }}：
+          {{ $t("home.blockSize.t3") }}:
         </span>
-        <span style="color: #0091ff;" v-show="!loading">{{ data3 }}</span>
+        <span class="top-10" style="color: #0091ff;" v-show="!loading">{{ data3 }}</span>
       </div>
     </div>
-    
+    <!-- <div class="size-info-con">
+      <div class="top-30">
+        {{ $t("home.blockSize.label") }}
+        <el-popover
+          placement="bottom-start"
+          width="200"
+          trigger="hover"
+          :content="$t('home.blockSize.tips')"
+        >
+          <i class="el-icon-warning-outline" slot="reference"></i>
+        </el-popover>
+      </div>
+      <div v-show="!loading">
+        {{ $t("home.blockSize.size", { avg: avgSize }) }}
+      </div>
+    </div> -->
     <div class="chart-con" ref="size"></div>
   </div>
 </template>
@@ -67,53 +82,31 @@ export default {
            type: 'category',
            boundaryGap: false,
           data: xdata,
-          axisTick: {
-            show: false,
-          },
           axisLine: {
-            show: false,
+            lineStyle: {
+              color: '#666666'
+            }
           },
-          axisLabel: {
-            textStyle: {
-              color: '#ffffff',
-              fontSize: '10'
-            },
+          axisLabel:{
+            show:false
           },
+          
+          axisTick: {
+            show: false
+          }
         },
         yAxis: {
-          type:'value',
-    
-          scale: true,
-          splitNumber: 3,
-          axisLine: {
-              show:false
-          },
-          splitLine: {
-            show: true,
-            lineStyle: {
-              type: 'dashed',
-              color: '#153550',
-            },
-          },
-          axisTick: { show: false },
-          axisLabel: {
-            textStyle: {
-              color: '#ffffff',
-              fontSize: '11'
-            },
-          },
+          show: false,
+          // scale:true
         },
         grid: {
-          left: 40,
-          top: 20,
-          bottom: 40,
-          right: 20
+          left: 0,
+          top: 0,
+          bottom: 10,
+          right: 0
         },
         tooltip: {
           trigger: "axis",
-          axisPointer: {
-            type: "cross",
-          },
           formatter: function(p) {
 
              const html = vm.$t("chart.blockSize", {
@@ -232,31 +225,24 @@ export default {
 </script>
 <style lang="scss" scoped>
 .block-size-chart {
-//   display: flex;
-   height: 300px;
+  display: flex;
+
   .info-con {
     //flex: 2;
     // margin-right: 10px;
     flex-shrink: 0;
     min-width: 180px;
     display: flex;
-    // flex-direction: column;
-    .power-info{
-        display: flex;
-        align-items: center;
-    }
+    flex-direction: column;
     & > div {
       span:last-child {
         font-size: 26px;
-        margin-right: 20px;
         color: var(--total-power-color);
       }
       span:first-child {
-        // color: var(--total-board-top-color);
-        // font-weight: bold;
+        color: var(--total-board-top-color);
+        font-weight: bold;
         margin-right: 5px;
-        font-size: .729vw;
-        color: var(--main-text-color);
       }
     }
   }

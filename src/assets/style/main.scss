@@ -10,10 +10,13 @@
 // }
 .el-menu--horizontal ul {
     background: var(--board-bg-color)!important;
+    min-width: 50px;
     li{
         background: var(--board-bg-color)!important;
+        color: var(--main-text-color) !important;
+        font-size: .729vw;
         &:hover,&.is-active{
-            color: var(--main-text-color)!important;
+            color: var(--force-mark-color)!important;
         }
     }
 }
@@ -82,7 +85,12 @@
     word-break: break-word;
     font-size:12PX;
 }
-
+.flex{
+    display: flex;
+}
+.flex-wrap{
+    flex-wrap: wrap;
+}
 .el-loading-spinner{
     margin-top: -12PX !important;
 }

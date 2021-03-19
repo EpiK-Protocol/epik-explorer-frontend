@@ -19,8 +19,8 @@ export function getLatestMessage(num) {
 }
 export function getBoardInfo() {
   return fetch({
-    method: "post",
-    url: "BaseInformation"
+    method: "get",
+    url: "baseInfomation"
   });
 }
 /*
@@ -64,8 +64,8 @@ param:{
 */
 export function getTotalPowerData(data) {
   return fetch({
-    method: "post",
-    url: "/TotalPowerGraphical",
+    method: "get",
+    url: "/powerGraph",
     data
   });
 }

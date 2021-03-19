@@ -92,7 +92,7 @@ const mixin = {
         : str;
     },
     getFormatTime(time) {
-      return dayjs(time * 1000).format("MMM Do YYYY HH:mm:ss (UTCZ)");
+      return dayjs(time).format("MMM Do YYYY HH:mm:ss (UTCZ)");
     },
     formatTimeByStr(time, str) {
       return dayjs(time).format(str || "MMM Do YYYY");
@@ -116,7 +116,7 @@ const mixin = {
     unitConversion(item, len) {
       let positive = true;
       if (item == 0) {
-        return "0bytes";
+        return "0";
       }
       if (item < 0) {
         positive = false;

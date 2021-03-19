@@ -260,6 +260,99 @@ const zh = {
                 label: ["Cid",  "发送地址", "接收地址", "数额"]
             },
             board: {
+                base: {
+                    Height: {
+                        label: "区块高度",
+                    },
+                    AvgTipSetTime: {
+                        label: "平均每高度时间",
+                    },
+                    TotalBlocks:{
+                        label: "全网出块数量", 
+                    },
+                    TotalEPK:{
+                        label: "全网代币流通总量（EPK）",  
+                    },
+                    CirculationEPK:{
+                        label: "全网代币上限（EPK）",  
+                    },
+                    EPK_USDTPrice:{
+                        label: "当前代币价格（$）",  
+                    }
+
+                },
+                miner: {
+                    TotalMiners: {
+                        label: "完成注册矿工数",
+                    },
+                    PledgedMiners: {
+                        label: "完成抵押矿工数",
+                    },
+                    ActiveMiners:{
+                        label: "当前活跃矿工数", 
+                    },
+                    TotalPower:{
+                        label: "全网有效算力",  
+                    },
+                    TopMinerPower:{
+                        label: "矿工最高算力",  
+                    },
+                    MinerMinWinPower:{
+                        label: "最小每日暴块算力",  
+                    },
+                    TotalMinerPledged:{
+                        label: "全网矿工抵押数（EPK）",  
+                    },
+                    TotalRetrievalPledged:{
+                        label: "全网访问抵押数（EPK）",  
+                    },
+                    TotalPledged:{
+                        label: "全网总抵押数（EPK）",  
+                    },
+                    TotalMiningReward:{
+                        label: "累积出块奖金池（EPK）",  
+                    },
+                    TotalRetrievalReward:{
+                        label: "累积带宽奖金池（EPK）",  
+                    },
+                    DataFlowPerEPK:{
+                        label: "单位抵押代币每日可访问流量（10 MB）",  
+                    },
+                    
+                },
+                expert: {
+                    TotalExperts: {
+                        label: "完成注册专家数",
+                    },
+                    ActiveExperts: {
+                        label: "当前活跃专家数",
+                    },
+                    TotalVote:{
+                        label: "全网专家选票数", 
+                    },
+                    AvgVote:{
+                        label: "平均专家选票数",  
+                    },
+                    TopExpertVote:{
+                        label: "专家最高票数",  
+                    },
+                    TotalDataSize:{
+                        label: "全网有效数据量（GB）",  
+                    },
+                    TotalExpertReward:{
+                        label: "累积专家奖金池（EPK）",  
+                    },
+                    TotalCrowdsourcingReward:{
+                        label: "累积众包奖金池（EPK）",  
+                    },
+                    TotalVoteReward:{
+                        label: "累积投票奖金池（EPK）",  
+                    },
+                    AnnualizedRate:{
+                        label: "投票年化收益率",  
+                    }
+
+                },
                 height: {
                     label: "区块高度",
                     tips: "最新高度"

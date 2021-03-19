@@ -63,6 +63,7 @@ export default {
 html,
 body,
 #app {
+  box-sizing: border-box;
   height: 100%;
   background: var(--main-bg-color);
   font-size: 14px;
@@ -72,6 +73,7 @@ body,
   padding: 90px 20px 10px;
   min-height: calc(100% - 60px);
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 a {
   text-decoration: none;

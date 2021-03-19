@@ -1,0 +1,25 @@
+@HOST=http://127.0.0.1:3002
+@token=
+
+GET {{HOST}}/baseInfomation
+###
+GET {{HOST}}/powerGraph
+###
+GET {{HOST}}/minerGraph
+###
+GET {{HOST}}/epkKline
+###
+GET {{HOST}}/topMiners
+###
+GET {{HOST}}/tipsets?from=&size=20
+###
+GET {{HOST}}/blocks?cid=
+###
+GET {{HOST}}/messages?address=&from=&size=20
+###
+GET {{HOST}}/miners?size=20&offset=0
+###
+GET {{HOST}}/experts?size=20&offset=0
+###
+GET {{HOST}}/search?world=
+###
