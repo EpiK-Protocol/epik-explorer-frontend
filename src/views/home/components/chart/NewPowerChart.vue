@@ -83,7 +83,7 @@ export default {
           type:'value',
           name: '全网算力',
           nameTextStyle: {
-            color: '#ffffff',
+            color: '#00ccf8',
           },
           scale: true,
           splitNumber: 3,
@@ -103,8 +103,8 @@ export default {
               color: '#ffffff',
               fontSize: '11'
             },
-            formatter:function(val){
-              return  vm.unitConversion(val)
+            formatter: function(p) {
+              return vm.unitConversion(p)
             }
           },
       
@@ -112,7 +112,7 @@ export default {
           type:'value',
           name: '算力增长',
           nameTextStyle: {
-            color: '#ffffff',
+            color: '#f3921b',
           },
           scale: true,
           splitNumber: 3,
@@ -132,16 +132,16 @@ export default {
               color: '#ffffff',
               fontSize: '11'
             },
-            formatter:function(val){
-              return  vm.unitConversion(val)
+            formatter: function(p) {
+              return vm.unitConversion(p)
             }
           },
       
         }],
         grid: {
-          left: 45,
-          top: 40,
-          right: 45,
+          left: 50,
+          top: 30,
+          right: 50,
           bottom: 20,
         },
         tooltip: {
@@ -197,7 +197,7 @@ export default {
         const dataList = res.graph.map((item) => {
           return {
             // name: this.formatTimeByStr(item.time * 1000, "MMM Do YYYY HH:mm"),
-            name: this.formatTimeByStr(item.Time, "MM-DD"),
+            name: this.formatTimeByStr(item.Time, "MM/DD"),
             RawPower: item.TotalPower,
             QualityPower: item.PowerIncr,
             // value: item.power
@@ -235,6 +235,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+
 .total-power-chart {
   display: flex;
   height: 300px;

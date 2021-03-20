@@ -546,7 +546,7 @@ const zh = {
             blockTime: "<div style='margin-bottom:5px'>平均出块时间: {value}s</div><div>时间: {name}</div>",
             // blockSize: "<div style='margin-bottom:5px'>平均区块元数据大小: {value}字节</div><div>时间: {name}</div>",
             blockSize: "<div>注册矿工: {t1}</div><div>完成抵押: {t2}</div><div>出块矿工: {t3}</div>",
-            totalPower: "<div style='margin-bottom:5px'>有效算力: {qualityPower}</div><div style='margin-bottom:5px'>原值算力: {rawPower}</div><div>时间: {name}</div>",
+            totalPower: "<div class='circle1' style='margin-bottom:5px'>有效算力: {qualityPower}</div><div class='circle2' style='margin-bottom:5px'>原值算力: {rawPower}</div><div>时间: {name}</div>",
             mesHistory: "<div>消息: {count}</div><div>{time}</div>",
             mesHistoryTitle: "近14天消息历史",
             topPowerTitleText: "矿工{power}排行",

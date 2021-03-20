@@ -8,7 +8,7 @@
   </div>
 </template>
 <script>
-import { getTotalPowerData } from "@/api/home";
+import { getKLineData } from "@/api/home";
 let chart;
 export default {
   name: "KLineChartt",
@@ -40,26 +40,22 @@ export default {
       //   seriesMarkLine
       // } = this.chartTheme.blockSize.seriesItem;
       const xData = series.map((item) => {
-        return {
-          value: item.name,
-        };
+        return item.time
       });
       const series1 = series.map((item) => {
-        return {
-          value: item.RawPower,
-        };
+        return item.data
       });
-      const series2 = series.map((item) => {
-        return {
-          value: item.QualityPower,
-        };
-      });
+      // const series2 = series.map((item) => {
+      //   return {
+      //     value: item.QualityPower,
+      //   };
+      // });
       const vm = this;
       const option = {
         animation: false,
         xAxis: {
           type: "category",
-          data: ["10-24", "10-25", "10-26", "10-27","10-28","11-01","11-02","11-03"],
+          data: xData,
            axisTick: {
             show: false,
           },
@@ -73,24 +69,12 @@ export default {
             },
           },
         },
-        // xAxis: {
-
-        //   boundaryGap: false,
-        //   axisLine: {
-        //     lineStyle: {
-        //       color: '#153550'
-        //     }
-        //   },
-        // //   axisLabel: {
-        // //     show: false
-        // //   },
-        // //   axisTick: {
-        // //     show: false
-        // //   },
-        // //   data: xData
-        //     data: ['2017-10-24', '2017-10-25', '2017-10-26', '2017-10-27']
-        // },
+     
         yAxis: {
+          name:'价格',
+          nameTextStyle: {
+            color: '#ffffff',
+          },
           scale: true,
           splitNumber: 3,
           axisLine: {
@@ -114,7 +98,7 @@ export default {
         },
         grid: {
           left: 30,
-          top: 20,
+          top: 30,
           right: 0,
           bottom: 20,
         },
@@ -135,19 +119,35 @@ export default {
           //     return html;
           //   }
         },
+        dataZoom: [
+          {
+              type: 'inside',
+              start: 80,
+              end: 100
+          },
+          // {
+          //     show: false,
+          //     type: 'slider',
+          //     top: '90%',
+          //     start: 30,
+          //     end: 100
+          // }
+        ],
         series: [
           {
             type: "k",
-            data: [
-              [20, 34, 10, 38],
-              [40, 35, 30, 50],
-              [31, 38, 33, 44],
-              [38, 15, 5, 42],
-              [31, 38, 33, 44],
-              [38, 15, 5, 42],
-              [31, 38, 33, 44],
-              [38, 15, 5, 42],
-            ],
+            name: 'EPK',
+            data: series1,
+            // [
+            //   [20, 34, 10, 38],
+            //   [40, 35, 30, 50],
+            //   [31, 38, 33, 44],
+            //   [38, 15, 5, 42],
+            //   [31, 38, 33, 44],
+            //   [38, 15, 5, 42],
+            //   [31, 38, 33, 44],
+            //   [38, 15, 5, 42],
+            // ],
             barMaxWidth: 10,
             itemStyle: {
               normal: {
@@ -163,32 +163,20 @@ export default {
       };
       chart.setOption(option);
     },
-    async getTotalPowerData() {
+    async getKLineData() {
       try {
         this.loading = true;
-        const res = await getTotalPowerData({
-          time: this.time.end_time,
-        });
+        const res = await getKLineData();
         // console.log(res)
         this.loading = false;
         // debugger
-        // 8.9
-        const dataList = res.data.map((item) => {
+        const dataList = res.kline.map((item) => {
           return {
-            // name: this.formatTimeByStr(item.time * 1000, "MMM Do YYYY HH:mm"),
-            name: this.formatTimeByStr(item.Time * 1000, "MMM Do YYYY HH:mm"),
-            RawPower: item.RawPower,
-            QualityPower: item.QualityPower,
-            // value: item.power
-            // value: item.Power
+            time: this.formatTimeByStr(item.id * 1000, "HH:mm"),
+            data: [item.open,item.close,item.low,item.high]
           };
         });
-        this.storageCapacity = this.unitConversion(res.storage_capacity, 3);
-        this.RawPower = this.unitConversion(dataList.slice(-1)[0].RawPower, 3);
-        this.QualityPower = this.unitConversion(
-          dataList.slice(-1)[0].QualityPower,
-          3
-        );
+  
         this.dataList = Object.freeze(dataList);
         this.drawPowerChart();
       } catch (e) {
@@ -198,14 +186,14 @@ export default {
   },
   mounted() {
     chart = this.$chart.init(this.$refs.power);
-    this.getTotalPowerData();
+    this.getKLineData();
   },
   watch: {
     latestBlockHeight() {
       if (this.loadCount === 1) {
         return;
       }
-      this.getTotalPowerData();
+      this.getKLineData();
     },
     theme() {
       this.drawPowerChart();

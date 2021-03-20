@@ -41,7 +41,7 @@ export default {
       loading: false,
       Total:[],
       Pledged:[],
-      Won:[],
+      Actived:[],
       data1:0,
       data2:0,
       data3:0,
@@ -151,7 +151,7 @@ export default {
             // }
           },
           {
-            data: vm.Won,
+            data: vm.Actived,
             type: "line",
             symbol: "none",
             smooth: true,
@@ -172,15 +172,16 @@ export default {
         const res = await getMinerStatus(this.time);
         this.loading = false;
       
-        const { list } = res;
+        const { graph } = res;
+        const list = graph 
         for (var i=0;i<list.length;i++){
           this.Total.push(list[i].Total)
           this.Pledged.push(list[i].Pledged)
-          this.Won.push(list[i].Won)
+          this.Actived.push(list[i].Actived)
           if(i==list.length-1){
             this.data1 = list[i].Total
             this.data2 = list[i].Pledged
-            this.data3 = list[i].Won
+            this.data3 = list[i].Actived
           }
         }
         

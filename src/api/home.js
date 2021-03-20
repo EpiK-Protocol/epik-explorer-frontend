@@ -53,7 +53,7 @@ export function getBlocSizeData(data) {
 export function getMinerStatus(data) {
   return fetch({
     method: "get",
-    url: "MinerStatus",
+    url: "minerGraph",
     data
   });
 }
@@ -66,6 +66,13 @@ export function getTotalPowerData(data) {
   return fetch({
     method: "get",
     url: "/powerGraph",
+    data
+  });
+}
+export function getKLineData(data) {
+  return fetch({
+    method: "get",
+    url: "/epkKline",
     data
   });
 }
