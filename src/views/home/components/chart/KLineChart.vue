@@ -40,10 +40,10 @@ export default {
       //   seriesMarkLine
       // } = this.chartTheme.blockSize.seriesItem;
       const xData = series.map((item) => {
-        return item.time
+        return item.time;
       });
       const series1 = series.map((item) => {
-        return item.data
+        return item.data;
       });
       // const series2 = series.map((item) => {
       //   return {
@@ -56,7 +56,7 @@ export default {
         xAxis: {
           type: "category",
           data: xData,
-           axisTick: {
+          axisTick: {
             show: false,
           },
           axisLine: {
@@ -64,42 +64,41 @@ export default {
           },
           axisLabel: {
             textStyle: {
-              color: '#ffffff',
-              fontSize: '10'
+              color: "#ffffff",
+              fontSize: "10",
             },
           },
         },
-     
+
         yAxis: {
-          name:'价格',
+          name: "价格",
           nameTextStyle: {
-            color: '#ffffff',
+            color: "#ffffff",
           },
           scale: true,
           splitNumber: 3,
           axisLine: {
-              show:false
+            show: false,
           },
           splitLine: {
             show: true,
             lineStyle: {
-              type: 'dashed',
-              color: '#153550',
+              type: "dashed",
+              color: "#153550",
             },
           },
           axisTick: { show: false },
           axisLabel: {
             textStyle: {
-              color: '#ffffff',
-              fontSize: '11'
+              color: "#ffffff",
+              fontSize: "11",
             },
           },
-      
         },
         grid: {
           left: 30,
           top: 30,
-          right: 0,
+          right: 30,
           bottom: 20,
         },
         tooltip: {
@@ -107,7 +106,6 @@ export default {
           axisPointer: {
             type: "cross",
           },
-      
 
           //   formatter: function(p) {
           //     const html = vm.$t("chart.totalPower", {
@@ -121,33 +119,16 @@ export default {
         },
         dataZoom: [
           {
-              type: 'inside',
-              start: 80,
-              end: 100
+            type: "inside",
+            start: 85,
+            end: 100,
           },
-          // {
-          //     show: false,
-          //     type: 'slider',
-          //     top: '90%',
-          //     start: 30,
-          //     end: 100
-          // }
         ],
         series: [
           {
             type: "k",
-            name: 'EPK',
+            name: "EPK",
             data: series1,
-            // [
-            //   [20, 34, 10, 38],
-            //   [40, 35, 30, 50],
-            //   [31, 38, 33, 44],
-            //   [38, 15, 5, 42],
-            //   [31, 38, 33, 44],
-            //   [38, 15, 5, 42],
-            //   [31, 38, 33, 44],
-            //   [38, 15, 5, 42],
-            // ],
             barMaxWidth: 10,
             itemStyle: {
               normal: {
@@ -155,12 +136,101 @@ export default {
                 color0: "#eb5454",
                 borderColor: "#47b262",
                 borderColor0: "#eb5454",
-                borderWidth: 1
+                borderWidth: 1,
               },
+            },
+            markPoint: {
+              // Symbol: false,
+              symbolSize: 40,
+              label: {
+                normal: {
+                  fontSize: 10,
+                  formatter: function (param) {
+                    return param != null ? param.value.toFixed(2) : "";
+                  },
+                },
+              },
+              data: [
+                {
+                  name: "最近成交价",
+                  type: "max",
+                  valueIndex: 0,
+                  symbol: "rect",
+                  symbolSize: [50, 20],
+                  symbolOffset: [54, 0],
+                  symbolKeepAspect: true,
+                  itemStyle: {
+                    color: "rgba(0,0,0,0)",
+                  },
+                  label: {
+                    formatter: (item) => {
+                      // debugger
+                      return item.data.coord[1];
+                    },
+                    fontSize: 10,
+                  },
+                },
+
+                {
+                  name: "highest value",
+                  type: "max",
+                  valueDim: "highest",
+                },
+                {
+                  name: "lowest value",
+                  type: "min",
+                  valueDim: "lowest",
+                  // color:'#eb5454',
+                  itemStyle: {
+                    color: "#eb5454",
+                  },
+                  
+                  // symbolRotate: 180,
+                  // symbolOffset: [0,0]
+                },
+              ],
+              tooltip: {
+                formatter: function (param) {
+                  return param.name + "<br>" + (param.data.coord || "");
+                },
+              },
+            },
+            markLine: {
+              //     symbol: ['none', 'none'],
+              data: [
+                //         {
+                //             name: 'min line on close',
+                //             type: 'min',
+                //             // valueDim: 'close',
+                //             // series1[series1.length-1][1]
+                //             // xData[xData.length-1]
+                //             coord: ['15:00','1.06'],
+                //             label:{
+                //               show: true,
+                //               fontSize: 10
+                //             },
+                //             lineStyle:{
+                //               color: "rgba(255, 255, 255, .8)",
+                //             }
+                //         },
+                //         // {
+                //         //     name: 'max line on close',
+                //         //     type: 'max',
+                //         //     valueDim: 'open',
+                //         //     label:{
+                //         //       show: true,
+                //         //       fontSize: 10
+                //         //     },
+                //         //     lineStyle:{
+                //         //       color: "rgba(255, 255, 255, .8)",
+                //         //     }
+                //         // }
+              ],
             },
           },
         ],
       };
+
       chart.setOption(option);
     },
     async getKLineData() {
@@ -173,10 +243,10 @@ export default {
         const dataList = res.kline.map((item) => {
           return {
             time: this.formatTimeByStr(item.id * 1000, "HH:mm"),
-            data: [item.open,item.close,item.low,item.high]
+            data: [item.open, item.close, item.low, item.high],
           };
         });
-  
+
         this.dataList = Object.freeze(dataList);
         this.drawPowerChart();
       } catch (e) {

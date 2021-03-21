@@ -178,6 +178,7 @@ export default {
   },
   computed: {
     columnsWithLabel() {
+      
       return this.columns.map((item, index) => {
         return {
           ...item,

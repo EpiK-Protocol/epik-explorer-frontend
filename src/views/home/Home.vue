@@ -10,16 +10,21 @@
       <total-board />
       <total-chart />
     </div>
-    <div class="block-message-table bottom-20">
+    <!-- <div class="block-message-table bottom-20">
       <block-table />
       <message-table />
+    </div> -->
+    <div class="block-message-table bottom-20">
+      <miner-table/>
     </div>
+    
       </div>
 </template>
 
 <script>
 import * as components from "./components";
 import TicketChain from "../tipset/components/TicketChain";
+import MinerTable from './components/table/MinerTable.vue';
 export default {
   name: "Home",
   data() {
@@ -69,7 +74,7 @@ export default {
     box-sizing: border-box;
     & > div {
       flex: 1;
-      max-width: 50%;
+      // max-width: 50%;
       background: var(--main-bg-color);
     }
     & > div:first-child {

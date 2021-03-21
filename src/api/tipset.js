@@ -7,8 +7,8 @@ param:{
 */
 export function getTipset(data) {
   return fetch({
-    url: "tipset/TipSetTree",
-    method: "post",
+    url: "tipsets?from=&size=15",
+    method: "get",
     data
   });
 }

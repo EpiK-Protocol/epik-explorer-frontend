@@ -183,6 +183,10 @@ const en = {
       // label: ["Height", "Hash", "Blocktime", "Miner", "Reward"]
       label: ["Height", "Hash", "BlockTime", "Miner", "GasReward","BlockReward"]
     },
+    minerTable: {
+      title: "Miner",
+      label: ["Rank", "Miner", "Tag", "QualityAdjPower", "RawBytePower","Blocks" ,"Rewards","Last Block Tipset"]
+    },
     messageTable: {
       title: "Message",
       // label: ["Message ID", "Time", "From", "To", "Value"]

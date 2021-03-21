@@ -1,11 +1,22 @@
 import { fetch } from "./fetch";
-export function getLatestBlock(num) {
+export function getLatestBlock() {
   return fetch({
-    method: "post",
-    url: "LatestBlock",
-    data: {
-      num
-    }
+    method: "get",
+    // url: "LatestBlock",
+    url: 'tipsets?from=&size=20',
+    // data: {
+    //   num
+    // }
+  });
+}
+export function getTopMiner() {
+  return fetch({
+    method: "get",
+    // url: "LatestBlock",
+    url: 'topMiners',
+    // data: {
+    //   num
+    // }
   });
 }
 export function getLatestMessage(num) {

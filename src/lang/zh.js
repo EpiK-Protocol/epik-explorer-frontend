@@ -249,6 +249,10 @@ const zh = {
                 power: "原值算力",
                 capacity: "有效算力"
             },
+            minerTable: {
+                title: "矿工",
+                label: ["排名", "矿工ID", "标签", "有效算力", "原值算力","出块数" ,"累计奖励","最后出块高度"]
+            },
             blockTable: {
                 title: "区块",
                 // label: ["区块高度", "哈希", "块龄", "矿工", "奖励"]

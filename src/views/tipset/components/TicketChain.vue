@@ -148,10 +148,11 @@ export default {
       const height = data.block.Height;
       currentHeight = height;
     } else {
-      let data = await getLatestBlock(1);
+      let res = await getLatestBlock();
       //8.9
-      // console.log(data)
-      const height = data.block_header[0].Height;
+      let data = res.list
+      console.log(data)
+      const height = data[0].Height;
       // const height = data.block_header[0].block_header.height;
       currentHeight = height;
       this.jumpSafeHeight = height;
@@ -187,7 +188,7 @@ export default {
         // debugger
 
         //8.9
-        const reverse = res.tipsets.reverse();
+        const reverse = res.list.reverse();
         // const reverse = res.tipsets;
 
         reverse.forEach(item => {
@@ -196,36 +197,7 @@ export default {
           // }
             blocks = blocks.concat(item);
         });
-        // debugger
-        // blocks = blocks.map(item => {
-          // const { size, cid, reward, block_header, msg_cids } = item;
-          
-          // const {
-          //   timestamp,
-          //   height,
-          //   miner,
-          //   parent_weight,
-          //   tickets,
-          //   parents,
-          //   parent_state_root
-          // } = block_header;
-          // return {
-          //   height: this.formatNumber(height),
-          //   hash: cid,
-          //   timestamp: this.formatTime(timestamp),
-          //   utcTime: this.getFormatTime(timestamp),
-          //   size: this.formatNumber(size),
-          //   mesLength: msg_cids.length,
-          //   miner,
-          //   reward,
-          //   parents,
-          //   parent_weight: this.formatNumber(parent_weight),
-          //   tickets,
-          //   state_root: parent_state_root
-          // };
-          
 
-          // }
           let blocks1 = []
  for(let i = 0;i<blocks.length;i++){
    const { Blocks, Cids } = blocks[i];
@@ -259,7 +231,7 @@ export default {
         }
 
  }
-          
+          console.log(blocks1)
         const hashList = blocks1.map(item => {
           return item.hash;
         });
@@ -549,7 +521,7 @@ export default {
       }
       if (this.jumpSafeHeight === 0) {
         let data = await getLatestBlock(1);
-        this.jumpSafeHeight = Number(data.block_header[0].block_header.height);
+        this.jumpSafeHeight = Number(data.list[0].Height);
       }
       if (Number(this.startHeight) + 15 >= this.jumpSafeHeight) {
         jumpHeight = this.jumpSafeHeight;
