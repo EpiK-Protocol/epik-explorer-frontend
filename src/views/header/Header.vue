@@ -155,6 +155,7 @@ export default {
   box-shadow: 0px 1px 0.208vw 0.26vw rgb(0 ,0 ,0 / 30%);
   .lang-switch{
     margin: 0 2vw;
+    font-size:12PX;
     color: var(--force-mark-color);
     cursor: pointer;
     display: -webkit-box;
@@ -182,11 +183,10 @@ export default {
       background: var(--board-bg-color);
       li::v-deep{
         color: var(--main-text-color);
-        font-size: .729vw;
+        font-size: 13PX;
         &.is-active{
           font-weight: bold;
           color: var(--force-mark-color);
-          font-size: .938vw;
           border-bottom: none;
           div{
             border-bottom: 2px solid var(--force-mark-color); 
@@ -282,7 +282,7 @@ export default {
   .el-submenu__title{
     line-height: 3.646vw;
     height: 3.646vw;
-    font-size: .729vw;
+    font-size: 13PX;
     color: var(--main-text-color) !important;
   }
   .el-submenu__title i{

@@ -113,6 +113,14 @@ const zh = {
                         index: "/tipset"
                     },
                     {
+                        label: "矿工排行",
+                        index: "/mining"
+                    },
+                    {
+                        label: "领域专家",
+                        index: "/experts"
+                    },
+                    {
                         label: "查看全部消息",
                         index: "/message"
                     },
@@ -252,6 +260,11 @@ const zh = {
             minerTable: {
                 title: "矿工",
                 label: ["排名", "矿工ID", "标签", "有效算力", "原值算力","出块数" ,"累计奖励","最后出块高度"]
+            },
+            expertTable:{
+                title: "领域专家",
+                label: ["账户ID", "状态", "投票数", "申请表", "有效数据贡献量（GB）","上传有效数据文件数" ,"累计奖励"]
+
             },
             blockTable: {
                 title: "区块",

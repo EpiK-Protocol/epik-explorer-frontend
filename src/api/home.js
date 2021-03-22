@@ -19,6 +19,22 @@ export function getTopMiner() {
     // }
   });
 }
+export function getMiner(params) {
+  return fetch({
+    method: "get",
+    // url: "LatestBlock",
+    url: 'miners',
+    params
+  });
+}
+export function getExperts(params) {
+  return fetch({
+    method: "get",
+    // url: "LatestBlock",
+    url: 'experts',
+    params
+  });
+}
 export function getLatestMessage(num) {
   return fetch({
     method: "post",

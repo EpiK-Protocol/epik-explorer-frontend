@@ -127,7 +127,7 @@ export default {
       &.params {
         height: auto;
         span:last-child {
-          font-size: 12px;
+          font-size: 12PX;
           color: var(--white);
         }
       }

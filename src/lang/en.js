@@ -109,6 +109,14 @@ const en = {
             index: "/tipset"
           },
           {
+              label: "Top Miners",
+              index: "/mining"
+          },
+          {
+              label: "experts",
+              index: "/experts"
+          },
+          {
             label: "View All Messages",
             index: "/message"
           },
@@ -187,6 +195,11 @@ const en = {
       title: "Miner",
       label: ["Rank", "Miner", "Tag", "QualityAdjPower", "RawBytePower","Blocks" ,"Rewards","Last Block Tipset"]
     },
+    expertTable:{
+      title: "Expert",
+      label: ["ID", "Status", "VoteAmount", "ApplicationHash", "FileSize（GB）","FileCount" ,"Reward"]
+
+  },
     messageTable: {
       title: "Message",
       // label: ["Message ID", "Time", "From", "To", "Value"]

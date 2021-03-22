@@ -1,15 +1,18 @@
 <template>
-  <div class="block-table">
+  <div class="block-table miner-table">
+    <!-- :max-height="isMobile ? 200 : 400 * rate" -->
+    <div class="top-miner">
+      <div class="titl">矿工排行</div>
+      <div class="more" @click="goTo('minerList')">More ></div>
+
+    </div>
+    
     <base-table
       :dataSource="blockTable.dataSource"
       :columns="blockTable.columns"
-      :loadMore="true"
-      @load="loadBlockData"
       :showLoading="blockTable.loading"
-      :showAppend="blockTable.append && !isMobile"
-      @click-append="goTo('tipset')"
-    
-      :max-height="isMobile ? 200 : 400 * rate"
+      @click-append="goTo('mining')"
+  
       :labels="$t('home.minerTable.label')"
       radius
     ></base-table>
@@ -20,6 +23,9 @@ import { getTopMiner } from "@/api/home";
 import { mapState } from "vuex";
 export default {
   name: "MinerTable",
+  mounted(){
+      this.loadBlockData()
+  },
   data() {
     return {
       blockTable: {
@@ -67,7 +73,7 @@ export default {
   methods: {
  
     async getBlockData(num) {
-
+      const vm = this;
       this.blockTable.loading = true;
       this.blockTable.span = false;
       try {
@@ -82,15 +88,15 @@ export default {
             Rank: index + 1, 
             Miner: ID,
             Tag: NewWorker,
-            QualityAdjPower: MinerPower.QualityAdjPower,
-            RawBytePower: MinerPower.RawBytePower, 
+            QualityAdjPower: vm.unitConversion(MinerPower.QualityAdjPower,3),
+            RawBytePower: vm.unitConversion(MinerPower.RawBytePower,3), 
             Blocks: '',
             Rewards: "",
             lastblock: "", 
 
           };
         });
-        console.log(dataSource)
+        // console.log(dataSource)
         this.blockTable.dataSource = dataSource;
      
         this.blockTable.loading = false;
@@ -103,7 +109,7 @@ export default {
       if (this.blockTable.loading) {
         return;
       }
-      if (this.blockTable.loadCount == 3) {
+      if (this.blockTable.loadCount == 1) {
         this.blockTable.append = true;
         return;
       } else {
@@ -126,6 +132,27 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.miner-table{
+  /deep/ .el-table{
+        max-height: 700px !important;
+  }
+}
+.top-miner{
+  padding: 1.042vw;
+  background: var(--board-bg-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .titl{
+    font-size: 14PX;
+    color: var(--force-mark-color);
+  }
+  .more{
+    cursor: pointer;
+    font-size:12PX;
+  }
+}
 .block-miner-table {
   display: flex;
   & > div {

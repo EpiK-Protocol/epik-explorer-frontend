@@ -219,7 +219,7 @@ export default {
     }
     div:first-child {
       margin-bottom: 5px;
-      font-size: 11px;
+      font-size: 11PX;
       span {
         position: relative;
         i {
@@ -246,12 +246,12 @@ export default {
         height: 20px;
         line-height: 20px !important;
         color: var(--total-board-bottom-color) !important;
-        font-size: 10px;
+        font-size: 10PX;
         &:first-child {
           color: var(--total-board-top-color) !important;
         }
         &:last-child {
-          font-size: 12px;
+          font-size: 12PX;
         }
       }
     }

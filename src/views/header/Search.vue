@@ -140,12 +140,13 @@ export default {
       background: var(--board-bg-color) !important;
       color: var(--main-text-color);
       height: 40px!important;
+      line-height: 40px;
       
       padding: 0 0 0 40px!important;
       // border: none!important;
       border-radius: 0!important;
       
-      font-size: .625vw;
+      font-size: 12PX;
       box-sizing: border-box;
       
       
@@ -166,7 +167,7 @@ export default {
     
       .el-select .el-input input{
         color: var(--search-text-color) !important;
-        font-size: .625vw;
+        font-size: 12PX;
       }
     }
     &.dark ::v-deep .el-input-group__append {
@@ -175,7 +176,7 @@ export default {
       border-left: 1px solid var(--board-bg-color);
       height: 40px !important;
       line-height:40px!important; 
-      font-size: .625vw;
+      font-size: 13PX;
     }
   }
   & ::v-deep .el-input-group__prepend {
@@ -200,7 +201,7 @@ export default {
   }
   & ::v-deep .el-input__suffix {
       .el-select__caret{
-        font-size: 10px !important;
+        font-size: 12PX !important;
         color: var(--search-text-color);
       }
       i {

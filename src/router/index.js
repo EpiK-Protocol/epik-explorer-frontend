@@ -2,6 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import messageRoute from "./message";
 import addressRoute from "./address";
+import minerRoute from "./miner";
+import expertsRoute from "./experts";
 import statsRoute from "./stats";
 import NoResult from "../views/no-result/NoResult.vue";
 import NotFound from "../views/404/404.vue";
@@ -29,7 +31,9 @@ const routes = [
   },
   ...messageRoute,
   ...addressRoute,
+  ...minerRoute,
   ...statsRoute,
+  ...expertsRoute,
   {
     path: "/about",
     name: "about",

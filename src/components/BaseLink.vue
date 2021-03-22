@@ -40,7 +40,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .el-link {
-    font-size: 12px !important;
+    font-size: 12PX !important;
   }
 .el-link.underline {
   text-decoration: underline;

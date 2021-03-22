@@ -1,6 +1,7 @@
 <template>
   <div class="base-table">
     <slot name="header"></slot>
+    <!-- :height="700 * rate" -->
     <el-table
       :data="dataSource"
       :stripe="stripe"
@@ -272,22 +273,33 @@ export default {
   }
   & ::v-deep .el-table__header-wrapper {
     tr {
-      height: 60px;
+      height: 40PX;
     }
   }
-  & ::v-deep .el-table__body-wrapper {
-    tr {
-      height: 60px;
-    }
-  }
+  // & ::v-deep .el-table__body-wrapper {
+  //   tr {
+  //     height: 60px;
+  //   }
+  // }
   & ::v-deep .el-table {
     padding-bottom: 20px;
     background: var(--board-bg-color) !important;
     &::before {
       height: 0 !important;
     }
+    .el-table__header-wrapper{
+      // height: 40PX !important;
+    }
+    thead{
+      font-weight: 400;
+    }
+    .cell{
+      line-height: 25PX;
+    }
     .header-row th {
-      background: var(--table-header-bg-color);
+      background: var(--board-item-bg-color);
+      font-size: 12PX;
+      // background: var(--table-header-bg-color);
       color: var(--table-header-text-color);
       border-bottom-color: var(--table-header-border-color) !important;
     }
@@ -334,7 +346,7 @@ export default {
     }
     &.mini th,
     &.mini tr {
-      height: 20px;
+      // height: 10px;
     }
   }
   & ::v-deep .el-pagination {

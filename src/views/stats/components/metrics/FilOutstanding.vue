@@ -242,7 +242,7 @@ export default {
           text-align: center;
         }
         & div:first-child {
-          font-size: 12px !important;
+          font-size: 12PX !important;
         }
         div:last-child {
           margin: 4vw 0 2vw;
