@@ -77,38 +77,7 @@ export default {
         { labelKey: "TotalVoteReward", key: "TotalVoteReward",unit:"",},
         { labelKey: "AnnualizedRate", key: "AnnualizedRate",unit:"",},
       ],
-      base1: [
-        {
-          labelKey: "Height",
-          key: "Height",
-          unit: "",
-        },
-        {
-          labelKey: "AvgTipSetTime",
-          key: "AvgTipSetTime",
-          unit: "",
-        },
-        {
-          labelKey: "TotalBlocks",
-          key: "TotalBlocks",
-          unit: "",
-        },
-        {
-          labelKey: "avgGas",
-          key: "avg_gas_price",
-          unit: "",
-        },
-        {
-          labelKey: "avgMsg",
-          key: "avg_message_size",
-          unit: "bytes",
-        },
-        {
-          labelKey: "pledge",
-          key: "pledge_collateral",
-          unit: "tEPK",
-        },
-      ],
+  
       timer: null,
       loading: false,
     };
@@ -142,25 +111,38 @@ export default {
           };
         });
         this.miner = this.miner.map((item) => {
-          return {
-            ...item,
-            value: 
-            this.formatNumber(
+        
+      
+            let value = this.formatNumber(
               item.key === "TotalMiningReward"|| item.key === "TotalRetrievalReward"
                 ? parseFloat(res.minerInfomation[item.key]).toFixed(4)
                 : res.minerInfomation[item.key]
-            ),
+            )
+            if(item.key == 'DataFlowPerEPK'){
+              value = value + '/10 MB'
+            }
+       
+          
+          return {
+            ...item,
+            value
           };
         });
         this.expert = this.expert.map((item) => {
+          
+          let value;
+          if(item.key == 'TotalDataSize'){
+            value = this.unitConversion(res.expertInfomation[item.key], 2)
+          }else{
+            value = this.formatNumber(
+                item.key === "CirculationEPK"|| item.key === "EPK_USDTPrice"
+                  ? parseFloat(res.expertInfomation[item.key]).toFixed(4)
+                  : res.expertInfomation[item.key]
+            )
+          }
           return {
             ...item,
-            value: 
-            this.formatNumber(
-              item.key === "CirculationEPK"|| item.key === "EPK_USDTPrice"
-                ? parseFloat(res.expertInfomation[item.key]).toFixed(4)
-                : res.expertInfomation[item.key]
-            ),
+            value 
           };
         });
         // this.setHeight(info.tipset_height);
@@ -198,7 +180,6 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    // background: var(--board-bg-color);
     background: var(--board-item-bg-color);
     border-radius: 6px;
     box-shadow: 0 0 7.5px 0 var(--block-meta-item-shadow) inset;
@@ -218,8 +199,10 @@ export default {
       font-weight: 600;
     }
     div:first-child {
-      margin-bottom: 5px;
-      font-size: 11PX;
+      // margin-bottom: 5px;
+      // font-size: 11PX;
+      font-size: .729vw;
+      
       span {
         position: relative;
         i {
@@ -233,25 +216,34 @@ export default {
 }
 @media (max-width: 768px) {
   .total-board {
+    .titl-board{
+        font-size: 12px;
+        margin-bottom: 5px;
+
+      }
     .info-item {
       flex: 1;
       min-width: 45%;
       margin-bottom: 10px;
       box-sizing: border-box;
       margin-right: 0;
+      height: 53px;
+      
       &:nth-child(2n + 1) {
         margin-right: 10px;
       }
       div {
         height: 20px;
         line-height: 20px !important;
-        color: var(--total-board-bottom-color) !important;
-        font-size: 10PX;
+        color: var(--total-board-bottom-color);
+        
         &:first-child {
+          font-size: 10px;
           color: var(--total-board-top-color) !important;
         }
         &:last-child {
-          font-size: 12PX;
+          font-size: 12px;
+          color: var(--force-mark-color);
         }
       }
     }

@@ -12,9 +12,9 @@
           <span :class="$i18n.locale === 'en'?'active':''" >EN</span>/
           <span :class="$i18n.locale === 'zh'?'active':''">中文</span>
         </div>
-        <img :src="searchSrc" style="width:4.2vw" alt @click="showSearch = true" />
-        <!-- <img :src="moreSrc" alt @click="showNav = true" /> -->
-        <theme-switch />
+        <img :src="searchSrc" style="width:4.2vw;margin-right: 2vw;" alt @click="showSearch = true" />
+        <img :src="moreSrc" alt @click="showNav = true" />
+        <!-- <theme-switch /> -->
       </div>
       <div class="close" v-else @click="hide">
         <span class="el-icon-close"></span>
@@ -121,9 +121,9 @@ export default {
         .lang-switch {
           margin-right: 2vw;
           color: #ccc;
-          font-size: 14px;
+          font-size: 12px;
           span.active{
-            color: var(--main-text-color);
+            color: var(--force-mark-color);
           }
         }
       }

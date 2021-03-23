@@ -183,13 +183,13 @@ export default {
                     type: 'address'
                 });
             }
-          data.msgs = data.list;
-          data.total = data.list.length;
+          data.msgs = data.messages;
+          data.total = data.messages.length;
         // }
         this.total = Number(data.total);
-        const messageData = data.msgs.map(item => {
+        const messageData = data.messages.map(item => {
           const {  
-              Cid,
+              CID,
               From,
             To,
             Method,
@@ -200,44 +200,16 @@ export default {
             Value, } = item;
         //   const { from, to, value, gasprice } = msg;
           let res = {
-            cid: Cid,
-            // time: this.formatTime(msgcreate),
-            // from: {
-            //   render() {
-            //     return from !== addressHash ? (
-            //       <a
-            //         href={`./#/address/detail?address=${from}`}
-            //         style={{ color: "var(--link-color)" }}
-            //       >
-            //         {ellipsisByLength(from, 6, true)}
-            //       </a>
-            //     ) : (
-            //       <span>{ellipsisByLength(from, 6, true)}</span>
-            //     );
-            //   }
-            // },
+            cid: CID['/'],
+         
             from:From,
-            // to: {
-            //   render() {
-            //     return to !== addressHash ? (
-            //       <a
-            //         href={`./#/address/detail?address=${to}`}
-            //         style={{ color: "var(--link-color)" }}
-            //       >
-            //         {ellipsisByLength(to, 6, true)}
-            //       </a>
-            //     ) : (
-            //       <span>{ellipsisByLength(to, 6, true)}</span>
-            //     );
-            //   }
-            // },
+     
             to: To,
             value: this.formatFilNumber(Value),
-            fee: GasPrice,
+            // fee: GasPrice,
             // type: this.address !== from ? "in" : "out",
             method: Method,
-            // height: this.formatNumber(height),
-            // code: exit_code
+
           };
           if (type === "block") {
             res.from = From;

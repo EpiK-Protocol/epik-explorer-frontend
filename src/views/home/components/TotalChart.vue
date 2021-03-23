@@ -111,13 +111,16 @@ export default {
   }
 }
 @media (max-width: 768px) {
+// .charts{
+//   height: 1000px;
+// }
   .total-chart {
     display: block;
     padding-top: 10px;
     & ::v-deep .chart-con {
-      height: 50px;
+      height: 150px;
     }
-    padding: 0;
+    padding: 5px;
     & ::v-deep > div {
       margin-right: 0;
       margin-bottom: 10px;

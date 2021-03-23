@@ -43,7 +43,7 @@ export default {
   name: "Search",
   data() {
     return {
-      filter: "block",
+      filter: 0,
       key: "",
       loading: false
     };
@@ -67,13 +67,16 @@ export default {
         this.loading = true;
         let res = await search({
           word: this.key,
-          type: this.filter
+          // type: this.filter
         });
+        // debugger
+        console.log(res)
         this.loading = false;
         // const { model_flag } = res;
         let target = "";
         let key = "";
-        let filter = this.filter
+        // let filter = this.filter
+        let filter = res.type
         if(res.code.code !== 0) filter = 'noResult'
   
         switch (filter) {
@@ -142,7 +145,7 @@ export default {
       height: 40px!important;
       line-height: 40px;
       
-      padding: 0 0 0 40px!important;
+      padding: 0 40px 0 20px!important;
       // border: none!important;
       border-radius: 0!important;
       
@@ -213,6 +216,35 @@ export default {
       }
     }
   @media (max-width: 768px) {
+    .input-with-select {
+    & ::v-deep  input:nth-child(2) {
+      background: var(--board-bg-color) !important;
+      color: var(--main-text-color);
+      height: 40px!important;
+      line-height: 40px;
+      
+      padding: 0 40px 0 20px!important;
+      // border: none!important;
+      border-radius: 0!important;
+      
+      font-size: 12PX;
+      box-sizing: border-box;
+
+    }
+
+    }
+    & ::v-deep .el-input-group__prepend {
+    background: var(--board-bg-color) !important;
+    height: 40px;
+    font-weight: 500;
+    line-height: 40px;
+    width: 100px;
+ 
+    .el-select.search-filter input {
+      width: 150px;
+      background: transparent !important;
+    }
+  }
     & ::v-deep input {
       // height: 30px !important;
       // border-radius: 15px !important;
@@ -231,7 +263,7 @@ export default {
       font-size: 10px !important;
     }
     & ::v-deep .el-select input{
-      width: 80px !important;
+      width: 95px !important;
     }
     & ::v-deep .el-input__suffix {
       .el-select__caret{

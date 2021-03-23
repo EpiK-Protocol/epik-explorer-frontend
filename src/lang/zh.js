@@ -44,6 +44,7 @@ const zh = {
             }],
             more: "更多"
         },
+        
         header: {
             title: "EpiK Explorer",
             tab: ["首页", "Tipset", "统计数据"],
@@ -75,10 +76,10 @@ const zh = {
         //     }
         // ],
         filter: [
-        //     {
-        //     label: "筛选类型",
-        //     value: 0
-        // },
+            {
+            label: "全部筛选",
+            value: 0
+        },
         {
             label: "地址",
             value: "address"
@@ -100,6 +101,7 @@ const zh = {
         //     value: 5
         // }
     ],
+
             nav: {
                 home: {
                     label: "首页",
@@ -108,7 +110,8 @@ const zh = {
                 tipset: {
                     label: "区块链",
                     index: "tipset",
-                    items: [{
+                    items: [
+                    {
                         label: "查看区块",
                         index: "/tipset"
                     },
@@ -124,27 +127,28 @@ const zh = {
                         label: "查看全部消息",
                         index: "/message"
                     },
-                    {
-                        label: "查看全部账户",
-                        index: "/address/list"
-                    }]
+                    // {
+                    //     label: "查看全部账户",
+                    //     index: "/address/list"
+                    // }
+                ]
                 },
-                stats: {
-                    label: "数据",
-                    index: "Stats",
-                    items: [{
-                        label: "挖矿数据",
-                        index: "/stats/mining"
-                    },
-                    {
-                        label: "代币指标",
-                        index: "/stats/metrics"
-                    },
-                    {
-                        label: "节点地图",
-                        index: "/stats/map"
-                    }]
-                }
+                // stats: {
+                //     label: "数据",
+                //     index: "Stats",
+                //     items: [{
+                //         label: "挖矿数据",
+                //         index: "/stats/mining"
+                //     },
+                //     {
+                //         label: "代币指标",
+                //         index: "/stats/metrics"
+                //     },
+                //     {
+                //         label: "节点地图",
+                //         index: "/stats/map"
+                //     }]
+                // }
             },
             mb: {
                 title: "EpiK 搜索",
@@ -282,16 +286,16 @@ const zh = {
                         label: "区块高度",
                     },
                     AvgTipSetTime: {
-                        label: "平均每高度时间",
+                        label: "平均每高度时间（s）",
                     },
                     TotalBlocks:{
                         label: "全网出块数量", 
                     },
                     TotalEPK:{
-                        label: "全网代币流通总量（EPK）",  
+                        label: "全网代币上限（EPK）",  
                     },
                     CirculationEPK:{
-                        label: "全网代币上限（EPK）",  
+                        label: "全网代币流通总量（EPK）",  
                     },
                     EPK_USDTPrice:{
                         label: "当前代币价格（$）",  
@@ -333,7 +337,7 @@ const zh = {
                         label: "累积带宽奖金池（EPK）",  
                     },
                     DataFlowPerEPK:{
-                        label: "单位抵押代币每日可访问流量（10 MB）",  
+                        label: "单位抵押代币每日可访问流量",  
                     },
                     
                 },
@@ -354,7 +358,7 @@ const zh = {
                         label: "专家最高票数",  
                     },
                     TotalDataSize:{
-                        label: "全网有效数据量（GB）",  
+                        label: "全网有效数据量",  
                     },
                     TotalExpertReward:{
                         label: "累积专家奖金池（EPK）",  
@@ -521,8 +525,9 @@ const zh = {
         },
         message: {
             detail: {
+                titl: "消息 ID",
                 // overview: ["消息 ID", "高度", "区块", "时间", "发送地址", "接收地址", "数值", "收据", "方法", "随机值", "参数"],
-                overview: ["消息 ID", "发送地址", "接收地址", "数值", "方法", "随机值", "参数"],
+                overview: [ "发送地址", "接收地址", "数值", "方法", "随机值", "参数"],
                 paramTip: "Base64格式元数据",
                 confirm: "确认"
             }
@@ -563,7 +568,7 @@ const zh = {
             blockTime: "<div style='margin-bottom:5px'>平均出块时间: {value}s</div><div>时间: {name}</div>",
             // blockSize: "<div style='margin-bottom:5px'>平均区块元数据大小: {value}字节</div><div>时间: {name}</div>",
             blockSize: "<div>注册矿工: {t1}</div><div>完成抵押: {t2}</div><div>出块矿工: {t3}</div>",
-            totalPower: "<div class='circle1' style='margin-bottom:5px'>有效算力: {qualityPower}</div><div class='circle2' style='margin-bottom:5px'>原值算力: {rawPower}</div><div>时间: {name}</div>",
+            totalPower: "<div class='circle1' style='margin-bottom:5px'>全网算力: {qualityPower}</div><div class='circle2' style='margin-bottom:5px'>算力增长: {rawPower}</div><div>时间: {name}</div>",
             mesHistory: "<div>消息: {count}</div><div>{time}</div>",
             mesHistoryTitle: "近14天消息历史",
             topPowerTitleText: "矿工{power}排行",

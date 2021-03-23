@@ -34,8 +34,8 @@
   </div>
 </template>
 <script>
-import { getBlockByCid, getTipset } from "@/api/tipset";
-import { getLatestBlock } from "@/api/home";
+import { getTipset } from "@/api/tipset";
+import { getLatestBlock ,search } from "@/api/home";
 import { getBlockCoord } from "../tool";
 import { mapState } from "vuex";
 import Null from "@/assets/image/block/null.png";
@@ -106,10 +106,12 @@ export default {
         this.drawChart();
       } else {
         //for parent hash click
-        let data = await getBlockByCid({
+        let data = await search({
           word: this.$route.query.hash,
           type:'block'
         });
+        console.log(data)
+        // debugger
         // const height = data.blocks[0].block_header.height;
         const height = data.block.Height;
         this.getTipset(height);
@@ -139,19 +141,20 @@ export default {
     if (height) {
       currentHeight = height;
     } else if (this.hash) {
-      let data = await getBlockByCid({
+      let data = await search({
         // cid: this.$route.query.hash
         word: this.$route.query.hash,
         type:'block'
       });
+      // debugger
       // const height = data.blocks[0].block_header.height;
       const height = data.block.Height;
       currentHeight = height;
     } else {
+      
       let res = await getLatestBlock();
       //8.9
       let data = res.list
-      console.log(data)
       const height = data[0].Height;
       // const height = data.block_header[0].block_header.height;
       currentHeight = height;
@@ -180,8 +183,8 @@ export default {
       try {
         this.loading = true;
         const res = await getTipset({
-          end_height: height,
-          count: 15
+          height: height,
+          size : 15
         });
         this.loading = false;
         let blocks = [];
@@ -231,7 +234,6 @@ export default {
         }
 
  }
-          console.log(blocks1)
         const hashList = blocks1.map(item => {
           return item.hash;
         });

@@ -49,26 +49,30 @@ const en = {
       //     value: 0
       // },
       {
-          label: "Address",
-          value: "address"
+        label: "All filters",
+        value: 0
       },
       {
-          label: "Msg ID",
-          value: "message"
+        label: "Address",
+        value: "address"
+      },
+      {
+        label: "Msg ID",
+        value: "message"
       },
       // {
       //     label: "高度",
       //     value: 3
       // },
       {
-          label: "BlockHash",
-          value: "block"
+        label: "BlockHash",
+        value: "block"
       },
       // {
       //     label: "节点ID",
       //     value: 5
       // }
-  ],
+    ],
     // filter: [
     //   {
     //     label: "All filters",
@@ -109,12 +113,12 @@ const en = {
             index: "/tipset"
           },
           {
-              label: "Top Miners",
-              index: "/mining"
+            label: "Top Miners",
+            index: "/mining"
           },
           {
-              label: "experts",
-              index: "/experts"
+            label: "experts",
+            index: "/experts"
           },
           {
             label: "View All Messages",
@@ -126,24 +130,24 @@ const en = {
           }
         ]
       },
-      stats: {
-        label: "Stats",
-        index: "Stats",
-        items: [
-          {
-            label: "Mining",
-            index: "/stats/mining"
-          },
-          {
-            label: "Token Metrics",
-            index: "/stats/metrics"
-          },
-          {
-            label: "Peer Map",
-            index: "/stats/map"
-          }
-        ]
-      }
+      // stats: {
+      //   label: "Stats",
+      //   index: "Stats",
+      //   items: [
+      //     {
+      //       label: "Mining",
+      //       index: "/stats/mining"
+      //     },
+      //     {
+      //       label: "Token Metrics",
+      //       index: "/stats/metrics"
+      //     },
+      //     {
+      //       label: "Peer Map",
+      //       index: "/stats/map"
+      //     }
+      //   ]
+      // }
     },
     mb: {
       title: "EpiK Search",
@@ -178,9 +182,9 @@ const en = {
       label: "Avg Blockheader Size",
       size: "{avg} bytes",
       tips: "Avg blockheader size in latest 24H",
-      t1:'Registered Miners',
-      t2:'Staked Miners',
-      t3:'Active Miners',
+      t1: 'Registered Miners',
+      t2: 'Staked Miners',
+      t3: 'Active Miners',
     },
     totalPower: {
       power: "RawBytePower",
@@ -189,17 +193,17 @@ const en = {
     blockTable: {
       title: "Block",
       // label: ["Height", "Hash", "Blocktime", "Miner", "Reward"]
-      label: ["Height", "Hash", "BlockTime", "Miner", "GasReward","BlockReward"]
+      label: ["Height", "Hash", "BlockTime", "Miner", "GasReward", "BlockReward"]
     },
     minerTable: {
       title: "Miner",
-      label: ["Rank", "Miner", "Tag", "QualityAdjPower", "RawBytePower","Blocks" ,"Rewards","Last Block Tipset"]
+      label: ["Rank", "Miner", "Tag", "QualityAdjPower", "RawBytePower", "Blocks", "Rewards", "Last Block Tipset"]
     },
-    expertTable:{
+    expertTable: {
       title: "Expert",
-      label: ["ID", "Status", "VoteAmount", "ApplicationHash", "FileSize（GB）","FileCount" ,"Reward"]
+      label: ["ID", "Status", "VoteAmount", "ApplicationHash", "FileSize（GB）", "FileCount", "Reward"]
 
-  },
+    },
     messageTable: {
       title: "Message",
       // label: ["Message ID", "Time", "From", "To", "Value"]
@@ -208,97 +212,97 @@ const en = {
     board: {
       base: {
         Height: {
-            label: "区块高度",
+          label: "区块高度",
         },
         AvgTipSetTime: {
-            label: "平均每高度时间",
+          label: "平均每高度时间（s）",
         },
-        TotalBlocks:{
-            label: "全网出块数量", 
+        TotalBlocks: {
+          label: "全网出块数量",
         },
-        TotalEPK:{
-            label: "全网代币流通总量（EPK）",  
+        TotalEPK: {
+          label: "全网代币上限（EPK）",
         },
-        CirculationEPK:{
-            label: "全网代币上限（EPK）",  
+        CirculationEPK: {
+          label: "全网代币流通总量（EPK）",
         },
-        EPK_USDTPrice:{
-            label: "当前代币价格（$）",  
+        EPK_USDTPrice: {
+          label: "当前代币价格（$）",
         }
 
-    },
-    miner: {
+      },
+      miner: {
         TotalMiners: {
-            label: "完成注册矿工数",
+          label: "完成注册矿工数",
         },
         PledgedMiners: {
-            label: "完成抵押矿工数",
+          label: "完成抵押矿工数",
         },
-        ActiveMiners:{
-            label: "当前活跃矿工数", 
+        ActiveMiners: {
+          label: "当前活跃矿工数",
         },
-        TotalPower:{
-            label: "全网有效算力",  
+        TotalPower: {
+          label: "全网有效算力",
         },
-        TopMinerPower:{
-            label: "矿工最高算力",  
+        TopMinerPower: {
+          label: "矿工最高算力",
         },
-        MinerMinWinPower:{
-            label: "最小每日暴块算力",  
+        MinerMinWinPower: {
+          label: "最小每日暴块算力",
         },
-        TotalMinerPledged:{
-            label: "全网矿工抵押数（EPK）",  
+        TotalMinerPledged: {
+          label: "全网矿工抵押数（EPK）",
         },
-        TotalRetrievalPledged:{
-            label: "全网访问抵押数（EPK）",  
+        TotalRetrievalPledged: {
+          label: "全网访问抵押数（EPK）",
         },
-        TotalPledged:{
-            label: "全网总抵押数（EPK）",  
+        TotalPledged: {
+          label: "全网总抵押数（EPK）",
         },
-        TotalMiningReward:{
-            label: "累积出块奖金池（EPK）",  
+        TotalMiningReward: {
+          label: "累积出块奖金池（EPK）",
         },
-        TotalRetrievalReward:{
-            label: "累积带宽奖金池（EPK）",  
+        TotalRetrievalReward: {
+          label: "累积带宽奖金池（EPK）",
         },
-        DataFlowPerEPK:{
-            label: "单位抵押代币每日可访问流量 （10 MB）",  
+        DataFlowPerEPK: {
+          label: "单位抵押代币每日可访问流量",
         },
-        
-    },
-    expert: {
+
+      },
+      expert: {
         TotalExperts: {
-            label: "完成注册专家数",
+          label: "完成注册专家数",
         },
         ActiveExperts: {
-            label: "当前活跃专家数",
+          label: "当前活跃专家数",
         },
-        TotalVote:{
-            label: "全网专家选票数", 
+        TotalVote: {
+          label: "全网专家选票数",
         },
-        AvgVote:{
-            label: "平均专家选票数",  
+        AvgVote: {
+          label: "平均专家选票数",
         },
-        TopExpertVote:{
-            label: "专家最高票数",  
+        TopExpertVote: {
+          label: "专家最高票数",
         },
-        TotalDataSize:{
-            label: "全网有效数据量（GB）",  
+        TotalDataSize: {
+          label: "全网有效数据量",
         },
-        TotalExpertReward:{
-            label: "累积专家奖金池（EPK）",  
+        TotalExpertReward: {
+          label: "累积专家奖金池（EPK）",
         },
-        TotalCrowdsourcingReward:{
-            label: "累积众包奖金池（EPK）",  
+        TotalCrowdsourcingReward: {
+          label: "累积众包奖金池（EPK）",
         },
-        TotalVoteReward:{
-            label: "累积投票奖金池（EPK）",  
+        TotalVoteReward: {
+          label: "累积投票奖金池（EPK）",
         },
-        AnnualizedRate:{
-            label: "投票年化收益率",  
+        AnnualizedRate: {
+          label: "投票年化收益率",
         }
 
-    },
+      },
       height: {
         label: "Block Height",
         tips: "The Latest Block Height"
@@ -403,7 +407,7 @@ const en = {
     },
     detail: {
       // overview: ["Address", "Type", "Balance", "Code Cid", "Nonce"],
-      overview: ["Address", "Balance", "RawBytePower", "QualityAdjPower" ,"Peer Id","Sector Size"],
+      overview: ["Address", "Balance", "RawBytePower", "QualityAdjPower", "Peer Id", "Sector Size"],
       worker: "Worker List",
       ownerOverview: [
         "Owner Account",
@@ -426,8 +430,9 @@ const en = {
   },
   message: {
     detail: {
+      titl: "Msg ID",
       overview: [
-        "Msg ID",
+        // "Msg ID",
         // "Height",
         // "Block",
         // "Time",
@@ -489,9 +494,8 @@ const en = {
     //   "<div style='margin-bottom:5px'>Avg BlockHeader Size: {value}bytes</div><div>Time: {name}</div>",
     blockSize: "<div >Total Miner: {t1}</div><div>Pledged: {t2}</div><div>Won Miner: {t3}</div>",
 
-    totalPower:
-      "<div style='margin-bottom:5px'>Total Power: {value}</div><div>Time: {name}</div>",
-      blocksWon: "<div>MinerID: {miner_id}</div><div>Height: {height}</div><div>BlockTime: {block_time}</div><div>BlockHash: {cid}</div>",
+    totalPower: "<div class='circle1' style='margin-bottom:5px'>Network Power: {qualityPower}</div><div class='circle2' style='margin-bottom:5px'>Power Grouth: {rawPower}</div><div>Time: {name}</div>",
+    blocksWon: "<div>MinerID: {miner_id}</div><div>Height: {height}</div><div>BlockTime: {block_time}</div><div>BlockHash: {cid}</div>",
     filOutstanding: ["Floating", "Pledge"],
     blockReward: ["# Of Miners", "Cumulative Block Reward"],
     filecoin: "Block Reward(tEPK)",

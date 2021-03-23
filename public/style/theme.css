@@ -41,6 +41,7 @@
     --table-row-hover-text-color:white;
     --table-row-striped-bg-color:#F5F7FA;
     
+    --link-color: #42cbd3;
 }
 :root[theme='dark']{
     --main-bg-color:#0A0D13;

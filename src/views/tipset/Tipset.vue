@@ -167,6 +167,7 @@ export default {
           word: hash,
           type: 'block'
         });
+        console.log(res)
   
            const {
             Timestamp,
@@ -178,6 +179,9 @@ export default {
             Messages,
             ParentStateRoot,
           } = res.block;
+          let parents =  Parents.map(item=>{
+            return item['/']
+          })
 
         this.block = {
             height: Height,
@@ -185,15 +189,15 @@ export default {
             // timestamp: this.formatTime(Timestamp),
             utcTime: this.getFormatTime(Timestamp),
             // size:0,//size: this.formatNumber(size),
-            mesLength: JSON.stringify(Messages),
+            mesLength: Messages['/'],
             miner:Miner,
             // reward:0,//?
-            parents:JSON.stringify(Parents),
+            parents,
             parent_weight: this.formatNumber(ParentWeight),
             tickets:Ticket.VRFProof,
-            state_root: JSON.stringify(ParentStateRoot)
+            state_root: ParentStateRoot['/']
           };
-          this.loading = false;
+          loading = false;
         }
         catch (e) {
         if (e) {

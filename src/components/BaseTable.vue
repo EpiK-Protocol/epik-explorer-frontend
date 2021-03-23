@@ -15,7 +15,6 @@
       element-loading-background="transparent"
       :class="{ radius: radius, mini: atIndex }"
       :size="atIndex ? 'mini' : ''"
-      :height="700 * rate"
       :row-class-name="getRowClass"
       :cell-class-name="getCellClass"
       :default-sort="defaultSort"
@@ -269,7 +268,7 @@ export default {
 <style lang="scss" scoped>
 .base-table {
   & ::v-deep .el-table.radius {
-    border-radius: 8px;
+    border-radius: 0px;
   }
   & ::v-deep .el-table__header-wrapper {
     tr {

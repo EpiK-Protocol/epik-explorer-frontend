@@ -19,15 +19,21 @@ export default {
 </script>
 <style lang="scss" scoped>
 .general-title {
-  height: 60px;
-  line-height: 60px;
+  height: 70px;
+  line-height: 70px;
   border-radius: 5px;
-  background: var(--general-title-bg-color);
+  margin-bottom: 10px;
+  // background: var(--general-title-bg-color);
+  background: var(--board-item-bg-color);
   .title {
     margin-left: 90px;
+    min-width: 210px;
+    display: inline-block;
+    
   }
   .detail {
-    color: var(--general-title-text-color);
+    color: white;
+    
   }
 }
 </style>

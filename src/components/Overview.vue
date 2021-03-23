@@ -99,6 +99,10 @@ export default {
   components: {
     GeneralTitle
   },
+  mounted(){
+
+    console.log(this.realList)
+  },
   computed: {
     realList() {
       return this.dataList.map((item, index) => {
@@ -114,16 +118,30 @@ export default {
 <style lang="scss" scoped>
 .general-overview {
   color: var(--overview-text-color);
-  background: var(--overview-bg-color);
+  // background: var(--overview-bg-color);
   box-shadow: 0px 1px 5px 7px rgba(0, 0, 0, 0.03);
+  background: var(--board-bg-color);
+  padding: 1vw;
   border-radius: 4px;
   .detail-info-con {
+    background: var(--board-item-bg-color);
+    padding: 20px 40px;
+
     .info-item {
       min-height: 60px;
       display: flex;
-      &.stripe:nth-child(2n) {
-        background: var(--overview-bg-dark-color);
+      border-top: 1px dashed #153550;
+      padding: 5px 0;
+      // &:not(:last-child){
+        
+      // }
+      &:first-child{
+       border-top: none; 
       }
+    
+      // &.stripe:nth-child(2n) {
+      //   background: var(--overview-bg-dark-color);
+      // }
       &.params {
         height: auto;
         span:last-child {
@@ -135,7 +153,7 @@ export default {
         line-height: 60px;
       }
       span:first-child {
-        padding-left: 100px;
+        padding-left: 60px;
         min-width: 200px;
       }
       span:last-child {

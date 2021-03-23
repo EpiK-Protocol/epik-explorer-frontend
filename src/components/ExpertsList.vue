@@ -102,6 +102,8 @@ export default {
     async loadMessageData() {
       if (this.loading) {
         return;
+      }else if(this.messageData.length < this.offset*20){
+        return
       }
   
        else {

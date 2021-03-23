@@ -4,6 +4,7 @@
     v-loading="loading"
     element-loading-background="var(--board-bg-color)"
   >
+    <!-- <div>最新成交价（${series[series.length-1][1]}）</div> -->
     <div class="chart-con" ref="power"></div>
   </div>
 </template>
@@ -20,6 +21,7 @@ export default {
       QualityPower: 0,
       loading: false,
       storageCapacity: 0,
+      latestPrice: 0
     };
   },
   props: {
@@ -71,7 +73,7 @@ export default {
         },
 
         yAxis: {
-          name: "价格",
+          name: `价格`,
           nameTextStyle: {
             color: "#ffffff",
           },
@@ -151,25 +153,26 @@ export default {
                 },
               },
               data: [
-                {
-                  name: "最近成交价",
-                  type: "max",
-                  valueIndex: 0,
-                  symbol: "rect",
-                  symbolSize: [50, 20],
-                  symbolOffset: [54, 0],
-                  symbolKeepAspect: true,
-                  itemStyle: {
-                    color: "rgba(0,0,0,0)",
-                  },
-                  label: {
-                    formatter: (item) => {
-                      // debugger
-                      return item.data.coord[1];
-                    },
-                    fontSize: 10,
-                  },
-                },
+                // {
+                //   name: "最近成交价",
+                //   type: "max",
+                //   valueIndex: 0,
+                //   symbol: "rect",
+                //   symbolSize: [50, 20],
+                //   symbolOffset: [20, 0],
+                //   symbolKeepAspect: true,
+                //   itemStyle: {
+                //     color: "rgba(0,0,0,0)",
+                //   },
+                //   label: {
+                //     formatter: (item) => {
+                //       // console.log(item.data.coord[1])
+                //       debugger
+                //       return series1[item.data.coord[0]][1].toFixed(3);
+                //     },
+                //     fontSize: 10,
+                //   },
+                // },
 
                 {
                   name: "highest value",
@@ -281,6 +284,7 @@ export default {
     height: 100%;
   }
   @media (max-width: 768px) {
+   
     .info-con .power-info,
     .info-con .storage-info {
       & > div:last-child {
@@ -297,5 +301,17 @@ export default {
       flex: 3;
     }
   }
+}
+@media (max-width: 768px) {
+
+   .total-power-chart{
+     display: flex;
+    height: 200px;
+    background: var(--board-bg-color);
+    align-items: center;
+    background: var(--board-item-bg-color);
+    border-radius: 3px;
+    box-shadow: 0 0 7.5px 0 var(--block-meta-item-shadow) inset;
+    }
 }
 </style>

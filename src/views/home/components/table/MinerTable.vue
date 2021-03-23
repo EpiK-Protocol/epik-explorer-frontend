@@ -2,7 +2,7 @@
   <div class="block-table miner-table">
     <!-- :max-height="isMobile ? 200 : 400 * rate" -->
     <div class="top-miner">
-      <div class="titl">矿工排行</div>
+      <div class="titl">{{$t("header.nav.tipset.items[1].label")}}</div>
       <div class="more" @click="goTo('minerList')">More ></div>
 
     </div>
@@ -134,11 +134,11 @@ export default {
 <style lang="scss" scoped>
 .miner-table{
   /deep/ .el-table{
-        max-height: 700px !important;
+     max-height: 425PX;
   }
 }
 .top-miner{
-  padding: 1.042vw;
+  padding: 10px;
   background: var(--board-bg-color);
   color: white;
   display: flex;
@@ -174,5 +174,12 @@ export default {
       margin-right: 15px;
     }
   }
+}
+@media (max-width: 768px) {
+ .miner-table{
+  /deep/ .el-table{
+     max-height: 300px;
+  }
+} 
 }
 </style>

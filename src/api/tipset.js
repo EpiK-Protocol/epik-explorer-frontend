@@ -5,11 +5,12 @@ param:{
   end_height number
 }
 */
-export function getTipset(data) {
+export function getTipset(params) {
+
   return fetch({
-    url: "tipsets?from=&size=15",
+    url: "tipsets",
     method: "get",
-    data
+    params
   });
 }
 /*

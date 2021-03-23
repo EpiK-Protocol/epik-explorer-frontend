@@ -1,6 +1,7 @@
 <template>
   <div class="message-detail bottom-10">
     <overview
+      :title="title"
       :dataList="dataList"
       :dataLabel="$t('message.detail.overview')"
       :showLoading="loading"
@@ -10,20 +11,20 @@
 <script>
 import { search } from "@/api/home";
 
-import { getBlockConfirmCount, getMessageDetail } from "@/api/message";
 export default {
   name: "MessageDetail",
   data() {
     return {
       cid: "",
       loading: false,
+  
       dataList: [
-        {
-          key: "cid",
-          style: {
-            fontWeight: "bold"
-          }
-        },
+        // {
+        //   key: "cid",
+        //   style: {
+        //     fontWeight: "bold"
+        //   }
+        // },
         // {
         //   key: "height",
         //   isLink: true,
@@ -41,13 +42,13 @@ export default {
         // },
         {
           key: "from",
-          // isLink: true,
+          isLink: true,
           target: "address/detail",
           paramKey: "address"
         },
         {
           key: "to",
-          // isLink: true,
+          isLink: true,
           target: "address/detail",
           paramKey: "address"
         },
@@ -74,8 +75,8 @@ export default {
         }
       ],
       title: {
-        label: "Message",
-        detail: `# ${this.$route.query.cid}`
+        label: this.$t('message.detail.titl'), 
+        detail: `${this.$route.query.cid}`
       }
     };
   },
@@ -107,7 +108,7 @@ export default {
         const confirm = this.$t("message.detail.confirm");
         const sourceMap = {
           // height: this.formatNumber(height),
-          cid: this.cid,
+          // cid: this.cid,
           // confirm: this.formatNumber(blockRes.count),
           // time: this.getFormatTime(msgcreate),
           from:From,
@@ -120,6 +121,7 @@ export default {
           // blockHash: block_cid,
           // code: exit_code
         };
+
 
         this.dataList = this.dataList.map(item => {
           let linkList;
@@ -197,6 +199,15 @@ export default {
 </script>
 <style lang="scss" scoped>
 .message-detail {
+  background: var(--board-bg-color);
+  padding: 1.042vw;
+  .detail-info-con{
+
+  }
+  .info-item{
+    background: var(--board-item-bg-color);
+    border-bottom: 1px dashed #153550;
+  }
   & ::v-deep .height-link {
     width: 100%;
     display: flex;

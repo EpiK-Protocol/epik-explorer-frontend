@@ -28,14 +28,30 @@
 }
 .el-select-dropdown{
     background: var(--board-bg-color)!important;
+    border-color: black;
     li{
-        color: var(--main-text-color)!important;
+        font-size: 12PX;
+        color: var(--search-text-color)!important;
         &:hover,&.selected{
-            color: var(--link-color)!important;
+            color: var(--force-mark-color) !important;
+            background: var(--board-bg-color)!important;
+            // background: inherit;
+            
         }
 
     }
 }
+.el-select-dropdown__item.hover{
+    background-color: var(--board-bg-color); 
+    
+}
+.el-popper[x-placement^=bottom] .popper__arrow{
+    border-bottom-color: black;
+    &::after{
+        border-bottom-color: var(--board-bg-color);
+    }
+}
+
 .font-22{
     font-size: 22px;
 }

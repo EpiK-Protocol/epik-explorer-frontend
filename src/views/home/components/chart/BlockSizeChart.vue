@@ -132,7 +132,7 @@ export default {
             symbol: "none",
             smooth: true,
             lineStyle: {
-              color: this.chartTheme.blockSize.axisLine
+              color: this.chartTheme.totalPower.seriesItem
             },
             // areaStyle: {
             //   color: seriesItem
@@ -144,7 +144,8 @@ export default {
             symbol: "none",
             smooth: true,
             lineStyle: {
-              color: this.chartTheme.totalPower.seriesItem
+              
+              color: this.chartTheme.blockSize.axisLine
             },
             // areaStyle: {
             //   color: this.chartTheme.totalPower.area
@@ -266,20 +267,43 @@ export default {
     height: 100%;
   }
   @media (max-width: 768px) {
+    
     .info-con {
-      & > div span:last-child {
-        margin-top: 5px !important;
+      & > div {span:last-child {
+        // margin-top: 5px !important;
         font-size: 13px;
       }
+      span:first-child {
+        // color: var(--total-board-top-color);
+        // font-weight: bold;
+        margin-right: 5px;
+        font-size: 12px;
+        color: var(--main-text-color);
+      }
+    }
     }
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.03);
     border-radius: 4px;
     .info-con {
-      flex: 2;
+      flex: 1;
     }
     .chart-con {
-      flex: 3;
+      flex: 4;
+      width: 100%;
     }
   }
+}
+@media (max-width: 768px) {
+
+  .block-size-chart {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    background: var(--board-bg-color);
+    align-items: center;
+    background: var(--board-item-bg-color);
+    border-radius: 3px;
+    box-shadow: 0 0 7.5px 0 var(--block-meta-item-shadow) inset;
+  } 
 }
 </style>

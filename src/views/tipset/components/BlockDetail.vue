@@ -53,7 +53,7 @@ export default {
           key: "miner",
           target: "address/detail",
           paramKey: "address",
-          // isLink: true
+          isLink: true
         },
         // {
         //   key: "reward",
@@ -61,9 +61,9 @@ export default {
         // },
         {
           key: "parents",
-          // isLink: true,
+          isLink: true,
           target: "tipset",
-          paramKey: "hash"
+          paramKey: "hash",
         },
         {
           key: "parent_weight"
@@ -80,6 +80,8 @@ export default {
   computed: {
     realList() {
       const currentBlock = this.block;
+      // console.log(this.block)
+      // debugger
       return this.dataList.map(item => {
         let linkList;
         if (item.key === "height" || item.key === "miner") {

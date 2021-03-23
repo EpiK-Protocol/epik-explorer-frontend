@@ -124,7 +124,7 @@ param:{
 export function search(data) {
   return fetch({
     method: "get",
-    url: "Search",
+    url: "search",
     params:data
   });
 }

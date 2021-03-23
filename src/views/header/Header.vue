@@ -23,7 +23,7 @@
               >{{ item.label }}</el-menu-item
             >
           </el-submenu>
-          <el-submenu index="stats">
+          <!-- <el-submenu index="stats">
             <template slot="title">{{ $t("header.nav.stats.label") }}</template>
             <el-menu-item
               v-for="item in $t('header.nav.stats.items')"
@@ -31,7 +31,7 @@
               :index="item.index"
               >{{ item.label }}</el-menu-item
             >
-          </el-submenu>
+          </el-submenu> -->
         </el-menu>
       </el-col>
 
@@ -46,7 +46,7 @@
           <span>/</span>
           <span :class="$i18n.locale === 'zh'?'active':''">中文</span>
         </div>
-        <theme-switch />
+        <!-- <theme-switch /> -->
       </el-col>
     </el-row>
     <img :src="testPicSrc" alt="" class="test-pic" />
@@ -169,7 +169,7 @@ export default {
     color: #7c7c7c;
   }
   span{
-        display: flex;
+      display: flex;
       -webkit-box-align: center;
       -ms-flex-align: center;
       align-items: center;
@@ -178,7 +178,8 @@ export default {
   }
   .link-con {
     display: flex;
-    justify-content: flex-start;
+    // justify-content: flex-start;
+    justify-content: center;
     ul{
       background: var(--board-bg-color);
       li::v-deep{
@@ -193,6 +194,7 @@ export default {
           }
         }
         &:hover,&:focus{
+          color: var(--force-mark-color)!important;
           background: var(--board-bg-color)!important;
         }
         div,div>i{
