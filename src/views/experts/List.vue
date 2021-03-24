@@ -1,5 +1,5 @@
 <template>
-  <div class="message-list-con bottom-10">
+  <div class="miner-list-con bottom-10">
     <experts-list :withType="false" />
   </div>
 </template>
@@ -9,9 +9,5 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.message-list-con {
-  & ::v-deep .el-table {
-    height: calc(100vh - 200px) !important;
-  }
-}
+
 </style>

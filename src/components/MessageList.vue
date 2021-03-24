@@ -4,11 +4,11 @@
     v-loading="loading"
     element-loading-background="var(--board-bg-color)"
   >
-    <div class="total-number border-bottom" slot="header">
+    <!-- <div class="total-number border-bottom" slot="header">
       <span
         v-html="$t('component.mesList.total', { total: formatNumber(total) })"
       ></span>
-      <!-- <el-select
+      <el-select
         v-model="option.method"
         @change="handleMethodChange"
         :placeholder="$t('component.mesList.placeholder')"
@@ -20,9 +20,9 @@
           :label="item.label"
           :value="item.value"
         ></el-option>
-      </el-select> -->
-    </div>
-    <div class="table-con" v-if="!isMobile">
+      </el-select>
+    </div> -->
+    <div class="table-con" >
       <base-table
         :dataSource="messageData"
         :columns="columns"
@@ -34,14 +34,14 @@
         :currentPage="currentPage"
       ></base-table>
     </div>
-    <mb-board
+    <!-- <mb-board
       v-for="(item, index) in messageData"
       :key="item.cid + index"
       :dataSource="item"
       :columns="mbColumns"
       v-else
     />
-    <mb-page v-if="isMobile" @page-change="handlePageChange" :total="total" />
+    <mb-page v-if="isMobile" @page-change="handlePageChange" :total="total" /> -->
   </div>
 </template>
 <script>

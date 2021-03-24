@@ -4,7 +4,7 @@
     v-loading="loading"
     element-loading-background="var(--board-bg-color)"
   >
-    <div class="table-con" v-if="!isMobile">
+    <div class="table-con" >
       <base-table
         :dataSource="messageData"
         :columns="columns"

@@ -8,10 +8,4 @@ export default {
   name: "MessageListCon",
 };
 </script>
-<style lang="scss" scoped>
-.message-list-con {
-  & ::v-deep .el-table {
-    height: calc(100vh - 300px) !important;
-  }
-}
-</style>
+

@@ -21,7 +21,7 @@
         class="block-item-con"
       >
         <div class="height">
-          <div>{{ $t("tipset.height") }}</div>
+          <div>{{ $t("tipset.height") }}：</div>
           <div>{{ key }}</div>
         </div>
         <mb-board
@@ -55,7 +55,7 @@ export default {
       columns: [
         {
           key: "hash",
-        //   isLink: true,
+          isLink: true,
           target: "tipset",
           ellipsis: true
         },
@@ -247,11 +247,15 @@ export default {
   @media (max-width: 768px) {
     .block-item-con {
       .height {
-        text-align: center;
-        background: var(--link-color);
+        // text-align: center;
+        // background: var(--link-color);
         color: white;
         line-height: 20px;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
+
+        padding: 5px 10px;
+        display: flex;
+        background: var(--board-bg-color);
       }
       //display: flex;
       // .height{

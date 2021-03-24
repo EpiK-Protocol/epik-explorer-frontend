@@ -70,8 +70,8 @@ body,
   font-family: 'PingFang SC', 'Avenir', Helvetica, Arial, sans-serif;
 }
 .content-container {
-  padding: 90px 20px 10px;
-  min-height: calc(100% - 60px);
+  padding: 90px 20px 0;
+  min-height: calc(100vh );
   box-sizing: border-box;
   overflow-x: hidden;
 }
@@ -95,7 +95,7 @@ a {
 }
 @media (max-width: 768px) {
   .content-container {
-    padding: 60px 10px 30px;
+    padding: 60px 10px 0px;
     background: var(--main-bg-color);
     font-size: 12px;
   }

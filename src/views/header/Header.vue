@@ -12,7 +12,7 @@
             {{$t("header.nav.home.label")}}
           </div>
           </el-menu-item>
-          <el-submenu index="tipset">
+          <el-submenu index="block">
             <template slot="title">{{
               $t("header.nav.tipset.label")
             }}</template>

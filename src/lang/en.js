@@ -114,20 +114,20 @@ const en = {
           },
           {
             label: "Top Miners",
-            index: "/mining"
+            index: "/mining/list"
           },
           {
-            label: "experts",
-            index: "/experts"
+            label: "Experts",
+            index: "/experts/list"
           },
           {
             label: "View All Messages",
-            index: "/message"
+            index: "/message/list"
           },
-          {
-            label: "View All Accounts",
-            index: "/address/list"
-          }
+          // {
+          //   label: "View All Accounts",
+          //   index: "/address/list"
+          // }
         ]
       },
       // stats: {
@@ -485,7 +485,9 @@ const en = {
     mining: "Mining",
     metrics: "Metrics",
     map: "Peer Map",
-    peer: "Peer Detail"
+    peer: "Peer Detail",
+    minerList:"Top Miners",
+    expertsList: "Experts"
   },
   chart: {
     blockTime:

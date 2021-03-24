@@ -139,3 +139,60 @@
     content: '';
     margin-right: 8px;
 }
+
+.miner-list-con {
+    .el-table {
+        height: calc(100vh - 110px) !important;
+    }
+}
+.message-list-con{
+    .message-list{
+        height: calc(100vh - 110px) !important;
+        .table-con{
+            height: calc(100% - 80px);
+            .base-table{
+                height: 100%;
+                .el-table{
+                    height: 100% !important;
+                }
+            }
+        }
+    }
+
+}
+@media (max-width: 768px) {
+    
+    .message-list-con{
+        .message-list{
+            height: calc(100vh - 80px) !important;
+            .table-con{
+                // height: calc(100% - 80px);
+                .base-table{
+                    height: 100%;
+                    .el-table{
+                        height: 100% !important;
+                    }
+                }
+            }
+        }
+    
+    }
+    .miner-list-con {
+        .el-table {
+            height: calc(100vh - 80px) !important;
+            // .el-table__body-wrapper{
+            //     height: 500px !important;
+            // }
+            .header-row th{
+                padding: 0;
+            }
+        }
+    }
+    .base-table .el-table td .cell{
+        font-size: 11px !important; 
+        line-height: 20px !important; 
+    }
+    .el-link {
+      font-size: 11px !important;
+    }
+}

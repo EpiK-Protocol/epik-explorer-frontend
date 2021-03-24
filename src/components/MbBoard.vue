@@ -42,6 +42,10 @@ export default {
       }
     }
   },
+  mounted(){
+    console.log(this.dataSource)
+
+  },
   computed: {
     realList() {
       return this.columns.map(item => {

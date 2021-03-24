@@ -100,7 +100,9 @@ export default {
       justify-content: space-between;
       & > div:first-child,
       .route-name {
-        color: var(--main-text-color);
+        // color: var(--main-text-color);
+        color: var(--logo-text-color);
+        text-shadow: 0 0 4px var(--logo-text-color);
       }
       .logo {
         height: 100%;

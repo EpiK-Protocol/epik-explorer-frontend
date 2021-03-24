@@ -16,6 +16,7 @@
       :class="{ radius: radius, mini: atIndex }"
       :size="atIndex ? 'mini' : ''"
       :row-class-name="getRowClass"
+      :height="isMobile?'200':700 * rate"
       :cell-class-name="getCellClass"
       :default-sort="defaultSort"
     >

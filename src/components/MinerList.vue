@@ -4,7 +4,7 @@
     v-loading="loading"
     element-loading-background="var(--board-bg-color)"
   >
-    <div class="table-con" v-if="!isMobile">
+    <div class="table-con" >
       <base-table
         :dataSource="messageData"
         :columns="columns"
@@ -158,8 +158,8 @@ export default {
             Rank: vm.offset*20 + index + 1,
             Miner: ID,
             Tag: NewWorker,
-            QualityAdjPower: vm.unitConversion(MinerPower.QualityAdjPower, 3),
-            RawBytePower: vm.unitConversion(MinerPower.RawBytePower, 3),
+            QualityAdjPower: vm.unitConversion(MinerPower.QualityAdjPower, 2),
+            RawBytePower: vm.unitConversion(MinerPower.RawBytePower, 2),
             Blocks: "",
             Rewards: "",
             lastblock: "",
@@ -218,20 +218,20 @@ export default {
     // this.getMessage();
     // this.getMessageMethods();
   },
-//   computed: {
-//     mbColumns() {
-//       return this.columns
-//         .map((item, index) => {
-//           return {
-//             ...item,
-//             title: this.labels[index],
-//           };
-//         })
-//         .filter((item) => {
-//           return !item.hideInMobile;
-//         });
-//     },
-//   },
+  computed: {
+    mbColumns() {
+      return this.columns
+        .map((item, index) => {
+          return {
+            ...item,
+            title: this.labels[index],
+          };
+        })
+        .filter((item) => {
+          return !item.hideInMobile;
+        });
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

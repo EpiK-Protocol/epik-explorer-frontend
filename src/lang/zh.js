@@ -109,7 +109,7 @@ const zh = {
                 },
                 tipset: {
                     label: "区块链",
-                    index: "tipset",
+                    index: "block",
                     items: [
                     {
                         label: "查看区块",
@@ -117,15 +117,15 @@ const zh = {
                     },
                     {
                         label: "矿工排行",
-                        index: "/mining"
+                        index: "/mining/list"
                     },
                     {
                         label: "领域专家",
-                        index: "/experts"
+                        index: "/experts/list"
                     },
                     {
                         label: "查看全部消息",
-                        index: "/message"
+                        index: "/message/list"
                     },
                     // {
                     //     label: "查看全部账户",
@@ -554,11 +554,13 @@ const zh = {
             addressDetail: "地址详情",
             messageList: "查看全部消息",
             addressList: "查看全部账户",
-            tipset: "Tipset",
+            tipset: "查看区块",
             mining: "矿工",
             metrics: "指标",
             map: "节点地图",
-            peer: "节点详情"
+            peer: "节点详情",
+            minerList:"矿工排行",
+            expertsList: "领域专家"
         },
         chart: {
             blocksWonTitle: "近半小时内未发现区块",
