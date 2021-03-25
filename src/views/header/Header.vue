@@ -1,11 +1,11 @@
 <template>
   <div class="header-con">
     <el-row align="middle" type="flex">
-      <el-col :span="5" class="logo-con" @click.native="goTo('home')">
+      <el-col :span="4" class="logo-con" @click.native="goTo('home')">
         <img src="@/assets/image/epik_m_logo.png" class="logo" />
         <span>{{ $t("header.title") }}</span>
       </el-col>
-      <el-col :span="6" class="link-con">
+      <el-col :span="8" class="link-con">
         <el-menu mode="horizontal" :default-active="$route.path" :router="true">
           <el-menu-item index="/">
           <div class="">
@@ -23,6 +23,23 @@
               >{{ item.label }}</el-menu-item
             >
           </el-submenu>
+           <el-menu-item index="/mining/list">
+          <div class="">
+            {{$t("header.nav.rank.label")}}
+          </div>
+          </el-menu-item>
+           <el-menu-item index="/experts/list">
+          <div class="">
+            {{$t("header.nav.experts.label")}}
+          </div>
+          </el-menu-item>
+          <!-- <el-menu-item index="https://www.epik-protocol.io/"> -->
+          <div class="link">
+            <a :href="$t('header.nav.web.index')" target="_blank" class="">
+              {{$t("header.nav.web.label")}}
+            </a>
+            </div>
+          <!-- </el-menu-item> -->
           <!-- <el-submenu index="stats">
             <template slot="title">{{ $t("header.nav.stats.label") }}</template>
             <el-menu-item
@@ -35,10 +52,10 @@
         </el-menu>
       </el-col>
 
-      <el-col :span="8" class="search-wrap">
+      <el-col :span="9" class="search-wrap">
         <Search />
       </el-col>
-            <el-col :span="4" style="display:flex">
+            <el-col :span="3" style="display:flex">
         <!-- <span class="testnet">Testnet</span> -->
         <!-- <span :class="[iconClass,'theme-switch']" @click="handleThemeChange"></span> -->
         <div class="lang-switch" @click="changeLang">
@@ -155,7 +172,7 @@ export default {
   box-shadow: 0px 1px 0.208vw 0.26vw rgb(0 ,0 ,0 / 30%);
   .lang-switch{
     margin: 0 2vw;
-    font-size:12PX;
+    font-size:12px;
     color: var(--force-mark-color);
     cursor: pointer;
     display: -webkit-box;
@@ -184,7 +201,7 @@ export default {
       background: var(--board-bg-color);
       li::v-deep{
         color: var(--main-text-color);
-        font-size: 13PX;
+        font-size: 13px;
         &.is-active{
           font-weight: bold;
           color: var(--force-mark-color);
@@ -225,6 +242,20 @@ export default {
   }
   & ::v-deep .el-menu--horizontal.el-menu {
     border: none!important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .link{
+      padding:0 10px;
+      
+      a{
+        font-size: 13px;
+      }
+      &:hover a{
+        color: var(--force-mark-color) !important;
+      }
+    }
+
   }
   .el-col-2{
     display: flex;
@@ -260,14 +291,16 @@ export default {
 }
 .logo-con {
   cursor: pointer;
+  padding-left: 10px;
 }
 .logo {
-  width: 47px;
-  margin-right: 20px;
+  width: 40px;
+  margin-right: 5px;
   & + span {
     font-size: 30px;
-    color: var(--logo-text-color);
-    text-shadow: 0 0 4px var(--logo-text-color);
+    color: var(--main-text-color);
+    // color: var(--logo-text-color);
+    // text-shadow: 0 0 4px var(--logo-text-color);
   }
 }
 @media (max-width: 768px) {
@@ -279,12 +312,13 @@ export default {
 .el-menu--horizontal>.el-menu-item{
   line-height: 3.646vw;
   height: 3.646vw;
+  padding: 0 10px;
 }
 /deep/ .el-menu--horizontal>.el-submenu{
   .el-submenu__title{
     line-height: 3.646vw;
     height: 3.646vw;
-    font-size: 13PX;
+    font-size: 13px;
     color: var(--main-text-color) !important;
   }
   .el-submenu__title i{

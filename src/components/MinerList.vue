@@ -25,13 +25,11 @@
   </div>
 </template>
 <script>
-import { getMiner } from "@/api/home";
-import { search } from "@/api/home";
+import { getMiner,getBoardInfo } from "@/api/home";
 
 export default {
   name: "MinerList",
   data() {
-    const type = this.type;
     return {
 
       loading: false,
@@ -40,6 +38,7 @@ export default {
         begindex: "0",
         count: "25",
       },
+      info:{},
       currentPage: 1,
       total: 0,
       messageData: [],
@@ -72,6 +71,8 @@ export default {
         },
         {
           key: "lastblock",
+          isLink: true,
+          target: "tipset",
         },
       ],
       labels: [],
@@ -151,19 +152,32 @@ export default {
         //   data.total = data.list.length;
         // // }
         // this.total = Number(data.total);
-        
+        // debugger
         const minerData = data.list.map((item, index) => {
-          const { ID, NewWorker, MinerPower } = item;
+          const { ID, NewWorker, MinerPower,WinBlocks,TotalRewards,LatestWinBlock} = item;
           return {
-            Rank: vm.offset*20 + index + 1,
+            Rank: this.offset*20 + index + 1, 
             Miner: ID,
             Tag: NewWorker,
-            QualityAdjPower: vm.unitConversion(MinerPower.QualityAdjPower, 2),
-            RawBytePower: vm.unitConversion(MinerPower.RawBytePower, 2),
-            Blocks: "",
-            Rewards: "",
-            lastblock: "",
-          };
+            QualityAdjPower:{
+              data:vm.unitConversion(MinerPower.QualityAdjPower,2),
+              percent: (MinerPower.QualityAdjPower/this.info.minerInfomation.TotalPower*100).toFixed(2)
+            },
+            RawBytePower:{
+              data: vm.unitConversion(MinerPower.RawBytePower,2), 
+              percent: (MinerPower.RawBytePower/this.info.minerInfomation.TotalPower*100).toFixed(2)
+            }, 
+            
+            Blocks: {
+              data: WinBlocks,
+              percent: (WinBlocks/this.info.baseInfomation.TotalBlocks*100).toFixed(2)
+            } ,
+            Rewards: {
+              data: Number(TotalRewards).toFixed(3),
+              percent: (Number(TotalRewards)/this.info.minerInfomation.TotalMiningReward*100).toFixed(2)
+            },
+            lastblock: LatestWinBlock,
+          }
         });
 
         this.messageData = [...this.messageData,...minerData]
@@ -208,7 +222,8 @@ export default {
     //   this.getMessage();
     // },
   },
-  mounted() {
+  async mounted() {
+    this.info = await getBoardInfo()
     // this.labels = [...this.$t("component.mesList.label")];
     // if (!this.withType) {
     //   this.columns.shift();

@@ -68,12 +68,14 @@ body,
   background: var(--main-bg-color);
   font-size: 14px;
   font-family: 'PingFang SC', 'Avenir', Helvetica, Arial, sans-serif;
+  
 }
 .content-container {
   padding: 90px 20px 0;
   min-height: calc(100vh );
   box-sizing: border-box;
   overflow-x: hidden;
+  min-width: 1100PX;
 }
 a {
   text-decoration: none;
@@ -98,6 +100,7 @@ a {
     padding: 60px 10px 0px;
     background: var(--main-bg-color);
     font-size: 12px;
+    min-width: 100%;
   }
 }
 

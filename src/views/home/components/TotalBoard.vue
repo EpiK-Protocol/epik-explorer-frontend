@@ -6,7 +6,7 @@
   >
     <div class="titl-board">基本数据</div>
     <div class="flex flex-wrap">
-      <div v-for="item in base" :key="item.key" class="info-item bottom-10">
+      <div v-for="item in base" :key="item.key" class="info-item bottom-10 six-line">
         <div>
           {{ $t(`home.board.base.${item.labelKey}.label`) }}
         </div>
@@ -15,8 +15,8 @@
     </div>
 
     <div class="titl-board">矿工生态数据</div>
-    <div class="flex flex-wrap">
-      <div v-for="item in miner" :key="item.key" class="info-item bottom-10">
+    <div class="flex flex-wrap ">
+      <div v-for="item in miner" :key="item.key" class="info-item bottom-10 six-line">
         <div>
           {{ $t(`home.board.miner.${item.labelKey}.label`) }}
   
@@ -25,8 +25,8 @@
       </div>
     </div>
     <div class="titl-board">知识生态数据</div>
-    <div class="flex flex-wrap">
-      <div v-for="item in expert" :key="item.key" class="info-item bottom-10">
+    <div class="flex flex-wrap ">
+      <div v-for="item in expert" :key="item.key" class="info-item bottom-10 five-line">
         <div>
           {{ $t(`home.board.expert.${item.labelKey}.label`) }}
   
@@ -38,7 +38,6 @@
 </template>
 <script>
 import { getBoardInfo } from "@/api/home";
-import { mapMutations } from "vuex";
 export default {
   name: "TotalBoard",
   data() {
@@ -103,23 +102,21 @@ export default {
           return {
             ...item,
             value: 
-            this.formatNumber(
-              item.key === "CirculationEPK"|| item.key === "EPK_USDTPrice"
-                ? parseFloat(res.baseInfomation[item.key]).toFixed(4)
-                : res.baseInfomation[item.key]
-            ),
+            this.formatNumber(res.baseInfomation[item.key],3),
           };
         });
         this.miner = this.miner.map((item) => {
         
       
-            let value = this.formatNumber(
-              item.key === "TotalMiningReward"|| item.key === "TotalRetrievalReward"
-                ? parseFloat(res.minerInfomation[item.key]).toFixed(4)
-                : res.minerInfomation[item.key]
-            )
+            let value = this.formatNumber(res.minerInfomation[item.key],3)
             if(item.key == 'DataFlowPerEPK'){
-              value = value + '/10 MB'
+              value = '10 MB'
+            }
+            if(item.key == 'TotalPower'){
+              value = this.unitConversion(res.minerInfomation[item.key], 3)
+            }
+            if(item.key == 'TopMinerPower'){
+              value = this.unitConversion(res.minerInfomation[item.key], 3)
             }
        
           
@@ -134,11 +131,7 @@ export default {
           if(item.key == 'TotalDataSize'){
             value = this.unitConversion(res.expertInfomation[item.key], 2)
           }else{
-            value = this.formatNumber(
-                item.key === "CirculationEPK"|| item.key === "EPK_USDTPrice"
-                  ? parseFloat(res.expertInfomation[item.key]).toFixed(4)
-                  : res.expertInfomation[item.key]
-            )
+            value = this.formatNumber( res.expertInfomation[item.key],3)
           }
           return {
             ...item,
@@ -167,6 +160,13 @@ export default {
     margin-bottom: 15px;
     margin-top: 15px;
     margin-left: 10px;
+  }
+  .six-line{
+    min-width: 14% !important;
+  }
+  .five-line{
+    min-width: 17% !important;
+
   }
   .info-item {
     //width: 16.66%;
@@ -219,6 +219,13 @@ export default {
     .titl-board{
         font-size: 12px;
         margin-bottom: 5px;
+
+      }
+      .six-line{
+        min-width: 45% !important;
+      }
+      .five-line{
+        min-width: 45% !important;
 
       }
     .info-item {

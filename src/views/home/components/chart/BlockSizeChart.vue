@@ -257,7 +257,7 @@ export default {
         // color: var(--total-board-top-color);
         // font-weight: bold;
         margin-right: 5px;
-        font-size: .729vw;
+        font-size: 20px;
         color: var(--main-text-color);
       }
     }

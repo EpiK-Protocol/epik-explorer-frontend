@@ -46,7 +46,7 @@ const zh = {
         },
         
         header: {
-            title: "EpiK Explorer",
+            title: "EPIK EXPLORER",
             tab: ["首页", "Tipset", "统计数据"],
             placeholder: "请输入地址/消息ID/区块哈希",
         //     filter: [
@@ -115,14 +115,8 @@ const zh = {
                         label: "查看区块",
                         index: "/tipset"
                     },
-                    {
-                        label: "矿工排行",
-                        index: "/mining/list"
-                    },
-                    {
-                        label: "领域专家",
-                        index: "/experts/list"
-                    },
+                    
+                    
                     {
                         label: "查看全部消息",
                         index: "/message/list"
@@ -133,6 +127,19 @@ const zh = {
                     // }
                 ]
                 },
+                rank:{
+                    label: "矿工排行",
+                    index: "/mining/list"
+                },
+                experts:{
+                    label: "领域专家",
+                    index: "/experts/list"
+                },
+                web:{
+                    label: "EPIK",
+                    index: "https://www.epik-protocol.io/"
+                },
+
                 // stats: {
                 //     label: "数据",
                 //     index: "Stats",
@@ -298,7 +305,7 @@ const zh = {
                         label: "全网代币流通总量（EPK）",  
                     },
                     EPK_USDTPrice:{
-                        label: "当前代币价格（$）",  
+                        label: "当前代币价格（USDT）",  
                     }
 
                 },
@@ -337,7 +344,7 @@ const zh = {
                         label: "累积带宽奖金池（EPK）",  
                     },
                     DataFlowPerEPK:{
-                        label: "单位抵押代币每日可访问流量",  
+                        label: "单位抵押代币每日访问流量",  
                     },
                     
                 },

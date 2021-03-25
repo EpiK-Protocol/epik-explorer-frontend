@@ -8,7 +8,7 @@
         element-loading-background="var(--board-bg-color)"
       ></div>
       <div class="block-type" :style="typeStyle">
-        <div class="arrow left" @click="goLeft" style="display:none" v-if="!atIndex">
+        <div class="arrow left" @click="goRight"  v-if="!atIndex">
           <span class="el-icon-arrow-left"></span>
         </div>
         <div class="type-list">
@@ -25,7 +25,7 @@
             {{ $t("tipset.blockType")[2] }}
           </span>
         </div>
-        <div @click="goRight" class="arrow right" style="display:none" v-if="!atIndex">
+        <div @click="goLeft" class="arrow right"  v-if="!atIndex">
           <!-- <img src="@/assets/image/icons/right.png" alt /> -->
           <span class="el-icon-arrow-right"></span>
         </div>
@@ -91,6 +91,7 @@ export default {
   watch: {
     // 11/16
     height(v) {
+      debugger
       if ((v <= this.startHeight && v > this.startHeight - 15) || v == 0) {
         this.drawChart();
       } else {
@@ -135,7 +136,8 @@ export default {
   },
   async mounted() {
     chart = this.$chart.init(this.$refs.chart);
-    const height = this.height;
+    // const height = this.height;
+    const height = this.$route.query.jumpHeight;
     let currentHeight;
     // debugger
     if (height) {
@@ -182,6 +184,7 @@ export default {
       }
       try {
         this.loading = true;
+        // debugger
         const res = await getTipset({
           height: height,
           size : 15
@@ -508,6 +511,7 @@ export default {
       chart.setOption(option);
     },
     async goRight() {
+      debugger
       let jumpHeight = Math.max(this.lowHiehgt, 15);
       await this.getTipset(jumpHeight);
       this.goTo("tipset", {
@@ -549,7 +553,7 @@ export default {
     width: 100%;
     .chart {
       width: 100%;
-      height: 400px;
+      min-height: 300PX;
     }
   }
   .block-type {
@@ -558,9 +562,17 @@ export default {
     .arrow {
       position: absolute;
       top: -10px;
-      font-size: 30px;
+      font-size: 30PX;
       color: var(--main-text-color);
       cursor: pointer;
+      width: 30PX;
+      height: 30PX;
+      background: hsla(0,0%,100%,.2);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 30PX;
+      transform: translateY(-50%);
+      font-size: 16PX;
       &.left {
         left: 20px;
       }

@@ -19,7 +19,7 @@
   </div>
 </template>
 <script>
-import { getTopMiner } from "@/api/home";
+import { getTopMiner,getBoardInfo } from "@/api/home";
 import { mapState } from "vuex";
 export default {
   name: "MinerTable",
@@ -59,8 +59,11 @@ export default {
             key:'Rewards'
           },
           {
-            key:'lastblock'
+            key:'lastblock',
+            isLink: true,
+            target: "tipset",
           },
+       
         ],
         loadCount: 0,
         loading: false,
@@ -77,25 +80,37 @@ export default {
       this.blockTable.loading = true;
       this.blockTable.span = false;
       try {
+        const info = await getBoardInfo()
         const { miners } = await getTopMiner(num);
         const data = miners
-        const heightMap = {};
         // debugger
         // 8.9
         const dataSource = data.map((item, index) => {
-          const { ID, NewWorker, MinerPower} = item;
+          const { ID, NewWorker, MinerPower,WinBlocks,TotalRewards,LatestWinBlock} = item;
           return {
             Rank: index + 1, 
             Miner: ID,
             Tag: NewWorker,
-            QualityAdjPower: vm.unitConversion(MinerPower.QualityAdjPower,3),
-            RawBytePower: vm.unitConversion(MinerPower.RawBytePower,3), 
-            Blocks: '',
-            Rewards: "",
-            lastblock: "", 
-
+            QualityAdjPower:{
+              data:vm.unitConversion(MinerPower.QualityAdjPower,2),
+              percent: (MinerPower.QualityAdjPower/info.minerInfomation.TotalPower*100).toFixed(2)
+            },
+            RawBytePower:{
+              data: vm.unitConversion(MinerPower.RawBytePower,2), 
+              percent: (MinerPower.RawBytePower/info.minerInfomation.TotalPower*100).toFixed(2)
+            }, 
+            
+            Blocks: {
+              data: WinBlocks,
+              percent: (WinBlocks/info.baseInfomation.TotalBlocks*100).toFixed(2)
+            } ,
+            Rewards: {
+              data: Number(TotalRewards).toFixed(3),
+              percent: (Number(TotalRewards)/info.minerInfomation.TotalMiningReward*100).toFixed(2)
+            },
+            lastblock: LatestWinBlock,
           };
-        });
+        })
         // console.log(dataSource)
         this.blockTable.dataSource = dataSource;
      
@@ -134,7 +149,11 @@ export default {
 <style lang="scss" scoped>
 .miner-table{
   /deep/ .el-table{
+     min-height: 425PX;
      max-height: 425PX;
+     table{
+       width:100% !important;
+     }
   }
 }
 .top-miner{

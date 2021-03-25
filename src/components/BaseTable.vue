@@ -56,9 +56,12 @@
             "
           ></base-link>
         
-          <span v-if="!item.isLink && !item.isComponent">{{
-            `${scope.row[item.key]} ${item.unit || ""}`
-          }}</span>
+          <span v-if="!item.isLink && !item.isComponent">
+            <span v-if="scope.row[item.key].data">{{`${scope.row[item.key].data} ${item.unit || ""}`}}
+              <span v-if="scope.row[item.key].percent" class="percent">{{scope.row[item.key].percent||0}}%</span>
+            </span>
+            <span v-else>{{`${scope.row[item.key]} ${item.unit || ""}`}}</span>
+          </span>
           <!-- <component :is="scope.row[item.key]" v-if="item.isComponent" /> -->
         </template>
       </el-table-column>
@@ -276,6 +279,20 @@ export default {
       height: 40PX;
     }
   }
+  .percent{
+    display: inline-block;
+    // width: 3.125vw;
+    // height: 1.042vw;
+    text-align: center;
+    // line-height: 1.042vw;
+    border-radius: 20px;
+    background: var(--table-row-extra-color);
+    color: var(--table-row-extra-text-color);
+    margin-left: 3px;
+    font-size: 12px;
+    padding: 5px;
+    line-height: 16px;
+  }
   // & ::v-deep .el-table__body-wrapper {
   //   tr {
   //     height: 60px;
@@ -313,6 +330,9 @@ export default {
         color: var(--table-row-hover-text-color);
         a {
           color: var(--table-row-hover-text-color);
+        }
+        .percent{
+          color: var(--table-row-hover-text-color); 
         }
       }
 

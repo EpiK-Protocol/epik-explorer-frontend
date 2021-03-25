@@ -40,7 +40,7 @@ const en = {
     }
   },
   header: {
-    title: "EpiK Explorer",
+    title: "EPIK EXPLORER",
     tab: ["Home", "Tipset", "Stats"],
     placeholder: "Search by Address/Msg ID/BlockHash",
     filter: [
@@ -113,14 +113,6 @@ const en = {
             index: "/tipset"
           },
           {
-            label: "Top Miners",
-            index: "/mining/list"
-          },
-          {
-            label: "Experts",
-            index: "/experts/list"
-          },
-          {
             label: "View All Messages",
             index: "/message/list"
           },
@@ -129,6 +121,18 @@ const en = {
           //   index: "/address/list"
           // }
         ]
+      },
+      rank:{
+        label: "Top Miners",
+        index: "/mining/list"
+      },
+      experts:{
+          label: "Experts",
+          index: "/experts/list"
+      },
+      web:{
+          label: "EPIK",
+          index: "https://www.epik-protocol.io/"
       },
       // stats: {
       //   label: "Stats",
@@ -227,7 +231,7 @@ const en = {
           label: "全网代币流通总量（EPK）",
         },
         EPK_USDTPrice: {
-          label: "当前代币价格（$）",
+          label: "当前代币价格（USDT）",
         }
 
       },
