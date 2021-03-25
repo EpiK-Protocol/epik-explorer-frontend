@@ -91,7 +91,7 @@ export default {
   watch: {
     // 11/16
     height(v) {
-      debugger
+      console.log(v)
       if ((v <= this.startHeight && v > this.startHeight - 15) || v == 0) {
         this.drawChart();
       } else {
@@ -111,8 +111,6 @@ export default {
           word: this.$route.query.hash,
           type:'block'
         });
-        console.log(data)
-        // debugger
         // const height = data.blocks[0].block_header.height;
         const height = data.block.Height;
         this.getTipset(height);
@@ -154,13 +152,14 @@ export default {
       currentHeight = height;
     } else {
       
-      let res = await getLatestBlock();
+      let res = await getTipset();
       //8.9
       let data = res.list
       const height = data[0].Height;
       // const height = data.block_header[0].block_header.height;
       currentHeight = height;
       this.jumpSafeHeight = height;
+      // currentHeight = 0;
     }
     this.getTipset(currentHeight);
     chart.on("click", e => {
@@ -511,7 +510,7 @@ export default {
       chart.setOption(option);
     },
     async goRight() {
-      debugger
+      // debugger
       let jumpHeight = Math.max(this.lowHiehgt, 15);
       await this.getTipset(jumpHeight);
       this.goTo("tipset", {

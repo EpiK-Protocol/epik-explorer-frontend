@@ -161,13 +161,14 @@ export default {
   methods: {
     async loadData(hash){
       try{
-           
+           if(!hash) return
         this.loading = true
+        
         let res = await search({
           word: hash,
           type: 'block'
         });
-        console.log(res)
+
   
            const {
             Timestamp,
