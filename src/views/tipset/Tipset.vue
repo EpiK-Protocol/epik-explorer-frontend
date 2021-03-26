@@ -169,7 +169,7 @@ export default {
           type: 'block'
         });
 
-  
+//  debugger 
            const {
             Timestamp,
             Height,

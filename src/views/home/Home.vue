@@ -6,7 +6,7 @@
       v-if="!isMobile && atIndex"
     />
 
-    <div class="board-con bottom-20">
+    <div v-if="show" class="board-con bottom-20">
       <total-board />
       <total-chart />
     </div>
@@ -15,8 +15,9 @@
       <message-table />
     </div> -->
     <div class="block-message-table bottom-20">
-      <miner-table/>
+      <miner-table v-if="show"/>
     </div>
+    <Footer />
     
       </div>
 </template>
@@ -24,17 +25,34 @@
 <script>
 import * as components from "./components";
 import TicketChain from "../tipset/components/TicketChain";
-import MinerTable from './components/table/MinerTable.vue';
+import Footer from "../footer";
+
 export default {
   name: "Home",
   data() {
     return {
-      option: {}
+      option: {},
+      show: true,
+      timer: null
     };
   },
   components: {
     ...components,
-    TicketChain
+    TicketChain,
+    Footer
+  },
+  mounted(){
+    this.timer = setInterval(() => {
+          this.show = false
+          this.$nextTick(_=>{
+            this.show = true
+          })
+    }, 30000);
+  
+
+  },
+  beforeDestroy() {
+    clearInterval(this.timer);
   },
   methods: {
     handleHashChange(v) {

@@ -34,6 +34,8 @@ export default {
   methods: {
     drawPowerChart() {
       const series = this.dataList;
+      const rate = this.rate;
+      const isMobile = this.isMobile;
       // const { axisLine, seriesItem, area } = this.chartTheme.totalPower;
       const {
         axisLine,
@@ -75,15 +77,16 @@ export default {
           axisLabel: {
             textStyle: {
               color: '#ffffff',
-              fontSize: '10'
+              fontSize: isMobile?11:14.5*rate
             },
           },
         },
         yAxis: [{
           type:'value',
-          name: '全网算力',
+          name:  vm.$t("chart.totalPower1"),
           nameTextStyle: {
             color: '#00ccf8',
+            fontSize: isMobile?11:14.5*rate 
           },
           scale: true,
           splitNumber: 3,
@@ -101,7 +104,7 @@ export default {
           axisLabel: {
             textStyle: {
               color: '#ffffff',
-              fontSize: '11'
+              fontSize: isMobile?11:14.5*rate
             },
             formatter: function(p) {
               return vm.unitConversion(p)
@@ -110,9 +113,10 @@ export default {
       
         },{
           type:'value',
-          name: '算力增长',
+          name: vm.$t("chart.powerGrouth"),
           nameTextStyle: {
             color: '#f3921b',
+            fontSize: isMobile?11:14.5*rate 
           },
           scale: true,
           splitNumber: 3,
@@ -130,7 +134,7 @@ export default {
           axisLabel: {
             textStyle: {
               color: '#ffffff',
-              fontSize: '11'
+              fontSize: isMobile?11:14.5*rate
             },
             formatter: function(p) {
               return vm.unitConversion(p)
@@ -142,7 +146,7 @@ export default {
           left: 50,
           top: 30,
           right: 50,
-          bottom: 20,
+          bottom: 25,
         },
         tooltip: {
           trigger: "axis",
@@ -163,22 +167,23 @@ export default {
         },
         series: [
             {
-                name: '全网算力',
+
+                name: vm.$t("chart.totalPower1"),
                 type: 'bar',
                 // color: '#5ad8a6',
-                barMaxWidth: 10,
+                barMaxWidth: 15,
                 itemStyle: {
                 normal: {
                   color: seriesItem
                 }
               },
-                data: series1
+                data: series2
             }, {
-                name: '算力增长',
+                name: vm.$t("chart.powerGrouth"),
                 type: 'line',
                 yAxisIndex: 1,
                 color: '#f3921b',
-                data: series2
+                data: series1
             }
         ],
       };
@@ -231,6 +236,9 @@ export default {
     theme() {
       this.drawPowerChart();
     },
+    '$i18n.locale'() {
+      this.drawPowerChart();
+    }
   },
 };
 </script>

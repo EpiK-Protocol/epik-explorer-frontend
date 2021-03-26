@@ -201,9 +201,9 @@ export default {
       background: var(--board-bg-color);
       li::v-deep{
         color: var(--main-text-color);
-        font-size: 13px;
+        font-size: 14px;
         &.is-active{
-          font-weight: bold;
+          // font-weight: bold;
           color: var(--force-mark-color);
           border-bottom: none;
           div{
@@ -244,7 +244,10 @@ export default {
     border: none!important;
     display: flex;
     align-items: center;
-    justify-content: center;
+    width: 100%;
+    justify-content: space-evenly;
+    padding: 0 20px;
+    // justify-content: center;
     .link{
       padding:0 10px;
       
@@ -294,10 +297,10 @@ export default {
   padding-left: 10px;
 }
 .logo {
-  width: 40px;
+  width: 35px;
   margin-right: 5px;
   & + span {
-    font-size: 30px;
+    font-size: 23px;
     color: var(--main-text-color);
     // color: var(--logo-text-color);
     // text-shadow: 0 0 4px var(--logo-text-color);

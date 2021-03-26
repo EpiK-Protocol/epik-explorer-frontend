@@ -63,14 +63,16 @@ const darkTheme = {
     ])
   },
   tipset: {
-    ticketNode: "white",
-    otherNode: "#F7B500",
+    ticketNode: "black",
+    otherNode: "#f3921b",
     nullNode: "black",
-    link: "#F7B500",
+    link: "#f3921b",
     seriesMarkLine: "transparent",
     seriesMarkLineLabel: "white",
     markArea: "transparent",
-    markAreaBorder: "#F7B500",
+    // markAreaBorder: "#F7B500",
+    markAreaBorder: "#f3921b",
+    // markAreaActiveBorder: "#409EFF",
     markAreaActiveBorder: "#0091FF"
   },
   filOutstanding: {

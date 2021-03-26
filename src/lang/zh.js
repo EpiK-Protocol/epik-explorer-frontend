@@ -1,5 +1,6 @@
 const zh = {
         component: {
+
             mesList: {
                 // label: ["类型", "消息ID", "区块高度", "块龄", "发送地址", "接收地址", "数额", "收据", "方法"],
                 label: [ "消息ID", "发送地址", "接收地址", "数额", "方法"],
@@ -588,7 +589,20 @@ const zh = {
             filecoin: "区块奖励(tEPK)",
             filVested: ["累计tEPK释放", "每日释放tEPK"],
             coming: "敬请期待",
-            map: "<div style='margin-bottom:5px'><a href='/#/stats/peer?peer_id={pid}'><span>节点ID : </span><span>{pid}</span></a></div><div style='margin-bottom:5px'><span>位置 : </span><span>{name}</span></div><div><span>IP : </span><span>{ip}</span></div>"
-        }
+            map: "<div style='margin-bottom:5px'><a href='/#/stats/peer?peer_id={pid}'><span>节点ID : </span><span>{pid}</span></a></div><div style='margin-bottom:5px'><span>位置 : </span><span>{name}</span></div><div><span>IP : </span><span>{ip}</span></div>",
+            totalPower1:'全网算力',
+            powerGrouth:'算力增长',
+            price: '价格'
+
+
+        },
+        banner: {
+            t1: "构建人类永恒知识库",
+            t2: '开阔 AI 的认知',
+            t3: '铭识协议是一个去中心化的共建共享共益的安全可信知识图谱协作平台，<br/>赋能认知智能新基建。',
+            m_t3: '铭识协议是一个去中心化的共建共享共益的<br/>安全可信知识图谱协作平台，赋能认知智能新基建。',
+            t4: '这是一场至少持续50年的从碳基生命到硅基生命的史诗级布道',
+            m_t4: '这是一场至少持续50年的<br/>从碳基生命到硅基生命的史诗级布道'
+        },
 };
 export default zh;

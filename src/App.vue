@@ -11,13 +11,12 @@
 </template>
 <script>
 import Header from "./views/header";
-import Footer from "./views/footer";
 import { mapMutations } from "vuex";
 export default {
   name: "App",
   components: {
     Header,
-    Footer
+    // Footer
   },
   methods: {
     ...mapMutations(["setRate"])

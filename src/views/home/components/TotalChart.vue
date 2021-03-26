@@ -5,7 +5,7 @@
       <block-size-chart :time="time" />
       <total-power-chart :time="time" />
     </div> -->
-    <div class="total-chart">
+    <div class="total-chart" >
       <block-size-chart :time="time" />
       <new-power-chart :time="time"/>
       <k-line-chart :time="time" />
@@ -13,9 +13,7 @@
   </div>
 </template>
 <script>
-import BlockTimeChart from "./chart/BlockTimeChart";
 import BlockSizeChart from "./chart/BlockSizeChart";
-import TotalPowerChart from "./chart/TotalPowerChart";
 import KLineChart from './chart/KLineChart';
 import NewPowerChart from './chart/NewPowerChart.vue';
 export default {
@@ -23,12 +21,12 @@ export default {
   data() {
     return {
       time: {},
+      show: true,
+      timer: null
     };
   },
   components: {
     BlockSizeChart,
-    BlockTimeChart,
-    TotalPowerChart,
     KLineChart,
     NewPowerChart
   },
@@ -38,7 +36,7 @@ export default {
       start_time: end_time - 86400,
       end_time: end_time,
     };
-  },
+  }
 };
 </script>
 <style lang="scss" scoped>

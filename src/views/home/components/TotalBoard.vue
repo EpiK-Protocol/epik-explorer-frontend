@@ -74,7 +74,7 @@ export default {
         { labelKey: "TotalExpertReward", key: "TotalExpertReward",unit:"",},
         { labelKey: "TotalCrowdsourcingReward", key: "TotalCrowdsourcingReward",unit:"",},
         { labelKey: "TotalVoteReward", key: "TotalVoteReward",unit:"",},
-        { labelKey: "AnnualizedRate", key: "AnnualizedRate",unit:"",},
+        { labelKey: "AnnualizedRate", key: "AnnualizedRate",unit:"%",},
       ],
   
       timer: null,
@@ -128,11 +128,17 @@ export default {
         this.expert = this.expert.map((item) => {
           
           let value;
+          if(item.key == 'AnnualizedRate'){
+            res.expertInfomation[item.key] = res.expertInfomation[item.key]*100
+          }
           if(item.key == 'TotalDataSize'){
             value = this.unitConversion(res.expertInfomation[item.key], 2)
           }else{
             value = this.formatNumber( res.expertInfomation[item.key],3)
           }
+          
+
+          
           return {
             ...item,
             value 

@@ -10,6 +10,7 @@ export default new Vuex.Store({
     loadCount: 0,
     theme: "dark",
     isMobile: true,
+    lang: 'zh',
   },
   mutations: {
     setIsMobile(state, isMobile) {
@@ -17,6 +18,9 @@ export default new Vuex.Store({
     },
     setHeight(state, height) {
       state.defaultHeight = height;
+    },
+    setLang(state,lang){
+      state.lang = lang;
     },
     setRate(state, rate) {
       state.rate = rate;

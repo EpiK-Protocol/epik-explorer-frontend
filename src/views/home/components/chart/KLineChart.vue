@@ -34,6 +34,8 @@ export default {
   },
   methods: {
     drawPowerChart() {
+      const rate = this.rate;
+      const isMobile = this.isMobile;
       const series = this.dataList;
       const { axisLine, seriesItem, area } = this.chartTheme.totalPower;
       // const {
@@ -67,15 +69,16 @@ export default {
           axisLabel: {
             textStyle: {
               color: "#ffffff",
-              fontSize: "10",
+              fontSize: isMobile?11:14.5*rate
             },
           },
         },
 
         yAxis: {
-          name: `价格`,
+          name: vm.$t("chart.price"),
           nameTextStyle: {
             color: "#ffffff",
+            fontSize: isMobile?11:14.5*rate,
           },
           scale: true,
           splitNumber: 3,
@@ -93,7 +96,7 @@ export default {
           axisLabel: {
             textStyle: {
               color: "#ffffff",
-              fontSize: "11",
+              fontSize: isMobile?11:14.5*rate,
             },
           },
         },
@@ -101,7 +104,7 @@ export default {
           left: 30,
           top: 30,
           right: 30,
-          bottom: 20,
+          bottom: 25,
         },
         tooltip: {
           trigger: "axis",
@@ -131,7 +134,7 @@ export default {
             type: "k",
             name: "EPK",
             data: series1,
-            barMaxWidth: 10,
+            barMaxWidth: 13,
             itemStyle: {
               normal: {
                 color: "#47b262",
@@ -271,6 +274,9 @@ export default {
     theme() {
       this.drawPowerChart();
     },
+    '$i18n.locale'() {
+      this.drawPowerChart();
+    }
   },
 };
 </script>

@@ -2,7 +2,7 @@
   <div class="block-table miner-table">
     <!-- :max-height="isMobile ? 200 : 400 * rate" -->
     <div class="top-miner">
-      <div class="titl">{{$t("header.nav.tipset.items[1].label")}}</div>
+      <div class="titl">{{$t("header.nav.rank.label")}}</div>
       <div class="more" @click="goTo('minerList')">More ></div>
 
     </div>

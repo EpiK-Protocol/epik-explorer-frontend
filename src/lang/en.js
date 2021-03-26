@@ -216,94 +216,94 @@ const en = {
     board: {
       base: {
         Height: {
-          label: "区块高度",
+          label: "Block Height",
         },
         AvgTipSetTime: {
-          label: "平均每高度时间（s）",
+          label: "Avg. Blocktime（s）",
         },
         TotalBlocks: {
-          label: "全网出块数量",
+          label: "Total Blocks",
         },
         TotalEPK: {
-          label: "全网代币上限（EPK）",
+          label: "Total EPK",
         },
         CirculationEPK: {
-          label: "全网代币流通总量（EPK）",
+          label: "Circulation EPK",
         },
         EPK_USDTPrice: {
-          label: "当前代币价格（USDT）",
+          label: "EPKPrice（USDT）",
         }
 
       },
       miner: {
         TotalMiners: {
-          label: "完成注册矿工数",
+          label: "Total Miners",
         },
         PledgedMiners: {
-          label: "完成抵押矿工数",
+          label: "Pledged Miners",
         },
         ActiveMiners: {
-          label: "当前活跃矿工数",
+          label: "Active Miners",
         },
         TotalPower: {
-          label: "全网有效算力",
+          label: "Network Storage Power",
         },
         TopMinerPower: {
-          label: "矿工最高算力",
+          label: "TopMinerPower",
         },
         MinerMinWinPower: {
-          label: "最小每日暴块算力",
+          label: "MinerMinWinPower",
         },
         TotalMinerPledged: {
-          label: "全网矿工抵押数（EPK）",
+          label: "TotalMinerPledged（EPK）",
         },
         TotalRetrievalPledged: {
-          label: "全网访问抵押数（EPK）",
+          label: "TotalRetrievalPledged（EPK）",
         },
         TotalPledged: {
-          label: "全网总抵押数（EPK）",
+          label: "TotalPledged（EPK）",
         },
         TotalMiningReward: {
-          label: "累积出块奖金池（EPK）",
+          label: "TotalMiningReward（EPK）",
         },
         TotalRetrievalReward: {
-          label: "累积带宽奖金池（EPK）",
+          label: "TotalRetrievalReward（EPK）",
         },
         DataFlowPerEPK: {
-          label: "单位抵押代币每日可访问流量",
+          label: "DataFlowPerEPK",
         },
 
       },
       expert: {
         TotalExperts: {
-          label: "完成注册专家数",
+          label: "Total Experts",
         },
         ActiveExperts: {
-          label: "当前活跃专家数",
+          label: "Active Experts",
         },
         TotalVote: {
-          label: "全网专家选票数",
+          label: "Total Vote",
         },
         AvgVote: {
-          label: "平均专家选票数",
+          label: "Avg.Vote",
         },
         TopExpertVote: {
-          label: "专家最高票数",
+          label: "TopExpertVote",
         },
         TotalDataSize: {
-          label: "全网有效数据量",
+          label: "TotalDataSize",
         },
         TotalExpertReward: {
-          label: "累积专家奖金池（EPK）",
+          label: "TotalExpertReward（EPK）",
         },
         TotalCrowdsourcingReward: {
-          label: "累积众包奖金池（EPK）",
+          label: "TotalCrowdsourcingReward（EPK）",
         },
         TotalVoteReward: {
-          label: "累积投票奖金池（EPK）",
+          label: "TotalVoteReward（EPK）",
         },
         AnnualizedRate: {
-          label: "投票年化收益率",
+          label: "AnnualizedRate",
         }
 
       },
@@ -507,7 +507,19 @@ const en = {
     filecoin: "Block Reward(tEPK)",
     filVested: ["Cumulative tEPK Vested", "tEPK Vested Daily"],
     map:
-      "<div style='margin-bottom:5px'><a href='/#/stats/peer?peer_id={pid}'><span>Peer ID : </span><span>{pid}</span></a></div><div style='margin-bottom:5px'><span>Location : </span><span>{name}</span></div><div><span>IP : </span><span>{ip}</span></div>"
-  }
+      "<div style='margin-bottom:5px'><a href='/#/stats/peer?peer_id={pid}'><span>Peer ID : </span><span>{pid}</span></a></div><div style='margin-bottom:5px'><span>Location : </span><span>{name}</span></div><div><span>IP : </span><span>{ip}</span></div>",
+    totalPower1:'Network Power',
+    powerGrouth:'Power Grouth',
+    price: 'Price'
+
+  },
+  banner: {
+    t1: "Building an Everlasting Knowledge Vault",
+    t2: "Broaden AI's Horizons",
+    t3: 'EpiK Protocol is a decentralized trusted knowledge graph collaboration platform<br/> of the People, by the People, for the People.',
+    m_t3: 'EpiK Protocol is a decentralized trusted knowledge graph collaboration platform of the People, by the People, for the People.',
+    t4: 'It is an epic sermon of carbon-based to silicon-based life that will last at least 50 years.',
+    m_t4: 'It is be an epic sermon of carbon-based to silicon-based life that will last at least 50 years.'
+},
 };
 export default en;

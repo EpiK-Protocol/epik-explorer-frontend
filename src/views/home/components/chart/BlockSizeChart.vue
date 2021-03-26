@@ -5,19 +5,19 @@
     element-loading-background="var(--board-bg-color)"
   >
    <div class="info-con">
-      <div class="power-info bottom-10">
+      <div class="power-info">
         <span>
           {{ $t("home.blockSize.t1") }}：
         </span>
         <span  v-show="!loading">{{ data1 }}</span>
       </div>
-      <div class="power-info bottom-10">
+      <div class="power-info">
         <span>
           {{ $t("home.blockSize.t2") }}：
         </span>
         <span style="color:var(--block-size-color)" v-show="!loading">{{ data2 }}</span>
       </div>
-      <div class="power-info bottom-10">
+      <div class="power-info">
         <span>
           {{ $t("home.blockSize.t3") }}：
         </span>
@@ -52,6 +52,8 @@ export default {
   methods: {
     drawSizeChart() {
       // const data = this.dataList;
+      const rate = this.rate;
+      const isMobile = this.isMobile;
       var xdata=[]
       for(let i=0;i<this.Total.length;i++){
         xdata.push(i+1);
@@ -76,7 +78,7 @@ export default {
           axisLabel: {
             textStyle: {
               color: '#ffffff',
-              fontSize: '10'
+              fontSize: isMobile?11:14.5*rate
             },
           },
         },
@@ -99,14 +101,14 @@ export default {
           axisLabel: {
             textStyle: {
               color: '#ffffff',
-              fontSize: '11'
+              fontSize: isMobile?11:14.5*rate
             },
           },
         },
         grid: {
-          left: 40,
-          top: 20,
-          bottom: 40,
+          left: 60*rate,
+          top: 30,
+          bottom: 20,
           right: 20
         },
         tooltip: {
@@ -228,12 +230,19 @@ export default {
     },
     theme() {
       this.drawSizeChart();
+    },
+    '$i18n.locale'() {
+      this.drawPowerChart();
     }
   }
 };
 </script>
 <style lang="scss" scoped>
 .block-size-chart {
+    display: flex;
+    flex-direction: column;
+    // padding: 10px;
+    box-sizing: border-box;
 //   display: flex;
    height: 300px;
   .info-con {
@@ -249,7 +258,7 @@ export default {
     }
     & > div {
       span:last-child {
-        font-size: 26px;
+        font-size: 20px;
         margin-right: 20px;
         color: var(--total-power-color);
       }
@@ -257,7 +266,7 @@ export default {
         // color: var(--total-board-top-color);
         // font-weight: bold;
         margin-right: 5px;
-        font-size: 20px;
+        font-size: 14px;
         color: var(--main-text-color);
       }
     }

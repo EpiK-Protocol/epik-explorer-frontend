@@ -60,7 +60,8 @@ export default {
       hashHeight:0,
       linkList:[],
       lowHiehgt:0,
-      highHiehgt:0
+      highHiehgt:0,
+      timer: null,
     };
   },
   props: {
@@ -172,6 +173,17 @@ export default {
         this.$emit("height-change", String(this.linkList[e.value].height));
       }
     });
+    if(this.atIndex){
+      this.timer = setInterval(() => {
+          this.getTipset();
+        }, 30000);
+    }else{
+      clearInterval(this.timer);
+    }
+    
+  },
+  beforeDestroy() {
+    clearInterval(this.timer);
   },
   methods: {
     async getTipset(height) {
@@ -182,7 +194,7 @@ export default {
         height = 15;
       }
       try {
-        this.loading = true;
+        if(!this.atIndex) this.loading = true;
         // debugger
         const res = await getTipset({
           height: height,
@@ -266,6 +278,7 @@ export default {
       } = this.chartTheme.tipset;
       // debugger
       this.tipsets.forEach((item, index) => {
+        // debugger
         item.tipset = getBlockCoord(item.Blocks, index, item.Blocks[0].Messages['/']);
       }); //get coords
       // debugger
@@ -284,12 +297,14 @@ export default {
               }
             };
           }
+          
 
           // const formatName = item.block_header.miner;
           const formatName = item.Miner;
           let symbol;
           // if (item.cid === this.hash) {
-          if (item.Messages['/'] === this.hash) {
+          if (cur.Cids[index]['/'] === this.hash) { 
+          // if (item.Messages['/'] === this.hash) {
             symbol = `image://${this.activeSrc}`;
           } else if (index === 0) {
             symbol = `image://${this.ticketSrc}`;
@@ -488,7 +503,7 @@ export default {
               label: {
                 position: "start",
                 color: seriesMarkLineLabel,
-                fontSize: 12 * rate
+                fontSize: 16 * rate
               }
             },
             markArea: {
