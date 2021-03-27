@@ -177,13 +177,13 @@ export default {
                   color: seriesItem
                 }
               },
-                data: series2
+                data: series1
             }, {
                 name: vm.$t("chart.powerGrouth"),
                 type: 'line',
                 yAxisIndex: 1,
                 color: '#f3921b',
-                data: series1
+                data: series2
             }
         ],
       };

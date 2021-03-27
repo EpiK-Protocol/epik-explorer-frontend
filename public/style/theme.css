@@ -45,6 +45,8 @@
 
     --table-row-extra-color: #14314b;
     --table-row-extra-text-color: #999;
+
+    --border-color: #153550;
 }
 :root[theme='dark']{
     --main-bg-color:#0A0D13;

@@ -529,7 +529,11 @@ const zh = {
                 miner: "存储矿工",
                 actor: "一般账户"
             },
-            radio: ["消息", "出块"]
+            radio: ["消息", "出块"],
+            overview:['矿工账户','账户余额','算力一览','有效算力','算力占比','原值算力','总出块数','总奖励','扇区大小'],
+            account:['账户总览','矿工账号','Owner','节点标识','账户类型','存储矿工','Worker','地区(公共IP)','未知 (未知)','矿工地址','Controller'],
+
+
         },
         message: {
             detail: {
@@ -592,7 +596,9 @@ const zh = {
             map: "<div style='margin-bottom:5px'><a href='/#/stats/peer?peer_id={pid}'><span>节点ID : </span><span>{pid}</span></a></div><div style='margin-bottom:5px'><span>位置 : </span><span>{name}</span></div><div><span>IP : </span><span>{ip}</span></div>",
             totalPower1:'全网算力',
             powerGrouth:'算力增长',
-            price: '价格'
+            price: '价格',
+            MiningPledge:'挖矿质押',
+            TotalRewards:'锁仓奖励'
 
 
         },

@@ -430,7 +430,11 @@ const en = {
       miner: "StorageMiner",
       actor: "Account"
     },
-    radio: ["Message", "Blocks Mined"]
+    radio: ["Message", "Blocks Mined"],
+    overview:['Miner Overview','Total Balance','Power Glance','QualityAdjPower','Power Rate','RawBytePower','Total Blocks','Total Reward','Sector Size'],
+    account:['Account Overview','Actor','Owner','Peer ID','Type','StorageMiner','Worker','Region(Public IP)','unknown (unknown)','Address','Controller']
+
+
   },
   message: {
     detail: {
@@ -510,7 +514,9 @@ const en = {
       "<div style='margin-bottom:5px'><a href='/#/stats/peer?peer_id={pid}'><span>Peer ID : </span><span>{pid}</span></a></div><div style='margin-bottom:5px'><span>Location : </span><span>{name}</span></div><div><span>IP : </span><span>{ip}</span></div>",
     totalPower1:'Network Power',
     powerGrouth:'Power Grouth',
-    price: 'Price'
+    price: 'Price',
+    MiningPledge:'Mining Pledge',
+    TotalRewards:'Lock Rewards'
 
   },
   banner: {

@@ -36,7 +36,7 @@ param:{
 // ?miner=t012999
 export function getActorById(params) {
   return fetch({
-    url: "/MinerInfo",
+    url: "/miner",
     method: "get",
     params
   });

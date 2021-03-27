@@ -51,7 +51,9 @@
         border-bottom-color: var(--board-bg-color);
     }
 }
-
+.font-28{
+    font-size: 28px; 
+}
 .font-22{
     font-size: 22px;
 }
@@ -160,6 +162,7 @@
     }
 
 }
+
 @media (max-width: 768px) {
     
     .message-list-con{
