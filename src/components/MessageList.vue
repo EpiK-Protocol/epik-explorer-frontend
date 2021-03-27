@@ -30,7 +30,7 @@
         :total="total"
         @size-change="handleSizeChange"
         @page-change="handlePageChange"
-        :labels="labels"
+        :labels="$t('component.mesList.label')"
         :currentPage="currentPage"
       ></base-table>
     </div>
@@ -260,6 +260,7 @@ export default {
   },
   mounted() {
     this.labels = [...this.$t("component.mesList.label")];
+
     // if (!this.withType) {
     //   this.columns.shift();
     //   this.labels.shift();

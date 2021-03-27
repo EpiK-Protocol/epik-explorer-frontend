@@ -8,12 +8,12 @@
     /> -->
     <div class="overview">
       <div class="top bg-item">
-        <span> 地址: {{ $route.query.address }} </span>
+        <span> {{$t('address.detail.overview[0]')}}: {{ $route.query.address }} </span>
         <!-- <div class="updateSign">修改签名&gt;</div> -->
       </div>
-      <el-row class="chart-container flex top-20">
+      <el-row :class="['chart-container', isMobile?'':'flex','top-20']">
         <el-col
-          :span="12"
+          :span="isMobile?24:12"
           class="address-balance bg-item"
           style="margin-right: 8px"
         >
@@ -36,12 +36,12 @@
             </div>
           </div>
         </el-col>
-        <el-col :span="12" class="bg-item" style="margin-left: 8px">
+        <el-col v-if="!isMobile" :span="12" class="bg-item" style="margin-left: 8px">
           <div class="titl">{{$t('address.overview[2]')}}</div>
           <div class="subtitle">{{$t('address.overview[3]')}}</div>
           <div class="flex bottom-20 power">
             <div class="block font-28 font-500 text flex align-center">
-              <span>{{ unitConversion(info.TotalPower.QualityAdjPower,2) }}</span>
+              <span>{{ unitConversion(info.TotalPower.QualityAdjPower||0,2) }}</span>
             </div>
             <div class="block flex">
               <div class="label">{{$t('address.overview[4]')}}:</div>
@@ -49,7 +49,7 @@
             </div>
             <div class="block flex">
               <div class="label">{{$t('address.overview[5]')}}:</div>
-              <div class="value">{{ unitConversion(info.TotalPower.RawBytePower,2) }}</div>
+              <div class="value">{{ unitConversion(info.TotalPower.RawBytePower||0,2) }}</div>
             </div>
           </div>
           <div class="flex bottom-20 power">
@@ -66,6 +66,33 @@
               <div class="value">{{ unitConversion(info.SectorSize) }}</div>
             </div>
           </div>
+        </el-col>
+        <el-col v-else :span="24" class="bg-item">
+          <div class="titl">{{$t('address.overview[2]')}}</div>
+            <div class="block font-28 flex align-center">
+              <div class="label">{{$t('address.overview[3]')}}:</div>
+              <span>{{ unitConversion(info.TotalPower.QualityAdjPower,2) }}</span>
+            </div>
+            <div class="block flex">
+              <div class="label">{{$t('address.overview[4]')}}:</div>
+              <div class="value">0.775%</div>
+            </div>
+            <div class="block flex">
+              <div class="label">{{$t('address.overview[5]')}}:</div>
+              <div class="value">{{ unitConversion(info.TotalPower.RawBytePower||0,2) }}</div>
+            </div>
+            <div class="block text flex align-center">
+              <div class="label">{{$t('address.overview[6]')}}:</div>
+              <div class="value">{{ info.WinBlocks }}</div>
+            </div>
+            <div class="block flex">
+              <div class="label">{{$t('address.overview[7]')}}:</div>
+              <div class="value">{{ formatNumber(info.TotalRewards,3) }} EPK</div>
+            </div>
+            <div class="block flex">
+              <div class="label">{{$t('address.overview[8]')}}:</div>
+              <div class="value">{{ unitConversion(info.SectorSize) }}</div>
+            </div>
         </el-col>
       </el-row>
       <div class="account-overview bg-item top-20 radius">
@@ -274,14 +301,14 @@ export default {
         console.log(data)
         this.drawSizeChart(data)
 
-        const detail = this.parseAddress(res);
+        // const detail = this.parseAddress(res);
 
-        this.dataList = this.dataList.map((item) => {
-          return {
-            ...item,
-            value: detail[item.key],
-          };
-        });
+        // this.dataList = this.dataList.map((item) => {
+        //   return {
+        //     ...item,
+        //     value: detail[item.key],
+        //   };
+        // });
         // this.workers = res.work_list;
         // if (res.data.is_miner && res.miner.owner_address != "") {
         //   this.isMiner = true;
@@ -547,6 +574,167 @@ export default {
     }
   }
   @media (max-width: 768px) {
+    // .content-container{
+    //   padding: 60px 00px 0px;
+    // }
+    .overview {
+    background: var(--main-bg-color);
+    padding: 0;
+    .bg-item{
+      margin: 0 0 5px!important;
+    }
+    .account-overview {
+      .top {
+        border-bottom: 1px solid var(--border-color);
+      }
+      .bottom.info-main {
+        padding: 20px 20px 0;
+        flex-wrap: wrap;
+      }
+      .bottom.info-main > div {
+        margin-bottom: 15px;
+        line-height: 20px;
+
+        &:nth-child(2),
+        &:nth-child(5),
+        &:nth-child(8) {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          min-height: 26px;
+          span:first-child {
+            display: inline-block;
+            min-width: 100px;
+            margin-right: 10px;
+            white-space: nowrap;
+          }
+          .content {
+            display: flex;
+            flex-direction: column;
+            padding-right: 60px;
+            a {
+              word-break: break-word;
+              white-space: break-spaces;
+              color: #409eff;
+            }
+          }
+          span:first-child {
+            display: inline-block;
+            min-width: 100px;
+            margin-right: 10px;
+            white-space: nowrap;
+          }
+        }
+        &:nth-child(3),
+        &:nth-child(6),
+        &:nth-child(9) {
+          min-height: 26px;
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          word-break: break-word;
+          white-space: break-spaces;
+          span:first-child {
+            display: inline-block;
+            min-width: 100px;
+            margin-right: 10px;
+            white-space: nowrap;
+          }
+          .content {
+            display: flex;
+            flex-direction: column;
+            padding-right: 60px;
+            a {
+              word-break: break-word;
+              white-space: break-spaces;
+              color: #409eff;
+            }
+          }
+        }
+        &:first-child,
+        &:nth-child(4),
+        &:nth-child(7) {
+          min-height: 26px;
+          width: 100%;
+          span:first-child {
+            display: inline-block;
+            min-width: 100px;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+    .top {
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      height: 30px;
+      padding: 0 13px;
+    }
+    .power {
+      align-items: center;
+    }
+    .block {
+      // margin-bottom: 15px;
+      // line-height: 30px;
+      box-sizing: border-box;
+      padding: 0 13px;
+      flex: 1;
+      flex-shrink: 0;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      .label {
+        padding-right: 10px;
+      }
+    }
+    .titl {
+      padding: 10px;
+      font-size: 13px;
+      margin-bottom:0px;
+    }
+    .address-balance {
+      .info {
+        .l {
+          width: 33.3%;
+          height: 100px;
+          flex-shrink: 0;
+          .pie{
+            height: 100px !important;
+
+          }
+        }
+        .r {
+          width: 100%;
+          .l2 {
+            line-height: 30px;
+            font-size: 16px;
+          }
+          .pie-info {
+            display: block;
+            .spot {
+              width: 100%;
+              margin-bottom: 5px;
+              span {
+                display: inline-block;
+                width: 6px;
+                height: 6px;
+                border-radius: 4px;
+                margin-right: 10px;
+              }
+            }
+            .p1 span {
+              background: #5ad8a6;
+            }
+
+            .p2 span {
+              background: #9270ca;
+            }
+          }
+        }
+      }
+    }
+    
+  }
     .worker-list {
       box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.03);
       border-radius: 4px;
