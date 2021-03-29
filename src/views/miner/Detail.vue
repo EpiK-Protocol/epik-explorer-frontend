@@ -85,7 +85,7 @@ export default {
         this.loading = true;
         let data = await search({
           word: this.cid,
-          type: 'message'
+          // type: 'message'
         });
 
         const {

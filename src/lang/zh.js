@@ -3,7 +3,7 @@ const zh = {
 
             mesList: {
                 // label: ["类型", "消息ID", "区块高度", "块龄", "发送地址", "接收地址", "数额", "收据", "方法"],
-                label: [ "消息ID", "发送地址", "接收地址", "数额", "方法"],
+                label: [ "消息ID","时间","发送地址", "接收地址", "数额","收据", "方法"],
                 total: "总计<i> {total} </i>消息 {extra}",
                 method: {
                     ChangePeerID: "变更节点编号",
@@ -275,7 +275,7 @@ const zh = {
             },
             expertTable:{
                 title: "领域专家",
-                label: ["账户ID", "状态", "投票数", "申请表", "有效数据贡献量（GB）","上传有效数据文件数" ,"累计奖励"]
+                label: ["账户ID", "投票数", "申请表", "有效数据贡献量（GB）","上传有效数据文件数" ,"累计奖励", "状态"]
 
             },
             blockTable: {
@@ -532,6 +532,7 @@ const zh = {
             radio: ["消息", "出块"],
             overview:['矿工账户','账户余额','算力一览','有效算力','算力占比','原值算力','总出块数','总奖励','扇区大小'],
             account:['账户总览','矿工账号','Owner','节点标识','账户类型','存储矿工','Worker','地区(公共IP)','未知 (未知)','矿工地址','Controller'],
+            // overview:['Miner Overview','Total Balance','Power Glance','QualityAdjPower','Power Rate']
 
 
         },
@@ -539,7 +540,7 @@ const zh = {
             detail: {
                 titl: "消息 ID",
                 // overview: ["消息 ID", "高度", "区块", "时间", "发送地址", "接收地址", "数值", "收据", "方法", "随机值", "参数"],
-                overview: [ "发送地址", "接收地址", "数值", "方法", "随机值", "参数"],
+                overview: [ "时间", "发送地址", "接收地址", "数值", "收据", "方法", "随机值","Gas Limit","Gas Used", "参数"],
                 paramTip: "Base64格式元数据",
                 confirm: "确认"
             }
@@ -582,7 +583,7 @@ const zh = {
             blockTime: "<div style='margin-bottom:5px'>平均出块时间: {value}s</div><div>时间: {name}</div>",
             // blockSize: "<div style='margin-bottom:5px'>平均区块元数据大小: {value}字节</div><div>时间: {name}</div>",
             blockSize: "<div>注册矿工: {t1}</div><div>完成抵押: {t2}</div><div>出块矿工: {t3}</div>",
-            totalPower: "<div class='circle1' style='margin-bottom:5px'>全网算力: {qualityPower}</div><div class='circle2' style='margin-bottom:5px'>算力增长: {rawPower}</div><div>时间: {name}</div>",
+            totalPower: "<div class='circle2' style='margin-bottom:5px'>全网算力: {qualityPower}</div><div class='circle1' style='margin-bottom:5px'>算力增长: {rawPower}</div><div>时间: {name}</div>",
             mesHistory: "<div>消息: {count}</div><div>{time}</div>",
             mesHistoryTitle: "近14天消息历史",
             topPowerTitleText: "矿工{power}排行",

@@ -85,10 +85,11 @@ export default {
         //   target: "tipset",
         //   paramKey: "height"
         // },
-        // {
-        //   key: "time",
-        //   hideInMobile: true
-        // },
+        {
+          key: "time",
+          width: "250px"
+          // hideInMobile: true
+        },
         {
           key: "from",
           isLink: true,
@@ -108,6 +109,10 @@ export default {
         {
           key: "value"
         },
+        {
+          key: "Receipt",
+         
+        },
         // {
         //   key: "fee",
         //   hideInMobile: true,
@@ -118,7 +123,8 @@ export default {
         //   hideInMobile: true
         // },
         {
-          key: "method"
+          key: "method",
+          // width: "80px"
         }
       ],
       labels: []
@@ -180,44 +186,54 @@ export default {
             if(addressHash){
                 data = await search({
                     word: addressHash,
-                    type: 'address'
+                    // type: 'address'
                 });
             }
           data.msgs = data.messages;
           data.total = data.messages.length;
         // }
         this.total = Number(data.total);
+        // debugger
         const messageData = data.messages.map(item => {
           const {  
-              CID,
-              From,
-            To,
-            Method,
-            Nonce,
-            Params,
-            GasPrice,
-            GasLimit,
-            Value, } = item;
+            //   CID,
+            //   From,
+            // To,
+            // Method,
+            // Nonce,
+            // Params,
+            // GasPrice,
+            // GasLimit,
+            Message,
+            Timestamp,
+            Receipt,
+
+            // Value,
+             } = item;
+            
         //   const { from, to, value, gasprice } = msg;
           let res = {
-            cid: CID['/'],
+            cid: Message.CID['/'],
          
-            from:From,
+            from: Message.From,
+            time: this.getFormatTime(Timestamp*1000),
      
-            to: To,
-            value: this.formatFilNumber(Value),
+            to: Message.To,
+            value: this.formatFilNumber(Message.Value),
             // fee: GasPrice,
             // type: this.address !== from ? "in" : "out",
-            method: Method,
+            method: Message.Method,
+            Receipt: this.getCodeText(Receipt.ExitCode),
 
           };
           if (type === "block") {
-            res.from = From;
-            res.to = To;
+            res.from = Message.From;
+            res.to = Message.To;
           }
           return res;
         });
         // debugger
+        console.log(messageData)
         this.messageData = Object.freeze(messageData);
         this.loading = false;
       } catch (e) {

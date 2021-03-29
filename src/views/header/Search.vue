@@ -97,7 +97,7 @@ export default {
             key = "cid";
             break;
           case "address":
-            target = "messageList";
+            target = "addressDetail";
             key = "address";
             break;
           case "actor":

@@ -166,7 +166,7 @@ export default {
         
         let res = await search({
           word: hash,
-          type: 'block'
+          // type: 'block'
         });
 
 //  debugger 

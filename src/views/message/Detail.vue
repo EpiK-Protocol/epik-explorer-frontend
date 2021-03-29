@@ -37,9 +37,9 @@ export default {
         //   target: "tipset",
         //   paramKey: "hash"
         // },
-        // {
-        //   key: "time"
-        // },
+        {
+          key: "time"
+        },
         {
           key: "from",
           isLink: true,
@@ -56,6 +56,10 @@ export default {
           key: "value",
           // unit: "tEPK"
         },
+        {
+          key: "Receipt",
+          // unit: "tEPK"
+        },
         // {
         //   key: "fee",
         //   unit: "tEPK"
@@ -70,6 +74,14 @@ export default {
           key: "nonce"
         },
         {
+          key: "GasLimit",
+          unit: "aEPK"
+        },
+        {
+          key: "GasUsed",
+          unit: "aEPK"
+        },
+        {
           key: "params",
           isComponent: true
         }
@@ -81,47 +93,53 @@ export default {
     };
   },
   methods: {
+    
     async getMessageDetail() {
       try {
         this.loading = true;
         let data = await search({
           word: this.cid,
-          type: 'message'
+          // type: 'message'
         });
 
         const {
           // height,
-          From,
-          To,
-          Method,
-          Nonce,
-          Params,
-          GasLimit,
-          Value,
+          // From,
+          // To,
+          // Method,
+          // Nonce,
+          // Params,
+          // GasLimit,
+          // Value,
+          Message,
+          Timestamp,
+          Receipt
         } = data.message;
         // const { from, to, nonce, params, value, gaslimit } = msg;
         // let blockRes = await getBlockConfirmCount({
         //   cid: block_cid
         // });
-
         const paramTip = this.$t("message.detail.paramTip");
         const confirm = this.$t("message.detail.confirm");
         const sourceMap = {
           // height: this.formatNumber(height),
           // cid: this.cid,
           // confirm: this.formatNumber(blockRes.count),
-          // time: this.getFormatTime(msgcreate),
-          from:From,
-          to:To,
-          method: Method,
-          nonce:Nonce,
-          params: Params.length > 256 ? `${Params.slice(0, 256)} ...` : Params,
-          value:this.formatFilNumber(Value),
-          fee: this.formatNumber(GasLimit),
+          time: this.getFormatTime(Timestamp*1000),
+          from: Message.From,
+          to: Message.To,
+          method: Message.Method,
+          Receipt: this.getCodeText(Receipt.ExitCode),
+          nonce: Message.Nonce,
+          // params: Message.Params.length > 256 ? `${Message.Params.slice(0, 256)} ...` : Message.Params,
+          params: Message.Params?Message.Params:'null',
+          value:this.formatFilNumber(Message.Value),
+          // fee: this.formatNumber(Message.GasLimit),
+          GasLimit: this.formatNumber(Message.GasLimit/1000000),
+          GasUsed: this.formatNumber(Receipt.GasUsed/1000000)
           // blockHash: block_cid,
           // code: exit_code
         };
-
 
         this.dataList = this.dataList.map(item => {
           let linkList;
@@ -200,7 +218,7 @@ export default {
 <style lang="scss" scoped>
 .message-detail {
   background: var(--board-bg-color);
-  padding: 1.042vw;
+  // padding: 1.042vw;
   .detail-info-con{
 
   }

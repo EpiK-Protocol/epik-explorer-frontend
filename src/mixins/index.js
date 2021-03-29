@@ -113,6 +113,47 @@ const mixin = {
         //   : `${(value * Math.pow(10, 18)).toLocaleString()} AttoEPK`;
       // }
     },
+    getCodeText(code){
+      // debugger
+      switch(code) {
+        case 0:
+            return "ok"
+            
+        case 1:
+            return "SysErrSenderInvalid"
+            
+        case 2:
+            return "SysErrSenderInvalid"
+            
+        case 3:
+            return "SysErrInvalidMethod"
+            
+        case 4:
+            return " SysErrReserved1"
+            
+        case 5:
+            return "SysErrInvalidReceiver"
+            
+        case 6:
+            return "SysErrInsufficientFunds"
+            
+        case 7:
+            return "SysErrOutOfGas"
+            
+        case 8:
+            return "SysErrForbidden"
+            
+        case 9:
+            return "SysErrorIllegalActor"
+            
+        case 10:
+            return "SysErrorIllegalArgument"
+            
+        default:
+           return "Error" 
+    } 
+
+    },
     unitConversion(item, len) {
       let positive = true;
       if (item == 0) {

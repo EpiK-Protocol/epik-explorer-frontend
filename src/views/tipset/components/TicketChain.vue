@@ -110,7 +110,7 @@ export default {
         //for parent hash click
         let data = await search({
           word: this.$route.query.hash,
-          type:'block'
+          // type:'block'
         });
         // const height = data.blocks[0].block_header.height;
         const height = data.block.Height;
@@ -145,7 +145,7 @@ export default {
       let data = await search({
         // cid: this.$route.query.hash
         word: this.$route.query.hash,
-        type:'block'
+        // type:'block'
       });
       // debugger
       // const height = data.blocks[0].block_header.height;

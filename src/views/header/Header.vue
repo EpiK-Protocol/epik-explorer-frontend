@@ -252,7 +252,7 @@ export default {
       padding:0 10px;
       
       a{
-        font-size: 13px;
+        font-size: 14px;
       }
       &:hover a{
         color: var(--force-mark-color) !important;

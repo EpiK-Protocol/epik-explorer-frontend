@@ -19,7 +19,8 @@ import {
   Popover,
   Loading,
   RadioButton,
-  RadioGroup
+  RadioGroup,
+  // InfiniteScroll
 } from "element-ui";
 import en from "element-ui/lib/locale/lang/en";
 import locale from "element-ui/lib/locale";
@@ -44,3 +45,4 @@ Vue.component(Popover.name, Popover);
 Vue.component(RadioButton.name, RadioButton);
 Vue.component(RadioGroup.name, RadioGroup);
 Vue.use(Loading);
+// Vue.use(InfiniteScroll);

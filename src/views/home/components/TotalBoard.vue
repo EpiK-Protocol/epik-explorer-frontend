@@ -110,12 +110,15 @@ export default {
       
             let value = this.formatNumber(res.minerInfomation[item.key],3)
             if(item.key == 'DataFlowPerEPK'){
-              value = '10 MB'
+              value = '10Mib/EPK'
             }
             if(item.key == 'TotalPower'){
               value = this.unitConversion(res.minerInfomation[item.key], 3)
             }
             if(item.key == 'TopMinerPower'){
+              value = this.unitConversion(res.minerInfomation[item.key], 3)
+            }
+            if(item.key == 'MinerMinWinPower'){
               value = this.unitConversion(res.minerInfomation[item.key], 3)
             }
        
@@ -176,10 +179,10 @@ export default {
   }
   .info-item {
     //width: 16.66%;
-    min-width: 150PX;
+    min-width: 150px;
     flex:1;
     // box-shadow: 0px 1px 7px 9px rgba(0, 0, 0, 0.03);
-    padding: 15px;
+    padding: 10px 0;
     margin-right: 10px;
     background: var(--board-bg-color);
     height: 100px;

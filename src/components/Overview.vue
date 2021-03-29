@@ -187,25 +187,44 @@ export default {
     background: var(--main-bg-color);
   }
   @media (max-width: 768px) {
+    // .message-detail{
+    //   padding: 0;
+    // }
     &.general-overview {
       box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.03);
       border-radius: 10px !important;
+      padding:0; 
     }
     .detail-info-con {
+      padding: 0;
       padding-bottom: 3vw;
+      
+
       .info-item {
-        display: block;
-        padding: 10px 6vw;
+        // display: block;
+        display:flex;
+        justify-content: space-between;
+
+        padding: 10px 15px;
+        .link-list{
+          text-align: right;
+          line-height: 7vw;
+          margin-left:20px;
+        }
         &:nth-child(2n) {
           background: var(--board-bg-color);
         }
         span {
           display: block;
           padding-left: 0 !important;
+          line-height: 7vw;
           &:first-child {
             color: var(--main-text-color);
             height: 7vw;
             line-height: 7vw;
+          }
+          &:last-child{
+            flex: inherit;
           }
         }
         & ::v-deep * {
@@ -216,6 +235,8 @@ export default {
             span {
               min-height: 7vw;
               line-height: 100%;
+              height: initial;
+              line-height: initial;
             }
           }
         }
@@ -223,4 +244,5 @@ export default {
     }
   }
 }
+
 </style>

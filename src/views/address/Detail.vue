@@ -13,7 +13,7 @@
       </div>
       <el-row :class="['chart-container', isMobile?'':'flex','top-20']">
         <el-col
-          :span="isMobile?24:12"
+          :span="isMobile?24:11"
           class="address-balance bg-item"
           style="margin-right: 8px"
         >
@@ -25,7 +25,7 @@
             <div class="r font-14">
               <div class="l1 bottom-10">{{$t('address.overview[1]')}}</div>
               <div class="l2 font-28 bottom-20">{{ info.Balance }} EPK</div>
-              <div class="flex pie-info">
+              <div class="pie-info">
                 <div class="spot p1">
                   <span></span>{{$t('chart.MiningPledge')}}: {{ info.MiningPledge }} EPK
                 </div>
@@ -36,7 +36,7 @@
             </div>
           </div>
         </el-col>
-        <el-col v-if="!isMobile" :span="12" class="bg-item" style="margin-left: 8px">
+        <el-col v-if="!isMobile" :span="13" class="bg-item" style="margin-left: 8px">
           <div class="titl">{{$t('address.overview[2]')}}</div>
           <div class="subtitle">{{$t('address.overview[3]')}}</div>
           <div class="flex bottom-20 power">
@@ -45,7 +45,7 @@
             </div>
             <div class="block flex">
               <div class="label">{{$t('address.overview[4]')}}:</div>
-              <div class="value">0.775%</div>
+              <div class="value">{{(info.MinerPower.QualityAdjPower/info.TotalPower.QualityAdjPower*100).toFixed(3)||0}}%</div>
             </div>
             <div class="block flex">
               <div class="label">{{$t('address.overview[5]')}}:</div>
@@ -212,6 +212,10 @@ export default {
           QualityAdjPower: 0,
           RawBytePower: 0,
         },
+        MinerPower: {
+          QualityAdjPower: 0,
+          RawBytePower: 0,
+        },
       },
       dataList: [
         {
@@ -298,7 +302,7 @@ export default {
           {name: this.$t('chart.MiningPledge'),value:Number(this.info.MiningPledge)},
           {name: this.$t('chart.TotalRewards'),value:Number(this.info.TotalRewards)}
         ]
-        console.log(data)
+        // console.log(data)
         this.drawSizeChart(data)
 
         // const detail = this.parseAddress(res);
@@ -390,6 +394,7 @@ export default {
     padding: 20px;
     .bg-item {
       background: var(--board-item-bg-color);
+      padding-bottom: 10px;
     }
     .account-overview {
       .top {
@@ -519,8 +524,11 @@ export default {
             line-height: 40px;
           }
           .pie-info {
+           
+
             .spot {
-              width: 50%;
+              width: 100%;
+              margin-bottom: 10px;
               span {
                 display: inline-block;
                 width: 6px;

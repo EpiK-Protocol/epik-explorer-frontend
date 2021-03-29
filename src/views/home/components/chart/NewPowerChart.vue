@@ -83,7 +83,7 @@ export default {
         },
         yAxis: [{
           type:'value',
-          name:  vm.$t("chart.totalPower1"),
+          name:  vm.$t("chart.powerGrouth"),
           nameTextStyle: {
             color: '#00ccf8',
             fontSize: isMobile?11:14.5*rate 
@@ -113,7 +113,7 @@ export default {
       
         },{
           type:'value',
-          name: vm.$t("chart.powerGrouth"),
+          name: vm.$t("chart.totalPower1"),
           nameTextStyle: {
             color: '#f3921b',
             fontSize: isMobile?11:14.5*rate 
@@ -153,12 +153,11 @@ export default {
           // axisPointer: {
           //   type: "cross",
           // },
-      
-
+          
             formatter: function(p) {
               const html = vm.$t("chart.totalPower", {
-                rawPower:vm.unitConversion(p[1].data.value, 3),
-                qualityPower:vm.unitConversion(p[0].data.value, 3),
+                rawPower:vm.unitConversion(p[0].data.value, 3),
+                qualityPower:vm.unitConversion(p[1].data.value, 3),
                 // value: vm.unitConversion(p[0].data.value, 3),
                 name: p[0].name
               });
@@ -177,13 +176,13 @@ export default {
                   color: seriesItem
                 }
               },
-                data: series1
+                data: series2
             }, {
                 name: vm.$t("chart.powerGrouth"),
                 type: 'line',
                 yAxisIndex: 1,
                 color: '#f3921b',
-                data: series2
+                data: series1
             }
         ],
       };

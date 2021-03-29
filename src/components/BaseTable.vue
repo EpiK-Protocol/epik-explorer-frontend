@@ -2,6 +2,7 @@
   <div class="base-table">
     <slot name="header"></slot>
     <!-- :height="700 * rate" -->
+    <!-- v-infinite-scroll="load" -->
     <el-table
       :data="dataSource"
       :stripe="stripe"
@@ -9,6 +10,7 @@
       @header-click="handleHeaderClick"
       v-bind="$attrs"
       v-scroll="load"
+
       v-loading="showLoading"
       :span-method="spanMethod"
       header-row-class-name="header-row"
@@ -36,6 +38,7 @@
         :sortable="item.sortable ? 'custom' : false"
         :prop="item.key"
         align="center"
+        :width="item.width"
       >
       <!-- :fixed="isMobile && index === 0" -->
         <template slot-scope="scope">
@@ -315,7 +318,7 @@ export default {
     }
     .header-row th {
       background: var(--board-item-bg-color);
-      font-size: 12PX;
+      font-size: 12px;
       // background: var(--table-header-bg-color);
       color: var(--table-header-text-color);
       border-bottom-color: var(--table-header-border-color) !important;
@@ -362,6 +365,7 @@ export default {
       }
       .cell {
         color: var(--main-text-color);
+        font-size: 13px;
       }
     }
     &.mini th,

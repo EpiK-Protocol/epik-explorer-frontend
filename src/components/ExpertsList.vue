@@ -47,13 +47,11 @@ export default {
 
         {
           key: "Miner",
-          isLink: true,
-          target: "address/detail",
-          paramKey: "address",
+          // isLink: true,
+          // target: "address/detail",
+          // paramKey: "address",
         },
-        {
-          key: "Type",
-        },
+        
         {
           key: "VoteAmount",
         },
@@ -71,6 +69,10 @@ export default {
         },
         {
           key: "Reward",
+        },
+        {
+          key: "Type",
+          width: "200px"
         },
         
       ],
@@ -132,10 +134,10 @@ export default {
         });
     
         const minerData = data.list.map((item, index) => {
-          const { Owner ,Type,VoteAmount,ApplicationHash, FileSize,FileCount,Reward} = item
+          const { ID,Owner ,Type,VoteAmount,ApplicationHash, FileSize,FileCount,Reward,StatusDesc} = item
           return {
-            Miner: Owner,
-            Type,
+            Miner: ID,
+            Type:StatusDesc,
             VoteAmount,
             FileSize: vm.unitConversion(FileSize, 2),
             FileCount,

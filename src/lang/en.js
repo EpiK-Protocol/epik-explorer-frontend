@@ -5,11 +5,11 @@ const en = {
         // "Type",
         "Msg ID",
         // "Height",
-        // "Time",
+        "Time",
         "From",
         "To",
         "Value",
-        // "Receipt",
+        "Receipt",
         // "Fee",
         "Method"
       ],
@@ -205,8 +205,7 @@ const en = {
     },
     expertTable: {
       title: "Expert",
-      label: ["ID", "Status", "VoteAmount", "ApplicationHash", "FileSize（GB）", "FileCount", "Reward"]
-
+      label: ["ID", "VoteAmount", "ApplicationHash", "FileSize（GB）", "FileCount", "Reward", "Status"]
     },
     messageTable: {
       title: "Message",
@@ -443,14 +442,16 @@ const en = {
         // "Msg ID",
         // "Height",
         // "Block",
-        // "Time",
+        "Time",
         "From",
         "To",
         "Value",
-        // "Receipt",
-        //"Fee",
+        "Receipt",
+        "Fee",
         "Method",
         "Nonce",
+        "GasLimit",
+        "GasUsed",
         "Params"
       ],
       paramTip: "Raw data in Base64",
@@ -504,7 +505,7 @@ const en = {
     //   "<div style='margin-bottom:5px'>Avg BlockHeader Size: {value}bytes</div><div>Time: {name}</div>",
     blockSize: "<div >Total Miner: {t1}</div><div>Pledged: {t2}</div><div>Won Miner: {t3}</div>",
 
-    totalPower: "<div class='circle1' style='margin-bottom:5px'>Network Power: {qualityPower}</div><div class='circle2' style='margin-bottom:5px'>Power Grouth: {rawPower}</div><div>Time: {name}</div>",
+    totalPower: "<div class='circle2' style='margin-bottom:5px'>Network Power: {qualityPower}</div><div class='circle1' style='margin-bottom:5px'>Power Grouth: {rawPower}</div><div>Time: {name}</div>",
     blocksWon: "<div>MinerID: {miner_id}</div><div>Height: {height}</div><div>BlockTime: {block_time}</div><div>BlockHash: {cid}</div>",
     filOutstanding: ["Floating", "Pledge"],
     blockReward: ["# Of Miners", "Cumulative Block Reward"],
