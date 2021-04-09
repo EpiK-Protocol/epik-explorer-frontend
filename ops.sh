@@ -48,7 +48,7 @@ docker stop ${appname}
 sleep 1
 docker rm ${appname}
 sleep 1
-docker run  --network=host -v /etc/localtime:/etc/localtime -d -m 1G --name ${appname} registry.cn-beijing.aliyuncs.com/bfssai/${appname}.dev:latest
+docker run  --network=host -v /etc/localtime:/etc/localtime -e 'API_BASE_URL=\"http://47.92.64.50:3002/\"' -d -m 1G --name ${appname} registry.cn-beijing.aliyuncs.com/bfssai/${appname}.dev:latest
 docker ps"
             ;;
             prod)
