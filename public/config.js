@@ -1,0 +1,1 @@
+window.API_BASE_URL = 'http://47.92.64.50:3002/'
