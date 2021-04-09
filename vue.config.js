@@ -7,7 +7,7 @@ module.exports = {
   
       '/apis': {
         // target: 'https://explorer.epik-protocol.io/api/',
-        target:'http://47.92.64.50:3002/',
+        target:'http://116.63.146.223:3002/',
         changeOrigin: true,
         secure:false,
         // ws: true,

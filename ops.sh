@@ -1,7 +1,7 @@
 #!/bin/bash
 appname=epikexplorer
 port=4001
-devaddr=47.92.64.50
+devaddr=116.63.146.223
 
 param1=${1}
 param2=${2}

@@ -1,1 +1,1 @@
-window.API_BASE_URL = 'http://47.92.64.50:3002/'
+window.API_BASE_URL = 'http://116.63.146.223:3002/'
