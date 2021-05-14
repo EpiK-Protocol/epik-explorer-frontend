@@ -2,3 +2,7 @@
 node_modules
 
 /dist
+
+ops.sh
+dev.sh
+prod.sh
