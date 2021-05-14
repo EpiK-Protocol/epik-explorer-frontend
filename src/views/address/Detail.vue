@@ -26,7 +26,7 @@
             </div>
             <div class="r font-14">
               <div class="l1 bottom-10">{{ $t("address.overview[1]") }}</div>
-              <div class="l2 font-28 bottom-20">{{ info.Balance }} EPK</div>
+              <div class="l2 font-28 bottom-20">{{ formatNumber(info.Balance,4) }} EPK</div>
               <div class="pie-info">
                 <div class="spot p1">
                   <span></span>{{ $t("chart.MiningPledge") }}:
@@ -51,7 +51,7 @@
           <div class="flex bottom-20 power">
             <div class="block font-28 font-500 text flex align-center">
               <span>{{
-                unitConversion(info.TotalPower.QualityAdjPower || 0, 2)
+                unitConversion(info.MinerPower.QualityAdjPower || 0, 2)
               }}</span>
             </div>
             <div class="block flex">
@@ -69,7 +69,7 @@
             <div class="block flex">
               <div class="label">{{ $t("address.overview[5]") }}:</div>
               <div class="value">
-                {{ unitConversion(info.TotalPower.RawBytePower || 0, 2) }}
+                {{ unitConversion(info.MinerPower.RawBytePower || 0, 2) }}
               </div>
             </div>
           </div>
@@ -246,6 +246,7 @@ export default {
       isMiner: false,
       workers: [],
       info: {
+        Balance: 0,
         TotalPower: {
           QualityAdjPower: 0,
           RawBytePower: 0,
@@ -346,8 +347,12 @@ export default {
             value: Number(this.info.TotalRewards),
           },
         ];
+        // debugger
         // console.log(data)
-        this.drawSizeChart(data);
+        this.$nextTick(()=>{
+          this.drawSizeChart(data);
+        })
+        
 
         // const detail = this.parseAddress(res);
 
@@ -409,7 +414,7 @@ export default {
         series: [
           {
             // data: vm.Total,
-            radius: ["40%", "70%"],
+            radius: ["45%", "75%"],
             type: "pie",
             avoidLabelOverlap: false,
             labelLine: {
