@@ -23,7 +23,7 @@
       </el-select>
     </div> -->
     <div class="table-con" >
-      <base-table
+      <!-- <base-table
         :dataSource="messageData"
         :columns="columns"
         showPagination
@@ -32,6 +32,14 @@
         @page-change="handlePageChange"
         :labels="$t('component.mesList.label')"
         :currentPage="currentPage"
+      ></base-table> -->
+      <base-table
+        :dataSource="messageData"
+        :columns="columns"
+        :labels="$t('component.mesList.label')"
+        :loadMore="true"
+        @load="loadMessageData"
+        :showLoading="loading"
       ></base-table>
     </div>
     <!-- <mb-board
@@ -50,7 +58,7 @@ import {
   getMessageByAddress,
   getMessageMethods
 } from "@/api/message";
-import { search } from "@/api/home";
+import { search, getMessagesById,getLatestMessage } from "@/api/home";
 
 export default {
   name: "MessageList",
@@ -64,6 +72,8 @@ export default {
         begindex: "0",
         count: "25"
       },
+      loadOver:false,
+      height:null,
       currentPage: 1,
       total: 0,
       messageData: [],
@@ -149,6 +159,34 @@ export default {
     }
   },
   methods: {
+    async loadMessageData() {
+
+      if(this.loadOver) return
+      if (this.loading) {
+        return;
+      }
+    //   debugger
+    //   if (this.loadCount == 3) {
+    //     // this.append = true;
+    //     return;
+    //   }
+       else {
+        // clearInterval(this.timer);
+        try {
+          
+            
+          this.loading = true;
+          await this.getMessage()
+          this.offset++;
+          this.loading = false;
+        //   this.initMesTimer();
+        } catch (e) {
+          if (e) {
+            this.loading = false;
+          }
+        }
+      }
+    },
     handleSizeChange(v) {
       this.option.count = v;
     },
@@ -167,6 +205,7 @@ export default {
     async getMessage() {
       try {
         this.loading = true;
+        
             const addressHash = this.$route.query.address;
         const type = this.type;
         const ellipsisByLength = this.ellipsisByLength;
@@ -177,22 +216,40 @@ export default {
         // if (this.type === "block") {
         //   data = await getMessage(this.option);
         // } else {
-          this.columns;
+
+          // this.columns;
+
         //   const res = await getMessageByAddress({
         //     ...this.option,
         //     address: this.address,
         //     from_to: ""
         //   });
+        // debugger
+        
             if(addressHash){
-                data = await search({
-                    word: addressHash,
+                data = await getMessagesById({
+                    address: addressHash,
+                    height: this.height,
+                    size:20,
                     // type: 'address'
                 });
+                if(data.list.length<20 || !data.list){
+                  this.loadOver = true
+                }
+            }else{
+              // debugger
+              data = await getLatestMessage({});
+              this.loadOver = true
+              
             }
-          data.msgs = data.messages;
-          data.total = data.messages.length;
+            // debugger
+          data.messages = data.list;
+          if(addressHash) this.height = data.list[data.list.length-1].Height
+          
+          data.total = data.list.length;
+          
         // }
-        this.total = Number(data.total);
+        // this.total = Number(data.total);
         // debugger
         const messageData = data.messages.map(item => {
           const {  
@@ -223,7 +280,7 @@ export default {
             // fee: GasPrice,
             // type: this.address !== from ? "in" : "out",
             method: Message.Method,
-            Receipt: this.getCodeText(Receipt.ExitCode),
+            Receipt: Receipt? this.getCodeText(Receipt.ExitCode):'',
 
           };
           if (type === "block") {
@@ -234,7 +291,8 @@ export default {
         });
         // debugger
         console.log(messageData)
-        this.messageData = Object.freeze(messageData);
+        this.messageData = [...this.messageData,...messageData]
+        // this.messageData = Object.freeze(messageData);
         this.loading = false;
       } catch (e) {
         this.loading = false;

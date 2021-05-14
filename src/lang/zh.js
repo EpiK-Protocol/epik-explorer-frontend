@@ -119,7 +119,7 @@ const zh = {
                     
                     
                     {
-                        label: "查看全部消息",
+                        label: "查看最新消息",
                         index: "/message/list"
                     },
                     // {

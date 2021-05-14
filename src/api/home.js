@@ -35,13 +35,13 @@ export function getExperts(params) {
     params
   });
 }
-export function getLatestMessage(num) {
+export function getLatestMessage() {
   return fetch({
-    method: "post",
-    url: "LatestMsg",
-    data: {
-      num
-    }
+    method: "get",
+    url: "/latestMessages",
+    // data: {
+    //   num
+    // }
   });
 }
 export function getBoardInfo() {
@@ -99,7 +99,7 @@ export function getTotalPowerData(data) {
 export function getKLineData(data) {
   return fetch({
     method: "get",
-    url: "/epkKline",
+    url: "/kline?symbol=EPK_USDT&interval=1h",
     data
   });
 }
@@ -121,6 +121,15 @@ param:{
 //   "type":"address/message/block",
 //   "word":""
 // }
+// height size
+export function getMessagesById(data) {
+  return fetch({
+    method: "get",
+    url: "messages",
+    params:data
+  });
+}
+
 export function search(data) {
   return fetch({
     method: "get",

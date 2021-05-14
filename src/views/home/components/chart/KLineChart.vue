@@ -10,6 +10,7 @@
 </template>
 <script>
 import { getKLineData } from "@/api/home";
+import axios from "axios";
 let chart;
 export default {
   name: "KLineChartt",
@@ -242,16 +243,32 @@ export default {
     async getKLineData() {
       try {
         this.loading = true;
+        //  axios
+        // .get('https://www.mxc.com/open/api/v2/market/kline?symbol=EPK_USDT&interval=1h')
+        // .then(response => {
+        //   console.log(response)
+        // })
+
+        // return
         const res = await getKLineData();
+        
         // console.log(res)
         this.loading = false;
         // debugger
-        const dataList = res.kline.map((item) => {
+        // const dataList = res.kline.map((item) => {
+        //   return {
+        //     time: this.formatTimeByStr(item.id * 1000, "HH:mm"),
+        //     data: [item.open, item.close, item.low, item.high],
+        //   };
+        // });
+        // [time,open,close,high,low,vol,amouunt]
+        const dataList = res.data.map((item) => {
           return {
-            time: this.formatTimeByStr(item.id * 1000, "HH:mm"),
-            data: [item.open, item.close, item.low, item.high],
+            time: this.formatTimeByStr(item[0] * 1000, "HH:mm"),
+            data: [item[1], item[2], item[4], item[3]],
           };
         });
+        
 
         this.dataList = Object.freeze(dataList);
         this.drawPowerChart();

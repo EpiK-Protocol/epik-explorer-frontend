@@ -113,7 +113,7 @@ const en = {
             index: "/tipset"
           },
           {
-            label: "View All Messages",
+            label: "View Latest Messages",
             index: "/message/list"
           },
           // {

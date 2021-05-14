@@ -47,7 +47,7 @@ export default {
           this.$nextTick(_=>{
             this.show = true
           })
-    }, 30000);
+    }, 60000);
   
 
   },
