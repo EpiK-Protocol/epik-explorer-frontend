@@ -42,12 +42,12 @@ export default {
     Footer
   },
   mounted(){
-    this.timer = setInterval(() => {
-          this.show = false
-          this.$nextTick(_=>{
-            this.show = true
-          })
-    }, 60000);
+    // this.timer = setInterval(() => {
+    //       this.show = false
+    //       this.$nextTick(_=>{
+    //         this.show = true
+    //       })
+    // }, 30000);
   
 
   },

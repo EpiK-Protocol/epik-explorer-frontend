@@ -65,7 +65,7 @@
             </span>
             <span v-else>{{`${scope.row[item.key]} ${item.unit || ""}`}}</span>
           </span>
-          <!-- <component :is="scope.row[item.key]" v-if="item.isComponent" /> -->
+          <component :is="scope.row[item.key]" v-if="item.isComponent" />
         </template>
       </el-table-column>
       <div

@@ -2,7 +2,6 @@
 <template>
   <div
     class="total-power-chart"
-    v-loading="loading"
     element-loading-background="var(--board-bg-color)"
   >
     <div class="chart-con" ref="power"></div>
@@ -21,6 +20,7 @@ export default {
       QualityPower: 0,
       loading: false,
       storageCapacity: 0,
+      timer: null
     };
   },
   props: {
@@ -30,6 +30,9 @@ export default {
         return {};
       },
     },
+  },
+  beforeDestroy() {
+    clearInterval(this.timer);
   },
   methods: {
     drawPowerChart() {
@@ -224,6 +227,9 @@ export default {
   mounted() {
     chart = this.$chart.init(this.$refs.power);
     this.getTotalPowerData();
+    this.timer = setInterval(() => {
+      this.getTotalPowerData();
+    }, 60000);
   },
   watch: {
     latestBlockHeight() {

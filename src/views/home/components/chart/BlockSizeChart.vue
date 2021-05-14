@@ -1,9 +1,10 @@
 <template>
   <div
     class="block-size-chart"
-    v-loading="loading"
+    
     element-loading-background="var(--board-bg-color)"
   >
+
    <div class="info-con">
       <div class="power-info">
         <span>
@@ -45,6 +46,7 @@ export default {
       data1:0,
       data2:0,
       data3:0,
+      timer: null
 
 
     };
@@ -177,6 +179,9 @@ export default {
       
         const { graph } = res;
         const list = graph 
+        this.Total = []
+        this.Pledged = []
+        this.Actived = []
         for (var i=0;i<list.length;i++){
           this.Total.push(list[i].Total)
           this.Pledged.push(list[i].Pledged)
@@ -217,9 +222,15 @@ export default {
       }
     }
   },
+  beforeDestroy() {
+    clearInterval(this.timer);
+  },
   mounted() {
     chart = this.$chart.init(this.$refs.size);
     this.getMinerStatus();
+    this.timer = setInterval(() => {
+      this.getMinerStatus();
+    }, 60000)
   },
   watch: {
     latestBlockHeight() {

@@ -1,9 +1,10 @@
 <template>
   <div
     class="message-list"
-    v-loading="loading"
+    
     element-loading-background="var(--board-bg-color)"
   >
+  <!-- v-loading="loading" -->
     <div class="table-con" >
       <base-table
         :dataSource="messageData"
@@ -13,6 +14,8 @@
         @load="loadMessageData"
         :showLoading="loading"
       ></base-table>
+      
+        <!-- :showLoading="loading" -->
     </div>
     <!-- <mb-board
       v-for="(item, index) in messageData"

@@ -1,7 +1,6 @@
 <template>
   <div
     class="message-list"
-    v-loading="loading"
     element-loading-background="var(--board-bg-color)"
   >
     <div class="table-con" >

@@ -2,9 +2,9 @@
   <div id="app">
     <Header />
     <div class="content-container">
-      <keep-alive include="Home">
+      <!-- <keep-alive include="Home"> -->
         <router-view />
-      </keep-alive>
+      <!-- </keep-alive> -->
     </div>
     <!-- <Footer /> -->
   </div>

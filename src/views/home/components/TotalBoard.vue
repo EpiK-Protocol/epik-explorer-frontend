@@ -1,9 +1,10 @@
 <template>
   <div
     class="total-board bottom-10"
-    v-loading="loading"
     element-loading-background="var(--board-bg-color)"
   >
+      <!-- v-loading="loading" -->
+
     <div class="titl-board">基本数据</div>
     <div class="flex flex-wrap">
       <div v-for="item in base" :key="item.key" class="info-item bottom-10 six-line">
@@ -85,9 +86,9 @@ export default {
     this.loading = true;
     await this.getBoardInfo();
     this.loading = false;
-    // this.timer = setInterval(() => {
-    //   this.getBoardInfo();
-    // }, 30000);
+    this.timer = setInterval(() => {
+      this.getBoardInfo();
+    }, 30000);
   },
   methods: {
     // ...mapMutations(["setHeight", "increaseLoadCount"]),
@@ -139,8 +140,6 @@ export default {
           }else{
             value = this.formatNumber( res.expertInfomation[item.key],3)
           }
-          
-
           
           return {
             ...item,

@@ -1,9 +1,10 @@
 <template>
   <div
     class="total-power-chart"
-    v-loading="loading"
+    
     element-loading-background="var(--board-bg-color)"
   >
+  <!-- v-loading="loading" -->
     <!-- <div>最新成交价（${series[series.length-1][1]}）</div> -->
     <div class="chart-con" ref="power"></div>
   </div>
@@ -22,7 +23,8 @@ export default {
       QualityPower: 0,
       loading: false,
       storageCapacity: 0,
-      latestPrice: 0
+      latestPrice: 0,
+      timer: null
     };
   },
   props: {
@@ -32,6 +34,9 @@ export default {
         return {};
       },
     },
+  },
+  beforeDestroy() {
+    clearInterval(this.timer);
   },
   methods: {
     drawPowerChart() {
@@ -280,6 +285,9 @@ export default {
   mounted() {
     chart = this.$chart.init(this.$refs.power);
     this.getKLineData();
+    this.timer = setInterval(() => {
+      this.getKLineData();
+    }, 60000)
   },
   watch: {
     latestBlockHeight() {

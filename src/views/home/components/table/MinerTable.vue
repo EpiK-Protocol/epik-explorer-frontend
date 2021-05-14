@@ -10,12 +10,13 @@
     <base-table
       :dataSource="blockTable.dataSource"
       :columns="blockTable.columns"
-      :showLoading="blockTable.loading"
       @click-append="goTo('mining')"
+      :showLoading="false"
   
       :labels="$t('home.minerTable.label')"
       radius
     ></base-table>
+      <!-- :showLoading="blockTable.loading" -->
   </div>
 </template>
 <script>
@@ -25,6 +26,9 @@ export default {
   name: "MinerTable",
   mounted(){
       this.loadBlockData()
+      this.timer = setInterval(() => {
+        this.loadBlockData();
+      }, 30000);
   },
   data() {
     return {
@@ -139,7 +143,8 @@ export default {
       }
     }
   },
-  beforeDestroy() {
+   beforeDestroy() {
+    clearInterval(this.timer);
   },
   computed: {
     ...mapState(["rate"])
