@@ -159,16 +159,11 @@
               </router-link>
             </div>
           </div>
-          <div>
+          <!-- 公共IP -->
+          <!-- <div>
             <span>{{ $t("address.account[7]") }}:</span>
             <span>{{ $t("address.account[8]") }}</span>
-          </div>
-          <div>
-            <span>{{ $t("address.account[9]") }}:</span>
-            <router-link :to="{ query: { address: info.Worker } }"
-              >{{ info.Coinbase }}
-            </router-link>
-          </div>
+          </div> -->
           <div>
             <span>Coinbase：</span>
             <div class="content">
@@ -179,6 +174,13 @@
               </router-link>
             </div>
           </div>
+          <div>
+            <span>{{ $t("address.account[9]") }}:</span>
+            <router-link :to="{ query: { address: info.Worker } }"
+              >{{ info.Worker }}
+            </router-link>
+          </div>
+          
           <div>
             <span>{{ $t("address.account[10]") }}:</span>
             <div class="content">

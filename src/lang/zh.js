@@ -327,7 +327,7 @@ const zh = {
                         label: "矿工最高算力",  
                     },
                     MinerMinWinPower:{
-                        label: "最小每日暴块算力",  
+                        label: "预估最小每日爆块算力",  
                     },
                     TotalMinerPledged:{
                         label: "全网矿工抵押数（EPK）",  

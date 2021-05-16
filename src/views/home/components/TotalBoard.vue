@@ -120,7 +120,9 @@ export default {
               value = this.unitConversion(res.minerInfomation[item.key], 3)
             }
             if(item.key == 'MinerMinWinPower'){
-              value = this.unitConversion(res.minerInfomation[item.key], 3)
+              let data = res.minerInfomation.TotalPower/(res.baseInfomation.TotalBlocks/res.baseInfomation.Height*2880)
+
+              value = this.unitConversion(data, 3)
             }
        
           
