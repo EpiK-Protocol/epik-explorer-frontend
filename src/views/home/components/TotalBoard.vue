@@ -100,9 +100,7 @@ export default {
         this.loading = false;
         // info.avg_message_size = parseInt(info.avg_message_size);
         this.base = this.base.map((item) => {
-          if(item.key == 'TotalEPK'){
-              res.baseInfomation[item.key] = 1000000000
-            }
+       
           return {
             ...item,
             value: this.formatNumber(res.baseInfomation[item.key],3),
