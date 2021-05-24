@@ -109,7 +109,9 @@ export default {
         return;
       }
       try {
+        
         this.loading = true;
+      
         let res = await search({
           key: this.key,
           filter: this.filter

@@ -32,7 +32,8 @@ export default {
           key: "hash",
           style: {
             fontWeight: "bold"
-          }
+          },
+          class:"copy"
         },
         {
           key: "height",
@@ -47,7 +48,8 @@ export default {
         //   unit: "bytes"
         // },
         {
-          key: "mesLength"
+          key: "mesLength",
+          class:"copy"
         },
         {
           key: "miner",
@@ -69,10 +71,12 @@ export default {
           key: "parent_weight"
         },
         {
-          key: "tickets"
+          key: "tickets",
+          class:"copy"
         },
         {
-          key: "state_root"
+          key: "state_root",
+          class:"copy"
         }
       ]
     };

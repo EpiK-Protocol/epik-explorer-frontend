@@ -1,7 +1,7 @@
 <template>
   <div class="general-title border-bottom">
     <span class="title">{{ title }}</span>
-    <span class="detail">{{ detail }}</span>
+    <span class="detail copy" @click="docopy(detail,'copy')">{{ detail }}</span>
   </div>
 </template>
 <script>

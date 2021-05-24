@@ -199,3 +199,12 @@
       font-size: 11px !important;
     }
 }
+
+.copy:hover{
+    &::after{
+      font-family: element-icons!important;
+      content: "\e718";
+      margin-left: 5px;
+      color:#fff;
+    }
+}

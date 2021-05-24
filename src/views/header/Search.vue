@@ -65,12 +65,12 @@ export default {
       }
       try {
         this.loading = true;
+    
         let res = await search({
           word: this.key,
           // type: this.filter
         });
         // debugger
-        console.log(res)
         this.loading = false;
         // const { model_flag } = res;
         let target = "";
@@ -210,9 +210,16 @@ export default {
       i {
         line-height: 40px;
         padding-left: 5px;
+        
         &.is-reverse {
           padding-right: 10px;
         }
+      }
+      i.el-icon-loading{
+        padding-left: 0px;
+        height: 30PX;
+        width: 30PX;
+        line-height: 30PX;
       }
     }
   @media (max-width: 768px) {

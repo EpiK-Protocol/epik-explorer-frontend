@@ -43,6 +43,8 @@
           v-if="!item.isComponent && !item.isLink"
           :class="{ [item.class || '']: true }"
           :style="item.style"
+          @click="docopy(item.value,item.class)"
+          
           >{{
             `${item.value != undefined ? item.value : ""} ${item.unit || ""}`
           }}</span

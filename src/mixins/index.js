@@ -2,6 +2,9 @@ import dayjs from "dayjs";
 import light from "../chart/theme/light";
 import dark from "../chart/theme/dark";
 import advancedFormat from "dayjs/plugin/advancedFormat";
+import { copy } from "iclipboard";
+import { Message } from 'element-ui';
+
 dayjs.extend(advancedFormat);
 const mixin = {
   computed: {
@@ -34,6 +37,18 @@ const mixin = {
     }
   },
   methods: {
+    docopy(str,flag) {
+      if(flag != 'copy')return
+      if (copy(str)) {
+        Message({
+          message: "已复制到粘贴板",
+          type: "success",
+          duration: 2500,
+        });
+      } else {
+        Message.error("复制失败");
+      }
+    },
     windowResize() {
       this.$store.commit('setIsMobile', window.innerWidth < 768);
     },

@@ -20,6 +20,8 @@ import {
   Loading,
   RadioButton,
   RadioGroup,
+  // Notify
+  // Message
   // InfiniteScroll
 } from "element-ui";
 import en from "element-ui/lib/locale/lang/en";
@@ -45,4 +47,7 @@ Vue.component(Popover.name, Popover);
 Vue.component(RadioButton.name, RadioButton);
 Vue.component(RadioGroup.name, RadioGroup);
 Vue.use(Loading);
+// Vue.use(Notify)
+// Vue.prototype.$notify = Notify;
+
 // Vue.use(InfiniteScroll);

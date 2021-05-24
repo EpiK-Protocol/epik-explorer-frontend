@@ -8,7 +8,7 @@
     /> -->
     <div class="overview" >
       <div class="top bg-item">
-        <span>
+        <span class="copy" @click="docopy($route.query.address,'copy')">
           {{ $t("address.detail.overview[0]") }}: {{ $route.query.address }}
         </span>
         <!-- <div class="updateSign">修改签名&gt;</div> -->
@@ -95,17 +95,23 @@
           <div class="block font-28 flex align-center">
             <div class="label">{{ $t("address.overview[3]") }}:</div>
             <span>{{
-              unitConversion(info.TotalPower.QualityAdjPower, 2)
+              unitConversion(info.MinerPower.QualityAdjPower || 0, 2)
             }}</span>
           </div>
           <div class="block flex">
             <div class="label">{{ $t("address.overview[4]") }}:</div>
-            <div class="value">0.775%</div>
+            <div class="value">{{
+                  (
+                    (info.MinerPower.QualityAdjPower /
+                      info.TotalPower.QualityAdjPower) *
+                    100
+                  ).toFixed(3) || 0
+                }}%</div>
           </div>
           <div class="block flex">
             <div class="label">{{ $t("address.overview[5]") }}:</div>
             <div class="value">
-              {{ unitConversion(info.TotalPower.RawBytePower || 0, 2) }}
+              {{ unitConversion(info.MinerPower.RawBytePower || 0, 2) }}
             </div>
           </div>
           <div class="block text flex align-center">
@@ -131,7 +137,7 @@
         <div class="bottom font-14 flex info-main">
           <div>
             <span>{{ $t("address.account[1]") }}:</span>
-            <span>{{ info.ID }}</span>
+            <span class="copy" @click="docopy(info.ID,'copy')">{{ info.ID }}</span>
           </div>
           <div>
             <span>{{ $t("address.account[2]") }}:</span>
@@ -145,7 +151,7 @@
           </div>
           <div>
             <span>{{ $t("address.account[3]") }}:</span>
-            <span>{{ info.PeerId }}</span>
+            <span class="copy" @click="docopy(info.PeerId,'copy')">{{ info.PeerId }}</span>
           </div>
           <div>
             <span>{{ $t("address.account[4]") }}:</span>
@@ -177,6 +183,7 @@
           <div>
             <span>{{ $t("address.account[9]") }}:</span>
             <router-link :to="{ query: { address: info.Worker } }"
+            style="color: #409eff;"
               >{{ info.Worker }}
             </router-link>
           </div>
