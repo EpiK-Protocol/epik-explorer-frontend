@@ -10,6 +10,7 @@ const en = {
         "To",
         "Value",
         "Receipt",
+        "Actor",
         // "Fee",
         "Method"
       ],

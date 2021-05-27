@@ -127,10 +127,9 @@ export default {
         //   hideInMobile: true,
         //   unit: "tEPK"
         // },
-        // {
-        //   key: "code",
-        //   hideInMobile: true
-        // },
+        {
+          key: "actor",
+        },
         {
           key: "method",
           // width: "80px"
@@ -263,6 +262,8 @@ export default {
             Message,
             Timestamp,
             Receipt,
+            ActorName,
+            MethodName
 
             // Value,
              } = item;
@@ -278,7 +279,8 @@ export default {
             value: this.formatFilNumber(Message.Value),
             // fee: GasPrice,
             // type: this.address !== from ? "in" : "out",
-            method: Message.Method,
+            method: MethodName || Message.Method,
+            actor: ActorName,
             Receipt: Receipt? this.getCodeText(Receipt.ExitCode):'',
 
           };
@@ -289,7 +291,7 @@ export default {
           return res;
         });
         // debugger
-        console.log(messageData)
+        // console.log(messageData)
         this.messageData = [...this.messageData,...messageData]
         // this.messageData = Object.freeze(messageData);
         this.loading = false;
