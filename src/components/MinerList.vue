@@ -69,9 +69,9 @@ export default {
         {
           key: "Blocks",
         },
-        {
-          key: "Rewards",
-        },
+        // {
+        //   key: "Rewards",
+        // },
         {
           key: "lastblock",
           isLink: true,

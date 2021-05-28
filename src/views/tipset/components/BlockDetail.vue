@@ -1,7 +1,11 @@
 <template>
   <div class="block-detail bottom-10 top-20">
     <div class="block-overview">
-      <overview :dataList="realList" :showLoading="loading" :dataLabel="$t('tipset.block.overview')" />
+      <overview
+        :dataList="realList"
+        :showLoading="loading"
+        :dataLabel="$t('tipset.block.overview')"
+      />
     </div>
     <!-- <message-list :withType="false" :cid="hash" /> -->
   </div>
@@ -10,20 +14,20 @@
 export default {
   name: "BlockDetail",
   props: {
-    loading:{
+    loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     hash: {
       type: String,
-      default: ""
+      default: "",
     },
     block: {
       type: Object,
       default() {
         return {};
-      }
-    }
+      },
+    },
   },
   data() {
     return {
@@ -31,17 +35,17 @@ export default {
         {
           key: "hash",
           style: {
-            fontWeight: "bold"
+            fontWeight: "bold",
           },
-          class:"copy"
+          class: "copy",
         },
         {
           key: "height",
           // isLink: true,
-          target: "tipset"
+          target: "tipset",
         },
         {
-          key: "utcTime"
+          key: "utcTime",
         },
         // {
         //   key: "size",
@@ -49,13 +53,13 @@ export default {
         // },
         {
           key: "mesLength",
-          class:"copy"
+          class: "copy",
         },
         {
           key: "miner",
           target: "address/detail",
           paramKey: "address",
-          isLink: true
+          isLink: true,
         },
         // {
         //   key: "reward",
@@ -68,17 +72,17 @@ export default {
           paramKey: "hash",
         },
         {
-          key: "parent_weight"
+          key: "parent_weight",
         },
         {
           key: "tickets",
-          class:"copy"
+          class: "copy",
         },
         {
           key: "state_root",
-          class:"copy"
-        }
-      ]
+          class: "copy",
+        },
+      ],
     };
   },
   computed: {
@@ -86,7 +90,7 @@ export default {
       const currentBlock = this.block;
       // console.log(this.block)
       // debugger
-      return this.dataList.map(item => {
+      return this.dataList.map((item) => {
         let linkList;
         if (item.key === "height" || item.key === "miner") {
           linkList = [currentBlock[item.key]];
@@ -96,11 +100,11 @@ export default {
         return {
           ...item,
           value: currentBlock[item.key],
-          linkList: linkList
+          linkList: linkList,
         };
       });
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

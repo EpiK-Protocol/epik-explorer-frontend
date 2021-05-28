@@ -6,8 +6,8 @@ module.exports = {
     proxy: {
   
       '/apis': {
-        target: 'https://explorer.epik-protocol.io/api/',
-        // target:'http://116.63.146.223:3002/',
+        // target: 'https://explorer.epik-protocol.io/api/',
+        target:'http://116.63.146.223:3002/',
         changeOrigin: true,
         secure:false,
         // ws: true,

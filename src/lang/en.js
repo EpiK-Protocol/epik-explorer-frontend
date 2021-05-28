@@ -202,7 +202,8 @@ const en = {
     },
     minerTable: {
       title: "Miner",
-      label: ["Rank", "Miner", "Tag", "QualityAdjPower", "RawBytePower", "Blocks", "Rewards", "Last Block Tipset"]
+      // "Rewards",
+      label: ["Rank", "Miner", "Tag", "QualityAdjPower", "RawBytePower", "Blocks",  "Last Block Tipset"]
     },
     expertTable: {
       title: "Expert",
