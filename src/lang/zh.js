@@ -542,7 +542,8 @@ const zh = {
         detail: {
             titl: "消息 ID",
             // overview: ["消息 ID", "高度", "区块", "时间", "发送地址", "接收地址", "数值", "收据", "方法", "随机值", "参数"],
-            overview: ["时间", "发送地址", "接收地址", "数值", "收据", "方法", "随机值", "Gas Limit", "Gas Used", "参数"],
+            overview: ["时间", "发送地址", "接收地址", "数值", "收据", "方法","Actor", "随机值", "Gas Limit", "Gas Used", "参数"],
+
             paramTip: "Base64格式元数据",
             confirm: "确认"
         }

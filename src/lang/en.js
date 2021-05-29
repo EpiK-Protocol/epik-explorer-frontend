@@ -451,6 +451,7 @@ const en = {
         "Receipt",
         "Fee",
         "Method",
+        "Actor",
         "Nonce",
         "GasLimit",
         "GasUsed",

@@ -71,6 +71,10 @@ export default {
           key: "method"
         },
         {
+          key: "actor",
+        },
+        
+        {
           key: "nonce"
         },
         {
@@ -113,7 +117,9 @@ export default {
           // Value,
           Message,
           Timestamp,
-          Receipt
+          Receipt,
+          MethodName,
+          ActorName 
         } = data.message;
         // const { from, to, nonce, params, value, gaslimit } = msg;
         // let blockRes = await getBlockConfirmCount({
@@ -129,6 +135,8 @@ export default {
           from: Message.From,
           to: Message.To,
           method: Message.Method,
+          method: MethodName || Message.Method,
+          actor: ActorName,
           Receipt: this.getCodeText(Receipt.ExitCode),
           nonce: Message.Nonce,
           // params: Message.Params.length > 256 ? `${Message.Params.slice(0, 256)} ...` : Message.Params,
