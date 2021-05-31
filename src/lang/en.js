@@ -200,11 +200,16 @@ const en = {
       // label: ["Height", "Hash", "Blocktime", "Miner", "Reward"]
       label: ["Height", "Hash", "BlockTime", "Miner", "GasReward", "BlockReward"]
     },
+    rankType:['Top Power','Real-time Reward','24h Reward','7d Reward','30d Reward'],
     minerTable: {
       title: "Miner",
       // "Rewards",
       label: ["Rank", "Miner", "Tag", "QualityAdjPower", "RawBytePower", "Blocks",  "Last Block Tipset"]
     },
+    profitTable: {
+      title: "Profit",
+      label: ["Rank", "Miner", "Address", "Profit", "WinBlocks"]
+  },
     expertTable: {
       title: "Expert",
       label: ["ID", "VoteAmount", "ApplicationHash", "FileSize（GB）", "FileCount", "Reward", "Status"]

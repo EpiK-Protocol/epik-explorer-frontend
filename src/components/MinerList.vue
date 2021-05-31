@@ -1,17 +1,27 @@
 <template>
   <div
     class="message-list"
-    
     element-loading-background="var(--board-bg-color)"
   >
   <!-- v-loading="loading" -->
-    <div class="table-con" >
+  <div class="top-con">
+    <div class="miner-type">
+      <div :class="active=='1'?'active':''" @click="changeType('1')">{{$t('home.rankType[0]')}}</div>
+      <div :class="active=='2'?'active':''" @click="changeType('2')">{{$t('home.rankType[1]')}}</div>
+      <div :class="active=='3'?'active':''" @click="changeType('3')">{{$t('home.rankType[2]')}}</div>
+      <div :class="active=='4'?'active':''" @click="changeType('4')">{{$t('home.rankType[3]')}}</div>
+      <div :class="active=='5'?'active':''" @click="changeType('5')">{{$t('home.rankType[4]')}}</div>
+    </div>
+  </div>
+   <!-- :loadMore="false"
+        @load="loadMessageData"
+        :showLoading="loading" -->
+    <div class="miner-table-con" >
       <base-table
         :dataSource="messageData"
-        :columns="columns"
-        :labels="$t('home.minerTable.label')"
-        :loadMore="true"
-        @load="loadMessageData"
+        :columns="active>1?pColumns:columns"
+        
+        :labels="active>1?$t('home.profitTable.label'):$t('home.minerTable.label')"
         :showLoading="loading"
       ></base-table>
       
@@ -28,7 +38,7 @@
   </div>
 </template>
 <script>
-import { getMiner,getBoardInfo } from "@/api/home";
+import { getMiner,getBoardInfo,coinbaseRank30D,coinbaseRankRuntime,coinbaseRank24H,coinbaseRank7D } from "@/api/home";
 
 export default {
   name: "MinerList",
@@ -42,9 +52,34 @@ export default {
         count: "25",
       },
       info:{},
+      active:1,
       currentPage: 1,
       total: 0,
       messageData: [],
+      pColumns:[{
+          key: "Rank",
+        },
+        {
+          key: "Miner",
+          isLink: true,
+          target: "address/detail",
+          paramKey: "address",
+        },
+        {
+          key: "Address",
+          isLink: true,
+          target: "address/detail",
+          paramKey: "address",
+        },
+        {
+          key: "Profit",
+        },
+        {
+          key: "Blocks",
+        },
+
+        ],
+
       columns: [
         {
           key: "Rank",
@@ -102,21 +137,10 @@ export default {
     },
   },
   methods: {
-    // handleSizeChange(v) {
-    //   this.option.count = v;
-    // },
-    // handlePageChange(v) {
-    //   this.currentPage = v;
-    //   this.option.begindex = (v - 1) * this.option.count;
-    // },
-    // handleMethodChange(v) {
-    //   this.currentPage = 1;
-    //   this.option = {
-    //     method: v,
-    //     begindex: 0,
-    //     count: 25,
-    //   };
-    // },
+    changeType(data){
+      this.active = data
+      this.getMessage()
+    },
     async loadMessageData() {
       if (this.loading) {
         return;
@@ -147,19 +171,48 @@ export default {
         const vm = this
         this.loading = true;
         // this.columns;
-        const data = await getMiner({
-          size: 20,
-          offset: this.offset*20,
+        let fun = getMiner
+        if(this.active == '2'){
+          fun = coinbaseRankRuntime
+        } 
+        if(this.active == '3'){
+          fun = coinbaseRank24H
+        } 
+        if(this.active == '4'){
+          fun = coinbaseRank7D
+        } 
+        if(this.active == '5'){
+          fun = coinbaseRank30D
+        } 
+        this.messageData = []
+        const data = await fun({
+          size: 100,
+          // offset: this.offset*100,
         });
         //   data.msgs = data.list;
         //   data.total = data.list.length;
         // // }
         // this.total = Number(data.total);
-        // debugger
-        const minerData = data.list.map((item, index) => {
+        let minerData = []
+        
+    if(this.active>1){
+      minerData = data.coinbases.map((item, index) => {
+          const { ID,Address,Profit,WinBlocks} = item;
+          return {
+            Rank: index + 1, 
+            Miner: ID,
+            Address: Address,
+      
+            Profit: Number(Profit).toFixed(3),
+            Blocks: WinBlocks,
+          }
+        });
+
+    }else{
+      minerData = data.list.map((item, index) => {
           const { ID, NewWorker, MinerPower,WinBlocks,TotalRewards,LatestWinBlock} = item;
           return {
-            Rank: this.offset*20 + index + 1, 
+            Rank: index + 1, 
             Miner: ID,
             Tag: NewWorker,
             QualityAdjPower:{
@@ -183,7 +236,11 @@ export default {
           }
         });
 
-        this.messageData = [...this.messageData,...minerData]
+    }
+        
+        // debugger
+
+        this.messageData = minerData
 
 
         // this.messageData = Object.freeze(minerData);
@@ -192,39 +249,9 @@ export default {
         this.loading = false;
       }
     },
-    // async getMessageMethods() {
-    //   try {
-    //     let data = await getMessageMethods();
-    //     this.method = data.method.map((item) => {
-    //       return {
-    //         value: item,
-    //         label: item,
-    //       };
-    //     });
-    //   } catch (e) {
-    //     this.loading = false;
-    //   }
-    // },
+
   },
 
-  watch: {
-    // $route: "getMessage",
-    // option: {
-    //   deep: true,
-    //   handler() {
-    //     this.getMessage();
-    //   },
-    // },
-    // cid() {
-    //   this.option = {
-    //     begindex: 0,
-    //     count: 25,
-    //   };
-    // },
-    // address() {
-    //   this.getMessage();
-    // },
-  },
   async mounted() {
     this.info = await getBoardInfo()
     // this.labels = [...this.$t("component.mesList.label")];
@@ -233,7 +260,7 @@ export default {
     //   this.labels.shift();
     // }
 
-    // this.getMessage();
+    this.getMessage();
     // this.getMessageMethods();
   },
   computed: {
@@ -253,7 +280,40 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+
 .message-list {
+  background: var(--board-bg-color);
+  padding: 10px;
+  .top-con{
+    background: var(--board-item-bg-color);
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .miner-table-con{
+    /deep/ .el-table{
+      height: calc(100vh - 220px) !important;
+
+    }
+  }
+  .miner-type{
+    color: white;
+    border: 1px solid var(--force-mark-color);
+    display: inline-flex;
+    font-size: 13px;
+    border-radius: 20px;
+    padding: 5px 10px;
+    div{    
+      padding: 0 15px;
+      cursor: pointer;
+    }
+    div.active{
+      color: var(--force-mark-color);
+      font-weight: 500;
+    }
+    div:not(:last-child) {
+        border-right: 1px solid #153550;
+    }
+  }
   .total-number {
     height: 80px;
     align-items: center;

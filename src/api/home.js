@@ -22,8 +22,35 @@ export function getTopMiner() {
 export function getMiner(params) {
   return fetch({
     method: "get",
-    // url: "LatestBlock",
     url: 'miners',
+    params
+  });
+}
+export function coinbaseRankRuntime(params) {
+  return fetch({
+    method: "get",
+    url: 'coinbaseRankRuntime',
+    params
+  });
+}
+export function coinbaseRank24H(params) {
+  return fetch({
+    method: "get",
+    url: 'coinbaseRank24H',
+    params
+  });
+}
+export function coinbaseRank7D(params) {
+  return fetch({
+    method: "get",
+    url: 'coinbaseRank7D',
+    params
+  });
+}
+export function coinbaseRank30D(params) {
+  return fetch({
+    method: "get",
+    url: 'coinbaseRank30D',
     params
   });
 }

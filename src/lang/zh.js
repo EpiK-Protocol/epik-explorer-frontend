@@ -269,11 +269,17 @@ const zh = {
             power: "原值算力",
             capacity: "有效算力"
         },
+        rankType:['算力排行','实时收益','24小时收益','7天收益','30天收益'],
+
 
         minerTable: {
             title: "矿工",
             // "累计奖励",
             label: ["排名", "矿工ID", "标签", "有效算力", "原值算力", "出块数", "最后出块高度",]
+        },
+        profitTable: {
+            title: "收益",
+            label: ["排名", "矿工ID", "地址", "收益", "出块数"]
         },
         expertTable: {
             title: "领域专家",
