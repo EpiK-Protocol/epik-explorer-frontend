@@ -90,11 +90,11 @@ export default {
         // debugger
         // 8.9
         const dataSource = data.map((item, index) => {
-          const { ID, NewWorker, MinerPower,WinBlocks,TotalRewards,LatestWinBlock} = item;
+          const { ID, UserTag, MinerPower,WinBlocks,TotalRewards,LatestWinBlock} = item;
           return {
             Rank: index + 1, 
             Miner: ID,
-            Tag: NewWorker,
+            Tag: UserTag||'--',
             QualityAdjPower:{
               data:vm.unitConversion(MinerPower.QualityAdjPower,2),
               percent: (MinerPower.QualityAdjPower/info.minerInfomation.TotalPower*100).toFixed(2)

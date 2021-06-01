@@ -13,7 +13,7 @@
         </span>
         <div class="updateSign flex">
           <i class="el-icon-arrow-right"></i>
-          <div>{{ info.NewWorker }}</div>
+          <div>{{ info.UserTag || '--' }}</div>
           <div class="link" @click="openDialog">修改签名</div>
         </div>
       </div>
@@ -428,20 +428,29 @@ export default {
     updateSign() {
       
       this.submitForm("signForm", async () => {
-        let res = await signUserTag(this.form);
-        if (res.code.code == 0) {
-          Message({
-            message: "提交成功",
-            type: "success",
-            duration: 2500,
-          });
-          this.form = {
-            address: "",
-            user_tag: "",
-            signature: ""
-          }
-          this.dialogFormVisible = false
+        try{
+          let res = await signUserTag(this.form);
+            if (res.code.code == 0) {
+              Message({
+                message: "提交成功",
+                type: "success",
+                duration: 2500,
+              });
+              this.form = {
+                address: "",
+                user_tag: "",
+                signature: ""
+              }
+              this.dialogFormVisible = false
+            }else{
+              // Message.error('请求错误')
+            }
+
+        }catch(e){
+          console.log(e);
+          // Message.error(e)
         }
+        
       })
     },
     async getAddressInfo(a) {

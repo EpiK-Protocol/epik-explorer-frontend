@@ -208,7 +208,7 @@ const en = {
     },
     profitTable: {
       title: "Profit",
-      label: ["Rank", "Coinbase", "Address", "Profit", "WinBlocks"]
+      label: ["Rank", "Coinbase","Tag", "Address", "Profit", "WinBlocks"]
   },
     expertTable: {
       title: "Expert",

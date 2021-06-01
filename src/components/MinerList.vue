@@ -66,6 +66,9 @@ export default {
           paramKey: "address",
         },
         {
+          key: "Tag",
+        },
+        {
           key: "Address",
           isLink: true,
           target: "address/detail",
@@ -197,10 +200,11 @@ export default {
         
     if(this.active>1){
       minerData = data.coinbases.map((item, index) => {
-          const { ID,Address,Profit,WinBlocks} = item;
+          const { ID,UserTag,Address,Profit,WinBlocks} = item;
           return {
             Rank: index + 1, 
             Miner: ID,
+            Tag: UserTag||'--',
             Address: Address,
       
             Profit: Number(Profit).toFixed(3),
@@ -210,11 +214,11 @@ export default {
 
     }else{
       minerData = data.list.map((item, index) => {
-          const { ID, NewWorker, MinerPower,WinBlocks,TotalRewards,LatestWinBlock} = item;
+          const { ID,UserTag,  MinerPower,WinBlocks,TotalRewards,LatestWinBlock} = item;
           return {
             Rank: index + 1, 
             Miner: ID,
-            Tag: NewWorker,
+            Tag: UserTag||'--',
             QualityAdjPower:{
               data:vm.unitConversion(MinerPower.QualityAdjPower,2),
               percent: (MinerPower.QualityAdjPower/this.info.minerInfomation.TotalPower*100).toFixed(2)
