@@ -279,7 +279,7 @@ const zh = {
         },
         profitTable: {
             title: "收益",
-            label: ["排名", "矿工ID", "地址", "收益", "出块数"]
+            label: ["排名", "Coinbase", "地址", "收益", "出块数"]
         },
         expertTable: {
             title: "领域专家",
