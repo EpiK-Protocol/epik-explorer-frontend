@@ -20,6 +20,9 @@ import {
   Loading,
   RadioButton,
   RadioGroup,
+  Dialog,
+  Form,
+  FormItem
   // Notify
   // Message
   // InfiniteScroll
@@ -46,7 +49,7 @@ Vue.component(Pagination.name, Pagination);
 Vue.component(Popover.name, Popover);
 Vue.component(RadioButton.name, RadioButton);
 Vue.component(RadioGroup.name, RadioGroup);
-Vue.use(Loading);
+Vue.use(Loading).use(Dialog).use(Form).use(FormItem);
 // Vue.use(Notify)
 // Vue.prototype.$notify = Notify;
 

@@ -39,6 +39,7 @@ const mixin = {
   methods: {
     docopy(str,flag) {
       if(flag != 'copy')return
+      if(!str) return
       if (copy(str)) {
         Message({
           message: "已复制到粘贴板",

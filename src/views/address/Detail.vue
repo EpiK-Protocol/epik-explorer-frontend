@@ -6,14 +6,21 @@
       :dataLabel="$t('address.detail.overview')"
       class="bottom-20"
     /> -->
-    <div class="overview" >
+    <div class="overview">
       <div class="top bg-item">
-        <span class="copy" @click="docopy($route.query.address,'copy')">
+        <span class="copy" @click="docopy($route.query.address, 'copy')">
           {{ $t("address.detail.overview[0]") }}: {{ $route.query.address }}
         </span>
-        <!-- <div class="updateSign">修改签名&gt;</div> -->
+        <div class="updateSign flex">
+          <i class="el-icon-arrow-right"></i>
+          <div>{{ info.NewWorker }}</div>
+          <div class="link" @click="openDialog">修改签名</div>
+        </div>
       </div>
-      <el-row v-if="isminer" :class="['chart-container', isMobile ? '' : 'flex', 'top-20']">
+      <el-row
+        v-if="isminer"
+        :class="['chart-container', isMobile ? '' : 'flex', 'top-20']"
+      >
         <el-col
           :span="isMobile ? 24 : 11"
           class="address-balance bg-item"
@@ -26,7 +33,9 @@
             </div>
             <div class="r font-14">
               <div class="l1 bottom-10">{{ $t("address.overview[1]") }}</div>
-              <div class="l2 font-28 bottom-20">{{ formatNumber(info.Balance,4) }} EPK</div>
+              <div class="l2 font-28 bottom-20">
+                {{ formatNumber(info.Balance, 4) }} EPK
+              </div>
               <div class="pie-info">
                 <div class="spot p1">
                   <span></span>{{ $t("chart.MiningPledge") }}:
@@ -100,13 +109,15 @@
           </div>
           <div class="block flex">
             <div class="label">{{ $t("address.overview[4]") }}:</div>
-            <div class="value">{{
-                  (
-                    (info.MinerPower.QualityAdjPower /
-                      info.TotalPower.QualityAdjPower) *
-                    100
-                  ).toFixed(3) || 0
-                }}%</div>
+            <div class="value">
+              {{
+                (
+                  (info.MinerPower.QualityAdjPower /
+                    info.TotalPower.QualityAdjPower) *
+                  100
+                ).toFixed(3) || 0
+              }}%
+            </div>
           </div>
           <div class="block flex">
             <div class="label">{{ $t("address.overview[5]") }}:</div>
@@ -137,7 +148,9 @@
         <div class="bottom font-14 flex info-main">
           <div>
             <span>{{ $t("address.account[1]") }}:</span>
-            <span class="copy" @click="docopy(info.ID,'copy')">{{ info.ID }}</span>
+            <span class="copy" @click="docopy(info.ID, 'copy')">{{
+              info.ID
+            }}</span>
           </div>
           <div>
             <span>{{ $t("address.account[2]") }}:</span>
@@ -151,7 +164,9 @@
           </div>
           <div>
             <span>{{ $t("address.account[3]") }}:</span>
-            <span class="copy" @click="docopy(info.PeerId,'copy')">{{ info.PeerId }}</span>
+            <span class="copy" @click="docopy(info.PeerId, 'copy')">{{
+              info.PeerId
+            }}</span>
           </div>
           <div>
             <span>{{ $t("address.account[4]") }}:</span>
@@ -182,12 +197,13 @@
           </div>
           <div>
             <span>{{ $t("address.account[9]") }}:</span>
-            <router-link :to="{ query: { address: info.Worker } }"
-            style="color: #409eff;"
+            <router-link
+              :to="{ query: { address: info.Worker } }"
+              style="color: #409eff"
               >{{ info.Worker }}
             </router-link>
           </div>
-          
+
           <div>
             <span>{{ $t("address.account[10]") }}:</span>
             <div class="content">
@@ -196,7 +212,6 @@
               </router-link>
             </div>
           </div>
-          
         </div>
         <div class="flex"></div>
       </div>
@@ -237,16 +252,59 @@
     <!-- type="address" -->
     <message-list v-if="showMessage" :address="$route.query.address" />
     <block-list v-else :miners="address" />
+    <el-dialog title="签名验证" :visible.sync="dialogFormVisible" width="70%">
+      <el-form :model="form" ref="signForm" label-width="120px">
+        <el-form-item label="Owner地址" prop="address" :rules="[{ required: true, message: 'Owner地址不能为空' }]">
+          <el-input v-model="form.address" autocomplete="off" :disabled="true"></el-input>
+        </el-form-item>
+        <el-form-item
+          label="账户全称"
+          prop="user_tag"
+          :rules="[{ required: true, message: '账户全称不能为空' }]"
+        >
+          <el-input v-model="form.user_tag" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item
+          label="签名代码"
+        >
+        <div class="flex" @click="docopy(sign_code, 'copy')" style="align-items: center;color: white;">
+          <el-input  v-model="sign_code"  autocomplete="off" :disabled="true"></el-input>
+          <i class="el-icon-copy-document" style="margin-left: 10px;"></i></div>
+        </el-form-item>
+        <el-form-item
+          label="签名"
+          prop="signature"
+          :rules="[{ required: true, message: '签名不能为空' }]"
+        >
+          <el-input v-model="form.signature" placeholder="请复制上面的代码，在epik矿机中进行签名，将签名内容粘贴到此处" autocomplete="off"></el-input>
+        </el-form-item>
+        
+
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <!-- <el-button @click="dialogFormVisible = false">取 消</el-button> -->
+        <el-button type="primary" @click="updateSign">确 定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 <script>
-import { getActorById } from "@/api/account";
+import {encode, decode} from 'hex-encode-decode'
+import { getActorById,signUserTag } from "@/api/account";
+import { Message } from 'element-ui';
+
 import mixin from "./mixin";
 export default {
   name: "AddressDetail",
   mixins: [mixin],
   data() {
     return {
+      dialogFormVisible: false,
+      form: {
+        address: "",
+        user_tag: "",
+        signature: ""
+      },
       showMessage: true,
       isminer: false,
       isOwner: false,
@@ -333,7 +391,59 @@ export default {
       this.getAddressInfo(this.$route.query.address);
     },
   },
+
+  computed:{
+    sign_code(){
+      if(!this.form.user_tag) return ''
+      return `epik wallet sign ${this.form.address} ${encode(this.form.user_tag)}`
+
+    }
+
+  },
   methods: {
+    stringtoHex(str) {
+      var val = "";
+      for (var i = 0; i < str.length; i++) {
+        if (val == "") val = str.charCodeAt(i).toString(16);
+        else val += str.charCodeAt(i).toString(16);
+      }
+      val += "0a";
+      return val;
+    },
+    openDialog(){
+      this.form.address = this.info.OwnerAddress
+      this.dialogFormVisible = true
+
+    },
+    submitForm(formName, fn) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          fn();
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
+    },
+    updateSign() {
+      
+      this.submitForm("signForm", async () => {
+        let res = await signUserTag(this.form);
+        if (res.code.code == 0) {
+          Message({
+            message: "提交成功",
+            type: "success",
+            duration: 2500,
+          });
+          this.form = {
+            address: "",
+            user_tag: "",
+            signature: ""
+          }
+          this.dialogFormVisible = false
+        }
+      })
+    },
     async getAddressInfo(a) {
       try {
         let res = await getActorById({
@@ -358,10 +468,9 @@ export default {
         ];
         // debugger
         // console.log(data)
-        this.$nextTick(()=>{
+        this.$nextTick(() => {
           this.drawSizeChart(data);
-        })
-        
+        });
 
         // const detail = this.parseAddress(res);
 
@@ -443,6 +552,17 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.updateSign {
+  i {
+    margin: 0 20px;
+  }
+  .link {
+    font-size: 13px;
+    margin-left: 10px;
+    color: orange;
+    cursor: pointer;
+  }
+}
 .address-detail {
   color: var(--main-text-color);
   .overview {

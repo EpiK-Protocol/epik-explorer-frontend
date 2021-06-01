@@ -41,3 +41,19 @@ export function getActorById(params) {
     params
   });
 }
+// POST {{HOST}}/signUserTag
+// Content-Type: application/json
+
+// {
+//     "address":"",
+//     "signature":"",
+//     "user_tag":""
+// }
+// ###
+export function signUserTag(data) {
+  return fetch({
+    method: "post",
+    url: "/signUserTag",
+    data
+  });
+}
