@@ -14,7 +14,7 @@
         <div class="updateSign flex">
           <i class="el-icon-arrow-right"></i>
           <div>{{ info.UserTag || '--' }}</div>
-          <div class="link" @click="openDialog">修改签名</div>
+          <div class="link" @click="openDialog">{{$t('home.certification')}}</div>
         </div>
       </div>
       <el-row

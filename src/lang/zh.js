@@ -281,6 +281,7 @@ const zh = {
             title: "收益",
             label: ["排名", "Coinbase","标签", "地址", "收益", "出块数"]
         },
+        certification:'认证',
         expertTable: {
             title: "领域专家",
             label: ["账户ID", "投票数", "申请表", "有效数据贡献量（GB）", "上传有效数据文件数", "累计奖励", "状态"]

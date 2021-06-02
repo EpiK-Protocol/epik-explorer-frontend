@@ -35,15 +35,59 @@
       v-else
     /> -->
     <!-- <mb-page v-if="isMobile" @page-change="handlePageChange" :total="total" /> -->
+    <el-dialog title="签名验证" class="address-detail" :visible.sync="dialogFormVisible" width="70%">
+      <el-form :model="form" ref="signForm" label-width="120px">
+        <el-form-item label="地址" prop="address" :rules="[{ required: true, message: 'Owner地址不能为空' }]">
+          <el-input v-model="form.address" autocomplete="off" :disabled="true"></el-input>
+        </el-form-item>
+        <el-form-item
+          label="账户全称"
+          prop="user_tag"
+          :rules="[{ required: true, message: '账户全称不能为空' }]"
+        >
+          <el-input v-model="form.user_tag" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item
+          label="签名代码"
+        >
+        <div class="flex" @click="docopy(sign_code, 'copy')" style="align-items: center;color: white;">
+          <el-input  v-model="sign_code"  autocomplete="off" :disabled="true"></el-input>
+          <i class="el-icon-copy-document" style="margin-left: 10px;"></i></div>
+        </el-form-item>
+        <el-form-item
+          label="签名"
+          prop="signature"
+          :rules="[{ required: true, message: '签名不能为空' }]"
+        >
+          <el-input v-model="form.signature" placeholder="请复制上面的代码，在epik矿机中进行签名，将签名内容粘贴到此处" autocomplete="off"></el-input>
+        </el-form-item>
+        
+
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <!-- <el-button @click="dialogFormVisible = false">取 消</el-button> -->
+        <el-button type="primary" @click="updateSign">确 定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 <script>
 import { getMiner,getBoardInfo,coinbaseRank30D,coinbaseRankRuntime,coinbaseRank24H,coinbaseRank7D } from "@/api/home";
 
+import {encode, decode} from 'hex-encode-decode'
+import { signUserTag } from "@/api/account";
+import { Message } from 'element-ui';
+
 export default {
   name: "MinerList",
   data() {
     return {
+       dialogFormVisible: false,
+       form: {
+          address: "",
+          user_tag: "",
+          signature: ""
+       },
 
       loading: false,
       option: {
@@ -140,6 +184,61 @@ export default {
     },
   },
   methods: {
+    stringtoHex(str) {
+      var val = "";
+      for (var i = 0; i < str.length; i++) {
+        if (val == "") val = str.charCodeAt(i).toString(16);
+        else val += str.charCodeAt(i).toString(16);
+      }
+      val += "0a";
+      return val;
+    },
+    openDialog(val){
+      // debugger
+      this.form.address = val
+      this.dialogFormVisible = true
+
+    },
+    submitForm(formName, fn) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          fn();
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
+    },
+    updateSign() {
+      
+      this.submitForm("signForm", async () => {
+        try{
+          let res = await signUserTag(this.form);
+
+            if (res.code.code == 0) {
+              Message({
+                message: "提交成功",
+                type: "success",
+                duration: 2500,
+              });
+              this.form = {
+                address: "",
+                user_tag: "",
+                signature: ""
+              }
+              this.dialogFormVisible = false
+              this.getMessage()
+            }else{
+              // Message.error('请求错误')
+            }
+
+        }catch(e){
+          console.log(e);
+          // Message.error(e)
+        }
+        
+      })
+    },
     changeType(data){
       this.active = data
       this.getMessage()
@@ -197,6 +296,7 @@ export default {
         // // }
         // this.total = Number(data.total);
         let minerData = []
+        let that = this
         
     if(this.active>1){
       minerData = data.coinbases.map((item, index) => {
@@ -204,7 +304,11 @@ export default {
           return {
             Rank: index + 1, 
             Miner: ID,
-            Tag: UserTag||'--',
+            Tag: {
+              data:UserTag||'--',
+              btn: that.openDialog,
+              param: Address 
+            },
             Address: Address,
       
             Profit: Number(Profit).toFixed(3),
@@ -214,11 +318,15 @@ export default {
 
     }else{
       minerData = data.list.map((item, index) => {
-          const { ID,UserTag,  MinerPower,WinBlocks,TotalRewards,LatestWinBlock} = item;
+          const { ID,UserTag, OwnerAddress, MinerPower,WinBlocks,TotalRewards,LatestWinBlock} = item;
           return {
             Rank: index + 1, 
             Miner: ID,
-            Tag: UserTag||'--',
+            Tag: {
+              data:UserTag||'--',
+              btn: UserTag==''? that.openDialog:'',
+              param: OwnerAddress 
+            },
             QualityAdjPower:{
               data:vm.unitConversion(MinerPower.QualityAdjPower,2),
               percent: (MinerPower.QualityAdjPower/this.info.minerInfomation.TotalPower*100).toFixed(2)
@@ -268,6 +376,10 @@ export default {
     // this.getMessageMethods();
   },
   computed: {
+    sign_code(){
+      if(!this.form.user_tag) return ''
+      return `epik wallet sign ${this.form.address} ${encode(this.form.user_tag)}`
+    },
     mbColumns() {
       return this.columns
         .map((item, index) => {

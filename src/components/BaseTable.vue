@@ -59,12 +59,13 @@
             "
           ></base-link>
         
-          <span v-if="!item.isLink && !item.isComponent">
+          <div v-if="!item.isLink && !item.isComponent">
             <span v-if="scope.row[item.key].data">{{`${scope.row[item.key].data} ${item.unit || ""}`}}
               <span v-if="scope.row[item.key].percent" class="percent">{{scope.row[item.key].percent||0}}%</span>
+              <span v-if="scope.row[item.key].btn" @click="runfun(scope.row[item.key].btn,scope.row[item.key].param)" class="btn">{{$t('home.certification')}}</span>
             </span>
             <span v-else>{{`${scope.row[item.key]} ${item.unit || ""}`}}</span>
-          </span>
+          </div>
           <component :is="scope.row[item.key]" v-if="item.isComponent" />
         </template>
       </el-table-column>
@@ -201,6 +202,9 @@ export default {
     ...mapState(["rate"])
   },
   methods: {
+    runfun(fn,val){
+      fn(val)
+    },
     handleSizeChange(size) {
       this.$emit("size-change", size);
     },
@@ -295,6 +299,11 @@ export default {
     font-size: 12px;
     padding: 5px;
     line-height: 16px;
+  }
+  .btn{
+    color: orange;
+    font-size: 12px;
+    margin-left: 10px;
   }
   // & ::v-deep .el-table__body-wrapper {
   //   tr {
