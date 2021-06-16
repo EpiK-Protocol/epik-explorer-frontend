@@ -213,7 +213,8 @@ const en = {
   },
     expertTable: {
       title: "Expert",
-      label: ["ID", "VoteAmount", "ApplicationHash", "FileSize（GB）", "FileCount", "Reward", "Status"]
+      // "ApplicationHash", 
+      label: ["ID", "VoteAmount", "FileSize（GB）", "FileCount", "Reward", "Status"]
     },
     messageTable: {
       title: "Message",

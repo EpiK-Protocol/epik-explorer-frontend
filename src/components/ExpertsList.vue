@@ -54,12 +54,12 @@ export default {
         {
           key: "VoteAmount",
         },
-        {
-          key: "ApplicationHash",
-          isLink: true,
-          target: "tipset",
-          ellipsis: true
-        },
+        // {
+        //   key: "ApplicationHash",
+        //   isLink: true,
+        //   target: "tipset",
+        //   ellipsis: true
+        // },
         {
           key: "FileSize",
         },
@@ -141,7 +141,7 @@ export default {
             FileSize: vm.unitConversion(FileSize, 2),
             FileCount,
             Reward,
-            ApplicationHash,
+            // ApplicationHash,
           };
         });
 
