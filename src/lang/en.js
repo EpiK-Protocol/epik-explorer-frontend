@@ -222,6 +222,7 @@ const en = {
     },
     board: {
       base: {
+        title:'BaseInfomation',
         Height: {
           label: "Block Height",
         },
@@ -243,6 +244,7 @@ const en = {
 
       },
       miner: {
+        title:'MinerInfomation',
         TotalMiners: {
           label: "Total Miners",
         },
@@ -282,6 +284,7 @@ const en = {
 
       },
       expert: {
+        title:'ExpertInfomation',
         TotalExperts: {
           label: "Total Experts",
         },

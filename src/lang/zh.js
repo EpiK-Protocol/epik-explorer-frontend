@@ -299,6 +299,7 @@ const zh = {
         },
         board: {
             base: {
+                title:'基本数据',
                 Height: {
                     label: "区块高度",
                 },
@@ -320,6 +321,7 @@ const zh = {
 
             },
             miner: {
+                title:'矿工生态数据',
                 TotalMiners: {
                     label: "完成注册矿工数",
                 },
@@ -359,6 +361,7 @@ const zh = {
 
             },
             expert: {
+                title:'知识生态数据',
                 TotalExperts: {
                     label: "完成注册专家数",
                 },

@@ -30,7 +30,7 @@ export function fetch(options) {
           Message({
           message: data.code.message || data.message || 'Error',
             type: 'error',
-            duration: 5 * 1000
+            duration: 2 * 1000
           })
           return Promise.reject(new Error(data.code.message || 'Error'))
         }else{

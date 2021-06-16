@@ -5,7 +5,7 @@
   >
       <!-- v-loading="loading" -->
 
-    <div class="titl-board">基本数据</div>
+    <div class="titl-board">{{ $t(`home.board.base.title`) }}</div>
     <div class="flex flex-wrap">
       <div v-for="item in base" :key="item.key" class="info-item bottom-10 six-line">
         <div>
@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <div class="titl-board">矿工生态数据</div>
+    <div class="titl-board">{{ $t(`home.board.miner.title`) }}</div>
     <div class="flex flex-wrap ">
       <div v-for="item in miner" :key="item.key" class="info-item bottom-10 six-line">
         <div>
@@ -25,7 +25,7 @@
         <div v-show="!loading">{{ `${item.value || ""} ${item.unit}` }}</div>
       </div>
     </div>
-    <div class="titl-board">知识生态数据</div>
+    <div class="titl-board">{{ $t(`home.board.expert.title`) }}</div>
     <div class="flex flex-wrap ">
       <div v-for="item in expert" :key="item.key" class="info-item bottom-10 five-line">
         <div>
