@@ -259,28 +259,28 @@ const en = {
           label: "Network Storage Power",
         },
         TopMinerPower: {
-          label: "TopMinerPower",
+          label: "Top Miner Power",
         },
         MinerMinWinPower: {
-          label: "MinerMinWinPower",
+          label: "Miner Min Win Power",
         },
         TotalMinerPledged: {
-          label: "TotalMinerPledged（EPK）",
+          label: "Total Miner Pledged（EPK）",
         },
         TotalRetrievalPledged: {
-          label: "TotalRetrievalPledged（EPK）",
+          label: "Total Retrieval Pledged（EPK）",
         },
         TotalPledged: {
-          label: "TotalPledged（EPK）",
+          label: "Total Pledged（EPK）",
         },
         TotalMiningReward: {
-          label: "TotalMiningReward（EPK）",
+          label: "Total Mining Reward（EPK）",
         },
         TotalRetrievalReward: {
-          label: "TotalRetrievalReward（EPK）",
+          label: "Total Retrieval Reward（EPK）",
         },
         DataFlowPerEPK: {
-          label: "DataFlowPerEPK",
+          label: "DataFlow Per EPK",
         },
 
       },
@@ -299,22 +299,22 @@ const en = {
           label: "Avg.Vote",
         },
         TopExpertVote: {
-          label: "TopExpertVote",
+          label: "Top Expert Vote",
         },
         TotalDataSize: {
-          label: "TotalDataSize",
+          label: "Total DataSize",
         },
         TotalExpertReward: {
-          label: "TotalExpertReward（EPK）",
+          label: "Total Expert Reward（EPK）",
         },
         TotalCrowdsourcingReward: {
-          label: "TotalCrowdsourcingReward（EPK）",
+          label: "Total Crowdsourcing Reward（EPK）",
         },
         TotalVoteReward: {
-          label: "TotalVoteReward（EPK）",
+          label: "Total Vote Reward（EPK）",
         },
         AnnualizedRate: {
-          label: "AnnualizedRate",
+          label: "Annualized Rate",
         }
 
       },
