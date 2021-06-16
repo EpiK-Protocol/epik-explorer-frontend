@@ -134,7 +134,7 @@ export default {
           time: this.getFormatTime(Timestamp*1000),
           from: Message.From,
           to: Message.To,
-          method: Message.Method,
+          // method: Message.Method,
           method: MethodName || Message.Method,
           actor: ActorName,
           Receipt: this.getCodeText(Receipt.ExitCode),

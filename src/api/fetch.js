@@ -25,7 +25,7 @@ export function fetch(options) {
           } else {
             data = response.data;
           }
-        if (data.code.code!=0 && data.code!=200) {
+        if (data.code.code!=0 && data.code!=200 && data.code.code!=404) {
           
           Message({
           message: data.code.message || data.message || 'Error',
