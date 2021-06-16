@@ -75,7 +75,7 @@ export default {
           axisLabel: {
             textStyle: {
               color: "#ffffff",
-              fontSize: isMobile?11:14.5*rate
+              fontSize: isMobile?11:13
             },
           },
         },
@@ -84,7 +84,7 @@ export default {
           name: vm.$t("chart.price"),
           nameTextStyle: {
             color: "#ffffff",
-            fontSize: isMobile?11:14.5*rate,
+            fontSize: isMobile?11:13,
           },
           scale: true,
           splitNumber: 3,
@@ -102,7 +102,7 @@ export default {
           axisLabel: {
             textStyle: {
               color: "#ffffff",
-              fontSize: isMobile?11:14.5*rate,
+              fontSize: isMobile?11:13,
             },
           },
         },

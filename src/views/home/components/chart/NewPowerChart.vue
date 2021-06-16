@@ -80,7 +80,7 @@ export default {
           axisLabel: {
             textStyle: {
               color: '#ffffff',
-              fontSize: isMobile?11:14.5*rate
+              fontSize: isMobile?11:13
             },
           },
         },
@@ -89,7 +89,7 @@ export default {
           name:  vm.$t("chart.powerGrouth"),
           nameTextStyle: {
             color: '#00ccf8',
-            fontSize: isMobile?11:14.5*rate 
+            fontSize: isMobile?11:13
           },
           scale: true,
           splitNumber: 3,
@@ -107,7 +107,7 @@ export default {
           axisLabel: {
             textStyle: {
               color: '#ffffff',
-              fontSize: isMobile?11:12.5*rate
+              fontSize: isMobile?11:13*rate
             },
             formatter: function(p) {
               return vm.unitConversion(p)
@@ -119,7 +119,7 @@ export default {
           name: vm.$t("chart.totalPower1"),
           nameTextStyle: {
             color: '#f3921b',
-            fontSize: isMobile?11:12.5*rate 
+            fontSize: isMobile?11:14
           },
           scale: true,
           splitNumber: 3,
