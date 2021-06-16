@@ -206,7 +206,7 @@ const en = {
       // "Rewards",
       label: ["Rank", "Miner", "Tag", "QualityAdjPower", "RawBytePower", "Blocks",  "Last Block Tipset"]
     },
-    certification:'Certification',
+    certification:'Verify',
     profitTable: {
       title: "Profit",
       label: ["Rank", "Coinbase","Tag", "Address", "Profit", "WinBlocks"]
