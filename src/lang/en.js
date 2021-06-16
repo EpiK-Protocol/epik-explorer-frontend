@@ -123,17 +123,17 @@ const en = {
           // }
         ]
       },
-      rank:{
+      rank: {
         label: "Top Miners",
         index: "/mining/list"
       },
-      experts:{
-          label: "Experts",
-          index: "/experts/list"
+      experts: {
+        label: "Experts",
+        index: "/experts/list"
       },
-      web:{
-          label: "EPIK",
-          index: "https://www.epik-protocol.io/"
+      web: {
+        label: "EPIK",
+        index: "https://www.epik-protocol.io/"
       },
       // stats: {
       //   label: "Stats",
@@ -200,17 +200,17 @@ const en = {
       // label: ["Height", "Hash", "Blocktime", "Miner", "Reward"]
       label: ["Height", "Hash", "BlockTime", "Miner", "GasReward", "BlockReward"]
     },
-    rankType:['Top Power','Real-time Reward','24h Reward','7d Reward','30d Reward'],
+    rankType: ['Top Power', 'Real-time Reward', '24h Reward', '7d Reward', '30d Reward'],
     minerTable: {
       title: "Miner",
       // "Rewards",
-      label: ["Rank", "Miner", "Tag", "QualityAdjPower", "RawBytePower", "Blocks",  "Last Block Tipset"]
+      label: ["Rank", "Miner", "Tag", "QualityAdjPower", "RawBytePower", "Blocks", "Last Block Tipset"]
     },
-    certification:'Verify',
+    certification: 'Verify',
     profitTable: {
       title: "Profit",
-      label: ["Rank", "Coinbase","Tag", "Address", "Profit", "WinBlocks"]
-  },
+      label: ["Rank", "Coinbase", "Tag", "Address", "Profit", "WinBlocks"]
+    },
     expertTable: {
       title: "Expert",
       // "ApplicationHash", 
@@ -223,7 +223,7 @@ const en = {
     },
     board: {
       base: {
-        title:'BaseInfomation',
+        title: 'Basic Data',
         Height: {
           label: "Block Height",
         },
@@ -245,7 +245,7 @@ const en = {
 
       },
       miner: {
-        title:'MinerInfomation',
+        title: 'Miner Data',
         TotalMiners: {
           label: "Total Miners",
         },
@@ -262,7 +262,7 @@ const en = {
           label: "Top Miner Power",
         },
         MinerMinWinPower: {
-          label: "Miner Min Win Power",
+          label: "Miner MinWinPower",
         },
         TotalMinerPledged: {
           label: "Total Miner Pledged（EPK）",
@@ -280,12 +280,12 @@ const en = {
           label: "Total Retrieval Reward（EPK）",
         },
         DataFlowPerEPK: {
-          label: "DataFlow Per EPK",
+          label: "Data Flow Per EPK",
         },
 
       },
       expert: {
-        title:'ExpertInfomation',
+        title: 'Knowledge Data',
         TotalExperts: {
           label: "Total Experts",
         },
@@ -302,7 +302,7 @@ const en = {
           label: "Top Expert Vote",
         },
         TotalDataSize: {
-          label: "Total DataSize",
+          label: "Total Data Size",
         },
         TotalExpertReward: {
           label: "Total Expert Reward（EPK）",
@@ -442,8 +442,8 @@ const en = {
       actor: "Account"
     },
     radio: ["Message", "Blocks Mined"],
-    overview:['Miner Overview','Total Balance','Power Glance','QualityAdjPower','Power Rate','RawBytePower','Total Blocks','Total Reward','Sector Size'],
-    account:['Account Overview','Actor','Owner','Peer ID','Type','StorageMiner','Worker','Region(Public IP)','unknown (unknown)','Address','Controller']
+    overview: ['Miner Overview', 'Total Balance', 'Power Glance', 'QualityAdjPower', 'Power Rate', 'RawBytePower', 'Total Blocks', 'Total Reward', 'Sector Size'],
+    account: ['Account Overview', 'Actor', 'Owner', 'Peer ID', 'Type', 'StorageMiner', 'Worker', 'Region(Public IP)', 'unknown (unknown)', 'Address', 'Controller']
 
 
   },
@@ -508,7 +508,7 @@ const en = {
     metrics: "Metrics",
     map: "Peer Map",
     peer: "Peer Detail",
-    minerList:"Top Miners",
+    minerList: "Top Miners",
     expertsList: "Experts"
   },
   chart: {
@@ -526,11 +526,11 @@ const en = {
     filVested: ["Cumulative tEPK Vested", "tEPK Vested Daily"],
     map:
       "<div style='margin-bottom:5px'><a href='/#/stats/peer?peer_id={pid}'><span>Peer ID : </span><span>{pid}</span></a></div><div style='margin-bottom:5px'><span>Location : </span><span>{name}</span></div><div><span>IP : </span><span>{ip}</span></div>",
-    totalPower1:'Network Power',
-    powerGrouth:'Power Grouth',
+    totalPower1: 'Network Power',
+    powerGrouth: 'Power Grouth',
     price: 'Price',
-    MiningPledge:'Mining Pledge',
-    TotalRewards:'Lock Rewards'
+    MiningPledge: 'Mining Pledge',
+    TotalRewards: 'Lock Rewards'
 
   },
   banner: {
@@ -540,6 +540,16 @@ const en = {
     m_t3: 'EpiK Protocol is a decentralized trusted knowledge graph collaboration platform of the People, by the People, for the People.',
     t4: 'It is an epic sermon of carbon-based to silicon-based life that will last at least 50 years.',
     m_t4: 'It is be an epic sermon of carbon-based to silicon-based life that will last at least 50 years.'
-},
+  },
+  verify: {
+    title: 'Signature verification',
+    t1: 'Address',
+    t2: 'Account name',
+    t3: 'Signature code',
+    t4: 'Signature',
+    t5: 'Please copy the above code, sign in the epik miner, and paste the signature here',
+    t6: 'OK',
+    t7: 'Value cannot be empty'
+  }
 };
 export default en;

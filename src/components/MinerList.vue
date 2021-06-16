@@ -35,38 +35,38 @@
       v-else
     /> -->
     <!-- <mb-page v-if="isMobile" @page-change="handlePageChange" :total="total" /> -->
-    <el-dialog title="签名验证" class="address-detail" :visible.sync="dialogFormVisible" width="70%">
+    <el-dialog :title="$t('verify.title')" class="address-detail" :visible.sync="dialogFormVisible" width="70%">
       <el-form :model="form" ref="signForm" label-width="120px">
-        <el-form-item label="地址" prop="address" :rules="[{ required: true, message: 'Owner地址不能为空' }]">
+        <el-form-item :label="$t('verify.t1')" prop="address" :rules="[{ required: true, message: $t('verify.t7') }]">
           <el-input v-model="form.address" autocomplete="off" :disabled="true"></el-input>
         </el-form-item>
         <el-form-item
-          label="账户全称"
+          :label="$t('verify.t2')"
           prop="user_tag"
-          :rules="[{ required: true, message: '账户全称不能为空' }]"
+          :rules="[{ required: true, message: $t('verify.t7') }]"
         >
           <el-input v-model="form.user_tag" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item
-          label="签名代码"
+          :label="$t('verify.t3')"
         >
         <div class="flex" @click="docopy(sign_code, 'copy')" style="align-items: center;color: white;">
           <el-input  v-model="sign_code"  autocomplete="off" :disabled="true"></el-input>
           <i class="el-icon-copy-document" style="margin-left: 10px;"></i></div>
         </el-form-item>
         <el-form-item
-          label="签名"
+          :label="$t('verify.t4')"
           prop="signature"
-          :rules="[{ required: true, message: '签名不能为空' }]"
+          :rules="[{ required: true, message: $t('verify.t7') }]"
         >
-          <el-input v-model="form.signature" placeholder="请复制上面的代码，在epik矿机中进行签名，将签名内容粘贴到此处" autocomplete="off"></el-input>
+          <el-input v-model="form.signature" :placeholder="$t('verify.t5')" autocomplete="off"></el-input>
         </el-form-item>
         
 
       </el-form>
       <div slot="footer" class="dialog-footer">
         <!-- <el-button @click="dialogFormVisible = false">取 消</el-button> -->
-        <el-button type="primary" @click="updateSign">确 定</el-button>
+        <el-button type="primary" @click="updateSign">{{$t('verify.t6')}}</el-button>
       </div>
     </el-dialog>
   </div>
