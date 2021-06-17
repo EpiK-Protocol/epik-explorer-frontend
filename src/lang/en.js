@@ -240,7 +240,7 @@ const en = {
           label: "Circulation EPK",
         },
         EPK_USDTPrice: {
-          label: "EPKPrice（USDT）",
+          label: "EPK Price（USDT）",
         }
 
       },
@@ -527,7 +527,7 @@ const en = {
     map:
       "<div style='margin-bottom:5px'><a href='/#/stats/peer?peer_id={pid}'><span>Peer ID : </span><span>{pid}</span></a></div><div style='margin-bottom:5px'><span>Location : </span><span>{name}</span></div><div><span>IP : </span><span>{ip}</span></div>",
     totalPower1: 'Network Power',
-    powerGrouth: 'Power Grouth',
+    powerGrouth: 'Power Growth',
     price: 'Price',
     MiningPledge: 'Mining Pledge',
     TotalRewards: 'Lock Rewards'
