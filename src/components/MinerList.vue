@@ -404,6 +404,7 @@ export default {
     background: var(--board-item-bg-color);
     padding: 10px;
     margin-bottom: 10px;
+    overflow: auto;
   }
   .miner-table-con{
     /deep/ .el-table{
@@ -421,6 +422,7 @@ export default {
     div{    
       padding: 0 15px;
       cursor: pointer;
+      min-width: 80px;
     }
     div.active{
       color: var(--force-mark-color);

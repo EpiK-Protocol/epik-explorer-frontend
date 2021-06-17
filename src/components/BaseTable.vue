@@ -306,11 +306,7 @@ export default {
     margin-left: 10px;
     cursor: pointer;
   }
-  // & ::v-deep .el-table__body-wrapper {
-  //   tr {
-  //     height: 60px;
-  //   }
-  // }
+  
   & ::v-deep .el-table {
     padding-bottom: 20px;
     background: var(--board-bg-color) !important;
@@ -425,6 +421,28 @@ export default {
     }
   }
   @media (max-width: 768px) {
+      .btn{
+        display: block;
+      }
+      // & ::v-deep .el-table__body-wrapper {
+      //   height: 300PX !important;
+      //   // tr {
+      //   //   height: 60px;
+      //   // }
+      // }
+      /deep/ .el-table{
+        .cell{
+          line-height: 25PX;
+          min-width: 90PX;
+
+      }
+        td .cell{
+          line-height: 25PX;
+          min-width: 90PX;
+        }
+
+      } 
+
     & ::v-deep .el-pagination {
       text-align: center;
       background: var(--board-bg-color);

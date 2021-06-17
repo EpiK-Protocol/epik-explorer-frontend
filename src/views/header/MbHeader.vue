@@ -22,7 +22,7 @@
     </div>
     <div v-if="showNav" class="nav-bar">
       <div v-for="(value, key) in $t('header.nav')" :key="key" class="nav-item">
-        <div class="title" @click="key === 'home' ? go('/') : null">{{ value.label }}</div>
+        <div class="title" @click="go(value.index)">{{ value.label }}</div>
         <div v-if="value.items">
           <div
             v-for="item in value.items"
@@ -66,6 +66,10 @@ export default {
   methods: {
     
     go(path) {
+      if(path.indexOf('http')>-1){
+        window.open(path)
+        return
+      } 
       this.showNav = false;
       this.$router.push(path);
     },
