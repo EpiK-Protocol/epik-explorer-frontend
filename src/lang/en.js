@@ -459,7 +459,7 @@ const en = {
         "To",
         "Value",
         "Receipt",
-        "Fee",
+        // "Fee",
         "Method",
         "Actor",
         "Nonce",
