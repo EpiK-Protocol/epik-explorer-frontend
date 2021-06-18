@@ -162,8 +162,24 @@
     }
 
 }
+.el-link {
+    font-size: 13px ;
+    font-weight: 400;
+  }
 
 @media (max-width: 768px) {
+    .el-form-item__label {
+        float: inherit;
+        line-height: 20PX;
+    }
+    .el-form-item__content{
+        margin-left: 0 !important;
+    }
+    .address-detail .el-input input{
+        line-height: 35px !important;
+        height: 35px !important;
+        font-size: 11px !important;
+    }
     
     .message-list-con{
         .message-list{
@@ -197,6 +213,13 @@
     }
     .el-link {
       font-size: 11px !important;
+      font-weight: 400;
+    }
+    .el-link.underline {
+        text-decoration: underline;
+    }
+    .el-table--mini td, .el-table--mini th{
+        padding: 9px 0;
     }
 }
 
@@ -234,4 +257,7 @@
     padding: 0 10px;
     transition: border-color .2s cubic-bezier(.645,.045,.355,1);
     width: 100%;
+}
+.el-dialog{
+    min-width: 360PX;
 }

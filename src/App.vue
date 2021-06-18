@@ -83,7 +83,9 @@ a {
 :root {
   div {
     &::-webkit-scrollbar {
-      width: 10px;
+      width: 3px;
+      height:3px;
+
     }
     &::-webkit-scrollbar-track {
       width: 5px;

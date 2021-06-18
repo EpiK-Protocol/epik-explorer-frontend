@@ -212,7 +212,7 @@ export default {
     div:first-child {
       // margin-bottom: 5px;
       // font-size: 11PX;
-      font-size: .729vw;
+      font-size: 14px;
       
       span {
         position: relative;
@@ -245,13 +245,14 @@ export default {
       margin-bottom: 10px;
       box-sizing: border-box;
       margin-right: 0;
-      height: 53px;
+      // height: 53px;
+      height: auto;
       
       &:nth-child(2n + 1) {
         margin-right: 10px;
       }
       div {
-        height: 20px;
+        height: auto;
         line-height: 20px !important;
         color: var(--total-board-bottom-color);
         

@@ -314,7 +314,7 @@ const en = {
           label: "Total Vote Reward（EPK）",
         },
         AnnualizedRate: {
-          label: "Annualized Rate",
+          label: "Vote APY",
         }
 
       },

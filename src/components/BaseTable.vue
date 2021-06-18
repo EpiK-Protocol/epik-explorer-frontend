@@ -18,7 +18,7 @@
       :class="{ radius: radius, mini: atIndex }"
       :size="atIndex ? 'mini' : ''"
       :row-class-name="getRowClass"
-      :height="isMobile?'200':700 * rate"
+      :height="isMobile?'400':700 * rate"
       :cell-class-name="getCellClass"
       :default-sort="defaultSort"
     >
@@ -423,6 +423,7 @@ export default {
   @media (max-width: 768px) {
       .btn{
         display: block;
+        font-size: 11px;
       }
       // & ::v-deep .el-table__body-wrapper {
       //   height: 300PX !important;
@@ -430,15 +431,20 @@ export default {
       //   //   height: 60px;
       //   // }
       // }
+      
       /deep/ .el-table{
+        .el-table__body, .el-table__footer, .el-table__header{
+              table-layout: initial;
+        }
+ 
         .cell{
           line-height: 25PX;
-          min-width: 90PX;
+          min-width: 120PX;
 
       }
         td .cell{
           line-height: 25PX;
-          min-width: 90PX;
+          min-width: 120PX;
         }
 
       } 

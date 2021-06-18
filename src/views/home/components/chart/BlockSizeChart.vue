@@ -260,7 +260,7 @@ export default {
     //flex: 2;
     // margin-right: 10px;
     flex-shrink: 0;
-    min-width: 180px;
+    // min-width: 180px;
     display: flex;
     // flex-direction: column;
     .power-info{
@@ -269,7 +269,7 @@ export default {
     }
     & > div {
       span:last-child {
-        font-size: 20px;
+        font-size: 15px;
         margin-right: 20px;
         color: var(--total-power-color);
       }
@@ -277,7 +277,7 @@ export default {
         // color: var(--total-board-top-color);
         // font-weight: bold;
         margin-right: 5px;
-        font-size: 14px;
+        font-size: 13px;
         color: var(--main-text-color);
       }
     }

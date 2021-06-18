@@ -816,9 +816,10 @@ export default {
         .bottom.info-main {
           padding: 20px 20px 0;
           flex-wrap: wrap;
+          font-size: 11px;
         }
         .bottom.info-main > div {
-          margin-bottom: 15px;
+          margin-bottom: 10px;
           line-height: 20px;
 
           &:nth-child(2),
@@ -909,14 +910,17 @@ export default {
         flex-shrink: 0;
         justify-content: space-between;
         margin-bottom: 15px;
+        font-size: 11px;
         .label {
           padding-right: 10px;
+          
         }
       }
       .titl {
         padding: 10px;
         font-size: 13px;
-        margin-bottom: 0px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid var(--border-color);
       }
       .address-balance {
         .info {

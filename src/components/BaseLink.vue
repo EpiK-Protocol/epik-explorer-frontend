@@ -38,18 +38,4 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
-.el-link {
-    font-size: 13px !important;
-    font-weight: 400;
-  }
-.el-link.underline {
-  text-decoration: underline;
-}
 
-@media (max-width: 768px) {
-  .el-link {
-    font-size: 10px !important;
-  }
-}
-</style>

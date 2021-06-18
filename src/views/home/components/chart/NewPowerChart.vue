@@ -274,18 +274,16 @@ export default {
     .chart-con {
       flex: 3;
     }
+    .total-power-chart {
+      display: flex;
+      height: 200px;
+      background: var(--board-bg-color);
+      align-items: center;
+      background: var(--board-item-bg-color);
+      border-radius: 3px;
+      box-shadow: 0 0 7.5px 0 var(--block-meta-item-shadow) inset;
+    }
   }
 }
-@media (max-width: 768px) {
 
-  .total-power-chart {
-    display: flex;
-    height: 200px;
-    background: var(--board-bg-color);
-    align-items: center;
-    background: var(--board-item-bg-color);
-    border-radius: 3px;
-    box-shadow: 0 0 7.5px 0 var(--block-meta-item-shadow) inset;
-  }
-}
 </style>
