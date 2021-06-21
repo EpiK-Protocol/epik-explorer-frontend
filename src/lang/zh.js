@@ -7,7 +7,7 @@ const zh = {
             total: "总计<i> {total} </i>消息 {extra}",
             method: {
                 ChangePeerID: "变更节点编号",
-                ChangeWorkerAddress: "变更矿工地址",
+                ChangeWorkerAddress: "变更节点地址",
                 ControlAddresses: "地址管理",
                 PreCommitSector: "数据预提交",
                 ProveCommitSector: "数据提交证明",
@@ -19,7 +19,7 @@ const zh = {
             receipt: ["成功", "失败", "确认中"]
         },
         blockList: {
-            label: ["高度", "区块哈希", "块龄", "消息", "区块大小", "矿工", "奖励"],
+            label: ["高度", "区块哈希", "块龄", "消息", "区块大小", "节点", "奖励"],
             total: "总计<i>{total}</i> 区块(<i>{fil}</i>tEPK)",
             height: "区块高度 # {height}"
         },
@@ -125,7 +125,7 @@ const zh = {
                 ]
             },
             rank: {
-                label: "矿工排行",
+                label: "节点排行",
                 index: "/mining/list"
             },
             experts: {
@@ -160,7 +160,7 @@ const zh = {
         }
     },
     footer: {
-        peer: "活跃矿工 {count}",
+        peer: "活跃节点 {count}",
         mobile: [{
             label: "Filecoin官网",
             href: " https://filecoin.io"
@@ -257,9 +257,9 @@ const zh = {
             label: "平均区块元数据",
             size: "{avg} 字节",
             tips: "近24小时平均区块元数据大小",
-            t1: '注册矿工',
+            t1: '注册节点',
             t2: '完成抵押',
-            t3: '出块矿工',
+            t3: '出块节点',
         },
         totalPower: {
             power: "原值算力",
@@ -269,9 +269,9 @@ const zh = {
 
 
         minerTable: {
-            title: "矿工",
+            title: "节点",
             // "累计奖励",
-            label: ["排名", "矿工ID", "标签", "有效算力", "原值算力", "出块数", "最后出块高度",]
+            label: ["排名", "节点ID", "标签", "有效算力", "原值算力", "出块数", "最后出块高度",]
         },
         profitTable: {
             title: "收益",
@@ -286,8 +286,8 @@ const zh = {
         },
         blockTable: {
             title: "区块",
-            // label: ["区块高度", "哈希", "块龄", "矿工", "奖励"]
-            label: ["区块高度", "哈希", "块龄", "矿工", "Gas奖励", "出块奖励"]
+            // label: ["区块高度", "哈希", "块龄", "节点", "奖励"]
+            label: ["区块高度", "哈希", "块龄", "节点", "Gas奖励", "出块奖励"]
         },
         messageTable: {
             title: "消息",
@@ -318,27 +318,27 @@ const zh = {
 
             },
             miner: {
-                title:'矿工生态数据',
+                title:'节点生态数据',
                 TotalMiners: {
-                    label: "完成注册矿工数",
+                    label: "完成注册节点数",
                 },
                 PledgedMiners: {
-                    label: "完成抵押矿工数",
+                    label: "完成抵押节点数",
                 },
                 ActiveMiners: {
-                    label: "当前活跃矿工数",
+                    label: "当前活跃节点数",
                 },
                 TotalPower: {
                     label: "全网有效算力",
                 },
                 TopMinerPower: {
-                    label: "矿工最高算力",
+                    label: "节点最高算力",
                 },
                 MinerMinWinPower: {
                     label: "预估最小每日爆块算力",
                 },
                 TotalMinerPledged: {
-                    label: "全网矿工抵押数（EPK）",
+                    label: "全网节点抵押数（EPK）",
                 },
                 TotalRetrievalPledged: {
                     label: "全网访问抵押数（EPK）",
@@ -401,7 +401,7 @@ const zh = {
             },
             blockTime: {
                 label: "最新出块时间",
-                tips: "自一个矿工最近创建一个区块以来的时间"
+                tips: "自一个节点最近创建一个区块以来的时间"
             },
             head: {
                 label: "最新出块时间",
@@ -463,7 +463,7 @@ const zh = {
         },
         topPowerTable: {
             title: "算力排行榜",
-            label: ["原值算力", "有效算力", "矿工"]
+            label: ["原值算力", "有效算力", "节点"]
         },
         topPowerChartLabel: ["原值算力", "有效算力"],
         messageContainer: {
@@ -490,18 +490,18 @@ const zh = {
     stats: {
         mining: {
             activeMiner: {
-                title: "活跃矿工",
-                count: "矿工数量",
-                tips: "近24小时打包数据块的存储矿工"
+                title: "活跃节点",
+                count: "节点数量",
+                tips: "近24小时打包数据块的存储节点"
             },
             provenPower: {
-                title: "矿工{power}走势"
+                title: "节点{power}走势"
             },
             minerList: {
-                title: "矿工列表",
-                label: ["矿工", "节点ID", "原值算力", "算力占比", "出块数量", "出块占比"],
+                title: "节点列表",
+                label: ["节点", "节点ID", "原值算力", "算力占比", "出块数量", "出块占比"],
                 detail: ["节点ID", "IP", "位置"],
-                placeholder: "请输入矿工地址/节点ID"
+                placeholder: "请输入节点地址/节点ID"
             }
         },
         metrics: {
@@ -517,7 +517,7 @@ const zh = {
         },
         peer: {
             title: "节点ID:",
-            label: ["节点ID", "矿工地址", "IP", "位置"]
+            label: ["节点ID", "节点地址", "IP", "位置"]
         }
     },
     address: {
@@ -528,20 +528,20 @@ const zh = {
         detail: {
             // overview: ["地址", "类型", "余额", "代码 Cid", "随机数"],
             overview: ["地址", "余额", "原值算力", "有效算力", "节点ID", "扇区大小"],
-            worker: "矿工列表",
+            worker: "节点列表",
             ownerOverview: ["所有者账户", "节点ID", "原值算力", "有效算力", "数据块大小", "数据块数量", "证明中的数据块数量", "失败数量"]
         },
         type: {
             account: "一般账户",
             owner: "所有者账户",
             wallet: "一般账户",
-            miner: "存储矿工",
+            miner: "存储节点",
             actor: "一般账户"
         },
         radio: ["消息", "出块"],
-        overview: ['矿工账户', '账户余额', '算力一览', '有效算力', '算力占比', '原值算力', '总出块数', '总奖励', '扇区大小'],
-        account: ['账户总览', '矿工账号', 'Owner', '节点标识', '账户类型', '存储矿工', 'Worker', '地区(公共IP)', '未知 (未知)', '矿工地址', 'Controller'],
-        // overview:['Miner Overview','Total Balance','Power Glance','QualityAdjPower','Power Rate']
+        overview: ['节点账户', '账户余额', '算力一览', '有效算力', '算力占比', '原值算力', '总出块数', '总奖励', '扇区大小'],
+        account: ['账户总览', '节点账号', 'Owner', '节点标识', '账户类型', '存储节点', 'Worker', '地区(公共IP)', '未知 (未知)', '节点地址', 'Controller'],
+        // overview:['Node Overview','Total Balance','Power Glance','QualityAdjPower','Power Rate']
 
 
     },
@@ -558,8 +558,8 @@ const zh = {
     tipset: {
         height: "高度",
         block: {
-            // overview: ["哈希", "高度", "时间戳", "区块大小", "消息", "矿工", "奖励", "父块哈希", "父块重量", "ticket", "State Root"]
-            overview: ["哈希", "高度", "时间戳", "消息", "矿工", "父块哈希", "父块重量", "ticket", "State Root"]
+            // overview: ["哈希", "高度", "时间戳", "区块大小", "消息", "节点", "奖励", "父块哈希", "父块重量", "ticket", "State Root"]
+            overview: ["哈希", "高度", "时间戳", "消息", "节点", "父块哈希", "父块重量", "ticket", "State Root"]
         },
         blockType: ["无区块", "最小票值区块", "其它区块"],
         tips: "票值为一个随机数"
@@ -578,29 +578,29 @@ const zh = {
         messageList: "查看全部消息",
         addressList: "查看全部账户",
         tipset: "查看区块",
-        mining: "矿工",
+        mining: "节点",
         metrics: "指标",
         map: "节点地图",
         peer: "节点详情",
-        minerList: "矿工排行",
+        minerList: "节点排行",
         expertsList: "领域专家"
     },
     chart: {
         blocksWonTitle: "近半小时内未发现区块",
         blockRatio: "出块率",
         ticketRatio: "赢票率",
-        blocksWon: "<div>矿工ID: {miner_id}</div><div>高度: {height}</div><div>出块时间: {block_time}</div><div>区块哈希: {cid}</div>",
+        blocksWon: "<div>节点ID: {miner_id}</div><div>高度: {height}</div><div>出块时间: {block_time}</div><div>区块哈希: {cid}</div>",
         blockTime: "<div style='margin-bottom:5px'>平均出块时间: {value}s</div><div>时间: {name}</div>",
         // blockSize: "<div style='margin-bottom:5px'>平均区块元数据大小: {value}字节</div><div>时间: {name}</div>",
-        blockSize: "<div>注册矿工: {t1}</div><div>完成抵押: {t2}</div><div>出块矿工: {t3}</div>",
+        blockSize: "<div>注册节点: {t1}</div><div>完成抵押: {t2}</div><div>出块节点: {t3}</div>",
         totalPower: "<div class='circle2' style='margin-bottom:5px'>全网算力: {qualityPower}</div><div class='circle1' style='margin-bottom:5px'>算力增长: {rawPower}</div><div>时间: {name}</div>",
         mesHistory: "<div>消息: {count}</div><div>{time}</div>",
         mesHistoryTitle: "近14天消息历史",
-        topPowerTitleText: "矿工{power}排行",
+        topPowerTitleText: "节点{power}排行",
         pledge: "<div>抵押: {pledge} tEPK</div><div>{time}</div>",
-        tipset: "<div>矿工ID: {miner}</div><div>高度: {height}</div><div>出块时间: {block_time}</div><div>区块哈希: {cid}</div>",
+        tipset: "<div>节点ID: {miner}</div><div>高度: {height}</div><div>出块时间: {block_time}</div><div>区块哈希: {cid}</div>",
         filOutstanding: ["流通中", "抵押"],
-        blockReward: ["爆块矿工数量", "累计区块奖励(tEPK)"],
+        blockReward: ["爆块节点数量", "累计区块奖励(tEPK)"],
         filecoin: "区块奖励(tEPK)",
         filVested: ["累计tEPK释放", "每日释放tEPK"],
         coming: "敬请期待",

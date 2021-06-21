@@ -33,7 +33,7 @@ const en = {
         "Time",
         "Messages",
         "BlockSize",
-        "Miner",
+        "Node",
         "Reward"
       ],
       total: "Total of <i>{total}</i> Blocks(<i>{fil}</i>tEPK)",
@@ -124,7 +124,7 @@ const en = {
         ]
       },
       rank: {
-        label: "Top Miners",
+        label: "Top Nodes",
         index: "/mining/list"
       },
       experts: {
@@ -187,9 +187,9 @@ const en = {
       label: "Avg Blockheader Size",
       size: "{avg} bytes",
       tips: "Avg blockheader size in latest 24H",
-      t1: 'Registered Miners',
-      t2: 'Staked Miners',
-      t3: 'Active Miners',
+      t1: 'Registered Nodes',
+      t2: 'Staked Nodes',
+      t3: 'Active Nodes',
     },
     totalPower: {
       power: "RawBytePower",
@@ -197,14 +197,14 @@ const en = {
     },
     blockTable: {
       title: "Block",
-      // label: ["Height", "Hash", "Blocktime", "Miner", "Reward"]
-      label: ["Height", "Hash", "BlockTime", "Miner", "GasReward", "BlockReward"]
+      // label: ["Height", "Hash", "Blocktime", "Node", "Reward"]
+      label: ["Height", "Hash", "BlockTime", "Node", "GasReward", "BlockReward"]
     },
     rankType: ['Top Power', 'Real-time Reward', '24h Reward', '7d Reward', '30d Reward'],
     minerTable: {
-      title: "Miner",
+      title: "Node",
       // "Rewards",
-      label: ["Rank", "Miner", "Tag", "QualityAdjPower", "RawBytePower", "Blocks", "Last Block Tipset"]
+      label: ["Rank", "Node", "Tag", "QualityAdjPower", "RawBytePower", "Blocks", "Last Block Tipset"]
     },
     certification: 'Verify',
     profitTable: {
@@ -245,27 +245,27 @@ const en = {
 
       },
       miner: {
-        title: 'Miner Data',
+        title: 'Node Data',
         TotalMiners: {
-          label: "Total Miners",
+          label: "Total Nodes",
         },
         PledgedMiners: {
-          label: "Pledged Miners",
+          label: "Pledged Nodes",
         },
         ActiveMiners: {
-          label: "Active Miners",
+          label: "Active Nodes",
         },
         TotalPower: {
           label: "Network Storage Power",
         },
         TopMinerPower: {
-          label: "Top Miner Power",
+          label: "Top Node Power",
         },
         MinerMinWinPower: {
-          label: "Miner MinWinPower",
+          label: "Node MinWinPower",
         },
         TotalMinerPledged: {
-          label: "Total Miner Pledged（EPK）",
+          label: "Total Node Pledged（EPK）",
         },
         TotalRetrievalPledged: {
           label: "Total Retrieval Pledged（EPK）",
@@ -274,7 +274,7 @@ const en = {
           label: "Total Pledged（EPK）",
         },
         TotalMiningReward: {
-          label: "Total Mining Reward（EPK）",
+          label: "Total Storage Reward（EPK）",
         },
         TotalRetrievalReward: {
           label: "Total Retrieval Reward（EPK）",
@@ -379,16 +379,16 @@ const en = {
   stats: {
     mining: {
       activeMiner: {
-        title: "Active Storage Miners",
-        count: "Miner Count"
+        title: "Active Storage Nodes",
+        count: "Node Count"
       },
       provenPower: {
-        title: "Evolution of Top Miners for Miners For Proven Power"
+        title: "Evolution of Top Nodes for Nodes For Proven Power"
       },
       minerList: {
-        title: "Miner List",
+        title: "Node List",
         label: [
-          "Miner",
+          "Node",
           "Peer ID",
           "Storage Power",
           "Power %",
@@ -396,7 +396,7 @@ const en = {
           "% of Blocks Mined"
         ],
         detail: ["Peer ID", "IP", "Location"],
-        placeholder: "Search by Miner Address/Peer ID"
+        placeholder: "Search by Node Address/Peer ID"
       }
     },
     metrics: {
@@ -412,7 +412,7 @@ const en = {
     },
     peer: {
       title: "Peer ID:",
-      label: ["Peer ID", "Miner Address", "IP", "Location"]
+      label: ["Peer ID", "Node Address", "IP", "Location"]
     }
   },
   address: {
@@ -442,7 +442,7 @@ const en = {
       actor: "Account"
     },
     radio: ["Message", "Blocks Mined"],
-    overview: ['Miner Overview', 'Total Balance', 'Power Glance', 'QualityAdjPower', 'Power Rate', 'RawBytePower', 'Total Blocks', 'Total Reward', 'Sector Size'],
+    overview: ['Node Overview', 'Total Balance', 'Power Glance', 'QualityAdjPower', 'Power Rate', 'RawBytePower', 'Total Blocks', 'Total Reward', 'Sector Size'],
     account: ['Account Overview', 'Actor', 'Owner', 'Peer ID', 'Type', 'StorageMiner', 'Worker', 'Region(Public IP)', 'unknown (unknown)', 'Address', 'Controller']
 
 
@@ -480,7 +480,7 @@ const en = {
         "TimeStamp",
         // "Block Size",
         "Messages",
-        "Miner",
+        "Node",
         // "Reward",
         "Parent Hash",
         "Parent Weight",
@@ -504,11 +504,11 @@ const en = {
     messageList: "View All Messages",
     addressList: "View All Accounts",
     tipset: "Tipset",
-    mining: "Mining",
+    mining: "Storage",
     metrics: "Metrics",
     map: "Peer Map",
     peer: "Peer Detail",
-    minerList: "Top Miners",
+    minerList: "Top Nodes",
     expertsList: "Experts"
   },
   chart: {
@@ -516,12 +516,12 @@ const en = {
       "<div style='margin-bottom:5px'>Avg Block Time: {value}s</div><div>Time: {name}</div>",
     // blockSize:
     //   "<div style='margin-bottom:5px'>Avg BlockHeader Size: {value}bytes</div><div>Time: {name}</div>",
-    blockSize: "<div >Total Miner: {t1}</div><div>Pledged: {t2}</div><div>Won Miner: {t3}</div>",
+    blockSize: "<div >Total Node: {t1}</div><div>Pledged: {t2}</div><div>Won Node: {t3}</div>",
 
     totalPower: "<div class='circle2' style='margin-bottom:5px'>Network Power: {qualityPower}</div><div class='circle1' style='margin-bottom:5px'>Power Grouth: {rawPower}</div><div>Time: {name}</div>",
     blocksWon: "<div>MinerID: {miner_id}</div><div>Height: {height}</div><div>BlockTime: {block_time}</div><div>BlockHash: {cid}</div>",
     filOutstanding: ["Floating", "Pledge"],
-    blockReward: ["# Of Miners", "Cumulative Block Reward"],
+    blockReward: ["# Of Nodes", "Cumulative Block Reward"],
     filecoin: "Block Reward(tEPK)",
     filVested: ["Cumulative tEPK Vested", "tEPK Vested Daily"],
     map:
@@ -529,7 +529,7 @@ const en = {
     totalPower1: 'Network Power',
     powerGrouth: 'Power Growth',
     price: 'Price',
-    MiningPledge: 'Mining Pledge',
+    MiningPledge: 'Storage Pledge',
     TotalRewards: 'Lock Rewards'
 
   },
