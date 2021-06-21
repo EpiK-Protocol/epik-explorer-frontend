@@ -290,29 +290,29 @@
 
     <el-dialog :title="$t('verify.title')" :visible.sync="dialogFormVisible" width="70%">
       <el-form :model="form" ref="signForm" label-width="120px">
-        <el-form-item :label="$t('verify.t1')" prop="address" :rules="[{ required: true, message: 'Owner地址不能为空' }]">
+        <el-form-item :label="$t('verify.t1')" prop="address" :rules="[{ required: true, message: $t('verify.t7') }]">
           <el-input v-model="form.address" autocomplete="off" :disabled="true"></el-input>
         </el-form-item>
         <el-form-item
-          :label="$t('component.verify.t2')"
+          :label="$t('verify.t2')"
           prop="user_tag"
-          :rules="[{ required: true, message: '账户全称不能为空' }]"
+          :rules="[{ required: true, message:  $t('verify.t7') }]"
         >
           <el-input v-model="form.user_tag" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item
-          :label="$t('component.verify.t3')"
+          :label="$t('verify.t3')"
         >
         <div class="flex" @click="docopy(sign_code, 'copy')" style="align-items: center;color: white;">
           <el-input  v-model="sign_code"  autocomplete="off" :disabled="true"></el-input>
           <i class="el-icon-copy-document" style="margin-left: 10px;"></i></div>
         </el-form-item>
         <el-form-item
-          :label="$t('component.verify.t4')"
+          :label="$t('verify.t4')"
           prop="signature"
-          :rules="[{ required: true, message: '签名不能为空' }]"
+          :rules="[{ required: true, message: $t('verify.t7') }]"
         >
-          <el-input v-model="form.signature" :placeholder="$t('component.verify.t5')" autocomplete="off"></el-input>
+          <el-input v-model="form.signature" :placeholder="$t('verify.t5')" autocomplete="off"></el-input>
         </el-form-item>
         
 
