@@ -138,10 +138,10 @@ export default {
     .search-bar {
       position: fixed;
       width: 100%;
-      top: 15.4vw;
+      top: 44px;
       height: 100%;
-      padding: 0 3vw;
-      box-sizing: border-box;
+      padding: 10px;
+
       z-index: 10000;
       background: var(--main-bg-color);
 

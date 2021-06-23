@@ -10,19 +10,19 @@
         <span>
           {{ $t("home.blockSize.t1") }}：
         </span>
-        <span  v-show="!loading">{{ data1 }}</span>
+        <span  >{{ data1 }}</span>
       </div>
       <div class="power-info">
         <span>
           {{ $t("home.blockSize.t2") }}：
         </span>
-        <span style="color:var(--block-size-color)" v-show="!loading">{{ data2 }}</span>
+        <span style="color:var(--block-size-color)" >{{ data2 }}</span>
       </div>
       <div class="power-info">
         <span>
           {{ $t("home.blockSize.t3") }}：
         </span>
-        <span style="color: #0091ff;" v-show="!loading">{{ data3 }}</span>
+        <span style="color: #0091ff;" >{{ data3 }}</span>
       </div>
     </div>
     
@@ -46,7 +46,8 @@ export default {
       data1:0,
       data2:0,
       data3:0,
-      timer: null
+      timer: null,
+      xdata:[]
 
 
     };
@@ -56,10 +57,15 @@ export default {
       // const data = this.dataList;
       const rate = this.rate;
       const isMobile = this.isMobile;
-      var xdata=[]
-      for(let i=0;i<this.Total.length;i++){
-        xdata.push(i+1);
-      }
+      // var xdata=[]
+      // for(let i=0;i<this.Total.length;i++){
+      //   xdata.push(i+1);
+      // }
+      // const xData = series.map((item) => {
+      //   return {
+      //     value: item.name,
+      //   };
+      // });
       const {
         axisLine,
         seriesItem,
@@ -70,7 +76,7 @@ export default {
         xAxis: {
            type: 'category',
            boundaryGap: false,
-          data: xdata,
+          data: vm.xdata,
           axisTick: {
             show: false,
           },
@@ -80,7 +86,7 @@ export default {
           axisLabel: {
             textStyle: {
               color: '#ffffff',
-              fontSize: isMobile?11:14.5*rate
+              fontSize: isMobile?11:13
             },
           },
         },
@@ -103,7 +109,7 @@ export default {
           axisLabel: {
             textStyle: {
               color: '#ffffff',
-              fontSize: isMobile?11:14.5*rate
+              fontSize: isMobile?11:13
             },
           },
         },
@@ -182,10 +188,12 @@ export default {
         this.Total = []
         this.Pledged = []
         this.Actived = []
+        this.xdata = []
         for (var i=0;i<list.length;i++){
           this.Total.push(list[i].Total)
           this.Pledged.push(list[i].Pledged)
           this.Actived.push(list[i].Actived)
+          this.xdata.push(this.formatTimeByStr(list[i].Date, "MM/DD"))
           if(i==list.length-1){
             this.data1 = list[i].Total
             this.data2 = list[i].Pledged
@@ -266,6 +274,7 @@ export default {
     .power-info{
         display: flex;
         align-items: center;
+        // justify-content: start;
     }
     & > div {
       span:last-child {
@@ -276,7 +285,7 @@ export default {
       span:first-child {
         // color: var(--total-board-top-color);
         // font-weight: bold;
-        margin-right: 5px;
+        // margin-right: 5px;
         font-size: 13px;
         color: var(--main-text-color);
       }
