@@ -15,6 +15,7 @@
   
       :labels="$t('home.minerTable.label')"
       radius
+      :height="isMobile?blockTable.dataSource.length*44+40:blockTable.dataSource.length*43+60"
     ></base-table>
       <!-- :showLoading="blockTable.loading" -->
   </div>
@@ -154,8 +155,8 @@ export default {
 <style lang="scss" scoped>
 .miner-table{
   /deep/ .el-table{
-     min-height: 425PX;
-     max-height: 425PX;
+    //  min-height: 425PX;
+    //  max-height: 425PX;
      table{
        width:100% !important;
      }
@@ -163,18 +164,19 @@ export default {
 }
 .top-miner{
   padding: 10px;
+  line-height:22px;
   background: var(--board-bg-color);
   color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
   .titl{
-    font-size: 14PX;
+    font-size: 14px;
     color: var(--force-mark-color);
   }
   .more{
     cursor: pointer;
-    font-size:12PX;
+    font-size:14px;
   }
 }
 .block-miner-table {
@@ -202,7 +204,7 @@ export default {
 @media (max-width: 768px) {
  .miner-table{
   /deep/ .el-table{
-     max-height: 300px;
+     min-height: 200px;
   }
 } 
 }

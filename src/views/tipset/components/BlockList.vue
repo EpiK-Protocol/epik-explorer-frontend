@@ -7,6 +7,7 @@
       span
       :spanMap="spanMap"
       :stripe="false"
+      :height="600"
     >
       <div
         slot="header"

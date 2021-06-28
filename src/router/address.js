@@ -20,6 +20,14 @@ const route = [
         meta: {
           name: "Address Detail"
         }
+      },
+      {
+        path: "coinbase",
+        name: "addressCoinbase",
+        component: ()=>import("@/views/address/Coinbase"),
+        meta: {
+          name: "Coinbase"
+        }
       }
     ]
   }

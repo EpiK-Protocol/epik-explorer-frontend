@@ -18,7 +18,7 @@
       :class="{ radius: radius, mini: atIndex }"
       :size="atIndex ? 'mini' : ''"
       :row-class-name="getRowClass"
-      :height="isMobile?'400':700 * rate"
+      :height="height"
       :cell-class-name="getCellClass"
       :default-sort="defaultSort"
     >
@@ -174,8 +174,8 @@ export default {
       default: false
     },
     height: {
-      type: Number,
-      default: 0
+      // type: String,
+      default: '200'
     },
     defaultSort: {
       type: Object,
@@ -320,11 +320,11 @@ export default {
       font-weight: 400;
     }
     .cell{
-      line-height: 25PX;
+      line-height: 30PX;
     }
     .header-row th {
       background: var(--board-item-bg-color);
-      font-size: 12px;
+      font-size: 14px;
       // background: var(--table-header-bg-color);
       color: var(--table-header-text-color);
       border-bottom-color: var(--table-header-border-color) !important;
@@ -439,12 +439,14 @@ export default {
  
         .cell{
           line-height: 25PX;
-          min-width: 120PX;
+          min-width: 150PX;
+          font-size: 12px;
 
       }
         td .cell{
           line-height: 25PX;
-          min-width: 120PX;
+          min-width: 150PX;
+          font-size: 12px;
         }
 
       } 

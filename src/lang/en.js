@@ -415,7 +415,15 @@ const en = {
       label: ["Peer ID", "Node Address", "IP", "Location"]
     }
   },
+  coinbase:{
+    total:'Total balance',
+    vested:'Unlocked',
+    vesting:'Locking',
+    column: [ "Node", "Tag", "QualityAdjPower", "RawBytePower", "Blocks", "Last Block Tipset"]
+
+  },
   address: {
+    balance:"Balance",
     list: {
       label: ["Address", "Type", "Balance", "Messages"],
       total: "Total of <i>{num}</i> Accounts Found ({filNum}tEPK)"

@@ -173,8 +173,8 @@ export default {
   justify-content: center;
   box-shadow: 0px 1px 0.208vw 0.26vw rgb(0 ,0 ,0 / 30%);
   .lang-switch{
-    margin: 0 2vw;
-    font-size:12px;
+    margin: 0 30px;
+    font-size:14px;
     color: var(--force-mark-color);
     cursor: pointer;
     display: -webkit-box;

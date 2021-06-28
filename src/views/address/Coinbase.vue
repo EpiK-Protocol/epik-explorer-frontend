@@ -6,295 +6,22 @@
       :dataLabel="$t('address.detail.overview')"
       class="bottom-20"
     /> -->
-    <div class="overview">
-      <div class="top bg-item" v-if="isminer">
-        <span class="copy" @click="docopy($route.query.address, 'copy')">
-          {{ $t("address.detail.overview[0]") }}: {{ $route.query.address }}
-        </span>
-        <div class="updateSign flex">
-          <i class="el-icon-arrow-right"></i>
-          <div>{{ info.UserTag || '--' }}</div>
-          <div class="link" @click="openDialog">{{$t('home.certification')}}</div>
-        </div>
-      </div>
-      <div class="top bg-item" v-else>
+    <!-- <div class="overview">
+      
+      <div class="top bg-item" >
         <div class="updateSign flex">
           <div class="banance">{{$t('address.balance')}}：{{balance}}</div>
         </div>
       </div>
-      <template v-if="isminer">
-      <el-row
-        
-        :class="['chart-container', isMobile ? '' : 'flex', 'top-20']"
-      >
-        <el-col
-          :span="isMobile ? 24 : 11"
-          class="address-balance bg-item"
-          style="margin-right: 8px"
-        >
-          <div class="titl">{{ $t("address.overview[0]") }}</div>
-          <div class="info flex">
-            <div class="l">
-              <div ref="pie" class="pie"></div>
-            </div>
-            <div class="r font-14">
-              <div class="l1 bottom-10">{{ $t("address.overview[1]") }}</div>
-              <div class="l2 font-28 bottom-20">
-                {{ formatNumber(info.Balance, 4) }} EPK
-              </div>
-              <div class="pie-info">
-                <div class="spot p1">
-                  <span></span>{{ $t("chart.MiningPledge") }}:
-                  {{ info.MiningPledge }} EPK
-                </div>
-                <div class="spot p2">
-                  <span></span>{{ $t("chart.TotalRewards") }}:
-                  {{ formatNumber(info.TotalRewards, 3) }} EPK
-                </div>
-              </div>
-            </div>
-          </div>
-        </el-col>
-        <el-col
-          v-if="!isMobile"
-          :span="13"
-          class="bg-item"
-          style="margin-left: 8px"
-        >
-          <div class="titl">{{ $t("address.overview[2]") }}</div>
-          <div class="subtitle">{{ $t("address.overview[3]") }}</div>
-          <div class="flex bottom-20 power">
-            <div class="block font-28 font-500 text flex align-center">
-              <span>{{
-                unitConversion(info.MinerPower.QualityAdjPower || 0, 2)
-              }}</span>
-            </div>
-            <div class="block flex">
-              <div class="label">{{ $t("address.overview[4]") }}:</div>
-              <div class="value">
-                {{
-                  (
-                    (info.MinerPower.QualityAdjPower /
-                      info.TotalPower.QualityAdjPower) *
-                    100
-                  ).toFixed(3) || 0
-                }}%
-              </div>
-            </div>
-            <div class="block flex">
-              <div class="label">{{ $t("address.overview[5]") }}:</div>
-              <div class="value">
-                {{ unitConversion(info.MinerPower.RawBytePower || 0, 2) }}
-              </div>
-            </div>
-          </div>
-          <div class="flex bottom-20 power">
-            <div class="block text flex align-center">
-              <div class="label">{{ $t("address.overview[6]") }}:</div>
-              <div class="value">{{ info.WinBlocks }}</div>
-            </div>
-            <div class="block flex">
-              <div class="label">{{ $t("address.overview[7]") }}:</div>
-              <div class="value">
-                {{ formatNumber(info.TotalRewards, 3) }} EPK
-              </div>
-            </div>
-            <div class="block flex">
-              <div class="label">{{ $t("address.overview[8]") }}:</div>
-              <div class="value">{{ unitConversion(info.SectorSize) }}</div>
-            </div>
-          </div>
-        </el-col>
-        <el-col v-else :span="24" class="bg-item">
-          <div class="titl">{{ $t("address.overview[2]") }}</div>
-          <div class="block font-28 flex align-center">
-            <div class="label">{{ $t("address.overview[3]") }}:</div>
-            <span>{{
-              unitConversion(info.MinerPower.QualityAdjPower || 0, 2)
-            }}</span>
-          </div>
-          <div class="block flex">
-            <div class="label">{{ $t("address.overview[4]") }}:</div>
-            <div class="value">
-              {{
-                (
-                  (info.MinerPower.QualityAdjPower /
-                    info.TotalPower.QualityAdjPower) *
-                  100
-                ).toFixed(3) || 0
-              }}%
-            </div>
-          </div>
-          <div class="block flex">
-            <div class="label">{{ $t("address.overview[5]") }}:</div>
-            <div class="value">
-              {{ unitConversion(info.MinerPower.RawBytePower || 0, 2) }}
-            </div>
-          </div>
-          <div class="block text flex align-center">
-            <div class="label">{{ $t("address.overview[6]") }}:</div>
-            <div class="value">{{ info.WinBlocks }}</div>
-          </div>
-          <div class="block flex">
-            <div class="label">{{ $t("address.overview[7]") }}:</div>
-            <div class="value">
-              {{ formatNumber(info.TotalRewards, 3) }} EPK
-            </div>
-          </div>
-          <div class="block flex">
-            <div class="label">{{ $t("address.overview[8]") }}:</div>
-            <div class="value">{{ unitConversion(info.SectorSize) }}</div>
-          </div>
-        </el-col>
-      </el-row>
-      <div  class="account-overview bg-item top-20 radius">
-        <div class="top flex font-18 font-500 p-left-20">
-          {{ $t("address.account[0]") }}
-        </div>
-        <div class="bottom font-14 flex info-main">
-          <div>
-            <span>{{ $t("address.account[1]") }}:</span>
-            <span class="copy" @click="docopy(info.ID, 'copy')">{{
-              info.ID
-            }}</span>
-          </div>
-          <div>
-            <span>{{ $t("address.account[2]") }}:</span>
-            <div class="content">
-              <router-link
-                :to="{ query: { address: info.Owner } }"
-                type="primary"
-                >{{ info.Owner }}
-              </router-link>
-            </div>
-          </div>
-          <div>
-            <span>{{ $t("address.account[3]") }}:</span>
-            <span class="copy" @click="docopy(info.PeerId, 'copy')">{{
-              info.PeerId
-            }}</span>
-          </div>
-          <div>
-            <span>{{ $t("address.account[4]") }}:</span>
-            <span>{{ $t("address.account[5]") }}</span>
-          </div>
-          <div>
-            <span>{{ $t("address.account[6]") }}:</span>
-            <div class="content">
-              <router-link :to="{ query: { address: info.Worker } }"
-                >{{ info.Worker }}
-              </router-link>
-            </div>
-          </div>
-          <!-- 公共IP -->
-          <!-- <div>
-            <span>{{ $t("address.account[7]") }}:</span>
-            <span>{{ $t("address.account[8]") }}</span>
-          </div> -->
-          <div>
-            <span>Coinbase：</span>
-            <div class="content">
-              <router-link
-                :to="{ query: { address: info.Coinbase } }"
-                type="primary"
-                >{{ info.Coinbase }}
-              </router-link>
-            </div>
-          </div>
-          <div>
-            <span>{{ $t("address.account[9]") }}:</span>
-            <router-link
-              :to="{ query: { address: info.Worker } }"
-              style="color: #409eff"
-              >{{ info.Worker }}
-            </router-link>
-          </div>
+    
+    </div> -->
+   
+     <coinbase-list :coinbase="$route.query.coinbase"></coinbase-list> 
+    <!-- <message-list v-if="showMessage" :address="$route.query.address" />
+    <block-list v-else :miners="address" /> -->
+   
 
-          <div>
-            <span>{{ $t("address.account[10]") }}:</span>
-            <div class="content">
-              <router-link :to="{ query: { address: info.ControlAddresses } }"
-                >{{ info.ControlAddresses }}
-              </router-link>
-            </div>
-          </div>
-        </div>
-        <div class="flex"></div>
-      </div>
-      </template>
-    </div>
-    <div class="worker-list bottom-20" v-if="workers.length">
-      <span>{{ $t("address.detail.worker") }}</span>
-      <span>
-        <base-link
-          v-for="link in workers"
-          :key="link"
-          :label="link"
-          target="address/detail"
-          :param="{
-            key: 'address',
-            value: link,
-          }"
-        ></base-link>
-      </span>
-    </div>
-    <overview
-      :dataList="accountList"
-      :dataLabel="$t('address.detail.ownerOverview')"
-      class="bottom-20"
-      v-if="isMiner"
-    />
-    <el-radio-group
-      v-model="showMessage"
-      style="margin-bottom: 20px"
-      v-if="isMiner || workers.length"
-    >
-      <el-radio-button :label="true">
-        {{ $t("address.radio")[0] }}
-      </el-radio-button>
-      <el-radio-button :label="false">
-        {{ $t("address.radio")[1] }}
-      </el-radio-button>
-    </el-radio-group>
-    <!-- type="address" -->
-    <message-list v-if="showMessage" :address="$route.query.address" />
-    <block-list v-else :miners="address" />
-     
 
-    <el-dialog :title="$t('verify.title')" :visible.sync="dialogFormVisible" width="70%">
-      <el-form :model="form" ref="signForm" label-width="120px">
-        <el-form-item :label="$t('verify.t1')" prop="address" :rules="[{ required: true, message: $t('verify.t7') }]">
-          <el-input v-model="form.address" autocomplete="off" :disabled="true"></el-input>
-        </el-form-item>
-        <el-form-item
-          :label="$t('verify.t2')"
-          prop="user_tag"
-          :rules="[{ required: true, message:  $t('verify.t7') }]"
-        >
-          <el-input v-model="form.user_tag" autocomplete="off"></el-input>
-        </el-form-item>
-        <el-form-item
-          :label="$t('verify.t3')"
-        >
-        <div class="flex" @click="docopy(sign_code, 'copy')" style="align-items: center;color: white;">
-          <el-input  v-model="sign_code"  autocomplete="off" :disabled="true"></el-input>
-          <i class="el-icon-copy-document" style="margin-left: 10px;"></i></div>
-        </el-form-item>
-        <el-form-item
-          :label="$t('verify.t4')"
-          prop="signature"
-          :rules="[{ required: true, message: $t('verify.t7') }]"
-        >
-          <el-input v-model="form.signature" :placeholder="$t('verify.t5')" autocomplete="off"></el-input>
-        </el-form-item>
-        
-
-      </el-form>
-      <div slot="footer" class="dialog-footer">
-        <!-- <el-button @click="dialogFormVisible = false">取 消</el-button> -->
-        <el-button type="primary" @click="updateSign">{{$t('verify.t6')}}</el-button>
-      </div>
-    </el-dialog>
   </div>
 </template>
 <script>
@@ -303,7 +30,9 @@ import { getActorById,signUserTag,getAddress } from "@/api/account";
 import { Message } from 'element-ui';
 
 import mixin from "./mixin";
+import CoinbaseList from '../../components/CoinbaseList.vue';
 export default {
+  components: { CoinbaseList },
   name: "AddressDetail",
   mixins: [mixin],
   data() {

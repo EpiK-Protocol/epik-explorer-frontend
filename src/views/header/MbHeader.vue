@@ -1,12 +1,12 @@
 <template>
   <div class="mb-header-con">
     <div class="header-main">
-      <div class="el-icon-arrow-left arrow-back" v-if="!atIndex" @click="$router.go(-1)"></div>
+      <div class="el-icon-arrow-left arrow-back" v-if="!atIndex" @click="$router.go(-1)"><div class="route-name">{{ title }}</div></div>
       <div class="logo" v-else>
         <img src="@/assets/image/epik_m_logo.png" />
         <span>{{ $t("header.title") }}</span>
       </div>
-      <div class="route-name">{{ routeName }}</div>
+      <!-- <div class="route-name">{{ routeName }}</div> -->
       <div class="tools" v-if="!showSearch && !showNav">
         <div class="lang-switch" @click="changeLang">
           <span :class="$i18n.locale === 'en'?'active':''" >EN</span>/
@@ -60,6 +60,19 @@ export default {
     },
     moreSrc() {
       return this.theme === "light" ? moreIcon : moreDarkIcon;
+    },
+     title(){
+      if(this.$route.name == 'addressDetail'){
+        return this.ellipsisByLength(this.$route.query.address)
+      }
+      if(this.$route.name == 'messageDetail'){
+        return this.$route.query.cid 
+      }
+      if(this.$route.name == 'addressCoinbase'){
+        return this.$route.query.coinbase 
+      }
+      return this.routeName
+
     }
   },
 
@@ -105,6 +118,8 @@ export default {
       & > div:first-child,
       .route-name {
         color: var(--main-text-color);
+        font-size:17px;
+        margin-left: 10px;
         // color: var(--logo-text-color);
         // text-shadow: 0 0 4px var(--logo-text-color);
       }

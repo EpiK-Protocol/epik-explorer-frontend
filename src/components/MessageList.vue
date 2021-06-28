@@ -39,6 +39,7 @@
         :loadMore="true"
         @load="loadMessageData"
         :showLoading="loading"
+        :height="isMobile?'calc(100vh - 70px)':'calc(100vh - 110px)'"
       ></base-table>
     </div>
     <!-- <mb-board

@@ -23,6 +23,7 @@
         
         :labels="active>1?$t('home.profitTable.label'):$t('home.minerTable.label')"
         :showLoading="loading"
+        :height="isMobile?'calc(100vh - 150px)':'calc(100vh - 180px)'"
       ></base-table>
       
         <!-- :showLoading="loading" -->
@@ -106,8 +107,8 @@ export default {
         {
           key: "Miner",
           isLink: true,
-          target: "address/detail",
-          paramKey: "address",
+          target: "address/coinbase",
+          paramKey: "coinbase",
         },
         {
           key: "Tag",
@@ -406,12 +407,12 @@ export default {
     margin-bottom: 10px;
     overflow: auto;
   }
-  .miner-table-con{
-    /deep/ .el-table{
-      height: calc(100vh - 220px) !important;
+  // .miner-table-con{
+  //   /deep/ .el-table{
+  //     height: calc(100vh - 220px) !important;
 
-    }
-  }
+  //   }
+  // }
   .miner-type{
     color: white;
     border: 1px solid var(--force-mark-color);

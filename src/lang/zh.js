@@ -520,7 +520,14 @@ const zh = {
             label: ["节点ID", "节点地址", "IP", "位置"]
         }
     },
+    coinbase:{
+        total:'总余额',
+        vested:'已解锁',
+        vesting:'锁定中',
+        column:  ["节点ID", "标签", "有效算力", "原值算力", "出块数", "最后出块高度",]
+      },
     address: {
+        balance:"余额",
         list: {
             label: ["地址", "类型", "余额", "消息数量"],
             total: "共计发现 <i>{num}</i> 账户，总计 ({filNum}tEPK)"

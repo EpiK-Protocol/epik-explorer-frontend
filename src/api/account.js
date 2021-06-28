@@ -41,6 +41,21 @@ export function getActorById(params) {
     params
   });
 }
+export function getAddress(params) {
+  return fetch({
+    url: "/address",
+    method: "get",
+    params
+  });
+}
+export function getCoinbase(params) {
+  return fetch({
+    url: "/coinbase",
+    method: "get",
+    params
+  });
+}
+
 // POST {{HOST}}/signUserTag
 // Content-Type: application/json
 

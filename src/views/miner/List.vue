@@ -1,5 +1,5 @@
 <template>
-  <div class="miner-list-con bottom-10">
+  <div class="miner-list-con ">
     <miner-list :withType="false" />
   </div>
 </template>

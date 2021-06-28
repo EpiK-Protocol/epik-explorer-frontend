@@ -149,7 +149,7 @@ export default {
       // border: none!important;
       border-radius: 0!important;
       
-      font-size: 12px;
+      font-size: 14px;
       box-sizing: border-box;
       
       
@@ -170,7 +170,7 @@ export default {
     
       .el-select .el-input input{
         color: var(--search-text-color) !important;
-        font-size: 12px;
+        font-size: 14px;
       }
     }
     &.dark ::v-deep .el-input-group__append {

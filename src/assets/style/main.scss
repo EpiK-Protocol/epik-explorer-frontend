@@ -14,7 +14,7 @@
     li{
         background: var(--board-bg-color)!important;
         color: var(--main-text-color) !important;
-        font-size: .729vw;
+        font-size: 14px;
         &:hover,&.is-active{
             color: var(--force-mark-color)!important;
         }
@@ -30,7 +30,7 @@
     background: var(--board-bg-color)!important;
     border-color: black;
     li{
-        font-size: 12PX;
+        font-size: 14px;
         color: var(--search-text-color)!important;
         &:hover,&.selected{
             color: var(--force-mark-color) !important;
@@ -142,11 +142,11 @@
     margin-right: 8px;
 }
 
-.miner-list-con {
-    .el-table {
-        height: calc(100vh - 110px) !important;
-    }
-}
+// .miner-list-con {
+//     .el-table {
+//         height: calc(100vh - 110px) !important;
+//     }
+// }
 .message-list-con{
     .message-list{
         height: calc(100vh - 110px) !important;
@@ -196,17 +196,17 @@
         }
     
     }
-    .miner-list-con {
-        .el-table {
-            height: calc(100vh - 80px) !important;
-            // .el-table__body-wrapper{
-            //     height: 500px !important;
-            // }
-            .header-row th{
-                padding: 0;
-            }
-        }
-    }
+    // .miner-list-con {
+    //     .el-table {
+    //         height: calc(100vh - 80px) !important;
+    //         // .el-table__body-wrapper{
+    //         //     height: 500px !important;
+    //         // }
+    //         .header-row th{
+    //             padding: 0;
+    //         }
+    //     }
+    // }
     .base-table .el-table td .cell{
         font-size: 11px !important; 
         line-height: 20px !important; 
