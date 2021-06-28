@@ -3,7 +3,10 @@
     <!-- :loadMore="false"
         @load="loadMessageData"
         :showLoading="loading" -->
-	<div class="top-con">
+	<div class="top-con flex" style="align-items: center;justify-content: space-between;">
+    <span v-if="!isMobile" class="copy" @click="docopy($route.query.coinbase, 'copy')">
+          Coinbase: {{ $route.query.coinbase }}
+    </span>
 		<div class="info-con">
 		<div class="power-info">
 			<span>
@@ -31,6 +34,8 @@
         :columns="columns"
         :labels="$t('coinbase.column')"
         :showLoading="loading"
+        :loadMore="true"
+        @load="loadMessageData"
         :height="isMobile?'calc(100vh - 70px)':'calc(100vh - 170px)'"
       ></base-table>
 
@@ -137,7 +142,7 @@ export default {
       },
       info: {},
       active: 2,
-      currentPage: 1,
+      page: 0,
       total: 0,
       messageData: [],
       columns: [
@@ -264,7 +269,7 @@ export default {
         try {
           this.loading = true;
           await this.getMessage();
-          this.offset++;
+          this.page++;
           this.loading = false;
           //   this.initMesTimer();
         } catch (e) {
@@ -279,15 +284,16 @@ export default {
         const vm = this;
         this.loading = true;
 
-        this.messageData = [];
         const data = await getCoinbase({
           coinbase: this.coinbase,
+          page:this.page,
+          size:20
         });
-	this.coinbaseData = {
-		total:Number(data.total).toFixed(2),
-		vested:Number(data.vested).toFixed(2),
-		vesting:Number(data.vesting).toFixed(2),
-	}
+        this.coinbaseData = {
+          total:Number(data.total).toFixed(2),
+          vested:Number(data.vested).toFixed(2),
+          vesting:Number(data.vesting).toFixed(2),
+        }
       
         let minerData = [];
         let that = this;
@@ -346,7 +352,8 @@ export default {
           });
         // debugger
 
-        this.messageData = minerData;
+        // this.messageData = minerData;
+        this.messageData = [...this.messageData,...minerData]
 
         // this.messageData = Object.freeze(minerData);
         this.loading = false;
@@ -364,7 +371,7 @@ export default {
     //   this.labels.shift();
     // }
 
-    this.getMessage();
+    // this.getMessage();
   },
   computed: {
     sign_code() {

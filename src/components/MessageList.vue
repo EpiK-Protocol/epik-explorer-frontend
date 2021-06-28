@@ -39,7 +39,7 @@
         :loadMore="true"
         @load="loadMessageData"
         :showLoading="loading"
-        :height="isMobile?'calc(100vh - 70px)':'calc(100vh - 110px)'"
+        :height="tableHeight"
       ></base-table>
     </div>
     <!-- <mb-board
@@ -155,6 +155,9 @@ export default {
     address: {
       type: String,
       default: ""
+    },
+    tableHeight:{
+      default:200
     }
   },
   methods: {

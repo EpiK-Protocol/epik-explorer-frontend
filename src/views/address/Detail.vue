@@ -17,9 +17,12 @@
           <div class="link" @click="openDialog">{{$t('home.certification')}}</div>
         </div>
       </div>
-      <div class="top bg-item" v-else>
-        <div class="updateSign flex">
-          <div class="banance">{{$t('address.balance')}}：{{balance}}</div>
+      <div class="top bg-item" v-else style="justify-content: space-between;">
+        <div v-if="!isMobile" class="copy" @click="docopy($route.query.address, 'copy')">
+          {{ $t("address.detail.overview[0]") }}: {{ $route.query.address }}
+        </div>
+        <div class="updateSign flex" >
+          <div class="banance">{{$t('address.balance')}}：{{balance}} EPK</div>
         </div>
       </div>
       <template v-if="isminer">
@@ -257,7 +260,7 @@
       </el-radio-button>
     </el-radio-group>
     <!-- type="address" -->
-    <message-list v-if="showMessage" :address="$route.query.address" />
+    <message-list v-if="showMessage" :tableHeight="isMobile?'calc(100vh - 70px)':'calc(100vh - 200px)'" :address="$route.query.address" />
     <block-list v-else :miners="address" />
      
 
