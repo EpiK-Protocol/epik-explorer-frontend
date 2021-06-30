@@ -203,15 +203,13 @@ export default {
       
 
       .info-item {
-        // display: block;
-        display:flex;
-        justify-content: space-between;
+        display: block;
+        // display:flex;
+        // justify-content: space-between;
 
         padding: 10px 15px;
         .link-list{
-          text-align: right;
-          line-height: 7vw;
-          margin-left:20px;
+          line-height: 20px;
         }
         &:nth-child(2n) {
           background: var(--board-bg-color);

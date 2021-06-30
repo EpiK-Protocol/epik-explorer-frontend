@@ -66,7 +66,7 @@ export default {
         return this.ellipsisByLength(this.$route.query.address)
       }
       if(this.$route.name == 'messageDetail'){
-        return this.$route.query.cid 
+        return this.ellipsisByLength(this.$route.query.cid) 
       }
       if(this.$route.name == 'addressCoinbase'){
         return this.$route.query.coinbase 
