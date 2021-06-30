@@ -77,13 +77,14 @@ export default {
         {
           key: "nonce"
         },
+        // "a", "f", "p", "n", "μ", "m"
         {
           key: "GasLimit",
-          unit: "aEPK"
+          unit: "μEPK"
         },
         {
           key: "GasUsed",
-          unit: "aEPK"
+          unit: "μEPK"
         },
         {
           key: "params",
