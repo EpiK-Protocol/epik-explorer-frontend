@@ -19,15 +19,19 @@
     <div class="miner-table-con" >
       <base-table
         :dataSource="messageData"
-        :columns="active>1?pColumns:columns"
+        :columns="active>1?pColumns:columns"        
         
         :labels="active>1?$t('home.profitTable.label'):$t('home.minerTable.label')"
         :showLoading="loading"
         :height="isMobile?'calc(100vh - 150px)':'calc(100vh - 180px)'"
+
+       
       ></base-table>
-      
-        <!-- :showLoading="loading" -->
     </div>
+    <!-- showPagination
+    :total="100"
+    @size-change="handleSizeChange"
+    @page-change="handlePageChange" -->
     <!-- <mb-board
       v-for="(item, index) in messageData"
       :key="item.cid + index"
@@ -103,12 +107,15 @@ export default {
       messageData: [],
       pColumns:[{
           key: "Rank",
+          width: 120,
+          mwidth: 80
         },
         {
           key: "Miner",
           isLink: true,
           target: "address/coinbase",
           paramKey: "coinbase",
+          width: 180
         },
         {
           key: "Tag",
@@ -121,9 +128,11 @@ export default {
         },
         {
           key: "Profit",
+           width: 150
         },
         {
           key: "Blocks",
+          width: 150
         },
 
         ],
@@ -131,6 +140,7 @@ export default {
       columns: [
         {
           key: "Rank",
+          
         },
 
         {
@@ -185,6 +195,12 @@ export default {
     },
   },
   methods: {
+    // handleSizeChange(){
+
+    // },
+    // handlePageChange(){
+
+    // },
     stringtoHex(str) {
       var val = "";
       for (var i = 0; i < str.length; i++) {
@@ -406,6 +422,10 @@ export default {
     padding: 10px;
     margin-bottom: 10px;
     overflow: auto;
+    &::-webkit-scrollbar {
+        display: none; /* Chrome Safari */
+        scrollbar-width: none;
+    }
   }
   // .miner-table-con{
   //   /deep/ .el-table{

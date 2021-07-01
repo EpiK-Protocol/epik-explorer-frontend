@@ -91,12 +91,13 @@ export default {
     display: flex;
     box-sizing: border-box;
     & > div {
-      flex: 1;
+      // flex: 1;
+      width: 100%;
       // max-width: 50%;
       background: var(--main-bg-color);
     }
     & > div:first-child {
-      margin-right: 20px;
+      // margin-right: 20px;
     }
     & ::v-deep .el-table__body-wrapper {
       min-height: 100%;

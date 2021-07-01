@@ -208,6 +208,7 @@ export default {
       font-size: 26px;
       color: var(--force-mark-color);
       font-weight: 600;
+      
     }
     div:first-child {
       // margin-bottom: 5px;

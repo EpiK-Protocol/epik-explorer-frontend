@@ -97,7 +97,7 @@ export default {
         // },
         {
           key: "time",
-          width: "250px"
+          width: 250
           // hideInMobile: true
         },
         {
@@ -133,7 +133,7 @@ export default {
         },
         {
           key: "method",
-          // width: "80px"
+          width: 200 
         }
       ],
       labels: []

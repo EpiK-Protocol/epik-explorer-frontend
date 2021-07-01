@@ -38,7 +38,7 @@
         :sortable="item.sortable ? 'custom' : false"
         :prop="item.key"
         align="center"
-        :width="item.width"
+        :width="isMobile?(item.width?item.width:'140'):item.width"
       >
       <!-- :fixed="isMobile && index === 0" -->
         <template slot-scope="scope">
@@ -434,18 +434,21 @@ export default {
       
       /deep/ .el-table{
         .el-table__body, .el-table__footer, .el-table__header{
-              table-layout: initial;
+              // table-layout: initial;
+              // max-width: none;
+              // width: auto;
+              // min-width: 100%;
         }
  
         .cell{
           line-height: 25PX;
-          min-width: 150PX;
+          // min-width: 150PX;
           font-size: 12px;
 
       }
         td .cell{
           line-height: 25PX;
-          min-width: 150PX;
+          // min-width: 150PX;
           font-size: 12px;
         }
 

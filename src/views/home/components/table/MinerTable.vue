@@ -15,7 +15,7 @@
   
       :labels="$t('home.minerTable.label')"
       radius
-      :height="isMobile?blockTable.dataSource.length*44+40:blockTable.dataSource.length*43+60"
+      :height="isMobile?blockTable.dataSource.length*38+40:blockTable.dataSource.length*43.3+43"
     ></base-table>
       <!-- :showLoading="blockTable.loading" -->
   </div>
@@ -39,13 +39,15 @@ export default {
         columns: [
           {
             key: "Rank",
+            width: 120,
           },
   
           {
             key: "Miner",
             isLink: true,
             target: "address/detail",
-            paramKey: "address"
+            paramKey: "address",
+            width: 120,
           },
           {
             key: "Tag"
