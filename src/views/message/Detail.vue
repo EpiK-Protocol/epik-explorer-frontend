@@ -106,6 +106,16 @@ export default {
           word: this.cid,
           // type: 'message'
         });
+        
+        if(data.code.message == 'Not found'){
+           this.goTo('noResult', {
+            query: {
+              key: this.cid
+            }
+          });
+          return
+        }
+       
 
         const {
           // height,
@@ -128,24 +138,25 @@ export default {
         // });
         const paramTip = this.$t("message.detail.paramTip");
         const confirm = this.$t("message.detail.confirm");
+        
         const sourceMap = {
           // height: this.formatNumber(height),
           // cid: this.cid,
           // confirm: this.formatNumber(blockRes.count),
-          time: this.getFormatTime(Timestamp*1000),
+          time: Timestamp?this.getFormatTime(Timestamp*1000):'',
           from: Message.From,
           to: Message.To,
           // method: Message.Method,
           method: MethodName || Message.Method,
           actor: ActorName,
-          Receipt: this.getCodeText(Receipt.ExitCode),
+          Receipt: Receipt?this.getCodeText(Receipt.ExitCode):'pending',
           nonce: Message.Nonce,
           // params: Message.Params.length > 256 ? `${Message.Params.slice(0, 256)} ...` : Message.Params,
           params: Message.Params?Message.Params:'null',
           value:this.formatFilNumber(Message.Value),
           // fee: this.formatNumber(Message.GasLimit),
           GasLimit: this.formatNumber(Message.GasLimit/1000000),
-          GasUsed: this.formatNumber(Receipt.GasUsed/1000000)
+          GasUsed: Receipt?this.formatNumber(Receipt.GasUsed/1000000):'0'
           // blockHash: block_cid,
           // code: exit_code
         };

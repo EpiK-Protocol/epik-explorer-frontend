@@ -107,7 +107,7 @@ export default {
           axisLabel: {
             textStyle: {
               color: '#ffffff',
-              fontSize: isMobile?11:13*rate
+              fontSize: isMobile?11:13
             },
             formatter: function(p) {
               return vm.unitConversion(p)
@@ -137,7 +137,7 @@ export default {
           axisLabel: {
             textStyle: {
               color: '#ffffff',
-              fontSize: isMobile?11:12.5*rate
+              fontSize: isMobile?11:13
             },
             formatter: function(p) {
               return vm.unitConversion(p)

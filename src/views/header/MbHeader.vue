@@ -100,7 +100,7 @@ export default {
 <style lang="scss" scoped>
 @media (max-width: 768px) {
   .mb-header-con {
-    z-index: 10000;
+    z-index: 10;
     background: var(--main-bg-color);
     top: 0;
     width: 100%;

@@ -57,7 +57,7 @@ export default {
     width: 300px;
     height: 60px;
     border-radius: 4px !important;
-    font-size: 16px;
+    font-size: 20px;
   }
   img {
     max-height: 600px;
@@ -66,28 +66,43 @@ export default {
     flex-direction: column;
     .info {
       order: 2;
-      padding: 0 5vw;
+      padding: 0 10px;
       width: 100%;
       text-align: center;
       box-sizing: border-box;
+      .key{
+        font-size: 17px;
+        line-height: 20px;
+        text-align: left;
+        span{
+          font-size: 17px;
+          color: var(--link-color);
+        }
+      }
+      .key + div{
+        font-size: 17px;
+        margin-top: 20px;
+      }
     }
     img {
       order: 1;
-      width: 50vw;
+      width: 250px;
       max-height: 62vw;
-      margin: 100px auto;
+      margin: 100px auto 50px;
     }
     & ::v-deep .back.el-button {
-      width: 36.4vw;
-      height: 8vw;
-      border-radius: 4vw;
+      width: 140px;
+      height: 40px;
+      border-radius: 8px;
       box-shadow: 0px 2px 4px 0px var(--link-color);
-      margin-top: 6vw;
+      margin-top: 20px;
+      font-size: 16px;
     }
     .res {
       text-align: center;
       font-weight: bold;
       color: var(--link-color);
+      font-size: 20px;
     }
   }
 }

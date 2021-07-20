@@ -286,7 +286,7 @@ export default {
             // type: this.address !== from ? "in" : "out",
             method: MethodName || Message.Method,
             actor: ActorName,
-            Receipt: Receipt? this.getCodeText(Receipt.ExitCode):'',
+            Receipt: Receipt? this.getCodeText(Receipt.ExitCode):'pending',
 
           };
           if (type === "block") {
