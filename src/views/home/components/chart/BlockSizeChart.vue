@@ -114,7 +114,7 @@ export default {
           },
         },
         grid: {
-          left: 60*rate,
+          left: 60,
           top: 30,
           bottom: 20,
           right: 20
