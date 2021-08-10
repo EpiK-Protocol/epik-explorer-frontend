@@ -9,8 +9,8 @@
       <div :class="active=='1'?'active':''" @click="changeType('1')">{{$t('home.rankType[0]')}}</div>
       <div :class="active=='2'?'active':''" @click="changeType('2')">{{$t('home.rankType[1]')}}</div>
       <div :class="active=='3'?'active':''" @click="changeType('3')">{{$t('home.rankType[2]')}}</div>
-      <div :class="active=='4'?'active':''" @click="changeType('4')">{{$t('home.rankType[3]')}}</div>
-      <div :class="active=='5'?'active':''" @click="changeType('5')">{{$t('home.rankType[4]')}}</div>
+      <!-- <div :class="active=='4'?'active':''" @click="changeType('4')">{{$t('home.rankType[3]')}}</div>
+      <div :class="active=='5'?'active':''" @click="changeType('5')">{{$t('home.rankType[4]')}}</div> -->
     </div>
   </div>
    <!-- :loadMore="false"
