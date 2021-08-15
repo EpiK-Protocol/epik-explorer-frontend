@@ -66,7 +66,7 @@
         <!-- <theme-switch /> -->
       </el-col>
     </el-row>
-    <img :src="testPicSrc" alt="" class="test-pic" />
+    <!-- <img :src="testPicSrc" alt="" class="test-pic" /> -->
   </div>
 </template>
 <script>
