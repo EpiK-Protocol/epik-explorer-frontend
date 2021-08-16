@@ -123,8 +123,8 @@ export default {
         {
           key: "Address",
           isLink: true,
-          target: "address/detail",
-          paramKey: "address",
+          target: "address/coinbase",
+          paramKey: "coinbase",
         },
         {
           key: "Profit",
