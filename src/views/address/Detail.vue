@@ -198,7 +198,7 @@
             <span>Coinbase：</span>
             <div class="content">
               <router-link
-                :to="{ query: { address: info.Coinbase } }"
+                :to="{ name:'addressCoinbase',query: { coinbase: info.Coinbase } }"
                 type="primary"
                 >{{ info.Coinbase }}
               </router-link>

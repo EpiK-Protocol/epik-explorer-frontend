@@ -116,7 +116,7 @@ export default {
     };
   },
   watch: {
-    "$route.query.address": {
+    "$route.query.coinbase": {
       immediate: true,
       handler(v) {
         if (!v) {
@@ -127,7 +127,7 @@ export default {
       },
     },
     "$i18n.locale"() {
-      this.getAddressInfo(this.$route.query.address);
+      this.getAddressInfo(this.$route.query.coinbase);
     },
   },
 

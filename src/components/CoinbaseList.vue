@@ -373,6 +373,22 @@ export default {
 
     // this.getMessage();
   },
+  watch: {
+    "$route.query.coinbase": {
+      immediate: true,
+      handler(v) {
+        if (!v) {
+          return;
+        }
+        // this.address = [v];
+        this.page = 0
+
+        this.messageData = []
+        this.getMessage(v);
+        
+      },
+    },
+  },
   computed: {
     sign_code() {
       if (!this.form.user_tag) return "";
