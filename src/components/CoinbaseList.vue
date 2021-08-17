@@ -304,7 +304,7 @@ export default {
         }else{
           this.loadMore = true
         }
-        
+        console.log(1)
           minerData = data.miners.map((item, index) => {
             
             const {
@@ -359,9 +359,10 @@ export default {
             };
           });
         if(this.page == 0)this.messageData = []
-// debugger
+
         // this.messageData = minerData;
         this.messageData = [...this.messageData,...minerData]
+        
 
         // this.messageData = Object.freeze(minerData);
         this.loading = false;
