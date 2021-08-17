@@ -358,8 +358,8 @@ export default {
               lastblock: LatestWinBlock,
             };
           });
-        // debugger
-
+        if(this.page == 0)this.messageData = []
+// debugger
         // this.messageData = minerData;
         this.messageData = [...this.messageData,...minerData]
 
@@ -391,8 +391,8 @@ export default {
         // this.address = [v];
         this.page = 0
 
-        this.messageData = []
-        this.getMessage(v);
+        
+        this.loadMessageData(v);
         
       },
     },
