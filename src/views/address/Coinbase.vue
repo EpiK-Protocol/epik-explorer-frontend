@@ -126,9 +126,9 @@ export default {
         this.getAddressInfo(v);
       },
     },
-    "$i18n.locale"() {
-      this.getAddressInfo(this.$route.query.coinbase);
-    },
+    // "$i18n.locale"() {
+    //   this.getAddressInfo(this.$route.query.coinbase);
+    // },
   },
 
   computed:{
@@ -206,21 +206,21 @@ export default {
           this.isminer = true;
         }
         this.info = res.miner;
-        let data = [
-          {
-            name: this.$t("chart.MiningPledge"),
-            value: Number(this.info.MiningPledge),
-          },
-          {
-            name: this.$t("chart.TotalRewards"),
-            value: Number(this.info.TotalRewards),
-          },
-        ];
+        // let data = [
+        //   {
+        //     name: this.$t("chart.MiningPledge"),
+        //     value: Number(this.info.MiningPledge),
+        //   },
+        //   {
+        //     name: this.$t("chart.TotalRewards"),
+        //     value: Number(this.info.TotalRewards),
+        //   },
+        // ];
         // debugger
         // console.log(data)
-        this.$nextTick(() => {
-          this.drawSizeChart(data);
-        });
+        // this.$nextTick(() => {
+        //   this.drawSizeChart(data);
+        // });
 
         // const detail = this.parseAddress(res);
 
@@ -239,27 +239,28 @@ export default {
         // if (res.work_list.length) {
         //   this.address = res.work_list;
         // }
-        this.accountList = this.accountList.map((item) => {
-          let linkList;
-          const originValue = res.miner[item.key];
-          if (item.key === "owner_address" || item.key === "peer_id") {
-            linkList = [originValue];
-          } else {
-            linkList = originValue;
-          }
-          const isNumber = parseFloat(originValue) == originValue;
-          let result = {
-            ...item,
-            value: isNumber ? this.formatNumber(originValue, 18) : originValue,
-            linkList: linkList,
-          };
-          if (item.key === "power") {
-            result.value = `${originValue} bytes (${this.unitConversion(
-              originValue
-            )})`;
-          }
-          return result;
-        });
+
+        // this.accountList = this.accountList.map((item) => {
+        //   let linkList;
+        //   const originValue = res.miner[item.key];
+        //   if (item.key === "owner_address" || item.key === "peer_id") {
+        //     linkList = [originValue];
+        //   } else {
+        //     linkList = originValue;
+        //   }
+        //   const isNumber = parseFloat(originValue) == originValue;
+        //   let result = {
+        //     ...item,
+        //     value: isNumber ? this.formatNumber(originValue, 18) : originValue,
+        //     linkList: linkList,
+        //   };
+        //   if (item.key === "power") {
+        //     result.value = `${originValue} bytes (${this.unitConversion(
+        //       originValue
+        //     )})`;
+        //   }
+        //   return result;
+        // });
       } catch (e) {
         console.log(e);
       }

@@ -34,7 +34,7 @@
         :columns="columns"
         :labels="$t('coinbase.column')"
         :showLoading="loading"
-        :loadMore="true"
+        :loadMore="loadMore"
         @load="loadMessageData"
         :height="isMobile?'calc(100vh - 70px)':'calc(100vh - 170px)'"
       ></base-table>
@@ -133,6 +133,7 @@ export default {
         vested: 0,
         vesting: 0,
       },
+      loadMore:true,
 
       loading: false,
       option: {
@@ -297,8 +298,15 @@ export default {
       
         let minerData = [];
         let that = this;
-
+      
+        if(data.miners.length==0){
+          this.loadMore = false
+        }else{
+          this.loadMore = true
+        }
+        
           minerData = data.miners.map((item, index) => {
+            
             const {
               ID,
               UserTag,
