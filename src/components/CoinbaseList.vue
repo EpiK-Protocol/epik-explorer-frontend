@@ -379,7 +379,7 @@ export default {
   },
 
   async mounted() {
-    this.info= await getBoardInfo();
+    // this.info= await getBoardInfo();
     // if(this.info.minerInfomation){
     //   this.show = true
     // }
