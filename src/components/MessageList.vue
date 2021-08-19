@@ -229,6 +229,7 @@ export default {
         // debugger
         
             if(addressHash){
+              if(this.height) this.height = this.height - 1
                 data = await getMessagesById({
                     address: addressHash,
                     height: this.height,
@@ -346,7 +347,7 @@ export default {
     //   this.labels.shift();
     // }
     
-    this.getMessage();
+    // this.getMessage();
     // this.getMessageMethods();
   },
   computed: {
