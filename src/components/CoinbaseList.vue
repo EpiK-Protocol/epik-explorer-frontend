@@ -192,6 +192,7 @@ export default {
       type: String,
       default: "",
     },
+  
     type: {
       type: String,
       default: "block",
@@ -284,6 +285,11 @@ export default {
       try {
         const vm = this;
         this.loading = true;
+        if(!this.info.minerInfomation){
+          this.info= await getBoardInfo();
+        }
+
+        
 
         const data = await getCoinbase({
           coinbase: this.coinbase,
@@ -304,7 +310,6 @@ export default {
         }else{
           this.loadMore = true
         }
-        console.log(1)
           minerData = data.miners.map((item, index) => {
             
             const {
@@ -316,6 +321,7 @@ export default {
               TotalRewards,
               LatestWinBlock,
             } = item;
+       
             return {
               Miner: ID,
               Tag: {
@@ -373,7 +379,12 @@ export default {
   },
 
   async mounted() {
-    this.info = await getBoardInfo();
+    this.info= await getBoardInfo();
+    // if(this.info.minerInfomation){
+    //   this.show = true
+    // }
+    // console.log(this.info)
+    
     // this.labels = [...this.$t("component.mesList.label")];
     // if (!this.withType) {
     //   this.columns.shift();

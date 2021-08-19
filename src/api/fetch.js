@@ -14,7 +14,7 @@ export function fetch(options) {
   return new Promise((resolve, reject) => {
     const instance = axios.create({
       baseURL,
-      timeout: 100000
+      timeout: 200000
     });
     instance.interceptors.response.use(
       response => {

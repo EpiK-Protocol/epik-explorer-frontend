@@ -25,6 +25,9 @@
   </div>
 </template>
 <script>
+import {
+  getBoardInfo,
+} from "@/api/home";
 import {encode, decode} from 'hex-encode-decode'
 import { getActorById,signUserTag,getAddress } from "@/api/account";
 import { Message } from 'element-ui';
@@ -43,6 +46,7 @@ export default {
         user_tag: "",
         signature: ""
       },
+      show:false,
       showMessage: true,
       isminer: false,
       isOwner: false,
@@ -116,19 +120,22 @@ export default {
     };
   },
   watch: {
-    "$route.query.coinbase": {
-      immediate: true,
-      handler(v) {
-        if (!v) {
-          return;
-        }
-        this.address = [v];
-        this.getAddressInfo(v);
-      },
-    },
+    // "$route.query.coinbase": {
+    //   immediate: true,
+    //   handler(v) {
+    //     if (!v) {
+    //       return;
+    //     }
+    //     this.address = [v];
+    //     this.getAddressInfo(v);
+    //   },
+    // },
     // "$i18n.locale"() {
     //   this.getAddressInfo(this.$route.query.coinbase);
     // },
+  },
+  async mounted(){
+    
   },
 
   computed:{
@@ -164,34 +171,34 @@ export default {
         }
       });
     },
-    updateSign() {
+    // updateSign() {
       
-      this.submitForm("signForm", async () => {
-        try{
-          let res = await signUserTag(this.form);
-            if (res.code.code == 0) {
-              Message({
-                message: "提交成功",
-                type: "success",
-                duration: 2500,
-              });
-              this.form = {
-                address: "",
-                user_tag: "",
-                signature: ""
-              }
-              this.dialogFormVisible = false
-            }else{
-              // Message.error('请求错误')
-            }
+    //   this.submitForm("signForm", async () => {
+    //     try{
+    //       let res = await signUserTag(this.form);
+    //         if (res.code.code == 0) {
+    //           Message({
+    //             message: "提交成功",
+    //             type: "success",
+    //             duration: 2500,
+    //           });
+    //           this.form = {
+    //             address: "",
+    //             user_tag: "",
+    //             signature: ""
+    //           }
+    //           this.dialogFormVisible = false
+    //         }else{
+    //           // Message.error('请求错误')
+    //         }
 
-        }catch(e){
-          console.log(e);
-          // Message.error(e)
-        }
+    //     }catch(e){
+    //       console.log(e);
+    //       // Message.error(e)
+    //     }
         
-      })
-    },
+    //   })
+    // },
     async getAddressInfo(a) {
       try {
         let res = await getActorById({
