@@ -176,6 +176,7 @@ export default {
         // clearInterval(this.timer);
         try {
           
+          
             
           this.loading = true;
           await this.getMessage()
@@ -226,7 +227,7 @@ export default {
         //     address: this.address,
         //     from_to: ""
         //   });
-        // debugger
+        
         
             if(addressHash){
               if(this.height) this.height = this.height - 1
@@ -298,7 +299,8 @@ export default {
         });
         // debugger
         // console.log(messageData)
-        this.messageData = [...this.messageData,...messageData]
+        // if(!this.height) this.messageData = [] 
+         this.messageData = [...this.messageData,...messageData]
         // this.messageData = Object.freeze(messageData);
         this.loading = false;
       } catch (e) {
@@ -336,7 +338,9 @@ export default {
       };
     },
     address() {
-      this.getMessage();
+      this.loadOver = false
+      this.messageData = []
+      this.loadMessageData();
     }
   },
   mounted() {
