@@ -76,6 +76,7 @@ export default {
       height:null,
       currentPage: 1,
       total: 0,
+      page: 0,
       messageData: [],
       columns: [
         // {
@@ -162,8 +163,8 @@ export default {
   },
   methods: {
     async loadMessageData() {
-
-      if(this.loadOver) return
+      if(this.loadOver) {
+        return}
       if (this.loading) {
         return;
       }
@@ -176,11 +177,10 @@ export default {
         // clearInterval(this.timer);
         try {
           
-          
-            
+
           this.loading = true;
           await this.getMessage()
-          this.offset++;
+          this.page++;
           this.loading = false;
         //   this.initMesTimer();
         } catch (e) {
@@ -207,7 +207,6 @@ export default {
     },
     async getMessage() {
       try {
-        this.loading = true;
         
             const addressHash = this.$route.query.address;
         const type = this.type;
@@ -246,15 +245,14 @@ export default {
               this.loadOver = true
               
             }
-            // debugger
+    
           data.messages = data.list;
-          if(addressHash) this.height = data.list[data.list.length-1].Height
+          if(addressHash && data.messages.length) this.height = data.list[data.list.length-1].Height
           
           data.total = data.list.length;
           
         // }
         // this.total = Number(data.total);
-        // debugger
         const messageData = data.messages.map(item => {
           const {  
             //   CID,
@@ -297,9 +295,8 @@ export default {
           }
           return res;
         });
-        // debugger
-        // console.log(messageData)
-        // if(!this.height) this.messageData = [] 
+       if(this.page==0) this.messageData = [] 
+        
          this.messageData = [...this.messageData,...messageData]
         // this.messageData = Object.freeze(messageData);
         this.loading = false;
@@ -337,11 +334,19 @@ export default {
         count: 25
       };
     },
-    address() {
-      this.loadOver = false
-      this.messageData = []
-      this.loadMessageData();
-    }
+    "$route.query.address": {
+      immediate: true,
+      handler(v) {
+        if (!v) {
+          return;
+        }
+        this.loadOver = false
+        this.height = null
+        this.page = 0
+        this.loadMessageData();
+      
+      },
+    },
   },
   mounted() {
     this.labels = [...this.$t("component.mesList.label")];
