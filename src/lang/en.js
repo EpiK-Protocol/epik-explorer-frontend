@@ -526,7 +526,7 @@ const en = {
     //   "<div style='margin-bottom:5px'>Avg BlockHeader Size: {value}bytes</div><div>Time: {name}</div>",
     blockSize: "<div >Total Node: {t1}</div><div>Pledged: {t2}</div><div>Won Node: {t3}</div>",
 
-    totalPower: "<div class='circle2' style='margin-bottom:5px'>Network Power: {qualityPower}</div><div class='circle1' style='margin-bottom:5px'>Power Grouth: {rawPower}</div><div>Time: {name}</div>",
+    totalPower: "<div class='circle2' style='margin-bottom:5px'>Network Power: {qualityPower}</div><div class='circle1' style='margin-bottom:5px'>Power Growth: {rawPower}</div><div>Time: {name}</div>",
     blocksWon: "<div>MinerID: {miner_id}</div><div>Height: {height}</div><div>BlockTime: {block_time}</div><div>BlockHash: {cid}</div>",
     filOutstanding: ["Floating", "Pledge"],
     blockReward: ["# Of Nodes", "Cumulative Block Reward"],
@@ -535,7 +535,7 @@ const en = {
     map:
       "<div style='margin-bottom:5px'><a href='/#/stats/peer?peer_id={pid}'><span>Peer ID : </span><span>{pid}</span></a></div><div style='margin-bottom:5px'><span>Location : </span><span>{name}</span></div><div><span>IP : </span><span>{ip}</span></div>",
     totalPower1: 'Network Power',
-    powerGrouth: 'Power Growth',
+    powerGrowth: 'Power Growth',
     price: 'Price',
     MiningPledge: 'Storage Pledge',
     TotalRewards: 'Lock Rewards'

@@ -613,7 +613,7 @@ const zh = {
         coming: "敬请期待",
         map: "<div style='margin-bottom:5px'><a href='/#/stats/peer?peer_id={pid}'><span>节点ID : </span><span>{pid}</span></a></div><div style='margin-bottom:5px'><span>位置 : </span><span>{name}</span></div><div><span>IP : </span><span>{ip}</span></div>",
         totalPower1: '全网算力',
-        powerGrouth: '算力增长',
+        powerGrowth: '算力增长',
         price: '价格',
         MiningPledge: '挖矿质押',
         TotalRewards: '锁仓奖励'

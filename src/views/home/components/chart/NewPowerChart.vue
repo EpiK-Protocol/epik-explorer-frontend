@@ -86,7 +86,7 @@ export default {
         },
         yAxis: [{
           type:'value',
-          name:  vm.$t("chart.powerGrouth"),
+          name:  vm.$t("chart.powerGrowth"),
           nameTextStyle: {
             color: '#00ccf8',
             fontSize: isMobile?11:13
@@ -181,7 +181,7 @@ export default {
               },
                 data: series2
             }, {
-                name: vm.$t("chart.powerGrouth"),
+                name: vm.$t("chart.powerGrowth"),
                 type: 'line',
                 yAxisIndex: 1,
                 color: '#f3921b',
