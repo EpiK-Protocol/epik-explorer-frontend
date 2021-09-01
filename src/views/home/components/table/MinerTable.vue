@@ -97,7 +97,10 @@ export default {
           return {
             Rank: index + 1, 
             Miner: ID,
-            Tag: UserTag||'--',
+            Tag: {
+              data: UserTag||'--',
+              type: vm.isMine(ID)
+            },
             QualityAdjPower:{
               data:vm.unitConversion(MinerPower.QualityAdjPower,2),
               percent: (MinerPower.QualityAdjPower/info.minerInfomation.TotalPower*100).toFixed(2)
@@ -118,7 +121,7 @@ export default {
             lastblock: LatestWinBlock,
           };
         })
-        // console.log(dataSource)
+        console.log(dataSource)
         this.blockTable.dataSource = dataSource;
      
         this.blockTable.loading = false;
@@ -126,6 +129,10 @@ export default {
       } catch (e) {
         this.blockTable.loading = false;
       }
+    },
+    isMine(data){
+      if(data == 'f01001' || data == 'f01014' || data == 'f01019' || data == 'f01018'||data == 'f01016' ||data == 'f01021'||data == 'f01020'||data == 'f01015'||data == 'f01017'||data == 'f01022') return true
+      else return false
     },
     async loadBlockData() {
       if (this.blockTable.loading) {

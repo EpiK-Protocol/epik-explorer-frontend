@@ -285,6 +285,10 @@ export default {
         }
       }
     },
+    isMine(data){
+      if(data == 'f01001' || data == 'f01014' || data == 'f01019' || data == 'f01018'||data == 'f01016' ||data == 'f01021'||data == 'f01020'||data == 'f01015'||data == 'f01017'||data == 'f01022') return true
+      else return false
+    },
     async getMessage() {
       try {
         const vm = this
@@ -341,6 +345,7 @@ export default {
             Miner: ID,
             Tag: {
               data:UserTag||'--',
+              type: vm.isMine(ID),
               btn: UserTag==''? that.openDialog:'',
               param: OwnerAddress 
             },

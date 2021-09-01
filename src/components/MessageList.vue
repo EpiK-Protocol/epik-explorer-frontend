@@ -234,6 +234,7 @@ export default {
                     address: addressHash,
                     height: this.height,
                     size:20,
+                    from:''
                     // type: 'address'
                 });
                 if(data.list.length<20 || !data.list){

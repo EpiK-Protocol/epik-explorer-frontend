@@ -60,7 +60,7 @@
           ></base-link>
         
           <div v-if="!item.isLink && !item.isComponent">
-            <span v-if="scope.row[item.key].data">{{`${scope.row[item.key].data} ${item.unit || ""}`}}
+            <span v-if="scope.row[item.key].data" :style="{color:scope.row[item.key].type?'#f3921b':''}">{{`${scope.row[item.key].data} ${item.unit || ""}`}}
               <span v-if="scope.row[item.key].percent" class="percent">{{scope.row[item.key].percent||0}}%</span>
               <span v-if="scope.row[item.key].btn" @click="runfun(scope.row[item.key].btn,scope.row[item.key].param)" class="btn" >{{$t('home.certification')}}</span>
             </span>
