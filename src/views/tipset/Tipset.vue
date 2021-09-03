@@ -188,7 +188,7 @@ export default {
             height: Height,
             hash: this.$route.query.hash,//item.cid
             // timestamp: this.formatTime(Timestamp),
-            utcTime: this.getFormatTime(Timestamp),
+            utcTime: this.getFormatTime(Timestamp*1000),
             // size:0,//size: this.formatNumber(size),
             mesLength: Messages['/'],
             miner:Miner,

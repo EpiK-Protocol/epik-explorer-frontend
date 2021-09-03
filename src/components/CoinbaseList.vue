@@ -402,7 +402,6 @@ export default {
         }
         // this.address = [v];
         this.page = 0
-
         
         this.loadMessageData(v);
         

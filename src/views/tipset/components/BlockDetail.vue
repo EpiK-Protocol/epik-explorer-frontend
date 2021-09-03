@@ -97,6 +97,7 @@ export default {
         } else {
           linkList = currentBlock[item.key];
         }
+
         return {
           ...item,
           value: currentBlock[item.key],
