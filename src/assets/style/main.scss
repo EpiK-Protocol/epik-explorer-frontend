@@ -231,6 +231,14 @@
       color:#fff;
     }
 }
+.mcopy{
+    &::after{
+      font-family: element-icons!important;
+      content: "\e718";
+      margin-left: 5px;
+      color:#fff;
+    }
+}
 .address-detail .el-dialog .el-dialog__body, .address-detail .el-dialog .el-dialog__footer, .address-detail .el-dialog .el-dialog__header {
     background: #0f1f2f!important;
 }

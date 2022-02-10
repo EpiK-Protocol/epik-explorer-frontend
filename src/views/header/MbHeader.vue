@@ -1,7 +1,7 @@
 <template>
   <div class="mb-header-con">
     <div class="header-main">
-      <div class="el-icon-arrow-left arrow-back" v-if="!atIndex" @click="$router.go(-1)"><div class="route-name">{{ title }}</div></div>
+      <div class="el-icon-arrow-left arrow-back" v-if="!atIndex" @click.stop="$router.go(-1)"><div class="route-name mcopy" @click.stop="docopy(title, 'copy')">{{ title }}</div></div>
       <div class="logo" v-else>
         <img src="@/assets/image/epik_m_logo.png" />
         <span>{{ $t("header.title") }}</span>
