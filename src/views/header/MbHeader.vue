@@ -1,7 +1,7 @@
 <template>
   <div class="mb-header-con">
     <div class="header-main">
-      <div class="el-icon-arrow-left arrow-back" v-if="!atIndex" @click.stop="$router.go(-1)"><div class="route-name mcopy" @click.stop="docopy(title, 'copy')">{{ title }}</div></div>
+      <div class="el-icon-arrow-left arrow-back" v-if="!atIndex" @click.stop="$router.go(-1)"><div :class="['route-name',$route.name == 'addressDetail'||$route.name == 'messageDetail'?'mcopy':'']" @click.stop="copyaddress(title)">{{ title }}</div></div>
       <div class="logo" v-else>
         <img src="@/assets/image/epik_m_logo.png" />
         <span>{{ $t("header.title") }}</span>
@@ -61,6 +61,19 @@ export default {
     moreSrc() {
       return this.theme === "light" ? moreIcon : moreDarkIcon;
     },
+    atitle(){
+      if(this.$route.name == 'addressDetail'){
+        return (this.$route.query.address)
+      }
+      if(this.$route.name == 'messageDetail'){
+        return (this.$route.query.cid) 
+      }
+      if(this.$route.name == 'addressCoinbase'){
+        return this.$route.query.coinbase 
+      }
+      return this.routeName
+
+    },
      title(){
       if(this.$route.name == 'addressDetail'){
         return this.ellipsisByLength(this.$route.query.address)
@@ -77,6 +90,13 @@ export default {
   },
 
   methods: {
+    copyaddress(){
+      if(this.$route.name == 'addressDetail'||this.$route.name == 'messageDetail'){
+        this.docopy(this.atitle, 'copy')
+      }
+      
+
+    },
     
     go(path) {
       if(path.indexOf('http')>-1){
