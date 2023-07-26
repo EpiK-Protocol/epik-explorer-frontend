@@ -234,13 +234,13 @@ const en = {
           label: "Total Blocks",
         },
         TotalEPK: {
-          label: "Total EPK",
+          label: "Total AIEPK",
         },
         CirculationEPK: {
-          label: "Circulation EPK",
+          label: "Circulation AIEPK",
         },
         EPK_USDTPrice: {
-          label: "EPK Price（USDT）",
+          label: "AIEPK Price（USDT）",
         }
 
       },
@@ -265,22 +265,22 @@ const en = {
           label: "Node MinWinPower",
         },
         TotalMinerPledged: {
-          label: "Total Node Pledged（EPK）",
+          label: "Total Node Pledged（AIEPK）",
         },
         TotalRetrievalPledged: {
-          label: "Total Retrieval Pledged（EPK）",
+          label: "Total Retrieval Pledged（AIEPK）",
         },
         TotalPledged: {
-          label: "Total Pledged（EPK）",
+          label: "Total Pledged（AIEPK）",
         },
         TotalMiningReward: {
-          label: "Total Storage Reward（EPK）",
+          label: "Total Storage Reward（AIEPK）",
         },
         TotalRetrievalReward: {
-          label: "Total Retrieval Reward（EPK）",
+          label: "Total Retrieval Reward（AIEPK）",
         },
         DataFlowPerEPK: {
-          label: "Data Flow Per EPK",
+          label: "Data Flow Per AIEPK",
         },
 
       },
@@ -305,13 +305,13 @@ const en = {
           label: "Total Data Size",
         },
         TotalExpertReward: {
-          label: "Total Expert Reward（EPK）",
+          label: "Total Expert Reward（AIEPK）",
         },
         TotalCrowdsourcingReward: {
-          label: "Total Crowdsourcing Reward（EPK）",
+          label: "Total Crowdsourcing Reward（AIEPK）",
         },
         TotalVoteReward: {
-          label: "Total Vote Reward（EPK）",
+          label: "Total Vote Reward（AIEPK）",
         },
         AnnualizedRate: {
           label: "Vote APY",

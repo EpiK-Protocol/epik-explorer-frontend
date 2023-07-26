@@ -163,7 +163,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .miner-table{
-  /deep/ .el-table{
+  ::v-deep .el-table{
     //  min-height: 425PX;
     //  max-height: 425PX;
      table{
@@ -212,7 +212,7 @@ export default {
 }
 @media (max-width: 768px) {
  .miner-table{
-  /deep/ .el-table{
+  ::v-deep .el-table{
      min-height: 200px;
   }
 } 

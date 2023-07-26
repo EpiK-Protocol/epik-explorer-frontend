@@ -22,7 +22,7 @@
           {{ $t("address.detail.overview[0]") }}: {{ $route.query.address }}
         </div>
         <div class="updateSign flex" >
-          <div class="banance">{{$t('address.balance')}}：{{balance}} EPK</div>
+          <div class="banance">{{$t('address.balance')}}：{{balance}} AIEPK</div>
         </div>
       </div>
       <template v-if="isminer">
@@ -43,16 +43,16 @@
             <div class="r font-14">
               <div class="l1 bottom-10">{{ $t("address.overview[1]") }}</div>
               <div class="l2 font-28 bottom-20">
-                {{ formatNumber(info.Balance, 4) }} EPK
+                {{ formatNumber(info.Balance, 4) }} AIEPK
               </div>
               <div class="pie-info">
                 <div class="spot p1">
                   <span></span>{{ $t("chart.MiningPledge") }}:
-                  {{ info.MiningPledge }} EPK
+                  {{ info.MiningPledge }} AIEPK
                 </div>
                 <div class="spot p2">
                   <span></span>{{ $t("chart.TotalRewards") }}:
-                  {{ formatNumber(info.TotalRewards, 3) }} EPK
+                  {{ formatNumber(info.TotalRewards, 3) }} AIEPK
                 </div>
               </div>
             </div>

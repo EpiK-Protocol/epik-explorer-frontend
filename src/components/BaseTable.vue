@@ -432,7 +432,7 @@ export default {
       //   // }
       // }
       
-      /deep/ .el-table{
+      ::v-deep .el-table{
         .el-table__body, .el-table__footer, .el-table__header{
               // table-layout: initial;
               // max-width: none;

@@ -123,7 +123,7 @@ const mixin = {
       // } else {
         // if(value>=0.00001){
         let str = value +'';
-        return (str.substring(str.indexOf('.')+1,str.length).length > 3 ? Math.round(str * 1000) / 1000 : parseFloat(value)) + ' EPK'
+        return (str.substring(str.indexOf('.')+1,str.length).length > 3 ? Math.round(str * 1000) / 1000 : parseFloat(value)) + ' AIEPK'
         // }
         // return value >= 0.00001
         //   ? `${value.toFixed(3)} tEPK`

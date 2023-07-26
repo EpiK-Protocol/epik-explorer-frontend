@@ -433,7 +433,7 @@ export default {
     }
   }
   // .miner-table-con{
-  //   /deep/ .el-table{
+  //   ::v-deep .el-table{
   //     height: calc(100vh - 220px) !important;
 
   //   }

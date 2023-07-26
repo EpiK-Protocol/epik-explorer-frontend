@@ -12,19 +12,19 @@
 			<span>
 			{{ $t("coinbase.total") }}：
 			</span>
-			<span>{{ coinbaseData.total }} EPK</span>
+			<span>{{ coinbaseData.total }} AIEPK</span>
 		</div>
 		<div class="power-info">
 			<span>
 			{{ $t("coinbase.vested") }}：
 			</span>
-			<span style="color:var(--block-size-color)" >{{ coinbaseData.vested }} EPK</span>
+			<span style="color:var(--block-size-color)" >{{ coinbaseData.vested }} AIEPK</span>
 		</div>
 		<div class="power-info">
 			<span>
 			{{ $t("coinbase.vesting") }}：
 			</span>
-			<span style="color: #0091ff;" >{{ coinbaseData.vesting}} EPK</span>
+			<span style="color: #0091ff;" >{{ coinbaseData.vesting}} AIEPK</span>
 		</div>
 		</div>
   	</div>

@@ -2,7 +2,7 @@
   <div class="header-con">
     <el-row align="middle" type="flex">
       <el-col :span="4" class="logo-con" @click.native="goTo('home')">
-        <img src="@/assets/image/epik_m_logo.png" class="logo" />
+        <img src="/logo.png" class="logo" />
         <span>{{ $t("header.title") }}</span>
       </el-col>
       <el-col :span="8" class="link-con">
@@ -171,7 +171,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: 0px 1px 0.208vw 0.26vw rgb(0 ,0 ,0 / 30%);
+  box-shadow: 0px 1px 0.208vw 0.26vw rgba(0 ,0 ,0 , 0.3);
   .lang-switch{
     margin: 0 30px;
     font-size:14px;
@@ -299,7 +299,7 @@ export default {
   padding-left: 10px;
 }
 .logo {
-  width: 35px;
+  width: 25px;
   margin-right: 5px;
   & + span {
     font-size: 23px;
@@ -319,7 +319,7 @@ export default {
   height: 3.646vw;
   padding: 0 10px;
 }
-/deep/ .el-menu--horizontal>.el-submenu{
+::v-deep .el-menu--horizontal>.el-submenu{
   .el-submenu__title{
     line-height: 3.646vw;
     height: 3.646vw;

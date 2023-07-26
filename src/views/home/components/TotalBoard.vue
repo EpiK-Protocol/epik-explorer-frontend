@@ -111,7 +111,7 @@ export default {
       
             let value = this.formatNumber(res.minerInfomation[item.key],3)
             if(item.key == 'DataFlowPerEPK'){
-              value = '10Mib/EPK'
+              value = '10Mib/AIEPK'
             }
             if(item.key == 'TotalPower'){
               value = this.unitConversion(res.minerInfomation[item.key], 3)

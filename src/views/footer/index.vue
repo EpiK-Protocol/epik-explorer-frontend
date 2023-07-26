@@ -2,7 +2,7 @@
   <div class="footer">
     <div class>
       <div class="container">
-        <img class="logo" src="@/assets/image/epik_m_logo.png" />
+        <img class="logo" src="/logo.png" />
         <div class="name">{{ $t("header.title") }}</div>
         <div class="sum">{{ $t("banner.t1") }} - {{ $t("banner.t2") }}</div>
       
@@ -92,7 +92,7 @@ export default {
     }
 
     .logo {
-      width: 40px;
+      width: 25px;
       display: inline;
     }
 

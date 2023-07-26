@@ -133,7 +133,7 @@ export default {
   box-shadow: 0 0 0.313vw 0 rgba(0,0,0,.25);
   box-sizing: border-box;
   // border-radius: 1.042vw;
-  /deep/ .el-input-group{
+  ::v-deep .el-input-group{
     display: flex;
     align-items: center;
     justify-content: center;

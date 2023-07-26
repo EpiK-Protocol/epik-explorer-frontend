@@ -13,12 +13,12 @@ case "$param1" in
             dev)
                 npm install
                 npm run build:prod
-                docker build . -t ${appname}
+                docker build . -t ${appname} --platform linux/amd64
             ;;
             prod)
                 npm install
                 npm run build:prod
-                docker build . -t ${appname}
+                docker build . -t ${appname} --platform linux/amd64
             ;;
         esac
         

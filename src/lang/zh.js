@@ -307,10 +307,10 @@ const zh = {
                     label: "全网出块数量",
                 },
                 TotalEPK: {
-                    label: "全网代币上限（EPK）",
+                    label: "全网代币上限（AIEPK）",
                 },
                 CirculationEPK: {
-                    label: "全网代币流通总量（EPK）",
+                    label: "全网代币流通总量（AIEPK）",
                 },
                 EPK_USDTPrice: {
                     label: "当前代币价格（USDT）",
@@ -338,19 +338,19 @@ const zh = {
                     label: "预估最小每日爆块算力",
                 },
                 TotalMinerPledged: {
-                    label: "全网节点抵押数（EPK）",
+                    label: "全网节点抵押数（AIEPK）",
                 },
                 TotalRetrievalPledged: {
-                    label: "全网访问抵押数（EPK）",
+                    label: "全网访问抵押数（AIEPK）",
                 },
                 TotalPledged: {
-                    label: "全网总抵押数（EPK）",
+                    label: "全网总抵押数（AIEPK）",
                 },
                 TotalMiningReward: {
-                    label: "累积出块奖金池（EPK）",
+                    label: "累积出块奖金池（AIEPK）",
                 },
                 TotalRetrievalReward: {
-                    label: "累积带宽奖金池（EPK）",
+                    label: "累积带宽奖金池（AIEPK）",
                 },
                 DataFlowPerEPK: {
                     label: "单位抵押代币每日访问流量",
@@ -378,13 +378,13 @@ const zh = {
                     label: "全网有效数据量",
                 },
                 TotalExpertReward: {
-                    label: "累积专家奖金池（EPK）",
+                    label: "累积专家奖金池（AIEPK）",
                 },
                 TotalCrowdsourcingReward: {
-                    label: "累积众包奖金池（EPK）",
+                    label: "累积众包奖金池（AIEPK）",
                 },
                 TotalVoteReward: {
-                    label: "累积投票奖金池（EPK）",
+                    label: "累积投票奖金池（AIEPK）",
                 },
                 AnnualizedRate: {
                     label: "投票年化收益率",
