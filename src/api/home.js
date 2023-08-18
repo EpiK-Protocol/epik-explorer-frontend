@@ -126,7 +126,7 @@ export function getTotalPowerData(data) {
 export function getKLineData(data) {
   return fetch({
     method: "get",
-    url: "/kline?symbol=EPK_USDT&interval=1h",
+    url: "/kline?symbol=AIEPK_USDT&interval=1h",
     data
   });
 }

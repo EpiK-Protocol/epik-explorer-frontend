@@ -107,7 +107,7 @@ export default {
           },
         },
         grid: {
-          left: 35,
+          left: 50,
           top: 35,
           right: 30,
           bottom: 25,
@@ -157,7 +157,7 @@ export default {
                 normal: {
                   fontSize: 10,
                   formatter: function (param) {
-                    return param != null ? param.value.toFixed(2) : "";
+                    return param != null ? param.value.toFixed(4) : "";
                   },
                 },
               },

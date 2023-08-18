@@ -2,6 +2,8 @@
 appname=epikexplorer
 port=4001
 devaddr=116.63.146.223
+prodaddr=13.115.201.53
+
 
 param1=${1}
 param2=${2}
@@ -42,17 +44,17 @@ case "$param1" in
         case "$param2" in
             dev)
                 ssh root@${devaddr} "
-docker login --username=bfss_app --password=BFSS811215 registry.cn-beijing.aliyuncs.com
-docker pull registry.cn-beijing.aliyuncs.com/bfssai/${appname}.dev:latest
-docker stop ${appname}
-sleep 1
-docker rm ${appname}
-sleep 1
-docker run  --network=host -v /etc/localtime:/etc/localtime -e 'API_BASE_URL=\"http://116.63.146.223:3002/\"' -d -m 1G --name ${appname} registry.cn-beijing.aliyuncs.com/bfssai/${appname}.dev:latest
-docker ps"
+ docker login --username=bfss_app --password=BFSS811215 registry.cn-beijing.aliyuncs.com
+ docker pull registry.cn-beijing.aliyuncs.com/bfssai/${appname}.dev:latest
+ docker stop ${appname}
+ sleep 1
+ docker rm ${appname}
+ sleep 1
+ docker run  --network=host -v /etc/localtime:/etc/localtime  -d -m 1G --name ${appname} registry.cn-beijing.aliyuncs.com/bfssai/${appname}.dev:latest
+ docker ps"
             ;;
             prod)
-                ssh centos@${devaddr} "
+                ssh centos@${prodaddr} "
 sudo docker login --username=bfss_app --password=BFSS811215 registry.cn-beijing.aliyuncs.com
 sudo docker pull registry.cn-beijing.aliyuncs.com/bfssai/${appname}:latest
 sudo docker stop ${appname}
